@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { useLocation } from 'react-router-dom'
+import { useLocation, Link } from 'react-router-dom'
 import personalAccidentForm from '../forms/Personal-Accident-Proposal-Form.pdf'
 
 const GroupPersonalAccident = () => {
@@ -79,7 +79,7 @@ const GroupPersonalAccident = () => {
                 </svg>
                 <span>APPLICATION FORM</span>
               </a>
-              <a href="#" className="form-button claim-form-btn">
+              <Link to="/report-claim" className="form-button claim-form-btn">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                   <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
                   <polyline points="14 2 14 8 20 8"></polyline>
@@ -88,7 +88,7 @@ const GroupPersonalAccident = () => {
                   <polyline points="10 9 9 9 8 9"></polyline>
                 </svg>
                 <span>CLAIM FORM</span>
-              </a>
+              </Link>
             </div>
           </div>
 

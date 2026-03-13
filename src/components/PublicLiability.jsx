@@ -1,5 +1,6 @@
 import React from 'react'
 import publicLiabilityForm from '../forms/Public-Liability-Proposal-Form-1.pdf'
+import publicLiabilityImage from '../assets/public liability.png'
 
 const PublicLiability = () => {
   return (
@@ -33,6 +34,23 @@ const PublicLiability = () => {
               <p className="public-liability-info-description" style={{ marginTop: '1.5rem' }}>
                 The public Liability Cover ensures rights and obligations to third parties is met in honest and transparent manner.
               </p>
+            </div>
+          </div>
+
+          {/* Public Liability Image Section */}
+          <div className="insurance-form-wrapper" style={{ marginTop: '3rem' }}>
+            <div className="insurance-form-image">
+              <img src={publicLiabilityImage} alt="Public Liability Insurance" />
+            </div>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              <div style={{ padding: '2rem' }}>
+                <h3 style={{ fontSize: '1.75rem', fontWeight: '700', color: 'var(--black)', marginBottom: '1rem' }}>
+                  Protect Your Business from Third-Party Claims
+                </h3>
+                <p style={{ fontSize: '1.125rem', lineHeight: '1.8', color: 'var(--text-dark)', marginBottom: '1.5rem' }}>
+                  Secure your business with comprehensive public liability insurance. Our coverage protects you against legal liability for accidental death, bodily injury, illness, or property damage to third parties arising from your business operations.
+                </p>
+              </div>
             </div>
           </div>
 

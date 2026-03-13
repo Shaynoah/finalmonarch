@@ -1,5 +1,6 @@
 import React from 'react'
 import domesticPackageForm from '../forms/Domestic-Package-Proposal-Form.pdf'
+import domeImage from '../assets/dome.png'
 
 const DomesticPackage = () => {
   return (
@@ -24,6 +25,23 @@ const DomesticPackage = () => {
               <p className="domestic-package-info-description">
                 Our domestic policy is a package cover aimed at meeting insurance requirements of home owners and occupiers. It provides cover for the dwelling house, household contents and other personal belongings against fire, natural catastrophes and theft. It also covers personal liabilities of the insured to third parties and provides compensation to domestic servants for death or injury in the course of duty.
               </p>
+            </div>
+          </div>
+
+          {/* Domestic Package Image Section */}
+          <div className="insurance-form-wrapper" style={{ marginTop: '3rem' }}>
+            <div className="insurance-form-image">
+              <img src={domeImage} alt="Domestic Package Insurance" />
+            </div>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              <div style={{ padding: '2rem' }}>
+                <h3 style={{ fontSize: '1.75rem', fontWeight: '700', color: 'var(--black)', marginBottom: '1rem' }}>
+                  Comprehensive Home Protection
+                </h3>
+                <p style={{ fontSize: '1.125rem', lineHeight: '1.8', color: 'var(--text-dark)', marginBottom: '1.5rem' }}>
+                  Our domestic package provides comprehensive coverage for your home, household contents, and personal belongings. Protect your haven against fire, natural catastrophes, theft, and personal liabilities with our tailored insurance solutions.
+                </p>
+              </div>
             </div>
           </div>
 

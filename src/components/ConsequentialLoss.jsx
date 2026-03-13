@@ -1,5 +1,6 @@
 import React from 'react'
 import fireAndPerilsForm from '../forms/Fire-and-Perils-Proposal-form.pdf'
+import consLossImage from '../assets/consloss.png'
 
 const ConsequentialLoss = () => {
   return (
@@ -30,6 +31,23 @@ const ConsequentialLoss = () => {
               <p className="consequential-loss-info-description" style={{ marginTop: '1.5rem' }}>
                 This cover provides peace mind to our participants against such effects of fire. The compensation is for the Gross profits lost and for wages paid out during the period when the business is interrupted.
               </p>
+            </div>
+          </div>
+
+          {/* Consequential Loss Image Section */}
+          <div className="insurance-form-wrapper" style={{ marginTop: '3rem' }}>
+            <div className="insurance-form-image">
+              <img src={consLossImage} alt="Consequential Loss Insurance" />
+            </div>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              <div style={{ padding: '2rem' }}>
+                <h3 style={{ fontSize: '1.75rem', fontWeight: '700', color: 'var(--black)', marginBottom: '1rem' }}>
+                  Protect Your Business from Interruption Losses
+                </h3>
+                <p style={{ fontSize: '1.125rem', lineHeight: '1.8', color: 'var(--text-dark)', marginBottom: '1.5rem' }}>
+                  Secure your business against loss of profit and operational disruptions. Our consequential loss insurance provides compensation for lost gross profits and wages during business interruptions caused by fire damage or other covered perils.
+                </p>
+              </div>
             </div>
           </div>
 

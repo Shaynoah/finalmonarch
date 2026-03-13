@@ -1,5 +1,6 @@
 import React from 'react'
 import workInjuryForm from '../forms/WIBA-PROPOSAL-FORM.pdf'
+import workInjuryImage from '../assets/workinjury.png'
 
 const WorkInjury = () => {
   return (
@@ -27,6 +28,23 @@ const WorkInjury = () => {
               <p className="work-injury-info-description">
                 This policy provides compensation for death, injury or sickness sustained directly to an employee arising out of and in the course of employment. This policy falls under the Workmen's Compensation Legislation. It provides death benefits, lost wages to injured employees, as well as cost of medical care.
               </p>
+            </div>
+          </div>
+
+          {/* Work Injury Image Section */}
+          <div className="insurance-form-wrapper" style={{ marginTop: '3rem' }}>
+            <div className="insurance-form-image">
+              <img src={workInjuryImage} alt="Work Injury Insurance" />
+            </div>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              <div style={{ padding: '2rem' }}>
+                <h3 style={{ fontSize: '1.75rem', fontWeight: '700', color: 'var(--black)', marginBottom: '1rem' }}>
+                  Protect Your Employees and Your Business
+                </h3>
+                <p style={{ fontSize: '1.125rem', lineHeight: '1.8', color: 'var(--text-dark)', marginBottom: '1.5rem' }}>
+                  Ensure your workforce is protected with comprehensive work injury insurance. Our coverage provides compensation for death, injury, or sickness sustained by employees in the course of employment, including death benefits, lost wages, and medical care costs.
+                </p>
+              </div>
             </div>
           </div>
 

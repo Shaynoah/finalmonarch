@@ -1,6 +1,6 @@
 import React from 'react'
 import carriersForm from '../forms/Carriers-Legal-Liability-Proposal-Form-_Monarch.pdf'
-import carriersImage from '../assets/carriers.jpg'
+import carriers2Image from '../assets/carriers2.png'
 
 const Carriers = () => {
   return (
@@ -34,7 +34,7 @@ const Carriers = () => {
           {/* Carriers Image Section */}
           <div className="insurance-form-wrapper" style={{ marginTop: '3rem' }}>
             <div className="insurance-form-image">
-              <img src={carriersImage} alt="Carriers Insurance" />
+              <img src={carriers2Image} alt="Carriers Insurance" />
             </div>
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
               <div style={{ padding: '2rem' }}>

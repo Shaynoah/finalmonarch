@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import groupcoverImage from '../assets/groupcover.png'
 
 const GroupLifeInsurance = () => {
   const [selectedPlan, setSelectedPlan] = useState('')
@@ -90,7 +89,7 @@ const GroupLifeInsurance = () => {
   return (
     <div className="group-life-insurance-page">
       {/* Hero Section */}
-      <section className="group-life-hero" style={{ backgroundImage: `url(${groupcoverImage})` }}>
+      <section className="group-life-hero">
         <div className="group-life-hero-overlay"></div>
         <div className="group-life-hero-content">
           <div className="group-life-badge">

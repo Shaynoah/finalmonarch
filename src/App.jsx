@@ -9,19 +9,25 @@ import AboutPage from './pages/AboutPage'
 import BranchesPage from './pages/BranchesPage'
 import FAQsPage from './pages/FAQsPage'
 import TeamPage from './pages/TeamPage'
-import EducationPage from './pages/EducationPage'
 import GroupLifeInsurancePage from './pages/GroupLifeInsurancePage'
+import GroupRetirementBenefitSchemesPage from './pages/GroupRetirementBenefitSchemesPage'
+import GroupMortgageProtectionPage from './pages/GroupMortgageProtectionPage'
+import EndowmentAssurancePage from './pages/EndowmentAssurancePage'
+import GroupCreditLifeInsurancePage from './pages/GroupCreditLifeInsurancePage'
+import GroupLifePage from './pages/GroupLifePage'
 import GroupPersonalAccidentPage from './pages/GroupPersonalAccidentPage'
 import CustomsPage from './pages/CustomsPage'
 import ImmigrationSecurityPage from './pages/ImmigrationSecurityPage'
 import PerformancePage from './pages/PerformancePage'
 import SuretyUndertakingPage from './pages/SuretyUndertakingPage'
 import TenderPage from './pages/TenderPage'
+import ComesaYellowCardPage from './pages/ComesaYellowCardPage'
 import DomesticPackagePage from './pages/DomesticPackagePage'
 import ContractorsAllRisksPage from './pages/ContractorsAllRisksPage'
 import ContractorsPlantMachineryPage from './pages/ContractorsPlantMachineryPage'
 import ElectronicEquipmentPage from './pages/ElectronicEquipmentPage'
 import MachineryBreakdownPage from './pages/MachineryBreakdownPage'
+import GolfersInsurancePage from './pages/GolfersInsurancePage'
 import ConsequentialLossPage from './pages/ConsequentialLossPage'
 import FireAndPerilsPage from './pages/FireAndPerilsPage'
 import IndustrialPage from './pages/IndustrialPage'
@@ -31,8 +37,10 @@ import PublicLiabilityPage from './pages/PublicLiabilityPage'
 import WorkInjuryPage from './pages/WorkInjuryPage'
 import GoodsInTransitPage from './pages/GoodsInTransitPage'
 import MarineHullPage from './pages/MarineHullPage'
+import MarineCargoPage from './pages/MarineCargoPage'
 import AgriculturalForestryPage from './pages/AgriculturalForestryPage'
-import DrivingSchoolsPage from './pages/DrivingSchoolsPage'
+import InstitutionalFleetPage from './pages/InstitutionalFleetPage'
+import ChauffeurDrivenPSVPage from './pages/ChauffeurDrivenPSVPage'
 import GeneralCartagePage from './pages/GeneralCartagePage'
 import MotorVehiclePage from './pages/MotorVehiclePage'
 import MotorCyclePage from './pages/MotorCyclePage'
@@ -55,8 +63,12 @@ function App() {
         <Route path="/branches" element={<BranchesPage />} />
         <Route path="/faqs" element={<FAQsPage />} />
         <Route path="/team" element={<TeamPage />} />
-        <Route path="/education" element={<EducationPage />} />
         <Route path="/group-life-insurance" element={<GroupLifeInsurancePage />} />
+        <Route path="/group-retirement-benefit-schemes" element={<GroupRetirementBenefitSchemesPage />} />
+        <Route path="/group-mortgage-protection" element={<GroupMortgageProtectionPage />} />
+        <Route path="/endowment-assurance" element={<EndowmentAssurancePage />} />
+        <Route path="/group-credit-life" element={<GroupCreditLifeInsurancePage />} />
+        <Route path="/group-life" element={<GroupLifePage />} />
         <Route path="/group-personal-accident" element={<GroupPersonalAccidentPage />} />
         <Route path="/personal-accident" element={<GroupPersonalAccidentPage />} />
         <Route path="/customs" element={<CustomsPage />} />
@@ -64,11 +76,13 @@ function App() {
         <Route path="/performance" element={<PerformancePage />} />
         <Route path="/surety-undertaking" element={<SuretyUndertakingPage />} />
         <Route path="/tender" element={<TenderPage />} />
+        <Route path="/comesa-yellow-card" element={<ComesaYellowCardPage />} />
         <Route path="/domestic-package" element={<DomesticPackagePage />} />
         <Route path="/contractors-all-risks" element={<ContractorsAllRisksPage />} />
         <Route path="/contractors-plant-machinery" element={<ContractorsPlantMachineryPage />} />
         <Route path="/electronic-equipment" element={<ElectronicEquipmentPage />} />
         <Route path="/machinery-breakdown" element={<MachineryBreakdownPage />} />
+        <Route path="/golfers-insurance" element={<GolfersInsurancePage />} />
         <Route path="/consequential-loss" element={<ConsequentialLossPage />} />
         <Route path="/fire-and-perils" element={<FireAndPerilsPage />} />
         <Route path="/industrial" element={<IndustrialPage />} />
@@ -78,8 +92,10 @@ function App() {
         <Route path="/work-injury" element={<WorkInjuryPage />} />
         <Route path="/goods-in-transit" element={<GoodsInTransitPage />} />
         <Route path="/marine-hull" element={<MarineHullPage />} />
+        <Route path="/marine-cargo" element={<MarineCargoPage />} />
         <Route path="/agricultural-forestry" element={<AgriculturalForestryPage />} />
-        <Route path="/driving-schools" element={<DrivingSchoolsPage />} />
+        <Route path="/institutional-fleet" element={<InstitutionalFleetPage />} />
+        <Route path="/chauffeur-driven-psv" element={<ChauffeurDrivenPSVPage />} />
         <Route path="/general-cartage" element={<GeneralCartagePage />} />
         <Route path="/motor-vehicle" element={<MotorVehiclePage />} />
         <Route path="/motor-cycle" element={<MotorCyclePage />} />

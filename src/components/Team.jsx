@@ -5,18 +5,99 @@ import React, { useEffect, useRef, useState } from 'react'
 // import stephenRobiaImage from '../assets/team/stephen-robia.jpg'
 // Add more imports as needed
 
+// Board of Directors images
+import steveImage from '../assets/steve.jpg'
+import margaretImage from '../assets/Margaret.jpg'
+import bikiImage from '../assets/biki.jpg'
+import rajashImage from '../assets/Rajash.jpg'
+
+// Senior Management images
+import mosesImage from '../assets/Moses6.jpg'
+import zipporahImage from '../assets/Zipporah3.jpg'
+import rosemaryImage from '../assets/Rosemary3.jpg'
+import jackieImage from '../assets/Jackie5.jpg'
+import robiaImage from '../assets/robia.jpg'
+import bridgitImage from '../assets/bridgit.jpg'
+import berylImage from '../assets/berryl.jpg'
+import lneahImage from '../assets/Lneah.jpeg'
+import josephImage from '../assets/Joseph Pic.jpg'
+
 const Team = () => {
   const sectionRef = useRef(null)
   const [isVisible, setIsVisible] = useState(false)
   const [selectedMember, setSelectedMember] = useState(null)
+  const [activeTab, setActiveTab] = useState('board-of-directors')
 
   const teamMembers = [
+    // Board of Directors
+    {
+      id: 100,
+      name: 'DR. STEVE O. MAINDA',
+      role: 'Chairman',
+      department: 'Board of Directors',
+      category: 'board-of-directors',
+      image: steveImage,
+      bio: 'Chairman',
+      experience: '',
+      education: '',
+      professionalQualifications: '',
+      furtherTraining: '',
+      email: '',
+      phone: ''
+    },
+    {
+      id: 101,
+      name: 'MARGARET W. KATHANGA',
+      role: 'Board Member',
+      department: 'Board of Directors',
+      category: 'board-of-directors',
+      image: margaretImage,
+      bio: 'Board Member',
+      experience: '',
+      education: '',
+      professionalQualifications: '',
+      furtherTraining: '',
+      email: '',
+      phone: ''
+    },
+    {
+      id: 102,
+      name: 'BIKI KANGWANA',
+      role: 'Board Member',
+      department: 'Board of Directors',
+      category: 'board-of-directors',
+      image: bikiImage,
+      bio: 'Board Member',
+      experience: '',
+      education: '',
+      professionalQualifications: '',
+      furtherTraining: '',
+      email: '',
+      phone: ''
+    },
+    {
+      id: 103,
+      name: 'RAJESH VADGAMA',
+      role: 'Board Member',
+      department: 'Board of Directors',
+      category: 'board-of-directors',
+      image: rajashImage,
+      bio: 'Board Member',
+      experience: '',
+      education: '',
+      professionalQualifications: '',
+      furtherTraining: '',
+      email: '',
+      phone: ''
+    },
+    // Senior Management
     {
       id: 1,
       name: 'MOSES GATUNDU',
       role: 'CEO & Principal Officer',
       department: 'Executive',
-      image: null, // Placeholder - will be replaced with actual image
+      category: 'senior-management',
+      image: mosesImage,
       bio: 'CEO & Principal Officer',
       experience: 'Moses is a detail-oriented accountant with over thirty (30) years\' experience with wide knowledge of accounting and finance in the Insurance Industry.',
       education: 'Moses holds a Bachelor of Science (Bsc.) Business Administration from the United States International University (USIU).',
@@ -28,10 +109,11 @@ const Team = () => {
     {
       id: 7,
       name: 'STEPHEN ROBIA',
-      role: 'ICT Manager',
+      role: 'Head of ICT',
       department: 'Information Technology',
-      image: null, // Replace with: stephenRobiaImage (after importing above)
-      bio: 'ICT Manager',
+      category: 'senior-management',
+      image: robiaImage,
+      bio: 'Head of ICT',
       experience: 'A seasoned professional with over 8 years of experience in the banking and insurance industries.',
       education: 'He holds a Bsc. in Information Technology and a Bsc. Business Studies. Currently, he is pursuing a Master of Science in Artificial Intelligence and Machine Learning & A masters in Sustainable Development.',
       professionalQualifications: 'His extensive qualifications include a Diploma in Information Technology, Certified Ethical Hacker (CEH), Computer Hacking Forensic Investigator (CHFI), ISO 27001 certification, and a thorough understanding of the General Data Protection Regulation (GDPR). Additionally, he is certified in ISC2\'s Cybersecurity, holds a Certified IT Professional (CPIT) designation, and is a Cisco Certified Network Associate (CCNA).',
@@ -42,10 +124,11 @@ const Team = () => {
     {
       id: 8,
       name: 'BRIDGIT KAMAU',
-      role: 'Claims Manager',
+      role: 'Head of Claims',
       department: 'Claims',
-      image: null,
-      bio: 'Claims Manager',
+      category: 'senior-management',
+      image: bridgitImage,
+      bio: 'Head of Claims',
       experience: 'Bridgit Kamau is a highly reliable professional with over ten (10) years\' experience in the Insurance Industry in Claims.',
       education: 'She holds an Economics Degree from the Egerton University, Diploma in Insurance from the College of Insurance as well as certification in Leadership from Strathmore Business school.',
       professionalQualifications: 'She is an Associate of the Institute of Insurance (AIIK).',
@@ -54,12 +137,43 @@ const Team = () => {
       phone: '+254 724 635 707'
     },
     {
+      id: 10,
+      name: 'ZIPPORAH KARIUKI',
+      role: 'AG. Head Of Sales(GENERAL)',
+      department: 'Sales',
+      category: 'senior-management',
+      image: zipporahImage,
+      bio: 'AG. Head Of Sales(GENERAL)',
+      experience: '',
+      education: '',
+      professionalQualifications: '',
+      furtherTraining: '',
+      email: '',
+      phone: ''
+    },
+    {
+      id: 15,
+      name: 'BERYL O. NANDWA',
+      role: 'Head of Sales (LIFE)',
+      department: 'Sales',
+      category: 'senior-management',
+      image: berylImage,
+      bio: 'Head of Sales (LIFE)',
+      experience: '',
+      education: '',
+      professionalQualifications: '',
+      furtherTraining: '',
+      email: '',
+      phone: ''
+    },
+    {
       id: 9,
       name: 'ROSEMARY GACERI',
-      role: 'Legal Services Manager',
+      role: 'Head of Legal',
       department: 'Legal',
-      image: null, // Replace with: rosemaryGaceriImage (after importing above)
-      bio: 'Legal Services Manager',
+      category: 'senior-management',
+      image: rosemaryImage,
+      bio: 'Head of Legal',
       experience: 'Rosemary is a dedicated, detail-oriented and highly skilled professional lawyer with over ten (10) years\' experience in a wide variety of legal areas.',
       education: 'She holds a Bachelor of Laws Degree (LL.B) Hons and Master of Laws (LL.M) in International and Commercial Law (World Trade Specialist), both from the University of Buckingham and a Diploma in Law from the Kenya School of Law.',
       professionalQualifications: 'She is an advocate of the High Court of Kenya.',
@@ -72,7 +186,8 @@ const Team = () => {
       name: 'JACKLINE KIBERENGE',
       role: 'Head of Finance',
       department: 'Finance',
-      image: null, // Replace with: jacklineKiberengeImage (after importing above)
+      category: 'senior-management',
+      image: jackieImage,
       bio: 'Head of Finance',
       experience: '',
       education: '',
@@ -82,46 +197,34 @@ const Team = () => {
       phone: '+254 724 635 710'
     },
     {
-      id: 12,
-      name: 'JOHN NDEGWA',
-      role: 'Life and Pensions Manager',
-      department: 'Life Insurance',
-      image: null, // Replace with: johnNdegwaImage (after importing above)
-      bio: 'Life and Pensions Manager',
-      experience: '',
-      education: '',
-      professionalQualifications: '',
-      furtherTraining: '',
-      email: 'john.ndegwa@monarchinsurance.co.ke',
-      phone: '+254 724 635 711'
-    },
-    {
-      id: 13,
-      name: 'DAVID KAMAU',
-      role: 'Head of Registry',
-      department: 'Registry',
-      image: null,
-      bio: 'Head of Registry',
-      experience: '',
-      education: '',
-      professionalQualifications: '',
-      furtherTraining: '',
-      email: 'david.kamau@monarchinsurance.co.ke',
-      phone: '+254 724 635 712'
-    },
-    {
       id: 14,
       name: 'DANIEL INEAH OKELLO',
-      role: 'Underwriting Manager',
+      role: 'Head of Underwriting',
       department: 'Underwriting',
-      image: null,
-      bio: 'Underwriting Manager',
+      category: 'senior-management',
+      image: lneahImage,
+      bio: 'Head of Underwriting',
       experience: '',
       education: '',
       professionalQualifications: '',
       furtherTraining: '',
       email: 'daniel.okello@monarchinsurance.co.ke',
       phone: '+254 724 635 713'
+    },
+    {
+      id: 16,
+      name: 'JOSEPH OBUYA',
+      role: 'Head Of Human Resource',
+      department: 'Human Resource',
+      category: 'senior-management',
+      image: josephImage,
+      bio: 'Head Of Human Resource',
+      experience: '',
+      education: '',
+      professionalQualifications: '',
+      furtherTraining: '',
+      email: '',
+      phone: ''
     }
   ]
 
@@ -178,8 +281,8 @@ const Team = () => {
           <div className="team-header-layout">
             <div className="team-header-left">
               <h1 className="team-title">
-                <span className="title-line-1">MEET OUR SENIOR</span>
-                <span className="title-line-2">MANAGEMENT</span>
+                <span className="title-line-1">MEET OUR</span>
+                <span className="title-line-2">TEAM</span>
               </h1>
               <div className="team-title-separator"></div>
             </div>
@@ -191,8 +294,26 @@ const Team = () => {
           </div>
         </div>
 
+        {/* Team Tabs */}
+        <div className="team-tabs">
+          <button
+            className={`team-tab ${activeTab === 'board-of-directors' ? 'active' : ''}`}
+            onClick={() => setActiveTab('board-of-directors')}
+          >
+            Board of Directors
+          </button>
+          <button
+            className={`team-tab ${activeTab === 'senior-management' ? 'active' : ''}`}
+            onClick={() => setActiveTab('senior-management')}
+          >
+            Senior Management
+          </button>
+        </div>
+
         <div className="team-grid">
-          {teamMembers.map((member, index) => (
+          {teamMembers
+            .filter(member => member.category === activeTab)
+            .map((member, index) => (
             <div
               key={member.id}
               className={`team-card ${isVisible ? 'visible' : ''}`}
@@ -221,8 +342,12 @@ const Team = () => {
                   </div>
                 </div>
                 <div className="team-card-content">
-                  <h3 className="team-member-name">{member.name}</h3>
-                  <p className="team-member-role">{member.role}</p>
+                  <div className="team-member-name-wrapper">
+                    <h3 className="team-member-name">{member.name}</h3>
+                  </div>
+                  <div className="team-member-role-badge">
+                    <span className="team-member-role">{member.role}</span>
+                  </div>
                 </div>
                 <div className="team-card-background"></div>
               </div>

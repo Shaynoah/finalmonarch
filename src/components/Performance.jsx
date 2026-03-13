@@ -1,5 +1,6 @@
 import React from 'react'
 import bondForm from '../forms/BOND-APPLICATION-FORM.pdf'
+import performanceImage from '../assets/perfomance.png'
 
 const Performance = () => {
   return (
@@ -27,6 +28,23 @@ const Performance = () => {
               <p className="performance-info-description" style={{ marginTop: '1.5rem' }}>
                 For answers to your questions and information on solutions our network of offices aim to be convenient and local. Visit us in person at one of our offices.
               </p>
+            </div>
+          </div>
+
+          {/* Performance Image Section */}
+          <div className="insurance-form-wrapper" style={{ marginTop: '3rem' }}>
+            <div className="insurance-form-image">
+              <img src={performanceImage} alt="Performance Bond Insurance" />
+            </div>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              <div style={{ padding: '2rem' }}>
+                <h3 style={{ fontSize: '1.75rem', fontWeight: '700', color: 'var(--black)', marginBottom: '1rem' }}>
+                  Secure Your Contract Performance
+                </h3>
+                <p style={{ fontSize: '1.125rem', lineHeight: '1.8', color: 'var(--text-dark)', marginBottom: '1.5rem' }}>
+                  Our performance bonds provide contractors with the financial assurance needed to complete contracted work as per agreed terms. Build confidence with your clients and deliver on your promises with our comprehensive performance bond coverage.
+                </p>
+              </div>
             </div>
           </div>
 

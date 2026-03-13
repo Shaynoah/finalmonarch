@@ -17,22 +17,22 @@ const Branches = () => {
         '+254 (0) 20 4292 100'
       ],
       email: 'info@monarchinsurance.co.ke',
-      hours: 'Monday-Friday: 8.30am to 5.00pm, Saturdays: 9.00am to 1pm'
+      hours: 'Monday-Friday: 7am to 6pm, Saturdays: 9.00am to 1pm'
     },
     {
       id: 'mombasa',
       title: 'MOMBASA BRANCH',
       address: [
-        'Jubilee Insurance Building, 3rd Floor',
-        'P. O. Box 90585-80100, Mombasa',
-        'Moi Avenue, Mombasa, Kenya'
+        'Shazmeer Building, 2nd Floor',
+        'Digo Road/Moi Avenue',
+        'Mombasa, Kenya'
       ],
       phones: [
         '+254 (0) 41 2318348',
         '+254 (0) 41 2318347'
       ],
       email: 'mombasa@monarchinsurance.co.ke',
-      hours: 'Monday-Friday: 8.30am to 5.00pm, Saturdays: 9.00am to 1pm'
+      hours: 'Monday-Friday: 7am to 6pm, Saturdays: 9.00am to 1pm'
     }
   ]
 

@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from 'react'
-import careersImage from '../assets/careers.png'
+import newCareer1Image from '../assets/new carrer.jpg'
+import newCareer2Image from '../assets/new carreer2.jpg'
 
 const Careers = () => {
   const jobPositions = [
@@ -8,14 +9,14 @@ const Careers = () => {
       department: 'Sales & Business Development',
       location: 'Nairobi, Kenya',
       type: 'Full-time',
-      image: careersImage
+      image: newCareer1Image
     },
     { 
       title: 'Claims Specialist', 
       department: 'Claims Department',
       location: 'Nairobi, Kenya',
       type: 'Full-time',
-      image: careersImage
+      image: newCareer2Image
     }
   ]
 

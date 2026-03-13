@@ -1,8 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
-import protectImage1 from '../assets/jamie-street-JtP_Dqtz6D8-unsplash.jpg'
-import protectImage2 from '../assets/derek-thomson-M1jCmRxO7cY-unsplash.jpg'
-import protectImage3 from '../assets/natalya-zaritskaya-SIOdjcYotms-unsplash.jpg'
+import protectImage1 from '../assets/image5.png'
+import protectImage2 from '../assets/image6.png'
+import protectImage3 from '../assets/image7.png'
 
 const ProtectSection = () => {
   const sectionRef = useRef(null)

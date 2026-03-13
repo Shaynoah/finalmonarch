@@ -26,7 +26,7 @@
 
 html {
     scroll-behavior: smooth;
-    scroll-padding-top: 80px;
+    scroll-padding-top: 150px;
     display: block;
     visibility: visible;
     width: 100%;
@@ -271,7 +271,7 @@ img[loading="lazy"] {
     opacity: 1 !important;
     grid-column: 1;
     width: auto;
-    min-width: 150px;
+    min-width: 200px;
 }
 
 .logo-wrapper {
@@ -283,18 +283,18 @@ img[loading="lazy"] {
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     height: 100%;
     max-height: 100%;
-    min-width: 150px;
+    min-width: 200px;
     width: auto;
     visibility: visible !important;
     opacity: 1 !important;
 }
 
 .logo-image {
-    height: 68px;
+    height: 90px;
     max-height: 100%;
     width: auto;
-    min-width: 120px;
-    max-width: 200px;
+    min-width: 160px;
+    max-width: 280px;
     object-fit: contain;
     position: relative;
     z-index: 2;
@@ -359,7 +359,7 @@ img[loading="lazy"] {
 }
 
 .navbar.scrolled .logo-image {
-    height: 60px;
+    height: 80px;
     filter: drop-shadow(0 2px 6px rgba(17, 66, 46, 0.12));
 }
 
@@ -651,6 +651,28 @@ img[loading="lazy"] {
     background: var(--primary-green);
     border-radius: 50%;
     animation: activeDot 2s ease-in-out infinite;
+}
+
+/* Prevent ALL highlighting effects on items with submenus (hover, active, focus, etc.) */
+.nav-item.has-submenu .nav-link:hover .nav-link-text,
+.nav-item.has-submenu .nav-link:hover .nav-link-underline,
+.nav-item.has-submenu .nav-link.active,
+.nav-item.has-submenu .nav-link.active .nav-link-text,
+.nav-item.has-submenu .nav-link.active::before,
+.nav-item.has-submenu .nav-link.active .nav-link-underline,
+.nav-item.has-submenu .nav-link:focus .nav-link-text,
+.nav-item.has-submenu .nav-link:active .nav-link-text {
+    color: inherit !important;
+    font-weight: inherit !important;
+    background: none !important;
+    transform: none !important;
+    animation: none !important;
+}
+
+.nav-item.has-submenu .nav-link.active::before,
+.nav-item.has-submenu .nav-link:hover::before,
+.nav-item.has-submenu .nav-link:focus::before {
+    display: none !important;
 }
 
 @keyframes activeDot {
@@ -1322,7 +1344,7 @@ img[loading="lazy"] {
     width: 100%;
     overflow: hidden;
     background: var(--primary-green-dark);
-    padding-top: 140px;
+    padding-top: 180px;
     padding-bottom: 40px;
     color: var(--white);
 }
@@ -1346,7 +1368,7 @@ img[loading="lazy"] {
     width: 100%;
     height: 100%;
     background-size: cover;
-    background-position: center center;
+    background-position: center top;
     background-repeat: no-repeat;
     z-index: 0;
     filter: brightness(1.1) contrast(1.05) saturate(1.1);
@@ -1370,8 +1392,8 @@ img[loading="lazy"] {
 
 @media (max-width: 968px) {
     .hero-background-image {
-        background-size: contain;
-        background-position: center center;
+        background-size: 200% auto;
+        background-position: center -10%;
     }
 
     .hero-grid-layout {
@@ -1399,21 +1421,22 @@ img[loading="lazy"] {
 
 @media (max-width: 768px) {
     .hero-background-image {
-        background-size: contain;
-        background-position: center center;
+        background-size: 200% auto;
+        background-position: center -10%;
     }
 }
 
 @media (max-width: 480px) {
     .hero-background-image {
-        background-size: contain;
-        background-position: center center;
+        background-size: 200% auto;
+        background-position: center -10%;
     }
 }
 
 @media (min-width: 1200px) {
     .hero-background-image {
-        background-size: 100% 100%;
+        background-size: cover;
+        background-position: center top;
     }
 }
 
@@ -1921,6 +1944,7 @@ img[loading="lazy"] {
     align-items: center;
     animation: fadeInUp 0.8s ease-out 0.6s both;
     margin-top: 1rem;
+    overflow: visible;
 }
 
 .hero-whatsapp-banner {
@@ -4121,6 +4145,7 @@ img[loading="lazy"] {
     max-width: none;
     animation: none;
     align-self: auto;
+    overflow: visible;
 }
 
 .insurance-whatsapp-banner {
@@ -4154,6 +4179,8 @@ img[loading="lazy"] {
     transition: all 0.3s ease;
     white-space: nowrap;
     flex-shrink: 0;
+    min-width: fit-content;
+    box-sizing: border-box;
 }
 
 @keyframes whatsappBannerPulse {
@@ -4851,7 +4878,7 @@ img[loading="lazy"] {
 
 @media (max-width: 480px) {
     .hero {
-        padding-top: 85px;
+        padding-top: 130px;
         padding-bottom: 12px;
     }
 
@@ -5208,7 +5235,7 @@ img[loading="lazy"] {
     }
 
     .hero {
-        padding-top: 90px;
+        padding-top: 130px;
         padding-bottom: 12px;
         min-height: auto;
         max-height: none;
@@ -5290,6 +5317,8 @@ img[loading="lazy"] {
         gap: 0.75rem;
         flex-wrap: nowrap;
         justify-content: center;
+        overflow: visible;
+        min-width: 0;
     }
     
     .whatsapp-banner-text {
@@ -5304,7 +5333,7 @@ img[loading="lazy"] {
     }
 
     .whatsapp-banner-text {
-        font-size: 0.6rem;
+        font-size: 0.75rem;
         white-space: nowrap;
         overflow: visible;
         text-overflow: clip;
@@ -6947,7 +6976,7 @@ img[loading="lazy"] {
     text-align: center;
     margin: 0 0 1rem;
     text-transform: uppercase;
-    letter-spacing: 0.02em;
+    letter-spacing: 0;
 }
 
 .benefits-list {
@@ -7917,11 +7946,11 @@ img[loading="lazy"] {
 
     /* Mobile Logo */
     .logo-image {
-        height: 64px;
+        height: 80px;
     }
 
     .navbar.scrolled .logo-image {
-        height: 56px;
+        height: 70px;
     }
 
     .logo-wrapper {
@@ -8208,7 +8237,9 @@ img[loading="lazy"] {
         position: relative;
         z-index: 1001;
         min-height: 100% !important;
-        padding-bottom: 2rem !important;
+        padding: 1rem 1rem 2rem 1rem !important;
+        box-sizing: border-box !important;
+        overflow: visible !important;
     }
 
     .navbar.menu-open .nav-menu {
@@ -8266,6 +8297,34 @@ img[loading="lazy"] {
         background: rgba(17, 66, 46, 0.05);
     }
 
+    /* Prevent ALL highlighting on items with submenus in mobile menu */
+    .navbar.menu-open .nav-item.has-submenu .nav-link,
+    .navbar.menu-open .nav-item.has-submenu .nav-link:hover,
+    .navbar.menu-open .nav-item.has-submenu .nav-link:focus,
+    .navbar.menu-open .nav-item.has-submenu .nav-link:active {
+        color: inherit !important;
+        background: transparent !important;
+    }
+
+    .navbar.menu-open .nav-item.has-submenu .nav-link .nav-link-text,
+    .navbar.menu-open .nav-item.has-submenu .nav-link:hover .nav-link-text,
+    .navbar.menu-open .nav-item.has-submenu .nav-link:focus .nav-link-text {
+        color: inherit !important;
+        transform: none !important;
+    }
+
+    .navbar.menu-open .nav-item.has-submenu .nav-link .nav-link-underline,
+    .navbar.menu-open .nav-item.has-submenu .nav-link:hover .nav-link-underline {
+        display: none !important;
+        transform: none !important;
+    }
+
+    .navbar.menu-open .nav-item.has-submenu .nav-link::before,
+    .navbar.menu-open .nav-item.has-submenu .nav-link:hover::before,
+    .navbar.menu-open .nav-item.has-submenu .nav-link:focus::before {
+        display: none !important;
+    }
+
     .nav-actions {
         display: none;
     }
@@ -8276,6 +8335,9 @@ img[loading="lazy"] {
         width: 100% !important;
         gap: 0.75rem !important;
         margin-top: 1rem !important;
+        padding: 0 1rem !important;
+        box-sizing: border-box !important;
+        overflow: visible !important;
     }
 
     .navbar.menu-open .nav-submenu {
@@ -8480,22 +8542,46 @@ img[loading="lazy"] {
         opacity: 1 !important;
     }
 
+    .navbar.menu-open .nav-claim-button {
+        display: inline-flex !important;
+        width: 100% !important;
+        justify-content: center !important;
+        margin-top: 0 !important;
+        padding: 1rem 1.5rem !important;
+        font-size: 0.9375rem !important;
+        box-sizing: border-box !important;
+        overflow: visible !important;
+        white-space: normal !important;
+        word-wrap: break-word !important;
+        text-align: center !important;
+    }
+
     .navbar.menu-open .nav-quote-button {
         display: inline-flex !important;
         width: 100% !important;
         justify-content: center !important;
-        margin-top: 1rem !important;
-        padding: 1rem 2rem !important;
-        font-size: 1rem !important;
+        margin-top: 0 !important;
+        padding: 1rem 1.5rem !important;
+        font-size: 0.9375rem !important;
+        box-sizing: border-box !important;
+        overflow: visible !important;
+        white-space: normal !important;
+        word-wrap: break-word !important;
+        text-align: center !important;
     }
 
     .navbar.menu-open .nav-intermediary-button {
         display: inline-flex !important;
         width: 100% !important;
         justify-content: center !important;
-        margin-top: 0.75rem !important;
-        padding: 1rem 2rem !important;
-        font-size: 1rem !important;
+        margin-top: 0 !important;
+        padding: 1rem 1.5rem !important;
+        font-size: 0.9375rem !important;
+        box-sizing: border-box !important;
+        overflow: visible !important;
+        white-space: normal !important;
+        word-wrap: break-word !important;
+        text-align: center !important;
     }
 
     .hero-title {
@@ -11168,7 +11254,7 @@ img[loading="lazy"] {
    BRANCHES PAGE STYLES
    ============================================ */
 .branches-section {
-    padding: 100px 0 40px;
+    padding: 180px 0 40px;
     background: #ffffff;
     min-height: auto;
 }
@@ -11389,7 +11475,7 @@ img[loading="lazy"] {
     }
 
     .branches-section {
-        padding: 90px 0 40px;
+        padding: 150px 0 40px;
     }
 
     .branches-header {
@@ -11399,7 +11485,7 @@ img[loading="lazy"] {
 
 @media (max-width: 768px) {
     .branches-section {
-        padding: 100px 0 60px;
+        padding: 150px 0 60px;
     }
 
     .branches-header {
@@ -11437,7 +11523,7 @@ img[loading="lazy"] {
 
 @media (max-width: 480px) {
     .branches-section {
-        padding: 100px 0 50px;
+        padding: 150px 0 50px;
     }
 
     .branches-title {
@@ -11990,7 +12076,7 @@ img[loading="lazy"] {
 }
 
 .team-header {
-    margin-bottom: 2rem;
+    margin-bottom: 3rem;
     opacity: 0;
     transform: translateY(30px);
     transition: opacity 0.8s ease, transform 0.8s ease;
@@ -12003,52 +12089,110 @@ img[loading="lazy"] {
 
 .team-header-layout {
     display: grid;
-    grid-template-columns: 1fr auto 1.5fr;
-    gap: 2rem;
+    grid-template-columns: auto auto 1fr;
+    gap: 2.5rem;
     align-items: center;
 }
 
 .team-header-left {
     display: flex;
     align-items: center;
-    gap: 1.5rem;
+    gap: 2rem;
 }
 
 .team-title {
-    font-size: clamp(2rem, 4vw, 3.5rem);
-    font-weight: 700;
-    line-height: 1.2;
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 800;
+    line-height: 1.1;
     color: var(--primary-green);
     display: flex;
     flex-direction: column;
-    gap: 0.25rem;
+    gap: 0.15rem;
     text-transform: uppercase;
-    letter-spacing: 0.5px;
+    letter-spacing: 1px;
     margin: 0;
+    text-shadow: 0 2px 4px rgba(17, 66, 46, 0.1), 0 1px 2px rgba(17, 66, 46, 0.08);
 }
 
 .team-title .title-line-1,
 .team-title .title-line-2 {
     display: block;
     color: var(--primary-green);
+    position: relative;
 }
 
 .team-title-separator {
-    width: 4px;
-    height: 80px;
-    background: var(--primary-green);
+    width: 3px;
+    height: 90px;
+    background: linear-gradient(180deg, var(--primary-green) 0%, rgba(17, 66, 46, 0.3) 100%);
     flex-shrink: 0;
+    border-radius: 2px;
+    box-shadow: 0 1px 3px rgba(17, 66, 46, 0.2);
 }
 
 .team-header-right {
-    padding-left: 1rem;
+    padding-left: 0.5rem;
+    max-width: 600px;
 }
 
 .team-subtitle {
-    font-size: 1rem;
-    line-height: 1.7;
+    font-size: 1.0625rem;
+    line-height: 1.75;
     color: var(--text-dark);
     margin: 0;
+    font-weight: 400;
+}
+
+/* Team Tabs */
+.team-tabs {
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 2rem;
+    border-bottom: none;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+}
+
+.team-tab {
+    background: none;
+    border: none;
+    padding: 0.75rem 0;
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    cursor: pointer;
+    position: relative;
+    transition: color 0.3s ease;
+    text-align: center;
+}
+
+.team-tab::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: rgba(0, 0, 0, 0.1);
+    transition: background 0.3s ease, height 0.3s ease;
+}
+
+.team-tab.active {
+    color: var(--primary-green);
+}
+
+.team-tab.active::after {
+    background: var(--primary-green);
+    height: 3px;
+}
+
+.team-tab:hover {
+    color: var(--primary-green);
+}
+
+.team-tab:hover::after {
+    background: rgba(17, 66, 46, 0.5);
 }
 
 .team-grid {
@@ -12120,6 +12264,7 @@ img[loading="lazy"] {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    object-position: top center;
     transition: transform 0.4s ease;
     transform: translate3d(0, 0, 0);
     will-change: transform;
@@ -12213,26 +12358,97 @@ img[loading="lazy"] {
     position: relative;
     z-index: 1;
     padding-top: 0.5rem;
+    gap: 0.75rem;
+}
+
+.team-member-name-wrapper {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+}
+
+.team-member-name-wrapper::after {
+    content: '';
+    position: absolute;
+    bottom: -0.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--primary-green), transparent);
+    opacity: 0;
+    transition: opacity 0.3s ease, width 0.3s ease;
+}
+
+.team-card:hover .team-member-name-wrapper::after {
+    opacity: 1;
+    width: 60px;
 }
 
 .team-member-name {
     font-size: 1.25rem;
     font-weight: 700;
     color: var(--text-dark);
-    margin-bottom: 0.5rem;
+    margin: 0;
     transition: color 0.3s ease;
+    letter-spacing: 0.5px;
+    line-height: 1.3;
 }
 
 .team-card:hover .team-member-name {
     color: var(--primary-green);
 }
 
+.team-member-role-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    padding: 0.5rem 1rem;
+    background: linear-gradient(135deg, rgba(17, 66, 46, 0.05), rgba(17, 66, 46, 0.08));
+    border: 1px solid rgba(17, 66, 46, 0.1);
+    border-radius: 20px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.team-member-role-badge::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(17, 66, 46, 0.1), transparent);
+    transition: left 0.5s ease;
+}
+
+.team-card:hover .team-member-role-badge {
+    background: linear-gradient(135deg, rgba(17, 66, 46, 0.1), rgba(17, 66, 46, 0.15));
+    border-color: var(--primary-green);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(17, 66, 46, 0.15);
+}
+
+.team-card:hover .team-member-role-badge::before {
+    left: 100%;
+}
+
 .team-member-role {
-    font-size: 0.9375rem;
-    font-weight: 500;
-    color: var(--text-light);
-    margin-bottom: 0;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--primary-green);
+    margin: 0;
     line-height: 1.4;
+    letter-spacing: 0.3px;
+    text-transform: uppercase;
+    position: relative;
+    z-index: 1;
+}
+
+.team-card:hover .team-member-role {
+    color: var(--primary-green-dark);
 }
 
 .team-card-background {
@@ -12358,6 +12574,7 @@ img[loading="lazy"] {
     max-width: 250px;
     height: 300px;
     object-fit: cover;
+    object-position: top center;
     border-radius: 12px;
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
     transform: translate3d(0, 0, 0);
@@ -12487,27 +12704,29 @@ img[loading="lazy"] {
     }
 
     .team-header {
-        margin-bottom: 1.5rem;
+        margin-bottom: 2rem;
     }
 
     .team-header-layout {
         grid-template-columns: 1fr;
-        gap: 1.5rem;
+        gap: 1.75rem;
     }
 
     .team-header-left {
         flex-direction: column;
         align-items: flex-start;
-        gap: 1rem;
+        gap: 1.25rem;
     }
 
     .team-title-separator {
         width: 60px;
         height: 4px;
+        border-radius: 2px;
     }
 
     .team-header-right {
         padding-left: 0;
+        max-width: 100%;
     }
 
     .team-title {
@@ -12516,6 +12735,16 @@ img[loading="lazy"] {
 
     .team-subtitle {
         font-size: 0.9375rem;
+        line-height: 1.7;
+    }
+
+    .team-tabs {
+        gap: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .team-tab {
+        font-size: 1rem;
     }
 
     .team-grid {
@@ -12529,8 +12758,12 @@ img[loading="lazy"] {
     }
 
     .team-image-wrapper {
-        height: 240px;
+        height: 280px;
         margin-bottom: 0.875rem;
+    }
+
+    .team-member-image {
+        object-position: top center;
     }
 }
 
@@ -12554,15 +12787,16 @@ img[loading="lazy"] {
     }
 
     .team-header-left {
-        gap: 0.875rem;
+        gap: 1rem;
         width: 100%;
     }
 
     .team-title {
-        font-size: clamp(1.25rem, 5vw, 1.75rem);
-        line-height: 1.3;
+        font-size: clamp(1.5rem, 6vw, 2rem);
+        line-height: 1.2;
         word-wrap: break-word;
         overflow-wrap: break-word;
+        letter-spacing: 0.75px;
     }
 
     .team-title .title-line-1,
@@ -12573,11 +12807,22 @@ img[loading="lazy"] {
 
     .team-title-separator {
         width: 50px;
+        height: 3px;
     }
 
     .team-subtitle {
         font-size: 0.875rem;
-        line-height: 1.6;
+        line-height: 1.65;
+    }
+
+    .team-tabs {
+        gap: 1.25rem;
+        margin-bottom: 1.25rem;
+    }
+
+    .team-tab {
+        font-size: 0.9375rem;
+        padding: 0.625rem 0;
     }
 
     .team-grid {
@@ -12591,8 +12836,12 @@ img[loading="lazy"] {
     }
 
     .team-image-wrapper {
-        height: 220px;
+        height: 260px;
         margin-bottom: 0.75rem;
+    }
+
+    .team-member-image {
+        object-position: top center;
     }
 
     .team-modal-overlay {
@@ -12632,11 +12881,15 @@ img[loading="lazy"] {
     }
 
     .team-member-name {
-        font-size: 1.25rem;
+        font-size: 1.125rem;
+    }
+
+    .team-member-role-badge {
+        padding: 0.4rem 0.875rem;
     }
 
     .team-member-role {
-        font-size: 0.9375rem;
+        font-size: 0.8125rem;
     }
 
     .team-member-bio {
@@ -12817,7 +13070,7 @@ img[loading="lazy"] {
 /* Responsive Design for Report Claim */
 @media (max-width: 768px) {
     .report-claim-section {
-        padding: 100px 0 60px;
+        padding: 110px 0 60px;
     }
 
     .report-claim-form-wrapper {
@@ -12858,7 +13111,7 @@ img[loading="lazy"] {
 /* Extra small screens for Report Claim */
 @media (max-width: 480px) {
     .report-claim-section {
-        padding: 80px 0 40px;
+        padding: 100px 0 40px;
     }
 
     .report-claim-form-wrapper {
@@ -12896,7 +13149,7 @@ img[loading="lazy"] {
    ============================================ */
 
 .group-life-insurance-page {
-    padding-top: 80px;
+    padding-top: 100px;
     min-height: 100vh;
     background: #f8f9fa;
 }
@@ -12908,9 +13161,6 @@ img[loading="lazy"] {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-size: cover;
-    background-position: center center;
-    background-repeat: no-repeat;
     padding: 100px 20px 50px;
     overflow: hidden;
 }
@@ -13432,10 +13682,6 @@ img[loading="lazy"] {
     .group-life-hero {
         min-height: 300px;
         padding: 20px 15px 15px;
-        background-size: contain;
-        background-position: center center;
-        background-attachment: scroll;
-        background-repeat: no-repeat;
     }
 
     .group-life-hero-content {
@@ -13514,9 +13760,6 @@ img[loading="lazy"] {
     .group-life-hero {
         min-height: 280px;
         padding: 15px 10px 10px;
-        background-size: contain;
-        background-position: center center;
-        background-repeat: no-repeat;
     }
 
     .group-life-hero-content {
@@ -13590,7 +13833,7 @@ img[loading="lazy"] {
    ============================================ */
 
 .education-page {
-    padding-top: 80px;
+    padding-top: 100px;
     background: #ffffff;
 }
 
@@ -14187,7 +14430,7 @@ img[loading="lazy"] {
    ============================================ */
 
 .group-personal-accident-page {
-    padding-top: 80px;
+    padding-top: 100px;
     background: #f8f9fa;
 }
 
@@ -14618,6 +14861,387 @@ img[loading="lazy"] {
 }
 
 /* ============================================
+   LIFE INSURANCE PAGES STYLES
+   (Group Retirement Benefit Schemes, Group Mortgage Protection, Endowment Assurance)
+   ============================================ */
+
+/* Shared Styles for Life Insurance Pages */
+.group-retirement-benefit-schemes-page,
+.group-mortgage-protection-page,
+.endowment-assurance-page,
+.group-credit-life-page,
+.group-life-page {
+    padding-top: 100px;
+    background: #f8f9fa;
+}
+
+/* Hero Sections */
+.group-retirement-benefit-schemes-hero,
+.group-mortgage-protection-hero,
+.endowment-assurance-hero,
+.group-credit-life-hero,
+.group-life-hero {
+    position: relative;
+    min-height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--primary-green-dark) 0%, var(--primary-green) 100%);
+    padding: 40px 20px 30px;
+    overflow: hidden;
+}
+
+.group-retirement-benefit-schemes-hero::after,
+.group-mortgage-protection-hero::after,
+.endowment-assurance-hero::after,
+.group-credit-life-hero::after,
+.group-life-hero::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(135deg, transparent 0%, rgba(255, 255, 255, 0.1) 100%);
+    pointer-events: none;
+}
+
+.group-retirement-benefit-schemes-hero-content,
+.group-mortgage-protection-hero-content,
+.endowment-assurance-hero-content,
+.group-credit-life-hero-content,
+.group-life-hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+    color: white;
+}
+
+.group-retirement-benefit-schemes-badge,
+.group-mortgage-protection-badge,
+.endowment-assurance-badge,
+.group-credit-life-badge,
+.group-life-badge {
+    display: inline-block;
+    padding: 0.35rem 1rem;
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(10px);
+    border-radius: 30px;
+    margin-bottom: 0.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.group-retirement-benefit-schemes-badge span,
+.group-mortgage-protection-badge span,
+.endowment-assurance-badge span,
+.group-credit-life-badge span,
+.group-life-badge span {
+    font-size: 0.8125rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    color: white;
+}
+
+.group-retirement-benefit-schemes-title,
+.group-mortgage-protection-title,
+.endowment-assurance-title,
+.group-credit-life-title,
+.group-life-title {
+    font-size: 2.75rem;
+    font-weight: 800;
+    margin-bottom: 0.5rem;
+    line-height: 1.2;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.group-retirement-benefit-schemes-subtitle,
+.group-mortgage-protection-subtitle,
+.endowment-assurance-subtitle,
+.group-credit-life-subtitle,
+.group-life-subtitle {
+    font-size: 1.125rem;
+    line-height: 1.5;
+    max-width: 800px;
+    margin: 0 auto;
+    opacity: 0.95;
+    color: white;
+}
+
+/* Content Sections */
+.group-retirement-benefit-schemes-content-section,
+.group-mortgage-protection-content-section,
+.endowment-assurance-content-section,
+.group-credit-life-content-section,
+.group-life-content-section {
+    padding: 35px 20px;
+    background: #f8f9fa;
+    position: relative;
+}
+
+.group-retirement-benefit-schemes-content-section .container,
+.group-mortgage-protection-content-section .container,
+.endowment-assurance-content-section .container,
+.group-credit-life-content-section .container,
+.group-life-content-section .container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Info Cards */
+.group-retirement-benefit-schemes-info-card,
+.group-mortgage-protection-info-card,
+.endowment-assurance-info-card,
+.group-credit-life-info-card,
+.group-life-info-card {
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 1.75rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    border: 1px solid #e9ecef;
+    position: relative;
+    overflow: hidden;
+}
+
+.group-retirement-benefit-schemes-info-card::before,
+.group-mortgage-protection-info-card::before,
+.endowment-assurance-info-card::before,
+.group-credit-life-info-card::before,
+.group-life-info-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: linear-gradient(180deg, var(--primary-green) 0%, var(--primary-green-light) 100%);
+}
+
+.group-retirement-benefit-schemes-info-content,
+.group-mortgage-protection-info-content,
+.endowment-assurance-info-content,
+.group-credit-life-info-content,
+.group-life-info-content {
+    position: relative;
+    padding-left: 0.5rem;
+}
+
+.group-retirement-benefit-schemes-info-description,
+.group-mortgage-protection-info-description,
+.endowment-assurance-info-description,
+.group-credit-life-info-description,
+.group-life-info-description {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: var(--text-dark);
+    margin: 0;
+}
+
+/* Form Button Sections */
+.group-retirement-benefit-schemes-form-button-section,
+.group-mortgage-protection-form-button-section,
+.endowment-assurance-form-button-section,
+.group-credit-life-form-button-section,
+.group-life-form-button-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1.5rem;
+}
+
+.group-retirement-benefit-schemes-form-button-section .form-button,
+.group-mortgage-protection-form-button-section .form-button,
+.endowment-assurance-form-button-section .form-button,
+.group-credit-life-form-button-section .form-button,
+.group-life-form-button-section .form-button {
+    min-width: 200px;
+    background: var(--primary-green);
+    color: white;
+    border-color: var(--primary-green);
+}
+
+.group-retirement-benefit-schemes-form-button-section .form-button:hover,
+.group-mortgage-protection-form-button-section .form-button:hover,
+.endowment-assurance-form-button-section .form-button:hover,
+.group-credit-life-form-button-section .form-button:hover,
+.group-life-form-button-section .form-button:hover {
+    background: var(--primary-green-dark);
+    border-color: var(--primary-green-dark);
+    color: white;
+}
+
+/* Responsive Styles for Life Insurance Pages */
+@media (max-width: 768px) {
+    .group-retirement-benefit-schemes-page,
+    .group-mortgage-protection-page,
+    .endowment-assurance-page,
+    .group-credit-life-page,
+    .group-life-page {
+        padding-top: 70px;
+    }
+
+    .group-retirement-benefit-schemes-hero,
+    .group-mortgage-protection-hero,
+    .endowment-assurance-hero,
+    .group-credit-life-hero,
+    .group-life-hero {
+        min-height: 280px;
+        padding: 35px 15px 25px;
+    }
+
+    .group-retirement-benefit-schemes-hero-content,
+    .group-mortgage-protection-hero-content,
+    .endowment-assurance-hero-content,
+    .group-credit-life-hero-content,
+    .group-life-hero-content {
+        padding: 0 10px;
+    }
+
+    .group-retirement-benefit-schemes-badge,
+    .group-mortgage-protection-badge,
+    .endowment-assurance-badge,
+    .group-credit-life-badge,
+    .group-life-badge {
+        padding: 0.3rem 0.875rem;
+        margin-bottom: 0.4rem;
+    }
+
+    .group-retirement-benefit-schemes-badge span,
+    .group-mortgage-protection-badge span,
+    .endowment-assurance-badge span,
+    .group-credit-life-badge span,
+    .group-life-badge span {
+        font-size: 0.75rem;
+    }
+
+    .group-retirement-benefit-schemes-title,
+    .group-mortgage-protection-title,
+    .endowment-assurance-title,
+    .group-credit-life-title,
+    .group-life-title {
+        font-size: 2rem;
+        margin-bottom: 0.4rem;
+        line-height: 1.2;
+    }
+
+    .group-retirement-benefit-schemes-subtitle,
+    .group-mortgage-protection-subtitle,
+    .endowment-assurance-subtitle,
+    .group-credit-life-subtitle,
+    .group-life-subtitle {
+        font-size: 1rem;
+        line-height: 1.4;
+    }
+
+    .group-retirement-benefit-schemes-content-section,
+    .group-mortgage-protection-content-section,
+    .endowment-assurance-content-section,
+    .group-credit-life-content-section,
+    .group-life-content-section {
+        padding: 25px 15px;
+    }
+
+    .group-retirement-benefit-schemes-info-card,
+    .group-mortgage-protection-info-card,
+    .endowment-assurance-info-card,
+    .group-credit-life-info-card,
+    .group-life-info-card {
+        padding: 1.5rem;
+    }
+
+    .group-retirement-benefit-schemes-info-description,
+    .group-mortgage-protection-info-description,
+    .endowment-assurance-info-description,
+    .group-credit-life-info-description,
+    .group-life-info-description {
+        font-size: 0.9375rem;
+        line-height: 1.6;
+    }
+}
+
+@media (max-width: 480px) {
+    .group-retirement-benefit-schemes-page,
+    .group-mortgage-protection-page,
+    .endowment-assurance-page,
+    .group-credit-life-page,
+    .group-life-page {
+        padding-top: 60px;
+    }
+
+    .group-retirement-benefit-schemes-hero,
+    .group-mortgage-protection-hero,
+    .endowment-assurance-hero,
+    .group-credit-life-hero,
+    .group-life-hero {
+        min-height: 250px;
+        padding: 30px 10px 20px;
+    }
+
+    .group-retirement-benefit-schemes-badge,
+    .group-mortgage-protection-badge,
+    .endowment-assurance-badge,
+    .group-credit-life-badge,
+    .group-life-badge {
+        padding: 0.25rem 0.75rem;
+        margin-bottom: 0.35rem;
+    }
+
+    .group-retirement-benefit-schemes-badge span,
+    .group-mortgage-protection-badge span,
+    .endowment-assurance-badge span,
+    .group-credit-life-badge span,
+    .group-life-badge span {
+        font-size: 0.6875rem;
+    }
+
+    .group-retirement-benefit-schemes-title,
+    .group-mortgage-protection-title,
+    .endowment-assurance-title,
+    .group-credit-life-title,
+    .group-life-title {
+        font-size: 1.75rem;
+        margin-bottom: 0.35rem;
+    }
+
+    .group-retirement-benefit-schemes-subtitle,
+    .group-mortgage-protection-subtitle,
+    .endowment-assurance-subtitle,
+    .group-credit-life-subtitle,
+    .group-life-subtitle {
+        font-size: 0.9375rem;
+        line-height: 1.3;
+    }
+
+    .group-retirement-benefit-schemes-content-section,
+    .group-mortgage-protection-content-section,
+    .endowment-assurance-content-section,
+    .group-credit-life-content-section,
+    .group-life-content-section {
+        padding: 20px 10px;
+    }
+
+    .group-retirement-benefit-schemes-info-card,
+    .group-mortgage-protection-info-card,
+    .endowment-assurance-info-card,
+    .group-credit-life-info-card,
+    .group-life-info-card {
+        padding: 1.25rem;
+    }
+
+    .group-retirement-benefit-schemes-info-description,
+    .group-mortgage-protection-info-description,
+    .endowment-assurance-info-description,
+    .group-credit-life-info-description,
+    .group-life-info-description {
+        font-size: 0.875rem;
+        line-height: 1.5;
+    }
+}
+
+/* ============================================
    BOND COVER PAGES STYLES
    (Customs, Immigration Security, Performance, Surety Undertaking, Tender)
    ============================================ */
@@ -14627,8 +15251,9 @@ img[loading="lazy"] {
 .immigration-security-page,
 .performance-page,
 .surety-undertaking-page,
-.tender-page {
-    padding-top: 80px;
+.tender-page,
+.comesa-yellow-card-page {
+    padding-top: 100px;
     background: #f8f9fa;
 }
 
@@ -14637,7 +15262,8 @@ img[loading="lazy"] {
 .immigration-security-hero,
 .performance-hero,
 .surety-undertaking-hero,
-.tender-hero {
+.tender-hero,
+.comesa-yellow-card-hero {
     position: relative;
     min-height: 300px;
     display: flex;
@@ -14652,7 +15278,8 @@ img[loading="lazy"] {
 .immigration-security-hero::after,
 .performance-hero::after,
 .surety-undertaking-hero::after,
-.tender-hero::after {
+.tender-hero::after,
+.comesa-yellow-card-hero::after {
     content: '';
     position: absolute;
     top: 0;
@@ -14667,7 +15294,8 @@ img[loading="lazy"] {
 .immigration-security-hero-content,
 .performance-hero-content,
 .surety-undertaking-hero-content,
-.tender-hero-content {
+.tender-hero-content,
+.comesa-yellow-card-hero-content {
     position: relative;
     z-index: 2;
     max-width: 1200px;
@@ -14681,7 +15309,8 @@ img[loading="lazy"] {
 .immigration-security-badge,
 .performance-badge,
 .surety-undertaking-badge,
-.tender-badge {
+.tender-badge,
+.comesa-yellow-card-badge {
     display: inline-block;
     padding: 0.35rem 1rem;
     background: rgba(255, 255, 255, 0.25);
@@ -14695,7 +15324,8 @@ img[loading="lazy"] {
 .immigration-security-badge span,
 .performance-badge span,
 .surety-undertaking-badge span,
-.tender-badge span {
+.tender-badge span,
+.comesa-yellow-card-badge span {
     font-size: 0.8125rem;
     font-weight: 700;
     text-transform: uppercase;
@@ -14707,7 +15337,8 @@ img[loading="lazy"] {
 .immigration-security-title,
 .performance-title,
 .surety-undertaking-title,
-.tender-title {
+.tender-title,
+.comesa-yellow-card-title {
     font-size: 2.75rem;
     font-weight: 800;
     margin-bottom: 0.5rem;
@@ -14716,7 +15347,11 @@ img[loading="lazy"] {
 }
 
 .customs-subtitle,
-.immigration-security-subtitle {
+.immigration-security-subtitle,
+.performance-subtitle,
+.surety-undertaking-subtitle,
+.tender-subtitle,
+.comesa-yellow-card-subtitle {
     font-size: 1.125rem;
     line-height: 1.5;
     max-width: 800px;
@@ -14729,7 +15364,8 @@ img[loading="lazy"] {
 .immigration-security-content-section,
 .performance-content-section,
 .surety-undertaking-content-section,
-.tender-content-section {
+.tender-content-section,
+.comesa-yellow-card-content-section {
     padding: 35px 20px;
     background: #f8f9fa;
     position: relative;
@@ -14739,7 +15375,8 @@ img[loading="lazy"] {
 .immigration-security-content-section .container,
 .performance-content-section .container,
 .surety-undertaking-content-section .container,
-.tender-content-section .container {
+.tender-content-section .container,
+.comesa-yellow-card-content-section .container {
     max-width: 1200px;
     margin: 0 auto;
 }
@@ -14749,7 +15386,8 @@ img[loading="lazy"] {
 .immigration-security-info-card,
 .performance-info-card,
 .surety-undertaking-info-card,
-.tender-info-card {
+.tender-info-card,
+.comesa-yellow-card-info-card {
     background: #ffffff;
     border-radius: 16px;
     padding: 1.75rem;
@@ -14763,7 +15401,8 @@ img[loading="lazy"] {
 .immigration-security-info-card::before,
 .performance-info-card::before,
 .surety-undertaking-info-card::before,
-.tender-info-card::before {
+.tender-info-card::before,
+.comesa-yellow-card-info-card::before {
     content: '';
     position: absolute;
     top: 0;
@@ -14777,7 +15416,8 @@ img[loading="lazy"] {
 .immigration-security-info-content,
 .performance-info-content,
 .surety-undertaking-info-content,
-.tender-info-content {
+.tender-info-content,
+.comesa-yellow-card-info-content {
     position: relative;
     padding-left: 0.5rem;
 }
@@ -14786,7 +15426,8 @@ img[loading="lazy"] {
 .immigration-security-info-description,
 .performance-info-description,
 .surety-undertaking-info-description,
-.tender-info-description {
+.tender-info-description,
+.comesa-yellow-card-info-description {
     font-size: 1rem;
     line-height: 1.7;
     color: var(--text-dark);
@@ -14798,7 +15439,8 @@ img[loading="lazy"] {
 .immigration-security-form-button-section,
 .performance-form-button-section,
 .surety-undertaking-form-button-section,
-.tender-form-button-section {
+.tender-form-button-section,
+.comesa-yellow-card-form-button-section {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -14809,7 +15451,8 @@ img[loading="lazy"] {
 .immigration-security-form-button-section .form-button,
 .performance-form-button-section .form-button,
 .surety-undertaking-form-button-section .form-button,
-.tender-form-button-section .form-button {
+.tender-form-button-section .form-button,
+.comesa-yellow-card-form-button-section .form-button {
     min-width: 200px;
     background: var(--primary-green);
     color: white;
@@ -14820,7 +15463,8 @@ img[loading="lazy"] {
 .immigration-security-form-button-section .form-button:hover,
 .performance-form-button-section .form-button:hover,
 .surety-undertaking-form-button-section .form-button:hover,
-.tender-form-button-section .form-button:hover {
+.tender-form-button-section .form-button:hover,
+.comesa-yellow-card-form-button-section .form-button:hover {
     background: var(--primary-green-dark);
     border-color: var(--primary-green-dark);
     color: white;
@@ -14832,7 +15476,8 @@ img[loading="lazy"] {
     .immigration-security-form-button-section,
     .performance-form-button-section,
     .surety-undertaking-form-button-section,
-    .tender-form-button-section {
+    .tender-form-button-section,
+    .comesa-yellow-card-form-button-section {
         justify-content: center;
     }
 }
@@ -14842,7 +15487,8 @@ img[loading="lazy"] {
     .immigration-security-page,
     .performance-page,
     .surety-undertaking-page,
-    .tender-page {
+    .tender-page,
+    .comesa-yellow-card-page {
         padding-top: 70px;
     }
 
@@ -14850,7 +15496,8 @@ img[loading="lazy"] {
     .immigration-security-hero,
     .performance-hero,
     .surety-undertaking-hero,
-    .tender-hero {
+    .tender-hero,
+    .comesa-yellow-card-hero {
         min-height: 280px;
         padding: 35px 15px 25px;
     }
@@ -14859,7 +15506,8 @@ img[loading="lazy"] {
     .immigration-security-hero-content,
     .performance-hero-content,
     .surety-undertaking-hero-content,
-    .tender-hero-content {
+    .tender-hero-content,
+    .comesa-yellow-card-hero-content {
         padding: 0 10px;
     }
 
@@ -14867,7 +15515,8 @@ img[loading="lazy"] {
     .immigration-security-badge,
     .performance-badge,
     .surety-undertaking-badge,
-    .tender-badge {
+    .tender-badge,
+    .comesa-yellow-card-badge {
         padding: 0.3rem 0.875rem;
         margin-bottom: 0.4rem;
     }
@@ -14876,7 +15525,8 @@ img[loading="lazy"] {
     .immigration-security-badge span,
     .performance-badge span,
     .surety-undertaking-badge span,
-    .tender-badge span {
+    .tender-badge span,
+    .comesa-yellow-card-badge span {
         font-size: 0.75rem;
     }
 
@@ -14884,14 +15534,19 @@ img[loading="lazy"] {
     .immigration-security-title,
     .performance-title,
     .surety-undertaking-title,
-    .tender-title {
+    .tender-title,
+    .comesa-yellow-card-title {
         font-size: 2rem;
         margin-bottom: 0.4rem;
         line-height: 1.2;
     }
 
     .customs-subtitle,
-    .immigration-security-subtitle {
+    .immigration-security-subtitle,
+    .performance-subtitle,
+    .surety-undertaking-subtitle,
+    .tender-subtitle,
+    .comesa-yellow-card-subtitle {
         font-size: 1rem;
         line-height: 1.4;
     }
@@ -14900,7 +15555,8 @@ img[loading="lazy"] {
     .immigration-security-content-section,
     .performance-content-section,
     .surety-undertaking-content-section,
-    .tender-content-section {
+    .tender-content-section,
+    .comesa-yellow-card-content-section {
         padding: 25px 15px;
     }
 
@@ -14917,7 +15573,8 @@ img[loading="lazy"] {
     .immigration-security-info-description,
     .performance-info-description,
     .surety-undertaking-info-description,
-    .tender-info-description {
+    .tender-info-description,
+    .comesa-yellow-card-info-description {
         font-size: 0.9375rem;
         line-height: 1.6;
     }
@@ -15004,7 +15661,7 @@ img[loading="lazy"] {
    ============================================ */
 
 .domestic-package-page {
-    padding-top: 80px;
+    padding-top: 100px;
     background: #f8f9fa;
 }
 
@@ -15224,8 +15881,9 @@ img[loading="lazy"] {
 .contractors-all-risks-page,
 .contractors-plant-machinery-page,
 .electronic-equipment-page,
-.machinery-breakdown-page {
-    padding-top: 80px;
+.machinery-breakdown-page,
+.golfers-insurance-page {
+    padding-top: 100px;
     background: #f8f9fa;
 }
 
@@ -15233,7 +15891,8 @@ img[loading="lazy"] {
 .contractors-all-risks-hero,
 .contractors-plant-machinery-hero,
 .electronic-equipment-hero,
-.machinery-breakdown-hero {
+.machinery-breakdown-hero,
+.golfers-insurance-hero {
     position: relative;
     min-height: 300px;
     display: flex;
@@ -15247,7 +15906,8 @@ img[loading="lazy"] {
 .contractors-all-risks-hero::after,
 .contractors-plant-machinery-hero::after,
 .electronic-equipment-hero::after,
-.machinery-breakdown-hero::after {
+.machinery-breakdown-hero::after,
+.golfers-insurance-hero::after {
     content: '';
     position: absolute;
     top: 0;
@@ -15261,7 +15921,8 @@ img[loading="lazy"] {
 .contractors-all-risks-hero-content,
 .contractors-plant-machinery-hero-content,
 .electronic-equipment-hero-content,
-.machinery-breakdown-hero-content {
+.machinery-breakdown-hero-content,
+.golfers-insurance-hero-content {
     position: relative;
     z-index: 2;
     max-width: 1200px;
@@ -15274,7 +15935,8 @@ img[loading="lazy"] {
 .contractors-all-risks-badge,
 .contractors-plant-machinery-badge,
 .electronic-equipment-badge,
-.machinery-breakdown-badge {
+.machinery-breakdown-badge,
+.golfers-insurance-badge {
     display: inline-block;
     padding: 0.35rem 1rem;
     background: rgba(255, 255, 255, 0.25);
@@ -15287,7 +15949,8 @@ img[loading="lazy"] {
 .contractors-all-risks-badge span,
 .contractors-plant-machinery-badge span,
 .electronic-equipment-badge span,
-.machinery-breakdown-badge span {
+.machinery-breakdown-badge span,
+.golfers-insurance-badge span {
     font-size: 0.8125rem;
     font-weight: 700;
     text-transform: uppercase;
@@ -15298,7 +15961,8 @@ img[loading="lazy"] {
 .contractors-all-risks-title,
 .contractors-plant-machinery-title,
 .electronic-equipment-title,
-.machinery-breakdown-title {
+.machinery-breakdown-title,
+.golfers-insurance-title {
     font-size: 2.75rem;
     font-weight: 800;
     margin-bottom: 0.5rem;
@@ -15309,19 +15973,22 @@ img[loading="lazy"] {
 .contractors-all-risks-subtitle,
 .contractors-plant-machinery-subtitle,
 .electronic-equipment-subtitle,
-.machinery-breakdown-subtitle {
+.machinery-breakdown-subtitle,
+.golfers-insurance-subtitle {
     font-size: 1.125rem;
     line-height: 1.5;
     max-width: 800px;
     margin: 0 auto;
     opacity: 0.95;
+    color: white;
 }
 
 /* Content Sections */
 .contractors-all-risks-content-section,
 .contractors-plant-machinery-content-section,
 .electronic-equipment-content-section,
-.machinery-breakdown-content-section {
+.machinery-breakdown-content-section,
+.golfers-insurance-content-section {
     padding: 35px 20px;
     background: #f8f9fa;
     position: relative;
@@ -15330,7 +15997,8 @@ img[loading="lazy"] {
 .contractors-all-risks-content-section .container,
 .contractors-plant-machinery-content-section .container,
 .electronic-equipment-content-section .container,
-.machinery-breakdown-content-section .container {
+.machinery-breakdown-content-section .container,
+.golfers-insurance-content-section .container {
     max-width: 1200px;
     margin: 0 auto;
 }
@@ -15339,7 +16007,8 @@ img[loading="lazy"] {
 .contractors-all-risks-info-card,
 .contractors-plant-machinery-info-card,
 .electronic-equipment-info-card,
-.machinery-breakdown-info-card {
+.machinery-breakdown-info-card,
+.golfers-insurance-info-card {
     background: #ffffff;
     border-radius: 16px;
     padding: 1.75rem;
@@ -15352,7 +16021,8 @@ img[loading="lazy"] {
 .contractors-all-risks-info-card::before,
 .contractors-plant-machinery-info-card::before,
 .electronic-equipment-info-card::before,
-.machinery-breakdown-info-card::before {
+.machinery-breakdown-info-card::before,
+.golfers-insurance-info-card::before {
     content: '';
     position: absolute;
     top: 0;
@@ -15365,7 +16035,8 @@ img[loading="lazy"] {
 .contractors-all-risks-info-content,
 .contractors-plant-machinery-info-content,
 .electronic-equipment-info-content,
-.machinery-breakdown-info-content {
+.machinery-breakdown-info-content,
+.golfers-insurance-info-content {
     position: relative;
     padding-left: 0.5rem;
 }
@@ -15373,7 +16044,8 @@ img[loading="lazy"] {
 .contractors-all-risks-info-description,
 .contractors-plant-machinery-info-description,
 .electronic-equipment-info-description,
-.machinery-breakdown-info-description {
+.machinery-breakdown-info-description,
+.golfers-insurance-info-description {
     font-size: 1rem;
     line-height: 1.7;
     color: var(--text-dark);
@@ -15384,7 +16056,8 @@ img[loading="lazy"] {
 .contractors-all-risks-form-button-section,
 .contractors-plant-machinery-form-button-section,
 .electronic-equipment-form-button-section,
-.machinery-breakdown-form-button-section {
+.machinery-breakdown-form-button-section,
+.golfers-insurance-form-button-section {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -15394,7 +16067,8 @@ img[loading="lazy"] {
 .contractors-all-risks-form-button-section .form-button,
 .contractors-plant-machinery-form-button-section .form-button,
 .electronic-equipment-form-button-section .form-button,
-.machinery-breakdown-form-button-section .form-button {
+.machinery-breakdown-form-button-section .form-button,
+.golfers-insurance-form-button-section .form-button {
     min-width: 200px;
     background: var(--primary-green);
     color: white;
@@ -15404,7 +16078,8 @@ img[loading="lazy"] {
 .contractors-all-risks-form-button-section .form-button:hover,
 .contractors-plant-machinery-form-button-section .form-button:hover,
 .electronic-equipment-form-button-section .form-button:hover,
-.machinery-breakdown-form-button-section .form-button:hover {
+.machinery-breakdown-form-button-section .form-button:hover,
+.golfers-insurance-form-button-section .form-button:hover {
     background: var(--primary-green-dark);
     border-color: var(--primary-green-dark);
     color: white;
@@ -15415,14 +16090,16 @@ img[loading="lazy"] {
     .contractors-all-risks-page,
     .contractors-plant-machinery-page,
     .electronic-equipment-page,
-    .machinery-breakdown-page {
+    .machinery-breakdown-page,
+    .golfers-insurance-page {
         padding-top: 70px;
     }
 
     .contractors-all-risks-hero,
     .contractors-plant-machinery-hero,
     .electronic-equipment-hero,
-    .machinery-breakdown-hero {
+    .machinery-breakdown-hero,
+    .golfers-insurance-hero {
         min-height: 280px;
         padding: 35px 15px 25px;
     }
@@ -15430,14 +16107,16 @@ img[loading="lazy"] {
     .contractors-all-risks-hero-content,
     .contractors-plant-machinery-hero-content,
     .electronic-equipment-hero-content,
-    .machinery-breakdown-hero-content {
+    .machinery-breakdown-hero-content,
+    .golfers-insurance-hero-content {
         padding: 0 10px;
     }
 
     .contractors-all-risks-badge,
     .contractors-plant-machinery-badge,
     .electronic-equipment-badge,
-    .machinery-breakdown-badge {
+    .machinery-breakdown-badge,
+    .golfers-insurance-badge {
         padding: 0.3rem 0.875rem;
         margin-bottom: 0.4rem;
     }
@@ -15445,14 +16124,16 @@ img[loading="lazy"] {
     .contractors-all-risks-badge span,
     .contractors-plant-machinery-badge span,
     .electronic-equipment-badge span,
-    .machinery-breakdown-badge span {
+    .machinery-breakdown-badge span,
+    .golfers-insurance-badge span {
         font-size: 0.75rem;
     }
 
     .contractors-all-risks-title,
     .contractors-plant-machinery-title,
     .electronic-equipment-title,
-    .machinery-breakdown-title {
+    .machinery-breakdown-title,
+    .golfers-insurance-title {
         font-size: 2rem;
         margin-bottom: 0.4rem;
         line-height: 1.2;
@@ -15461,7 +16142,8 @@ img[loading="lazy"] {
     .contractors-all-risks-subtitle,
     .contractors-plant-machinery-subtitle,
     .electronic-equipment-subtitle,
-    .machinery-breakdown-subtitle {
+    .machinery-breakdown-subtitle,
+    .golfers-insurance-subtitle {
         font-size: 1rem;
         line-height: 1.4;
     }
@@ -15469,21 +16151,24 @@ img[loading="lazy"] {
     .contractors-all-risks-content-section,
     .contractors-plant-machinery-content-section,
     .electronic-equipment-content-section,
-    .machinery-breakdown-content-section {
+    .machinery-breakdown-content-section,
+    .golfers-insurance-content-section {
         padding: 25px 15px;
     }
 
     .contractors-all-risks-info-card,
     .contractors-plant-machinery-info-card,
     .electronic-equipment-info-card,
-    .machinery-breakdown-info-card {
+    .machinery-breakdown-info-card,
+    .golfers-insurance-info-card {
         padding: 1.5rem;
     }
 
     .contractors-all-risks-info-description,
     .contractors-plant-machinery-info-description,
     .electronic-equipment-info-description,
-    .machinery-breakdown-info-description {
+    .machinery-breakdown-info-description,
+    .golfers-insurance-info-description {
         font-size: 0.9375rem;
         line-height: 1.6;
     }
@@ -15493,14 +16178,16 @@ img[loading="lazy"] {
     .contractors-all-risks-page,
     .contractors-plant-machinery-page,
     .electronic-equipment-page,
-    .machinery-breakdown-page {
+    .machinery-breakdown-page,
+    .golfers-insurance-page {
         padding-top: 60px;
     }
 
     .contractors-all-risks-hero,
     .contractors-plant-machinery-hero,
     .electronic-equipment-hero,
-    .machinery-breakdown-hero {
+    .machinery-breakdown-hero,
+    .golfers-insurance-hero {
         min-height: 250px;
         padding: 30px 10px 20px;
     }
@@ -15508,7 +16195,8 @@ img[loading="lazy"] {
     .contractors-all-risks-badge,
     .contractors-plant-machinery-badge,
     .electronic-equipment-badge,
-    .machinery-breakdown-badge {
+    .machinery-breakdown-badge,
+    .golfers-insurance-badge {
         padding: 0.25rem 0.75rem;
         margin-bottom: 0.35rem;
     }
@@ -15516,14 +16204,16 @@ img[loading="lazy"] {
     .contractors-all-risks-badge span,
     .contractors-plant-machinery-badge span,
     .electronic-equipment-badge span,
-    .machinery-breakdown-badge span {
+    .machinery-breakdown-badge span,
+    .golfers-insurance-badge span {
         font-size: 0.6875rem;
     }
 
     .contractors-all-risks-title,
     .contractors-plant-machinery-title,
     .electronic-equipment-title,
-    .machinery-breakdown-title {
+    .machinery-breakdown-title,
+    .golfers-insurance-title {
         font-size: 1.75rem;
         margin-bottom: 0.35rem;
     }
@@ -15531,7 +16221,8 @@ img[loading="lazy"] {
     .contractors-all-risks-subtitle,
     .contractors-plant-machinery-subtitle,
     .electronic-equipment-subtitle,
-    .machinery-breakdown-subtitle {
+    .machinery-breakdown-subtitle,
+    .golfers-insurance-subtitle {
         font-size: 0.9375rem;
         line-height: 1.3;
     }
@@ -15539,21 +16230,24 @@ img[loading="lazy"] {
     .contractors-all-risks-content-section,
     .contractors-plant-machinery-content-section,
     .electronic-equipment-content-section,
-    .machinery-breakdown-content-section {
+    .machinery-breakdown-content-section,
+    .golfers-insurance-content-section {
         padding: 20px 10px;
     }
 
     .contractors-all-risks-info-card,
     .contractors-plant-machinery-info-card,
     .electronic-equipment-info-card,
-    .machinery-breakdown-info-card {
+    .machinery-breakdown-info-card,
+    .golfers-insurance-info-card {
         padding: 1.25rem;
     }
 
     .contractors-all-risks-info-description,
     .contractors-plant-machinery-info-description,
     .electronic-equipment-info-description,
-    .machinery-breakdown-info-description {
+    .machinery-breakdown-info-description,
+    .golfers-insurance-info-description {
         font-size: 0.875rem;
         line-height: 1.5;
     }
@@ -15568,7 +16262,7 @@ img[loading="lazy"] {
 .consequential-loss-page,
 .fire-and-perils-page,
 .industrial-page {
-    padding-top: 80px;
+    padding-top: 100px;
     background: #f8f9fa;
 }
 
@@ -15877,7 +16571,7 @@ img[loading="lazy"] {
 .professional-indemnity-page,
 .public-liability-page,
 .work-injury-page {
-    padding-top: 80px;
+    padding-top: 100px;
     background: #f8f9fa;
 }
 
@@ -16238,14 +16932,16 @@ img[loading="lazy"] {
 
 /* Shared Styles for All Marine Cover Pages */
 .goods-in-transit-page,
-.marine-hull-page {
-    padding-top: 80px;
+.marine-hull-page,
+.marine-cargo-page {
+    padding-top: 100px;
     background: #f8f9fa;
 }
 
 /* Hero Sections */
 .goods-in-transit-hero,
-.marine-hull-hero {
+.marine-hull-hero,
+.marine-cargo-hero {
     position: relative;
     min-height: 300px;
     display: flex;
@@ -16257,7 +16953,8 @@ img[loading="lazy"] {
 }
 
 .goods-in-transit-hero::after,
-.marine-hull-hero::after {
+.marine-hull-hero::after,
+.marine-cargo-hero::after {
     content: '';
     position: absolute;
     top: 0;
@@ -16269,7 +16966,8 @@ img[loading="lazy"] {
 }
 
 .goods-in-transit-hero-content,
-.marine-hull-hero-content {
+.marine-hull-hero-content,
+.marine-cargo-hero-content {
     position: relative;
     z-index: 2;
     max-width: 1200px;
@@ -16280,7 +16978,8 @@ img[loading="lazy"] {
 }
 
 .goods-in-transit-badge,
-.marine-hull-badge {
+.marine-hull-badge,
+.marine-cargo-badge {
     display: inline-block;
     padding: 0.35rem 1rem;
     background: rgba(255, 255, 255, 0.25);
@@ -16291,7 +16990,8 @@ img[loading="lazy"] {
 }
 
 .goods-in-transit-badge span,
-.marine-hull-badge span {
+.marine-hull-badge span,
+.marine-cargo-badge span {
     font-size: 0.8125rem;
     font-weight: 700;
     text-transform: uppercase;
@@ -16300,7 +17000,8 @@ img[loading="lazy"] {
 }
 
 .goods-in-transit-title,
-.marine-hull-title {
+.marine-hull-title,
+.marine-cargo-title {
     font-size: 2.75rem;
     font-weight: 800;
     margin-bottom: 0.5rem;
@@ -16309,7 +17010,8 @@ img[loading="lazy"] {
 }
 
 .goods-in-transit-subtitle,
-.marine-hull-subtitle {
+.marine-hull-subtitle,
+.marine-cargo-subtitle {
     font-size: 1.125rem;
     line-height: 1.5;
     max-width: 800px;
@@ -16319,21 +17021,24 @@ img[loading="lazy"] {
 
 /* Content Sections */
 .goods-in-transit-content-section,
-.marine-hull-content-section {
+.marine-hull-content-section,
+.marine-cargo-content-section {
     padding: 35px 20px;
     background: #f8f9fa;
     position: relative;
 }
 
 .goods-in-transit-content-section .container,
-.marine-hull-content-section .container {
+.marine-hull-content-section .container,
+.marine-cargo-content-section .container {
     max-width: 1200px;
     margin: 0 auto;
 }
 
 /* Info Cards */
 .goods-in-transit-info-card,
-.marine-hull-info-card {
+.marine-hull-info-card,
+.marine-cargo-info-card {
     background: #ffffff;
     border-radius: 16px;
     padding: 1.75rem;
@@ -16344,7 +17049,8 @@ img[loading="lazy"] {
 }
 
 .goods-in-transit-info-card::before,
-.marine-hull-info-card::before {
+.marine-hull-info-card::before,
+.marine-cargo-info-card::before {
     content: '';
     position: absolute;
     top: 0;
@@ -16355,13 +17061,15 @@ img[loading="lazy"] {
 }
 
 .goods-in-transit-info-content,
-.marine-hull-info-content {
+.marine-hull-info-content,
+.marine-cargo-info-content {
     position: relative;
     padding-left: 0.5rem;
 }
 
 .goods-in-transit-info-description,
-.marine-hull-info-description {
+.marine-hull-info-description,
+.marine-cargo-info-description {
     font-size: 1rem;
     line-height: 1.7;
     color: var(--text-dark);
@@ -16370,7 +17078,8 @@ img[loading="lazy"] {
 
 /* Form Button Sections */
 .goods-in-transit-form-button-section,
-.marine-hull-form-button-section {
+.marine-hull-form-button-section,
+.marine-cargo-form-button-section {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -16378,7 +17087,8 @@ img[loading="lazy"] {
 }
 
 .goods-in-transit-form-button-section .form-button,
-.marine-hull-form-button-section .form-button {
+.marine-hull-form-button-section .form-button,
+.marine-cargo-form-button-section .form-button {
     min-width: 200px;
     background: var(--primary-green);
     color: white;
@@ -16386,7 +17096,8 @@ img[loading="lazy"] {
 }
 
 .goods-in-transit-form-button-section .form-button:hover,
-.marine-hull-form-button-section .form-button:hover {
+.marine-hull-form-button-section .form-button:hover,
+.marine-cargo-form-button-section .form-button:hover {
     background: var(--primary-green-dark);
     border-color: var(--primary-green-dark);
     color: white;
@@ -16395,57 +17106,67 @@ img[loading="lazy"] {
 /* Responsive Styles for Marine Cover Pages */
 @media (max-width: 768px) {
     .goods-in-transit-page,
-    .marine-hull-page {
+    .marine-hull-page,
+    .marine-cargo-page {
         padding-top: 70px;
     }
 
     .goods-in-transit-hero,
-    .marine-hull-hero {
+    .marine-hull-hero,
+    .marine-cargo-hero {
         min-height: 280px;
         padding: 35px 15px 25px;
     }
 
     .goods-in-transit-hero-content,
-    .marine-hull-hero-content {
+    .marine-hull-hero-content,
+    .marine-cargo-hero-content {
         padding: 0 10px;
     }
 
     .goods-in-transit-badge,
-    .marine-hull-badge {
+    .marine-hull-badge,
+    .marine-cargo-badge {
         padding: 0.3rem 0.875rem;
         margin-bottom: 0.4rem;
     }
 
     .goods-in-transit-badge span,
-    .marine-hull-badge span {
+    .marine-hull-badge span,
+    .marine-cargo-badge span {
         font-size: 0.75rem;
     }
 
     .goods-in-transit-title,
-    .marine-hull-title {
+    .marine-hull-title,
+    .marine-cargo-title {
         font-size: 2rem;
         margin-bottom: 0.4rem;
         line-height: 1.2;
     }
 
     .goods-in-transit-subtitle,
-    .marine-hull-subtitle {
+    .marine-hull-subtitle,
+    .marine-cargo-subtitle {
         font-size: 1rem;
         line-height: 1.4;
     }
 
     .goods-in-transit-content-section,
-    .marine-hull-content-section {
+    .marine-hull-content-section,
+    .marine-cargo-content-section {
         padding: 25px 15px;
     }
 
     .goods-in-transit-info-card,
-    .marine-hull-info-card {
+    .marine-hull-info-card,
+    .marine-cargo-info-card {
         padding: 1.5rem;
     }
 
     .goods-in-transit-info-description,
-    .marine-hull-info-description {
+    .marine-hull-info-description,
+    .marine-cargo-info-description {
         font-size: 0.9375rem;
         line-height: 1.6;
     }
@@ -16453,51 +17174,60 @@ img[loading="lazy"] {
 
 @media (max-width: 480px) {
     .goods-in-transit-page,
-    .marine-hull-page {
+    .marine-hull-page,
+    .marine-cargo-page {
         padding-top: 60px;
     }
 
     .goods-in-transit-hero,
-    .marine-hull-hero {
+    .marine-hull-hero,
+    .marine-cargo-hero {
         min-height: 250px;
         padding: 30px 10px 20px;
     }
 
     .goods-in-transit-badge,
-    .marine-hull-badge {
+    .marine-hull-badge,
+    .marine-cargo-badge {
         padding: 0.25rem 0.75rem;
         margin-bottom: 0.35rem;
     }
 
     .goods-in-transit-badge span,
-    .marine-hull-badge span {
+    .marine-hull-badge span,
+    .marine-cargo-badge span {
         font-size: 0.6875rem;
     }
 
     .goods-in-transit-title,
-    .marine-hull-title {
+    .marine-hull-title,
+    .marine-cargo-title {
         font-size: 1.75rem;
         margin-bottom: 0.35rem;
     }
 
     .goods-in-transit-subtitle,
-    .marine-hull-subtitle {
+    .marine-hull-subtitle,
+    .marine-cargo-subtitle {
         font-size: 0.9375rem;
         line-height: 1.3;
     }
 
     .goods-in-transit-content-section,
-    .marine-hull-content-section {
+    .marine-hull-content-section,
+    .marine-cargo-content-section {
         padding: 20px 10px;
     }
 
     .goods-in-transit-info-card,
-    .marine-hull-info-card {
+    .marine-hull-info-card,
+    .marine-cargo-info-card {
         padding: 1.25rem;
     }
 
     .goods-in-transit-info-description,
-    .marine-hull-info-description {
+    .marine-hull-info-description,
+    .marine-cargo-info-description {
         font-size: 0.875rem;
         line-height: 1.5;
     }
@@ -16508,7 +17238,7 @@ img[loading="lazy"] {
    ============================================ */
 
 .agricultural-forestry-page {
-    padding-top: 80px;
+    padding-top: 100px;
     background: #f8f9fa;
 }
 
@@ -16742,7 +17472,7 @@ img[loading="lazy"] {
    ============================================ */
 
 .driving-schools-page {
-    padding-top: 80px;
+    padding-top: 100px;
     background: #f8f9fa;
 }
 
@@ -16976,7 +17706,7 @@ img[loading="lazy"] {
    ============================================ */
 
 .general-cartage-page {
-    padding-top: 80px;
+    padding-top: 100px;
     background: #f8f9fa;
 }
 
@@ -17162,6 +17892,382 @@ img[loading="lazy"] {
     }
 }
 
+/* Institutional Fleet Page */
+.institutional-fleet-page {
+    padding-top: 100px;
+    background: #f8f9fa;
+}
+
+/* Institutional Fleet Hero Section */
+.institutional-fleet-hero {
+    position: relative;
+    min-height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--primary-green-dark) 0%, var(--primary-green) 100%);
+    padding: 40px 20px 30px;
+    overflow: hidden;
+}
+
+.institutional-fleet-hero::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(135deg, transparent 0%, rgba(255, 255, 255, 0.1) 100%);
+    pointer-events: none;
+}
+
+.institutional-fleet-hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+    color: white;
+}
+
+.institutional-fleet-badge {
+    display: inline-block;
+    padding: 0.35rem 1rem;
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(10px);
+    border-radius: 30px;
+    margin-bottom: 0.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.institutional-fleet-badge span {
+    font-size: 0.8125rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    color: white;
+}
+
+.institutional-fleet-title {
+    font-size: 2.75rem;
+    font-weight: 800;
+    margin-bottom: 0.5rem;
+    line-height: 1.2;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.institutional-fleet-subtitle {
+    font-size: 1.125rem;
+    line-height: 1.5;
+    max-width: 800px;
+    margin: 0 auto;
+    opacity: 0.95;
+}
+
+/* Institutional Fleet Content Section */
+.institutional-fleet-content-section {
+    padding: 35px 20px;
+    background: #f8f9fa;
+    position: relative;
+}
+
+.institutional-fleet-content-section .container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Institutional Fleet Info Card */
+.institutional-fleet-info-card {
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 1.75rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    border: 1px solid #e9ecef;
+    position: relative;
+    overflow: hidden;
+}
+
+.institutional-fleet-info-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: linear-gradient(180deg, var(--primary-green) 0%, var(--primary-green-light) 100%);
+}
+
+.institutional-fleet-info-content {
+    position: relative;
+    padding-left: 0.5rem;
+}
+
+.institutional-fleet-info-description {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: var(--text-dark);
+    margin: 0;
+}
+
+/* Institutional Fleet Form Button Section */
+.institutional-fleet-form-button-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1.5rem;
+}
+
+.institutional-fleet-form-button-section .form-button {
+    min-width: 200px;
+    background: var(--primary-green);
+    color: white;
+    border-color: var(--primary-green);
+}
+
+.institutional-fleet-form-button-section .form-button:hover {
+    background: var(--primary-green-dark);
+    border-color: var(--primary-green-dark);
+    color: white;
+}
+
+/* Chauffeur-Driven PSV Page */
+.chauffeur-driven-psv-page {
+    padding-top: 100px;
+    background: #f8f9fa;
+}
+
+/* Chauffeur-Driven PSV Hero Section */
+.chauffeur-driven-psv-hero {
+    position: relative;
+    min-height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--primary-green-dark) 0%, var(--primary-green) 100%);
+    padding: 40px 20px 30px;
+    overflow: hidden;
+}
+
+.chauffeur-driven-psv-hero::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(135deg, transparent 0%, rgba(255, 255, 255, 0.1) 100%);
+    pointer-events: none;
+}
+
+.chauffeur-driven-psv-hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+    color: white;
+}
+
+.chauffeur-driven-psv-badge {
+    display: inline-block;
+    padding: 0.35rem 1rem;
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(10px);
+    border-radius: 30px;
+    margin-bottom: 0.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.chauffeur-driven-psv-badge span {
+    font-size: 0.8125rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    color: white;
+}
+
+.chauffeur-driven-psv-title {
+    font-size: 2.75rem;
+    font-weight: 800;
+    margin-bottom: 0.5rem;
+    line-height: 1.2;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.chauffeur-driven-psv-subtitle {
+    font-size: 1.125rem;
+    line-height: 1.5;
+    max-width: 800px;
+    margin: 0 auto;
+    opacity: 0.95;
+}
+
+/* Chauffeur-Driven PSV Content Section */
+.chauffeur-driven-psv-content-section {
+    padding: 35px 20px;
+    background: #f8f9fa;
+    position: relative;
+}
+
+.chauffeur-driven-psv-content-section .container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Chauffeur-Driven PSV Info Card */
+.chauffeur-driven-psv-info-card {
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 1.75rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    border: 1px solid #e9ecef;
+    position: relative;
+    overflow: hidden;
+}
+
+.chauffeur-driven-psv-info-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: linear-gradient(180deg, var(--primary-green) 0%, var(--primary-green-light) 100%);
+}
+
+.chauffeur-driven-psv-info-content {
+    position: relative;
+    padding-left: 0.5rem;
+}
+
+.chauffeur-driven-psv-info-description {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: var(--text-dark);
+    margin: 0;
+}
+
+/* Chauffeur-Driven PSV Form Button Section */
+.chauffeur-driven-psv-form-button-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1.5rem;
+}
+
+.chauffeur-driven-psv-form-button-section .form-button {
+    min-width: 200px;
+    background: var(--primary-green);
+    color: white;
+    border-color: var(--primary-green);
+}
+
+.chauffeur-driven-psv-form-button-section .form-button:hover {
+    background: var(--primary-green-dark);
+    border-color: var(--primary-green-dark);
+    color: white;
+}
+
+/* Responsive Styles for Institutional Fleet Page */
+@media (max-width: 768px) {
+    .institutional-fleet-page {
+        padding-top: 70px;
+    }
+
+    .institutional-fleet-hero {
+        min-height: 280px;
+        padding: 35px 15px 25px;
+    }
+
+    .institutional-fleet-hero-content {
+        padding: 0 10px;
+    }
+
+    .institutional-fleet-badge {
+        padding: 0.3rem 0.875rem;
+        margin-bottom: 0.4rem;
+    }
+
+    .institutional-fleet-badge span {
+        font-size: 0.75rem;
+    }
+
+    .institutional-fleet-title {
+        font-size: 2rem;
+        margin-bottom: 0.4rem;
+        line-height: 1.2;
+    }
+
+    .institutional-fleet-subtitle {
+        font-size: 1rem;
+        line-height: 1.4;
+    }
+
+    .institutional-fleet-content-section {
+        padding: 25px 15px;
+    }
+
+    .institutional-fleet-info-card {
+        padding: 1.5rem;
+    }
+
+    .institutional-fleet-info-description {
+        font-size: 0.9375rem;
+        line-height: 1.6;
+    }
+}
+
+/* Responsive Styles for Chauffeur-Driven PSV Page */
+@media (max-width: 768px) {
+    .chauffeur-driven-psv-page {
+        padding-top: 70px;
+    }
+
+    .chauffeur-driven-psv-hero {
+        min-height: 280px;
+        padding: 35px 15px 25px;
+    }
+
+    .chauffeur-driven-psv-hero-content {
+        padding: 0 10px;
+    }
+
+    .chauffeur-driven-psv-badge {
+        padding: 0.3rem 0.875rem;
+        margin-bottom: 0.4rem;
+    }
+
+    .chauffeur-driven-psv-badge span {
+        font-size: 0.75rem;
+    }
+
+    .chauffeur-driven-psv-title {
+        font-size: 2rem;
+        margin-bottom: 0.4rem;
+        line-height: 1.2;
+    }
+
+    .chauffeur-driven-psv-subtitle {
+        font-size: 1rem;
+        line-height: 1.4;
+    }
+
+    .chauffeur-driven-psv-content-section {
+        padding: 25px 15px;
+    }
+
+    .chauffeur-driven-psv-info-card {
+        padding: 1.5rem;
+    }
+
+    .chauffeur-driven-psv-info-description {
+        font-size: 0.9375rem;
+        line-height: 1.6;
+    }
+}
+
 @media (max-width: 480px) {
     .general-cartage-page {
         padding-top: 60px;
@@ -17210,7 +18316,7 @@ img[loading="lazy"] {
    ============================================ */
 
 .motor-vehicle-page {
-    padding-top: 80px;
+    padding-top: 100px;
     background: #f8f9fa;
 }
 
@@ -17471,7 +18577,7 @@ img[loading="lazy"] {
    ============================================ */
 
 .motor-cycle-page {
-    padding-top: 80px;
+    padding-top: 100px;
     background: #f8f9fa;
 }
 
@@ -17705,7 +18811,7 @@ img[loading="lazy"] {
    ============================================ */
 
 .burglary-page {
-    padding-top: 80px;
+    padding-top: 100px;
     background: #f8f9fa;
 }
 
@@ -17939,7 +19045,7 @@ img[loading="lazy"] {
    ============================================ */
 
 .get-a-quote-page {
-    padding-top: 80px;
+    padding-top: 100px;
     background: #f8f9fa;
     min-height: 100vh;
 }
@@ -18302,7 +19408,7 @@ img[loading="lazy"] {
    ============================================ */
 
 .forms-page {
-    padding-top: 80px;
+    padding-top: 100px;
     background: #f8f9fa;
     min-height: 100vh;
 }
@@ -18592,5 +19698,115 @@ img[loading="lazy"] {
 
     .form-card-description {
         font-size: 0.875rem;
+    }
+}
+
+/* ============================================
+   Mobile Padding for All Pages
+   Ensures consistent padding between navbar and page content
+   ============================================ */
+@media (max-width: 768px) {
+    /* Ensure all pages have adequate padding-top in mobile view */
+    .group-life-insurance-page,
+    .education-page,
+    .group-personal-accident-page,
+    .group-retirement-benefit-schemes-page,
+    .group-mortgage-protection-page,
+    .endowment-assurance-page,
+    .group-credit-life-page,
+    .group-life-page,
+    .customs-page,
+    .immigration-security-page,
+    .performance-page,
+    .surety-undertaking-page,
+    .tender-page,
+    .comesa-yellow-card-page,
+    .domestic-package-page,
+    .contractors-all-risks-page,
+    .contractors-plant-machinery-page,
+    .electronic-equipment-page,
+    .machinery-breakdown-page,
+    .golfers-insurance-page,
+    .consequential-loss-page,
+    .fire-and-perils-page,
+    .industrial-page,
+    .carriers-page,
+    .professional-indemnity-page,
+    .public-liability-page,
+    .work-injury-page,
+    .goods-in-transit-page,
+    .marine-hull-page,
+    .marine-cargo-page,
+    .agricultural-forestry-page,
+    .driving-schools-page,
+    .general-cartage-page,
+    .institutional-fleet-page,
+    .chauffeur-driven-psv-page,
+    .motor-vehicle-page,
+    .motor-cycle-page,
+    .burglary-page,
+    .get-a-quote-page,
+    .forms-page,
+    .team-page,
+    .about-page,
+    .contact-page,
+    .branches-page,
+    .faqs-page,
+    .service-providers-page,
+    .careers-page-section {
+        padding-top: 120px !important;
+    }
+}
+
+@media (max-width: 480px) {
+    /* Ensure all pages have adequate padding-top in small mobile view */
+    .group-life-insurance-page,
+    .education-page,
+    .group-personal-accident-page,
+    .group-retirement-benefit-schemes-page,
+    .group-mortgage-protection-page,
+    .endowment-assurance-page,
+    .group-credit-life-page,
+    .group-life-page,
+    .customs-page,
+    .immigration-security-page,
+    .performance-page,
+    .surety-undertaking-page,
+    .tender-page,
+    .comesa-yellow-card-page,
+    .domestic-package-page,
+    .contractors-all-risks-page,
+    .contractors-plant-machinery-page,
+    .electronic-equipment-page,
+    .machinery-breakdown-page,
+    .golfers-insurance-page,
+    .consequential-loss-page,
+    .fire-and-perils-page,
+    .industrial-page,
+    .carriers-page,
+    .professional-indemnity-page,
+    .public-liability-page,
+    .work-injury-page,
+    .goods-in-transit-page,
+    .marine-hull-page,
+    .marine-cargo-page,
+    .agricultural-forestry-page,
+    .driving-schools-page,
+    .general-cartage-page,
+    .institutional-fleet-page,
+    .chauffeur-driven-psv-page,
+    .motor-vehicle-page,
+    .motor-cycle-page,
+    .burglary-page,
+    .get-a-quote-page,
+    .forms-page,
+    .team-page,
+    .about-page,
+    .contact-page,
+    .branches-page,
+    .faqs-page,
+    .service-providers-page,
+    .careers-page-section {
+        padding-top: 120px !important;
     }
 }

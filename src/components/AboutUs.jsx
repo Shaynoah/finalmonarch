@@ -14,28 +14,7 @@ const AboutUs = () => {
         </svg>
       ),
       label: 'Professionalism',
-      description: 'Maintaining the highest standards in all our operations'
-    },
-    { 
-      icon: (
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-          <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
-          <polyline points="22 4 12 14.01 9 11.01"/>
-        </svg>
-      ),
-      label: 'Integrity',
-      description: 'Honest and transparent in all our dealings'
-    },
-    { 
-      icon: (
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-          <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
-          <circle cx="9" cy="7" r="4"/>
-          <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/>
-        </svg>
-      ),
-      label: 'Team Spirit',
-      description: 'Collaboration and unity drive our success'
+      description: 'We are committed to upholding the highest standards of professionalism in all our business engagements, guided by principles of integrity, accountability, and Good Corporate Governance.'
     },
     { 
       icon: (
@@ -44,7 +23,27 @@ const AboutUs = () => {
         </svg>
       ),
       label: 'Quality Customer Care',
-      description: 'Putting our customers at the heart of everything we do'
+      description: 'We are dedicated to delivering service excellence that consistently exceeds our customers\' expectations, through responsiveness, reliability, and a customer-centric approach'
+    },
+    { 
+      icon: (
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+          <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+          <polyline points="22 4 12 14.01 9 11.01"/>
+        </svg>
+      ),
+      label: 'Accountability',
+      description: 'We value integrity and are committed to be responsible managers of resources and risks entrusted to us by our Clients and Shareholders in order to give a fair return for their investments.'
+    },
+    { 
+      icon: (
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+          <circle cx="12" cy="12" r="10"/>
+          <path d="M12 6v6l4 2"/>
+        </svg>
+      ),
+      label: 'Recognition & Respect for Diversity & the Individual',
+      description: 'We are committed to upholding dignity and respect for every individual, recognizing the unique contributions of our employees and rewarding performance fairly. We foster a culture of inclusivity and mutual respect, embracing diversity across age, culture, race, religion, and gender.'
     },
     { 
       icon: (
@@ -54,18 +53,19 @@ const AboutUs = () => {
           <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
         </svg>
       ),
-      label: 'Responsible Citizenship',
-      description: 'Contributing positively to our communities'
+      label: 'Social Responsibility',
+      description: 'We are committed to being a socially responsible organization, conducting our business in a manner that preserves the environment, supports social and economic development, and contributes meaningfully to national progress.'
     },
     { 
       icon: (
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-          <circle cx="12" cy="12" r="10"/>
-          <path d="M12 6v6l4 2"/>
+          <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+          <circle cx="9" cy="7" r="4"/>
+          <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/>
         </svg>
       ),
-      label: 'Recognition and Respect for Diversity',
-      description: 'Embracing differences and fostering inclusion'
+      label: 'Teamwork and Collaboration',
+      description: 'We foster a spirit of teamwork and collaboration across all levels of the organization, recognizing that shared goals and collective effort drive our success.'
     }
   ]
 
@@ -113,11 +113,13 @@ const AboutUs = () => {
             </h1>
             
             <p className="about-description-text">
-              The Monarch Insurance Company Ltd is an all-Kenyan insurance company registered in the Republic of Kenya. 
-              Since 1979, the Monarch Insurance Company has been serving policyholders – protecting businesses, mitigating losses, defending claims. 
-              For over 45 years, it has carved its market niche as a composite insurer with excellent services in 
-              underwriting both general and life insurance policies. We have grown from strength to strength due to 
-              out of the box tailor made products for a whole array of customers.
+            For over 45 years, Monarch Insurance Company Limited has carved a niche as a
+trusted composite insurer, offering exceptional underwriting services in both
+General and Life Insurance. Our consistent growth is anchored in innovative,
+tailor-made solutions designed to meet the diverse needs of our clients. With a
+shareholders’ equity of Kshs. 600 million and an asset base exceeding Kshs. 2
+billion, Monarch Insurance stands out for its financial strength, stability, and
+unwavering commitment to service excellence.
             </p>
           </div>
         </div>

@@ -1,6 +1,6 @@
 import React from 'react'
 import bondForm from '../forms/BOND-APPLICATION-FORM.pdf'
-import tenderImage from '../assets/tender.jpg'
+import tenderImage from '../assets/tender.png'
 
 const Tender = () => {
   return (

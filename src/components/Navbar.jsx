@@ -35,7 +35,7 @@ const Navbar = () => {
           nestedSubmenuItems: [
             {
               id: 'group-cover',
-              label: 'Group cover',
+              label: 'Group Last Expense',
               icon: (
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                   <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
@@ -45,27 +45,56 @@ const Navbar = () => {
               )
             },
             {
-              id: 'personal-cover',
-              label: 'Personal cover',
+              id: 'group-life',
+              label: 'Group Life',
               icon: (
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
-                  <circle cx="12" cy="7" r="4"/>
+                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                  <circle cx="9" cy="7" r="4"/>
+                  <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/>
                 </svg>
-              ),
-              hasNestedSubmenu: true,
-              nestedSubmenuItems: [
-                {
-                  id: 'education',
-                  label: 'Education',
-                  icon: (
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                      <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
-                      <path d="M6 12v5c3 3 9 3 12 0v-5"/>
-                    </svg>
-                  )
-                }
-              ]
+              )
+            },
+            {
+              id: 'group-retirement-benefit-schemes',
+              label: 'Group Retirement Benefit Schemes',
+              icon: (
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <circle cx="12" cy="12" r="10"/>
+                  <path d="M12 6v6l4 2"/>
+                </svg>
+              )
+            },
+            {
+              id: 'group-mortgage-protection',
+              label: 'Group Mortgage Protection',
+              icon: (
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                  <polyline points="9 22 9 12 15 12 15 22"/>
+                </svg>
+              )
+            },
+            {
+              id: 'endowment-assurance',
+              label: 'Endowment Assurance policy(with Profits)',
+              icon: (
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                </svg>
+              )
+            },
+            {
+              id: 'group-credit-life',
+              label: 'Group Credit',
+              icon: (
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <rect x="3" y="8" width="18" height="4" rx="1"/>
+                  <path d="M12 8v13"/>
+                  <path d="M19 12v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-7"/>
+                  <path d="M7.5 8a2.5 2.5 0 0 1 0-5A4.8 8 0 0 1 12 8a4.8 8 0 0 1 4.5-5 2.5 2.5 0 0 1 0 5"/>
+                </svg>
+              )
             }
           ]
         },
@@ -177,6 +206,16 @@ const Navbar = () => {
                       <line x1="15" y1="9" x2="9" y2="15"/>
                     </svg>
                   )
+                },
+                {
+                  id: 'comesa-yellow-card',
+                  label: 'comesa yellow card insurance',
+                  icon: (
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                      <rect x="3" y="8" width="18" height="4" rx="1"/>
+                      <path d="M12 8v13"/>
+                    </svg>
+                  )
                 }
               ]
             },
@@ -251,6 +290,16 @@ const Navbar = () => {
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                       <rect x="2" y="7" width="20" height="14" rx="2" ry="2"/>
                       <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
+                    </svg>
+                  )
+                },
+                {
+                  id: 'golfers-insurance',
+                  label: 'Golfers Insurance',
+                  icon: (
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                      <circle cx="12" cy="12" r="10"/>
+                      <path d="M12 6v6l4 2"/>
                     </svg>
                   )
                 }
@@ -379,6 +428,15 @@ const Navbar = () => {
                       <path d="M3 18h18M3 18l2-10h14l2 10M3 18l-1 3h20l-1-3M9 12h6"/>
                     </svg>
                   )
+                },
+                {
+                  id: 'marine-cargo',
+                  label: 'Marine Cargo',
+                  icon: (
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                      <path d="M3 18h18M3 18l2-10h14l2 10M3 18l-1 3h20l-1-3M9 12h6"/>
+                    </svg>
+                  )
                 }
               ]
             },
@@ -405,8 +463,18 @@ const Navbar = () => {
                   )
                 },
                 {
-                  id: 'driving-schools',
-                  label: 'Driving Schools',
+                  id: 'institutional-fleet',
+                  label: 'Institutional fleet',
+                  icon: (
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                      <path d="M5 17H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-1"/>
+                      <path d="M12 15l-3-3 3-3 3 3z"/>
+                    </svg>
+                  )
+                },
+                {
+                  id: 'chauffeur-driven-psv',
+                  label: 'CHAUFFEUR-DRIVEN (PSV)',
                   icon: (
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                       <path d="M5 17H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-1"/>
@@ -540,18 +608,24 @@ const Navbar = () => {
         window.requestAnimationFrame(() => {
           setIsScrolled(window.scrollY > 50)
           
-          const sections = navItems.map(item => document.getElementById(item.id)).filter(Boolean)
-          const scrollY = window.pageYOffset
+          // Only set active section if we're on the home page
+          if (location.pathname === '/') {
+            const sections = navItems
+              .filter(item => !item.hasSubmenu) // Exclude items with submenus
+              .map(item => document.getElementById(item.id))
+              .filter(Boolean)
+            const scrollY = window.pageYOffset
 
-          sections.forEach(section => {
-            const sectionHeight = section.offsetHeight
-            const sectionTop = section.offsetTop - 100
-            const sectionId = section.getAttribute('id')
+            sections.forEach(section => {
+              const sectionHeight = section.offsetHeight
+              const sectionTop = section.offsetTop - 100
+              const sectionId = section.getAttribute('id')
 
-            if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
-              setActiveSection(sectionId)
-            }
-          })
+              if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+                setActiveSection(sectionId)
+              }
+            })
+          }
           
           ticking = false
         })
@@ -561,7 +635,7 @@ const Navbar = () => {
 
     window.addEventListener('scroll', handleScroll, { passive: true })
     return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
+  }, [location.pathname])
 
   // Handle body scroll lock when mobile menu is open
   useEffect(() => {
@@ -581,6 +655,13 @@ const Navbar = () => {
       document.body.style.width = ''
     }
   }, [isMobileMenuOpen])
+
+  // Reset activeSection when not on home page
+  useEffect(() => {
+    if (location.pathname !== '/') {
+      setActiveSection('home')
+    }
+  }, [location.pathname])
 
   // Close menu on escape key
   useEffect(() => {
@@ -685,8 +766,40 @@ const Navbar = () => {
       return
     }
     
-    if (sectionId === 'education') {
-      navigate('/education')
+    if (sectionId === 'group-life') {
+      navigate('/group-life')
+      setIsMobileMenuOpen(false)
+      setOpenSubmenu(null)
+      setOpenNestedSubmenu(null)
+      return
+    }
+    
+    if (sectionId === 'group-retirement-benefit-schemes') {
+      navigate('/group-retirement-benefit-schemes')
+      setIsMobileMenuOpen(false)
+      setOpenSubmenu(null)
+      setOpenNestedSubmenu(null)
+      return
+    }
+    
+    if (sectionId === 'group-mortgage-protection') {
+      navigate('/group-mortgage-protection')
+      setIsMobileMenuOpen(false)
+      setOpenSubmenu(null)
+      setOpenNestedSubmenu(null)
+      return
+    }
+    
+    if (sectionId === 'endowment-assurance') {
+      navigate('/endowment-assurance')
+      setIsMobileMenuOpen(false)
+      setOpenSubmenu(null)
+      setOpenNestedSubmenu(null)
+      return
+    }
+    
+    if (sectionId === 'group-credit-life') {
+      navigate('/group-credit-life')
       setIsMobileMenuOpen(false)
       setOpenSubmenu(null)
       setOpenNestedSubmenu(null)
@@ -749,6 +862,14 @@ const Navbar = () => {
       return
     }
     
+    if (sectionId === 'comesa-yellow-card') {
+      navigate('/comesa-yellow-card')
+      setIsMobileMenuOpen(false)
+      setOpenSubmenu(null)
+      setOpenNestedSubmenu(null)
+      return
+    }
+    
     if (sectionId === 'domestic-package') {
       navigate('/domestic-package')
       setIsMobileMenuOpen(false)
@@ -783,6 +904,14 @@ const Navbar = () => {
     
     if (sectionId === 'machinery-breakdown') {
       navigate('/machinery-breakdown')
+      setIsMobileMenuOpen(false)
+      setOpenSubmenu(null)
+      setOpenNestedSubmenu(null)
+      return
+    }
+    
+    if (sectionId === 'golfers-insurance') {
+      navigate('/golfers-insurance')
       setIsMobileMenuOpen(false)
       setOpenSubmenu(null)
       setOpenNestedSubmenu(null)
@@ -861,6 +990,14 @@ const Navbar = () => {
       return
     }
     
+    if (sectionId === 'marine-cargo') {
+      navigate('/marine-cargo')
+      setIsMobileMenuOpen(false)
+      setOpenSubmenu(null)
+      setOpenNestedSubmenu(null)
+      return
+    }
+    
     if (sectionId === 'agricultural-forestry') {
       navigate('/agricultural-forestry')
       setIsMobileMenuOpen(false)
@@ -869,8 +1006,16 @@ const Navbar = () => {
       return
     }
     
-    if (sectionId === 'driving-schools') {
-      navigate('/driving-schools')
+    if (sectionId === 'institutional-fleet') {
+      navigate('/institutional-fleet')
+      setIsMobileMenuOpen(false)
+      setOpenSubmenu(null)
+      setOpenNestedSubmenu(null)
+      return
+    }
+    
+    if (sectionId === 'chauffeur-driven-psv') {
+      navigate('/chauffeur-driven-psv')
       setIsMobileMenuOpen(false)
       setOpenSubmenu(null)
       setOpenNestedSubmenu(null)
@@ -1102,7 +1247,7 @@ const Navbar = () => {
               ) : (
                 <a
                   href={`#${item.id}`}
-                  className={`nav-link ${activeSection === item.id && location.pathname === '/' ? 'active' : ''}`}
+                  className={`nav-link ${activeSection === item.id && location.pathname === '/' && !item.hasSubmenu ? 'active' : ''}`}
                   onClick={(e) => {
                     if (item.hasSubmenu) {
                       handleSubmenuToggle(item.id, e)

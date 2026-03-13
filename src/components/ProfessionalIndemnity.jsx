@@ -1,5 +1,6 @@
 import React from 'react'
 import professionalIndemnityForm from '../forms/PROFESSIONAL-INDEMNITY-PROPOSAL-FORM-.pdf'
+import indemnityImage from '../assets/indemnity.png'
 
 const ProfessionalIndemnity = () => {
   return (
@@ -37,6 +38,23 @@ const ProfessionalIndemnity = () => {
                 <li>Trustees (Liability)</li>
                 <li>Medical (general practitioners, nurses, dentists, physiotherapists)</li>
               </ul>
+            </div>
+          </div>
+
+          {/* Indemnity Image Section */}
+          <div className="insurance-form-wrapper" style={{ marginTop: '3rem' }}>
+            <div className="insurance-form-image">
+              <img src={indemnityImage} alt="Professional Indemnity Insurance" />
+            </div>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              <div style={{ padding: '2rem' }}>
+                <h3 style={{ fontSize: '1.75rem', fontWeight: '700', color: 'var(--black)', marginBottom: '1rem' }}>
+                  Protect Your Professional Practice
+                </h3>
+                <p style={{ fontSize: '1.125rem', lineHeight: '1.8', color: 'var(--text-dark)', marginBottom: '1.5rem' }}>
+                  Secure your professional reputation and financial security with comprehensive indemnity insurance. Our coverage protects you from legal liability arising from negligence, errors, or omissions in your professional services.
+                </p>
+              </div>
             </div>
           </div>
 

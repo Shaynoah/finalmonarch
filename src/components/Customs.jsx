@@ -1,5 +1,6 @@
 import React from 'react'
 import bondForm from '../forms/BOND-APPLICATION-FORM.pdf'
+import custImage from '../assets/cust.png'
 
 const Customs = () => {
   return (
@@ -27,6 +28,23 @@ const Customs = () => {
               <p className="customs-info-description">
                 Customs and imports bonds ensure that goods which are pending payment of duties are not smuggled into the local market without payment. Should the untaxed goods end up in the market; the insurer will meet the duty payable by the insured. Customs bonds are given for goods in transit through the country or those produced in duty free zones targeting the export markets. Import bonds are given to cover duty for goods imported into the country.
               </p>
+            </div>
+          </div>
+
+          {/* Customs Image Section */}
+          <div className="insurance-form-wrapper" style={{ marginTop: '3rem' }}>
+            <div className="insurance-form-image">
+              <img src={custImage} alt="Customs Insurance" />
+            </div>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              <div style={{ padding: '2rem' }}>
+                <h3 style={{ fontSize: '1.75rem', fontWeight: '700', color: 'var(--black)', marginBottom: '1rem' }}>
+                  Secure Your Customs Operations
+                </h3>
+                <p style={{ fontSize: '1.125rem', lineHeight: '1.8', color: 'var(--text-dark)', marginBottom: '1.5rem' }}>
+                  Our customs and imports bonds ensure that goods pending payment of duties are not smuggled into the local market. We protect your business operations, whether goods are in transit, produced in duty-free zones, or imported into the country.
+                </p>
+              </div>
             </div>
           </div>
 

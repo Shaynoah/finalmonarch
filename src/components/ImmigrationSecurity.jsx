@@ -1,5 +1,6 @@
 import React from 'react'
 import bondForm from '../forms/BOND-APPLICATION-FORM.pdf'
+import immImage from '../assets/imm.png'
 
 const ImmigrationSecurity = () => {
   return (
@@ -30,6 +31,23 @@ const ImmigrationSecurity = () => {
               <p className="immigration-security-info-description" style={{ marginTop: '1.5rem' }}>
                 For answers to your questions and information on solutions our network of offices aim to be convenient and local. Visit us in person at one of our offices.
               </p>
+            </div>
+          </div>
+
+          {/* Immigration Security Image Section */}
+          <div className="insurance-form-wrapper" style={{ marginTop: '3rem' }}>
+            <div className="insurance-form-image">
+              <img src={immImage} alt="Immigration Security Insurance" />
+            </div>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              <div style={{ padding: '2rem' }}>
+                <h3 style={{ fontSize: '1.75rem', fontWeight: '700', color: 'var(--black)', marginBottom: '1rem' }}>
+                  Secure Your Immigration Journey
+                </h3>
+                <p style={{ fontSize: '1.125rem', lineHeight: '1.8', color: 'var(--text-dark)', marginBottom: '1.5rem' }}>
+                  Our immigration and security bonds provide essential protection for travelers and non-residents. We guarantee conduct and cover deportation costs or consequences of poor conduct, ensuring peace of mind for both travelers and host countries.
+                </p>
+              </div>
             </div>
           </div>
 

@@ -1,6 +1,6 @@
 import React from 'react'
 import machineryBreakdownForm from '../forms/MACHINERY-BREAKDOWN-PROPOSAL-FORM-1.pdf'
-import machineryBreakdownImage from '../assets/machinery breakdown.jpg'
+import mach2Image from '../assets/mach2.png'
 
 const MachineryBreakdown = () => {
   return (
@@ -37,7 +37,7 @@ const MachineryBreakdown = () => {
           {/* Machinery Breakdown Image Section */}
           <div className="insurance-form-wrapper" style={{ marginTop: '3rem' }}>
             <div className="insurance-form-image">
-              <img src={machineryBreakdownImage} alt="Machinery Breakdown Insurance" />
+              <img src={mach2Image} alt="Machinery Breakdown Insurance" />
             </div>
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
               <div style={{ padding: '2rem' }}>

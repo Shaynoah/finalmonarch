@@ -1,5 +1,6 @@
 import React from 'react'
 import industrialForm from '../forms/INDUSTRIAL-ALL-RISKS-PROPOSAL-FORM.pdf'
+import indImage from '../assets/ind.png'
 
 const Industrial = () => {
   return (
@@ -30,6 +31,23 @@ const Industrial = () => {
               <p className="industrial-info-description" style={{ marginTop: '1.5rem' }}>
                 It is appropriate for corporate clients aspiring to cover all their stocks against various risks in a single policy. It is simply a one-stop package for your security needs.
               </p>
+            </div>
+          </div>
+
+          {/* Industrial Image Section */}
+          <div className="insurance-form-wrapper" style={{ marginTop: '3rem' }}>
+            <div className="insurance-form-image">
+              <img src={indImage} alt="Industrial Insurance" />
+            </div>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              <div style={{ padding: '2rem' }}>
+                <h3 style={{ fontSize: '1.75rem', fontWeight: '700', color: 'var(--black)', marginBottom: '1rem' }}>
+                  Comprehensive Industrial Protection
+                </h3>
+                <p style={{ fontSize: '1.125rem', lineHeight: '1.8', color: 'var(--text-dark)', marginBottom: '1.5rem' }}>
+                  Protect your industrial operations with our all-risks insurance package. This comprehensive policy covers Fire & Allied Perils, Burglary, Accidental Damage, and Business Interruption, providing a one-stop solution for all your corporate security needs.
+                </p>
+              </div>
             </div>
           </div>
 

@@ -1,8 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import WhatsAppBanner from './WhatsAppBanner'
-import heroBgImage1 from '../assets/closeup-unrecognizable-couple-signing-contract-with-financial-advisor.jpg'
-import heroBgImage2 from '../assets/are-you-covered-healthcare-insurance-protection-concept.jpg'
-import heroBgImage3 from '../assets/life-insurance-protection-beneficiary-safeguard-concept.jpg'
+import heroBgImage1 from '../assets/rehero.png'
+import heroBgImage2 from '../assets/rename2.png'
 
 const Hero = () => {
   const shapeRefs = [useRef(null), useRef(null), useRef(null)]
@@ -11,7 +10,7 @@ const Hero = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
   const [isLightBackground, setIsLightBackground] = useState(false)
   
-  const heroImages = [heroBgImage1, heroBgImage2, heroBgImage3]
+  const heroImages = [heroBgImage1, heroBgImage2]
   
   // Preload all hero images immediately for faster rendering
   useEffect(() => {
@@ -135,8 +134,10 @@ const Hero = () => {
               className="btn btn-primary btn-get-quote"
             >
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-                <path d="M9 12l2 2 4-4"/>
+                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+                <line x1="9" y1="9" x2="15" y2="9"/>
+                <line x1="9" y1="15" x2="15" y2="15"/>
+                <line x1="9" y1="12" x2="15" y2="12"/>
               </svg>
               <span>Buy Insurance Cover</span>
             </a>

@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import InsuranceCard from './InsuranceCard'
-import lifeInsuranceImage from '../assets/life-insurance-protection-beneficiary-safeguard-concept.jpg'
-import generalInsuranceImage from '../assets/closeup-unrecognizable-couple-signing-contract-with-financial-advisor.jpg'
+import lifeInsuranceImage from '../assets/life.png'
+import generalInsuranceImage from '../assets/general.png'
 
 const Insurance = () => {
 
@@ -13,8 +13,8 @@ const Insurance = () => {
       description: "Secure your family's future with comprehensive life insurance coverage tailored to your needs. Protect your loved ones with reliable life insurance policies.",
       link: '/life-insurance',
       buttons: [
-        { label: 'Group Cover', link: '/group-life-insurance' },
-        { label: 'Education Insurance', link: '/education' }
+        { label: 'Group Credit', link: '/group-credit-life' },
+        { label: 'Group Last Expense', link: '/group-life-insurance' }
       ]
     },
     {

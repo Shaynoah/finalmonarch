@@ -1,6 +1,6 @@
 import React from 'react'
 import fireAndPerilsForm from '../forms/Fire-and-Perils-Proposal-form.pdf'
-import fireImage from '../assets/fire.jpg'
+import perilsImage from '../assets/perils.png'
 
 const FireAndPerils = () => {
   return (
@@ -37,7 +37,7 @@ const FireAndPerils = () => {
           {/* Fire Image Section */}
           <div className="insurance-form-wrapper" style={{ marginTop: '3rem' }}>
             <div className="insurance-form-image">
-              <img src={fireImage} alt="Fire and Perils Insurance" />
+              <img src={perilsImage} alt="Fire and Perils Insurance" />
             </div>
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
               <div style={{ padding: '2rem' }}>
