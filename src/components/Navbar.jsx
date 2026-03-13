@@ -1196,7 +1196,14 @@ const Navbar = () => {
       >
       <div className="nav-container">
         {/* Logo */}
-        <Link to="/" className="nav-logo" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
+        <Link 
+          to="/" 
+          className="nav-logo" 
+          onClick={() => {
+            window.scrollTo({ top: 0, behavior: 'smooth' })
+            closeMobileMenu()
+          }}
+        >
           <div className="logo-wrapper">
             <img 
               src={logoImage} 

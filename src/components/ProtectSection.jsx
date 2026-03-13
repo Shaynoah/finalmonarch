@@ -52,7 +52,7 @@ const ProtectSection = () => {
             </div>
             <h2 className="protect-title">Protect what you love</h2>
             <p className="protect-description">
-              The Monarch Insurance company Ltd is an all-Kenyan insurance company registered in the republic of Kenya. 
+              <span className="company-name-highlight">The Monarch Insurance Company Ltd</span> is an all-Kenyan insurance company registered in the republic of Kenya. 
               For over 45 years, it has curved its market niche as a composite insurer with excellent services in 
               underwriting both general and life insurance policies. We have grown from strength to strength due to 
               out of the box tailor made products for a whole array of customers.
