@@ -34,23 +34,41 @@ const CTA = () => {
         <div className={`cta-content ${isVisible ? 'visible' : ''}`}>
           <div className="cta-background-pattern"></div>
           <div className="cta-text-content">
-            <h2 className="cta-title">Ready to Get Protected?</h2>
+            <h2 className="cta-title">GET COVERED IN MINUTES</h2>
+            <div className="cta-benefits">
+              <div className="cta-benefit-item">
+                <span className="cta-bullet-icon">✓</span>
+                <span className="cta-benefit-text">Instant issuance</span>
+              </div>
+              <div className="cta-benefit-item">
+                <span className="cta-bullet-icon">✓</span>
+                <span className="cta-benefit-text">No document uploads required</span>
+              </div>
+              <div className="cta-benefit-item">
+                <span className="cta-bullet-icon">✓</span>
+                <span className="cta-benefit-text">Identity &amp; Registration validated in real time</span>
+              </div>
+              <div className="cta-benefit-item">
+                <span className="cta-bullet-icon">✓</span>
+                <span className="cta-benefit-text">Ready to dive in under 4 minutes</span>
+              </div>
+            </div>
             <p className="cta-description">
-              Join thousands of satisfied customers who trust Monarch Insurance for their protection needs. 
-              Get a quote today and discover how we can safeguard what matters most to you.
+              <strong>Requirements:</strong> ID number, Vehicle Registration, Payment
             </p>
             <div className="cta-buttons">
-              <Link
-                to="/get-a-quote"
+              <a
+                href="https://bima.monarchinsurance.co.ke/"
                 className="btn btn-primary cta-primary-button"
-                onClick={() => window.scrollTo({ top: 0, behavior: 'instant' })}
+                target="_blank"
+                rel="noopener noreferrer"
               >
-                <span>Get a Quote</span>
+                <span>BUY INSURANCE COVER</span>
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                   <line x1="5" y1="12" x2="19" y2="12"/>
                   <polyline points="12 5 19 12 12 19"/>
                 </svg>
-              </Link>
+              </a>
               <a
                 href="tel:0724635700"
                 className="btn btn-secondary cta-secondary-button"
