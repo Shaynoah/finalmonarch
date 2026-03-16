@@ -7,6 +7,8 @@ import React, { useEffect, useRef, useState } from 'react'
 
 // Board of Directors images
 import steveImage from '../assets/steve.jpg'
+import newBoardMemberImage from '../assets/image.png'
+import kangwanaImage from '../assets/kangwana.png'
 import margaretImage from '../assets/Margaret.jpg'
 import bikiImage from '../assets/biki.jpg'
 import rajashImage from '../assets/Rajash.jpg'
@@ -38,6 +40,36 @@ const Team = () => {
       category: 'board-of-directors',
       image: steveImage,
       bio: 'Chairman',
+      experience: '',
+      education: '',
+      professionalQualifications: '',
+      furtherTraining: '',
+      email: '',
+      phone: ''
+    },
+    {
+      id: 105,
+      name: 'JARED B. KANGWANA',
+      role: 'Board Member',
+      department: 'Board of Directors',
+      category: 'board-of-directors',
+      image: kangwanaImage,
+      bio: 'Board Member',
+      experience: '',
+      education: '',
+      professionalQualifications: '',
+      furtherTraining: '',
+      email: '',
+      phone: ''
+    },
+    {
+      id: 104,
+      name: 'PROF. NJARAMBA GICHUKI',
+      role: 'Board Member',
+      department: 'Board of Directors',
+      category: 'board-of-directors',
+      image: newBoardMemberImage,
+      bio: 'Board Member',
       experience: '',
       education: '',
       professionalQualifications: '',

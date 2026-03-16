@@ -99,12 +99,12 @@ const Footer = () => {
                 </svg>
                 <span>Home</span>
               </Link>
-              <a href="#insurance" onClick={(e) => handleLinkClick(e, '#insurance')}>
+              <Link to="/group-life-insurance" onClick={() => window.scrollTo({ top: 0, behavior: 'instant' })}>
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                   <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
                 </svg>
                 <span>Insurances</span>
-              </a>
+              </Link>
               <Link to="/about" onClick={() => window.scrollTo({ top: 0, behavior: 'instant' })}>
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                   <circle cx="12" cy="12" r="10"/>
@@ -112,6 +112,15 @@ const Footer = () => {
                   <path d="M12 8h.01"/>
                 </svg>
                 <span>About</span>
+              </Link>
+              <Link to="/team" onClick={() => window.scrollTo({ top: 0, behavior: 'instant' })}>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                  <circle cx="9" cy="7" r="4"/>
+                  <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                  <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                </svg>
+                <span>Team</span>
               </Link>
               <Link to="/faqs" onClick={() => window.scrollTo({ top: 0, behavior: 'instant' })}>
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
