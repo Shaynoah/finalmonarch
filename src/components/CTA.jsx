@@ -58,12 +58,12 @@ const CTA = () => {
             </p>
             <div className="cta-buttons">
               <a
-                href="https://bima.monarchinsurance.co.ke/"
+                href="https://agent.monarchinsurance.co.ke/"
                 className="btn btn-primary cta-primary-button"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <span>BUY INSURANCE COVER</span>
+                <span>NEW AGENT PORTAL</span>
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                   <line x1="5" y1="12" x2="19" y2="12"/>
                   <polyline points="12 5 19 12 12 19"/>

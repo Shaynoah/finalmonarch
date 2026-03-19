@@ -1949,6 +1949,19 @@ img[loading="lazy"] {
     overflow: visible;
 }
 
+@media (min-width: 769px) {
+    .hero-buttons {
+        flex-direction: row;
+        flex-wrap: nowrap;
+    }
+
+    .hero-buttons .btn-get-quote {
+        width: fit-content;
+        max-width: none;
+        flex-shrink: 0;
+    }
+}
+
 .hero-whatsapp-banner {
     margin: 0;
 }
@@ -1956,6 +1969,7 @@ img[loading="lazy"] {
 .btn-get-quote {
     display: inline-flex !important;
     align-items: center;
+    justify-content: center;
     gap: 1rem !important;
     padding: 1.25rem 2.75rem;
     font-size: 1.125rem;
@@ -1968,6 +1982,13 @@ img[loading="lazy"] {
     color: var(--primary-green) !important;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
     border: 2px solid var(--white);
+    width: fit-content;
+    max-width: none;
+    flex-shrink: 0;
+}
+
+.btn-get-quote span {
+    white-space: nowrap;
 }
 
 .btn-get-quote:hover {
@@ -3509,6 +3530,21 @@ img[loading="lazy"] {
     flex-wrap: wrap;
 }
 
+@media (min-width: 769px) {
+    .cta-buttons {
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: nowrap;
+    }
+
+    .cta-primary-button,
+    .cta-secondary-button {
+        width: auto;
+        justify-content: center;
+    }
+}
+
 .cta-primary-button,
 .cta-secondary-button {
     padding: 1rem 2.25rem;
@@ -4819,14 +4855,15 @@ img[loading="lazy"] {
     }
 
     .cta-buttons {
-        flex-direction: column;
-        align-items: stretch;
+        flex-direction: row;
+        align-items: center;
         justify-content: center;
+        flex-wrap: nowrap;
     }
 
     .cta-primary-button,
     .cta-secondary-button {
-        width: 100%;
+        width: auto;
         justify-content: center;
     }
 
