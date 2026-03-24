@@ -34,7 +34,7 @@ const CTA = () => {
         <div className={`cta-content ${isVisible ? 'visible' : ''}`}>
           <div className="cta-background-pattern"></div>
           <div className="cta-text-content">
-            <h2 className="cta-title">GET INSURED IN 4 MINUTES</h2>
+            <h2 className="cta-title">GET COVERED IN MINUTES</h2>
             <p className="cta-description">
               Instant policy issuance with no document uploads.
             </p>

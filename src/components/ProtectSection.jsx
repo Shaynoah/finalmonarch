@@ -60,7 +60,7 @@ const ProtectSection = () => {
             <div className="protect-inline-cta">
               <div className="cta-content visible">
                 <div className="cta-text-content">
-                  <h3 className="cta-title">GET INSURED IN 4 MINUTES</h3>
+                  <h3 className="cta-title">GET COVERED IN MINUTES</h3>
                   <p className="cta-description">
                     Instant policy issuance with no document uploads.
                   </p>
