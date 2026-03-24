@@ -9,6 +9,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import steveImage from '../assets/steve.jpg'
 import newBoardMemberImage from '../assets/image.png'
 import kangwanaImage from '../assets/kangwana.png'
+import robertImage from '../assets/Robert.png'
 import margaretImage from '../assets/Margaret.jpg'
 import bikiImage from '../assets/biki.jpg'
 import rajashImage from '../assets/Rajash.jpg'
@@ -257,6 +258,26 @@ const Team = () => {
       furtherTraining: '',
       email: '',
       phone: ''
+    },
+    {
+      id: 17,
+      name: 'ROBERT KANYOTU ITHIRU',
+      role: 'Head of Internal Audit',
+      department: 'Internal Audit',
+      category: 'senior-management',
+      image: robertImage,
+      imageStyle: {
+        objectFit: 'contain',
+        objectPosition: 'top center',
+        backgroundColor: '#f3f5f7'
+      },
+      bio: 'Head of Internal Audit',
+      experience: 'Robert Kanyotu Ithiru serves as the Head of Internal Audit at The Monarch Insurance. With over 13 years of specialized experience in financial sectors, he is a seasoned professional dedicated to driving operational excellence and strategic risk management.',
+      education: 'A Certified Public Accountant (ICPAK) holding an MBA in Strategic Management.',
+      professionalQualifications: 'Expert in establishing robust internal control frameworks and ensuring rigorous statutory compliance.',
+      furtherTraining: 'He provides critical, data-driven assurance to the Board Audit & Risk Committee, safeguarding the organization\'s integrity and long-term stability.',
+      email: '',
+      phone: ''
     }
   ]
 
@@ -361,6 +382,7 @@ const Team = () => {
                       src={member.image} 
                       alt={member.name} 
                       className="team-member-image"
+                      style={member.imageStyle}
                       loading="lazy"
                       decoding="async"
                     />
@@ -405,6 +427,7 @@ const Team = () => {
                     src={selectedMember.image} 
                     alt={selectedMember.name} 
                     className="team-modal-image"
+                    style={selectedMember.imageStyle}
                     loading="eager"
                     decoding="async"
                   />

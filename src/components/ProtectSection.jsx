@@ -57,6 +57,51 @@ const ProtectSection = () => {
               underwriting both general and life insurance policies. We have grown from strength to strength due to 
               out of the box tailor made products for a whole array of customers.
             </p>
+            <div className="protect-inline-cta">
+              <div className="cta-content visible">
+                <div className="cta-text-content">
+                  <h3 className="cta-title">GET INSURED IN 4 MINUTES</h3>
+                  <p className="cta-description">
+                    Instant policy issuance with no document uploads.
+                  </p>
+                  <div className="cta-benefits">
+                    <div className="cta-benefit-item">
+                      <span className="cta-bullet-icon">✓</span>
+                      <span className="cta-benefit-text">ID &amp; vehicle details verified in real time</span>
+                    </div>
+                    <div className="cta-benefit-item">
+                      <span className="cta-bullet-icon">✓</span>
+                      <span className="cta-benefit-text">Secure mobile payment</span>
+                    </div>
+                    <div className="cta-benefit-item">
+                      <span className="cta-bullet-icon">✓</span>
+                      <span className="cta-benefit-text">Certificate issued immediately</span>
+                    </div>
+                  </div>
+                  <p className="cta-description">
+                    Need help? Call <strong>0738 669 931</strong>
+                  </p>
+                  <div className="cta-buttons">
+                    <a
+                      href="https://bima.monarchinsurance.co.ke/"
+                      className="btn btn-primary cta-primary-button"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <span>BUY INSURANCE NOW</span>
+                    </a>
+                    <a
+                      href="https://agent.monarchinsurance.co.ke/"
+                      className="btn btn-secondary cta-secondary-button"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <span>NEW AGENT PORTAL</span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
             <div className="protect-button-wrapper">
               <Link
                 to="/get-a-quote"
@@ -64,10 +109,6 @@ const ProtectSection = () => {
                 onClick={() => window.scrollTo({ top: 0, behavior: 'instant' })}
               >
                 <span>Get a Quote</span>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <line x1="5" y1="12" x2="19" y2="12"/>
-                  <polyline points="12 5 19 12 12 19"/>
-                </svg>
               </Link>
             </div>
           </div>

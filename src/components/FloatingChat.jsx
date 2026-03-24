@@ -9,13 +9,13 @@ const FloatingChat = () => {
   }
 
   const handleCall = () => {
-    window.location.href = 'tel:0724635700'
+    window.location.href = 'tel:0738669931'
   }
 
 
   const handleWhatsApp = () => {
-    // Format: https://wa.me/254724635700 (Kenya country code + number without leading 0)
-    window.open('https://wa.me/254724635700', '_blank')
+    // Format: https://wa.me/254738669931 (Kenya country code + number without leading 0)
+    window.open('https://wa.me/254738669931', '_blank')
   }
 
   // Close menu when clicking outside

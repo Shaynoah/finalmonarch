@@ -104,7 +104,7 @@ const Contact = () => {
                   </svg>
                 </div>
                 <div className="contact-phone-info">
-                  <a href="tel:0724635700" className="phone-number">0724635700</a>
+                  <a href="tel:0738669931" className="phone-number">0738669931</a>
                   <span className="phone-separator"> / </span>
                   <a href="tel:0705426931" className="phone-number">0705426931</a>
                 </div>
