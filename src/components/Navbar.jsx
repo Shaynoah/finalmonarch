@@ -1465,18 +1465,17 @@ const Navbar = () => {
             <span>Submit a Claim</span>
           </a>
 
-          <Link
-            to="/get-a-quote"
+          <a
+            href="http://41.191.226.217:8443/landing"
             className="nav-quote-button"
             onClick={() => {
-              window.scrollTo({ top: 0, behavior: 'instant' })
               setIsMobileMenuOpen(false)
               setOpenSubmenu(null)
               setOpenNestedSubmenu(null)
             }}
           >
-            <span>Get a Quote</span>
-          </Link>
+            <span>Generate a Quote</span>
+          </a>
 
           <a
             href="https://intermediary.monarchinsurance.co.ke/login"
