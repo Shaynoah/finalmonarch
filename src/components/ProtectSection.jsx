@@ -18,6 +18,22 @@ const ProtectSection = () => {
   }, [])
 
   useEffect(() => {
+    // On mobile, the hero can leave only a thin sliver of the next section visible.
+    // If we wait for a high intersection threshold, the section can look like "blank whitespace".
+    // Also respect reduced-motion users by showing content immediately.
+    const prefersReducedMotion =
+      typeof window !== 'undefined' &&
+      typeof window.matchMedia === 'function' &&
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches
+
+    const isMobile =
+      typeof window !== 'undefined' && window.innerWidth <= 768
+
+    if (prefersReducedMotion || isMobile) {
+      setIsVisible(true)
+      return
+    }
+
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -26,7 +42,10 @@ const ProtectSection = () => {
           }
         })
       },
-      { threshold: 0.2 }
+      {
+        threshold: 0.05,
+        rootMargin: '200px 0px',
+      }
     )
 
     if (sectionRef.current) {
@@ -34,9 +53,8 @@ const ProtectSection = () => {
     }
 
     return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current)
-      }
+      if (sectionRef.current) observer.unobserve(sectionRef.current)
+      observer.disconnect()
     }
   }, [])
 
