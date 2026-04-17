@@ -1,6 +1,8 @@
 import React from 'react'
 import contractorsAllRisksForm from '../forms/CONTRACTORS-ALL-RISKS-INSURANCE-PROPOSAL-FORM.pdf'
-import siteImage from '../assets/site.png'
+
+const siteImage =
+  'https://res.cloudinary.com/diozv0xm2/image/upload/q_auto/f_auto/v1776404826/ChatGPT_Image_Mar_9_2026_12_54_40_PM_op32xj.png'
 
 const ContractorsAllRisks = () => {
   return (

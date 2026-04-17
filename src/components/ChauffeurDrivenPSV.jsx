@@ -1,5 +1,7 @@
 import React from 'react'
-import psvImage from '../assets/psv.png'
+
+const psvImage =
+  'https://res.cloudinary.com/diozv0xm2/image/upload/q_auto/f_auto/v1776404817/ChatGPT_Image_Mar_9_2026_12_03_17_PM_w8s8dg.png'
 
 const ChauffeurDrivenPSV = () => {
   return (

@@ -1,29 +1,38 @@
 import React, { useEffect, useRef, useState } from 'react'
-// Import team member images here
-// Example:
-// import mosesGatunduImage from '../assets/team/moses-gatundu.jpg'
-// import stephenRobiaImage from '../assets/team/stephen-robia.jpg'
-// Add more imports as needed
 
-// Board of Directors images
-import steveImage from '../assets/steve.jpg'
-import newBoardMemberImage from '../assets/image.png'
-import kangwanaImage from '../assets/kangwana.png'
-import robertImage from '../assets/Robert.png'
-import margaretImage from '../assets/Margaret.jpg'
-import bikiImage from '../assets/biki.jpg'
-import rajashImage from '../assets/Rajash.jpg'
+const steveImage =
+  'https://res.cloudinary.com/diozv0xm2/image/upload/q_auto/f_auto/v1776407275/steve_rdhewq.jpg'
+const kangwanaImage =
+  'https://res.cloudinary.com/diozv0xm2/image/upload/q_auto/f_auto/v1776407250/kangwana_xa6baz.png'
+const mosesImage =
+  'https://res.cloudinary.com/diozv0xm2/image/upload/q_auto/f_auto/v1776407260/Moses6_h2rix3.jpg'
+const josephImage =
+  'https://res.cloudinary.com/diozv0xm2/image/upload/q_auto/f_auto/v1776407254/Joseph_Pic_ai1pec.jpg'
 
-// Senior Management images
-import mosesImage from '../assets/Moses6.jpg'
-import zipporahImage from '../assets/Zipporah3.jpg'
-import rosemaryImage from '../assets/Rosemary3.jpg'
-import jackieImage from '../assets/Jackie5.jpg'
-import robiaImage from '../assets/robia.jpg'
-import bridgitImage from '../assets/bridgit.jpg'
-import berylImage from '../assets/berryl.jpg'
-import lneahImage from '../assets/Lneah.jpeg'
-import josephImage from '../assets/Joseph Pic.jpg'
+const newBoardMemberImage =
+  'https://res.cloudinary.com/diozv0xm2/image/upload/q_auto/f_auto/v1776406616/image_h0lmk9.png'
+const margaretImage =
+  'https://res.cloudinary.com/diozv0xm2/image/upload/q_auto/f_auto/v1776406638/Margaret_apxzaj.jpg'
+const rajashImage =
+  'https://res.cloudinary.com/diozv0xm2/image/upload/q_auto/f_auto/v1776406640/Rajash_ztk8yh.jpg'
+const bikiImage =
+  'https://res.cloudinary.com/diozv0xm2/image/upload/q_auto/f_auto/v1776406612/biki_xkjlh8.jpg'
+const bridgitImage =
+  'https://res.cloudinary.com/diozv0xm2/image/upload/q_auto/f_auto/v1776407225/bridgit_menypi.jpg'
+const zipporahImage =
+  'https://res.cloudinary.com/diozv0xm2/image/upload/q_auto/f_auto/v1776406602/Zipporah3_vjvvdq.jpg'
+const rosemaryImage =
+  'https://res.cloudinary.com/diozv0xm2/image/upload/q_auto/f_auto/v1776406623/Rosemary3_cvn5w5.jpg'
+const jackieImage =
+  'https://res.cloudinary.com/diozv0xm2/image/upload/q_auto/f_auto/v1776406620/Jackie5_uhitcd.jpg'
+const robiaImage =
+  'https://res.cloudinary.com/diozv0xm2/image/upload/q_auto/f_auto/v1776406630/robia_apkpch.jpg'
+const berylImage =
+  'https://res.cloudinary.com/diozv0xm2/image/upload/q_auto/f_auto/v1776406608/berryl_jtiaxz.jpg'
+const lneahImage =
+  'https://res.cloudinary.com/diozv0xm2/image/upload/q_auto/f_auto/v1776406643/Lneah_n0y7fb.jpg'
+const robertImage =
+  'https://res.cloudinary.com/diozv0xm2/image/upload/q_auto/f_auto/v1776406633/Robert_vmp5j2.jpg'
 
 const Team = () => {
   const sectionRef = useRef(null)

@@ -1,6 +1,6 @@
 import React from 'react'
 import industrialForm from '../forms/INDUSTRIAL-ALL-RISKS-PROPOSAL-FORM.pdf'
-import indImage from '../assets/ind.png'
+import industrialImage from '../assets/ind.png'
 
 const Industrial = () => {
   return (
@@ -37,7 +37,7 @@ const Industrial = () => {
           {/* Industrial Image Section */}
           <div className="insurance-form-wrapper" style={{ marginTop: '3rem' }}>
             <div className="insurance-form-image">
-              <img src={indImage} alt="Industrial Insurance" />
+              <img src={industrialImage} alt="Industrial Insurance" />
             </div>
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
               <div style={{ padding: '2rem' }}>

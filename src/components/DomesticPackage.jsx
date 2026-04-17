@@ -1,6 +1,7 @@
 import React from 'react'
 import domesticPackageForm from '../forms/Domestic-Package-Proposal-Form.pdf'
-import domeImage from '../assets/dome.png'
+
+const domeImage = 'https://res.cloudinary.com/diozv0xm2/image/upload/q_auto/f_auto/v1776343492/dome_iovjhn.png'
 
 const DomesticPackage = () => {
   return (

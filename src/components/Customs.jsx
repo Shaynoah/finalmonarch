@@ -1,6 +1,7 @@
 import React from 'react'
 import bondForm from '../forms/BOND-APPLICATION-FORM.pdf'
-import custImage from '../assets/cust.png'
+
+const custImage = 'https://res.cloudinary.com/diozv0xm2/image/upload/q_auto/f_auto/v1776343491/cust_wzewbt.png'
 
 const Customs = () => {
   return (

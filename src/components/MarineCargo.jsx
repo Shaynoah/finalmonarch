@@ -1,5 +1,7 @@
 import React from 'react'
-import marineCargoImage from '../assets/marinecargo.png'
+
+const marineCargoImage =
+  'https://res.cloudinary.com/diozv0xm2/image/upload/q_auto/f_auto/v1776404821/ChatGPT_Image_Mar_9_2026_12_20_12_PM_wdsxvx.png'
 
 const MarineCargo = () => {
   return (

@@ -1,6 +1,8 @@
 import React from 'react'
 import fireAndPerilsForm from '../forms/Fire-and-Perils-Proposal-form.pdf'
-import perilsImage from '../assets/perils.png'
+
+const perilsImage =
+  'https://res.cloudinary.com/diozv0xm2/image/upload/q_auto/f_auto/v1776404782/ChatGPT_Image_Mar_9_2026_01_22_55_PM_vyeoyt.png'
 
 const FireAndPerils = () => {
   return (

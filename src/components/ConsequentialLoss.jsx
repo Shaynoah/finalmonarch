@@ -1,6 +1,7 @@
 import React from 'react'
 import fireAndPerilsForm from '../forms/Fire-and-Perils-Proposal-form.pdf'
-import consLossImage from '../assets/consloss.png'
+
+const consLossImage = 'https://res.cloudinary.com/diozv0xm2/image/upload/q_auto/f_auto/v1776343489/consloss_trijtn.png'
 
 const ConsequentialLoss = () => {
   return (

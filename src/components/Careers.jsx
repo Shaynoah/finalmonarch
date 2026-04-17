@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from 'react'
-import newCareer1Image from '../assets/new carrer.jpg'
-import newCareer2Image from '../assets/new carreer2.jpg'
+
+const newCareer1Image = 'https://res.cloudinary.com/diozv0xm2/image/upload/q_auto/f_auto/v1776343483/careers-copy-0_pvemn1.png'
+const newCareer2Image = 'https://res.cloudinary.com/diozv0xm2/image/upload/q_auto/f_auto/v1776343483/careers-copy-0_pvemn1.png'
 
 const Careers = () => {
   const jobPositions = [

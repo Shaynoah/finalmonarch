@@ -1,6 +1,7 @@
 import React from 'react'
 import carriersForm from '../forms/Carriers-Legal-Liability-Proposal-Form-_Monarch.pdf'
-import carriers2Image from '../assets/carriers2.png'
+
+const carriers2Image = 'https://res.cloudinary.com/diozv0xm2/image/upload/q_auto/f_auto/v1776343485/carriers2-copy-0_yjirrv.png'
 
 const Carriers = () => {
   return (

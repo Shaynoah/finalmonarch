@@ -1,6 +1,8 @@
 import React from 'react'
 import bondForm from '../forms/BOND-APPLICATION-FORM.pdf'
-import immImage from '../assets/imm.png'
+
+const immImage =
+  'https://res.cloudinary.com/diozv0xm2/image/upload/q_auto/f_auto/v1776404831/ChatGPT_Image_Mar_10_2026_03_28_33_PM_isytsm.png'
 
 const ImmigrationSecurity = () => {
   return (

@@ -1,6 +1,8 @@
 import React from 'react'
 import machineryBreakdownForm from '../forms/MACHINERY-BREAKDOWN-PROPOSAL-FORM-1.pdf'
-import mach2Image from '../assets/mach2.png'
+
+const mach2Image =
+  'https://res.cloudinary.com/diozv0xm2/image/upload/q_auto/f_auto/v1776404799/ChatGPT_Image_Mar_9_2026_01_29_46_PM_gkh9kk.png'
 
 const MachineryBreakdown = () => {
   return (

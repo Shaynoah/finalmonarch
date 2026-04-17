@@ -1,5 +1,6 @@
 import React from 'react'
-import fleetImage from '../assets/fleet.png'
+
+const fleetImage = 'https://res.cloudinary.com/diozv0xm2/image/upload/q_auto/f_auto/v1776343493/fleet_vhzcvq.png'
 
 const InstitutionalFleet = () => {
   return (

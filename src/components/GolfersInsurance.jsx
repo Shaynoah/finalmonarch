@@ -1,5 +1,7 @@
 import React from 'react'
-import golfImage from '../assets/golf.png'
+
+const golfImage =
+  'https://res.cloudinary.com/diozv0xm2/image/upload/q_auto/f_auto/v1776404792/ChatGPT_Image_Mar_9_2026_01_28_15_PM_rrushx.png'
 
 const GolfersInsurance = () => {
   return (

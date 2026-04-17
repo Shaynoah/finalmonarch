@@ -1,6 +1,7 @@
 import React from 'react'
 import contractorsAllRisksForm from '../forms/CONTRACTORS-ALL-RISKS-INSURANCE-PROPOSAL-FORM.pdf'
-import contractsImage from '../assets/contracts.png'
+
+const contractsImage = 'https://res.cloudinary.com/diozv0xm2/image/upload/q_auto/f_auto/v1776343490/contracts_vqppyj.png'
 
 const ContractorsPlantMachinery = () => {
   return (

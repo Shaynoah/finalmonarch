@@ -1,6 +1,7 @@
 import React from 'react'
 import electronicEquipmentForm from '../forms/Electronic-Equipment-Proposal-Form.pdf'
-import electronicImage from '../assets/electronic.jpg'
+
+const electronicImage = 'https://res.cloudinary.com/diozv0xm2/image/upload/q_auto/f_auto/v1776343492/elec_xn3ppr.png'
 
 const ElectronicEquipment = () => {
   return (

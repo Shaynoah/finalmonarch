@@ -1,5 +1,7 @@
 import React from 'react'
-import lifeImage from '../assets/life.png'
+
+const lifeImage =
+  'https://res.cloudinary.com/diozv0xm2/image/upload/q_auto/f_auto/v1776404840/Gemini_Generated_Image_mxelhimxelhimxel_av64l3.png'
 
 const GroupLife = () => {
   return (

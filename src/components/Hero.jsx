@@ -1,7 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react'
 import WhatsAppBanner from './WhatsAppBanner'
-import heroBgImage1 from '../assets/rehero.png'
-import heroBgImage2 from '../assets/rename2.png'
 
 const Hero = () => {
   const shapeRefs = [useRef(null), useRef(null), useRef(null)]
@@ -10,7 +8,10 @@ const Hero = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
   const [isLightBackground, setIsLightBackground] = useState(false)
   
-  const heroImages = [heroBgImage1, heroBgImage2]
+  const heroImages = [
+    'https://res.cloudinary.com/diozv0xm2/image/upload/q_auto/f_auto/v1776341719/rehero_hmdh5r.png',
+    'https://res.cloudinary.com/diozv0xm2/image/upload/q_auto/f_auto/v1776340630/rename2_c5o7wv.png'
+  ]
   
   // Preload all hero images immediately for faster rendering
   useEffect(() => {
