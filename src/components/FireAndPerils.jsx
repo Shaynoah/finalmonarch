@@ -39,7 +39,7 @@ const FireAndPerils = () => {
           {/* Fire Image Section */}
           <div className="insurance-form-wrapper" style={{ marginTop: '3rem' }}>
             <div className="insurance-form-image">
-              <img src={perilsImage} alt="Fire and Perils Insurance" />
+              <img loading="eager" src={perilsImage} alt="Fire and Perils Insurance" />
             </div>
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
               <div style={{ padding: '2rem' }}>

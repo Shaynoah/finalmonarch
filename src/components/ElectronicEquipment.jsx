@@ -35,7 +35,7 @@ const ElectronicEquipment = () => {
           {/* Electronic Image Section */}
           <div className="insurance-form-wrapper" style={{ marginTop: '3rem' }}>
             <div className="insurance-form-image">
-              <img src={electronicImage} alt="Electronic Equipment Insurance" />
+              <img loading="eager" src={electronicImage} alt="Electronic Equipment Insurance" />
             </div>
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
               <div style={{ padding: '2rem' }}>

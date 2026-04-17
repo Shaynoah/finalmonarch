@@ -34,7 +34,7 @@ const MotorCycle = () => {
           {/* Cycle Image Section */}
           <div className="insurance-form-wrapper" style={{ marginTop: '3rem' }}>
             <div className="insurance-form-image">
-              <img src={motor2Image} alt="Motor Cycle Insurance" />
+              <img loading="eager" src={motor2Image} alt="Motor Cycle Insurance" />
             </div>
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
               <div style={{ padding: '2rem' }}>

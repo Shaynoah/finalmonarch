@@ -36,7 +36,7 @@ const ContractorsAllRisks = () => {
           {/* Construction Image Section */}
           <div className="insurance-form-wrapper" style={{ marginTop: '3rem' }}>
             <div className="insurance-form-image">
-              <img src={siteImage} alt="Contractors All Risks Insurance" />
+              <img loading="eager" src={siteImage} alt="Contractors All Risks Insurance" />
             </div>
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
               <div style={{ padding: '2rem' }}>

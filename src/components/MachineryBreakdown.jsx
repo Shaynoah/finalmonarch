@@ -39,7 +39,7 @@ const MachineryBreakdown = () => {
           {/* Machinery Breakdown Image Section */}
           <div className="insurance-form-wrapper" style={{ marginTop: '3rem' }}>
             <div className="insurance-form-image">
-              <img src={mach2Image} alt="Machinery Breakdown Insurance" />
+              <img loading="eager" src={mach2Image} alt="Machinery Breakdown Insurance" />
             </div>
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
               <div style={{ padding: '2rem' }}>

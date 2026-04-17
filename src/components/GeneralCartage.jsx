@@ -32,7 +32,7 @@ const GeneralCartage = () => {
           {/* Cartage Image Section */}
           <div className="insurance-form-wrapper" style={{ marginTop: '3rem' }}>
             <div className="insurance-form-image">
-              <img src="https://res.cloudinary.com/diozv0xm2/image/upload/q_auto/f_auto/v1776343488/cartage2-copy-0_p5onxn.png" alt="General Cartage Insurance" />
+              <img loading="eager" src="https://res.cloudinary.com/diozv0xm2/image/upload/q_auto/f_auto/v1776343488/cartage2-copy-0_p5onxn.png" alt="General Cartage Insurance" />
             </div>
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
               <div style={{ padding: '2rem' }}>

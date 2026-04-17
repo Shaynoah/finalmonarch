@@ -39,7 +39,7 @@ const ImmigrationSecurity = () => {
           {/* Immigration Security Image Section */}
           <div className="insurance-form-wrapper" style={{ marginTop: '3rem' }}>
             <div className="insurance-form-image">
-              <img src={immImage} alt="Immigration Security Insurance" />
+              <img loading="eager" src={immImage} alt="Immigration Security Insurance" />
             </div>
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
               <div style={{ padding: '2rem' }}>

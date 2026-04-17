@@ -41,7 +41,7 @@ const GroupLife = () => {
           {/* Life Insurance Image Section */}
           <div className="insurance-form-wrapper" style={{ marginTop: '3rem' }}>
             <div className="insurance-form-image">
-              <img src={lifeImage} alt="Group Life Assurance" />
+              <img loading="eager" src={lifeImage} alt="Group Life Assurance" />
             </div>
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
               <div style={{ padding: '2rem' }}>
