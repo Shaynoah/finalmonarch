@@ -1,6 +1,7 @@
 import React from 'react'
 import professionalIndemnityForm from '../forms/PROFESSIONAL-INDEMNITY-PROPOSAL-FORM-.pdf'
-import indemnityImage from '../assets/indemnity.png'
+
+const indemnityImage = 'https://res.cloudinary.com/diozv0xm2/image/upload/q_auto/f_auto/v1776416271/indemnity_w25cpu.png'
 
 const ProfessionalIndemnity = () => {
   return (

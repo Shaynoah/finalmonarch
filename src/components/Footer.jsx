@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import logoImage from '../assets/logo.png'
+
+const logoImage = 'https://res.cloudinary.com/diozv0xm2/image/upload/q_auto/f_auto/v1776416275/logo_brgjho.jpg'
 
 const Footer = () => {
   const currentYear = new Date().getFullYear()

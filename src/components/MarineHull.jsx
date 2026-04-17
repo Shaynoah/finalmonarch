@@ -1,5 +1,6 @@
 import React from 'react'
-import marineHullImage from '../assets/marine hull.png'
+
+const marineHullImage = 'https://res.cloudinary.com/diozv0xm2/image/upload/q_auto/f_auto/v1776416279/marine_hull-D34hTemg_hzisrl.png'
 
 const MarineHull = () => {
   return (
