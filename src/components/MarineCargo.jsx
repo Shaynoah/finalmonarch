@@ -1,7 +1,7 @@
 import React from 'react'
 
 const marineCargoImage =
-  'https://res.cloudinary.com/diozv0xm2/image/upload/q_auto/f_auto/marinecargo-SGfbEDPj.png'
+  'https://res.cloudinary.com/diozv0xm2/image/upload/q_auto/f_auto/v1776418286/transit2-C-pWFbBF_1_vr3zk1.png'
 
 const MarineCargo = () => {
   return (
