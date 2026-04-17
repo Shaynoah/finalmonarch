@@ -32,7 +32,7 @@ const berylImage =
 const lneahImage =
   'https://res.cloudinary.com/diozv0xm2/image/upload/q_auto/f_auto/v1776406643/Lneah_n0y7fb.jpg'
 const robertImage =
-  'https://res.cloudinary.com/diozv0xm2/image/upload/q_auto/f_auto/v1776406633/Robert_vmp5j2.jpg'
+  'https://res.cloudinary.com/diozv0xm2/image/upload/a_-90/q_auto/f_auto/v1776406633/Robert_vmp5j2.jpg'
 
 const Team = () => {
   const sectionRef = useRef(null)
