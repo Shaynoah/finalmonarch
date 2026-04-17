@@ -1,6 +1,7 @@
 import React from 'react'
 import bondForm from '../forms/BOND-APPLICATION-FORM.pdf'
-import performanceImage from '../assets/perfomance.png'
+
+const performanceImage = 'https://res.cloudinary.com/diozv0xm2/image/upload/q_auto/f_auto/v1776416754/perfomance-_UPzI9E8_g45rza.png'
 
 const Performance = () => {
   return (

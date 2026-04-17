@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 const protectImage1 = 'https://res.cloudinary.com/diozv0xm2/image/upload/q_auto/f_auto/v1776416265/image5-DRHH24J5_qtucqm.png'
 const protectImage2 = 'https://res.cloudinary.com/diozv0xm2/image/upload/q_auto/f_auto/v1776416265/image6-D4WAXWRn_cfny8t.png'
-import protectImage3 from '../assets/image7.png'
+const protectImage3 = 'https://res.cloudinary.com/diozv0xm2/image/upload/q_auto/f_auto/v1776416756/image7_utht2d.png'
 
 const ProtectSection = () => {
   const sectionRef = useRef(null)
