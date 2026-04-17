@@ -1,6 +1,7 @@
 import React from 'react'
 import goodsInTransitForm from '../forms/Goods-In-Transit-Proposal-Form.pdf'
-import transit2Image from '../assets/transit2.png'
+
+const transit2Image = 'https://res.cloudinary.com/diozv0xm2/image/upload/q_auto/f_auto/v1776416294/transit2-C-pWFbBF_iadlrq.png'
 
 const GoodsInTransit = () => {
   return (

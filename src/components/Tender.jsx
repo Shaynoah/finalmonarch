@@ -1,6 +1,7 @@
 import React from 'react'
 import bondForm from '../forms/BOND-APPLICATION-FORM.pdf'
-import tenderImage from '../assets/tender.png'
+
+const tenderImage = 'https://res.cloudinary.com/diozv0xm2/image/upload/q_auto/f_auto/v1776416291/tender-Dv41YHgM_qc8k15.png'
 
 const Tender = () => {
   return (
