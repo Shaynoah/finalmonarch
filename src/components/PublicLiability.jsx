@@ -1,6 +1,7 @@
 import React from 'react'
 import publicLiabilityForm from '../forms/Public-Liability-Proposal-Form-1.pdf'
-import publicLiabilityImage from '../assets/public liability.png'
+
+const publicLiabilityImage = 'https://res.cloudinary.com/diozv0xm2/image/upload/q_auto/f_auto/v1776416284/public_liability-DA2fR3Q9_nqizyp.png'
 
 const PublicLiability = () => {
   return (

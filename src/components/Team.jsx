@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 
 const steveImage =
-  'https://res.cloudinary.com/diozv0xm2/image/upload/q_auto/f_auto/v1776407275/steve_rdhewq.jpg'
+  'https://res.cloudinary.com/diozv0xm2/image/upload/q_auto/f_auto/v1776416289/steve-BaNbmKv__icqthn.jpg'
 const kangwanaImage =
   'https://res.cloudinary.com/diozv0xm2/image/upload/q_auto/f_auto/v1776407250/kangwana_xa6baz.png'
 const mosesImage =

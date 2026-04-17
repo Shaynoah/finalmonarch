@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import InsuranceCard from './InsuranceCard'
-import generalInsuranceImage from '../assets/general.png'
+
+const generalInsuranceImage = 'https://res.cloudinary.com/diozv0xm2/image/upload/q_auto/f_auto/v1776416261/general-DMzr5gom_hmqfzl.png'
 
 const lifeInsuranceImage =
   'https://res.cloudinary.com/diozv0xm2/image/upload/q_auto/f_auto/v1776404840/Gemini_Generated_Image_mxelhimxelhimxel_av64l3.png'

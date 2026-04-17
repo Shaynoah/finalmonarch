@@ -1,5 +1,6 @@
 import React from 'react'
-import motorVehicle2Image from '../assets/motorvehicle2.png'
+
+const motorVehicle2Image = 'https://res.cloudinary.com/diozv0xm2/image/upload/q_auto/f_auto/v1776416284/motorvehicle2-B17t9aVx_xcyget.png'
 
 const MotorVehicle = () => {
   return (

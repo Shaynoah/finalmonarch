@@ -1,6 +1,7 @@
 import React from 'react'
 import workInjuryForm from '../forms/WIBA-PROPOSAL-FORM.pdf'
-import workInjuryImage from '../assets/workinjury.png'
+
+const workInjuryImage = 'https://res.cloudinary.com/diozv0xm2/image/upload/q_auto/f_auto/v1776416259/workinjury-DcNIHYcW_ahaouh.png'
 
 const WorkInjury = () => {
   return (

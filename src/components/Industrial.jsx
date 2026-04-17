@@ -1,6 +1,7 @@
 import React from 'react'
 import industrialForm from '../forms/INDUSTRIAL-ALL-RISKS-PROPOSAL-FORM.pdf'
-import industrialImage from '../assets/ind.png'
+
+const industrialImage = 'https://res.cloudinary.com/diozv0xm2/image/upload/q_auto/f_auto/v1776416269/ind-CyGEUh-W_jh7mzv.png'
 
 const Industrial = () => {
   return (
