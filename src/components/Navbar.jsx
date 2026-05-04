@@ -558,12 +558,12 @@ const Navbar = () => {
     },
     { 
       id: 'pages', 
-      label: 'Pages',
+      label: 'About Us',
       hasSubmenu: true,
       submenuItems: [
         {
           id: 'about-us',
-          label: 'About Us',
+          label: 'About Monarch',
           icon: (
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
               <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
@@ -1140,6 +1140,7 @@ const Navbar = () => {
     setOpenNestedSubmenu(null)
     setOpenSubmenuColumns({})
   }
+
   
   const toggleSubmenuColumn = (columnId, e) => {
     // Only toggle on mobile
@@ -1479,7 +1480,7 @@ const Navbar = () => {
           </a>
 
           <a
-            href="https://intermediary.monarchinsurance.co.ke/login"
+            href="https://agent.monarchinsurance.co.ke/"
             className="nav-intermediary-button"
             target="_blank"
             rel="noopener noreferrer"

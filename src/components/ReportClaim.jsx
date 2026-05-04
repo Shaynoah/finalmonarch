@@ -1,6 +1,13 @@
 import React, { useState } from 'react'
+import { useToast } from '../context/ToastContext'
+import OptionalTurnstile from './OptionalTurnstile'
+
+const captchaRequired = Boolean(import.meta.env.VITE_TURNSTILE_SITE_KEY)
 
 const ReportClaim = () => {
+  const { showToast } = useToast()
+  const [captchaToken, setCaptchaToken] = useState(null)
+  const [turnstileKey, setTurnstileKey] = useState(0)
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -10,39 +17,57 @@ const ReportClaim = () => {
     claimDescription: ''
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
-  const [formStatus, setFormStatus] = useState({ type: '', message: '' })
 
   const handleSubmit = async (e) => {
     e.preventDefault()
+    if (captchaRequired && !captchaToken) {
+      showToast({
+        type: 'error',
+        message: 'Please complete the security verification below.',
+      })
+      return
+    }
+
     setIsSubmitting(true)
-    setFormStatus({ type: '', message: '' })
+
+    const claimUrl = import.meta.env.VITE_CLAIM_API_URL || '/api/claim'
 
     try {
-      // Simulate form submission
-      await new Promise(resolve => setTimeout(resolve, 1500))
-      
-      setFormStatus({
-        type: 'success',
-        message: 'Your claim has been submitted successfully! We will process your report and get back to you soon.'
+      const res = await fetch(claimUrl, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          ...formData,
+          ...(captchaToken ? { captchaToken } : {}),
+        }),
       })
-      
+      const payload = await res.json().catch(() => ({}))
+
+      if (!res.ok) {
+        throw new Error(payload.error || `Request failed (${res.status})`)
+      }
+
+      showToast({
+        type: 'success',
+        message: 'Your claim has been submitted. We will process your report and get back to you soon.',
+      })
+
       setFormData({
         firstName: '',
         lastName: '',
         email: '',
         typeOfCover: '',
         policyNumber: '',
-        claimDescription: ''
+        claimDescription: '',
       })
-
-      // Clear success message after 5 seconds
-      setTimeout(() => {
-        setFormStatus({ type: '', message: '' })
-      }, 5000)
+      setCaptchaToken(null)
+      setTurnstileKey((k) => k + 1)
     } catch (error) {
-      setFormStatus({
+      showToast({
         type: 'error',
-        message: 'Something went wrong. Please try again or contact us directly.'
+        message:
+          error?.message ||
+          'Something went wrong. If you are running locally, start the claim email server (see README).',
       })
     } finally {
       setIsSubmitting(false)
@@ -174,29 +199,12 @@ const ReportClaim = () => {
                 value={formData.claimDescription}
                 onChange={handleChange}
                 placeholder="Description"
-                rows="6"
+                rows="8"
                 required
               ></textarea>
             </div>
 
-            {formStatus.message && (
-              <div className={`report-claim-form-status ${formStatus.type}`}>
-                {formStatus.type === 'success' && (
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
-                    <polyline points="22 4 12 14.01 9 11.01"/>
-                  </svg>
-                )}
-                {formStatus.type === 'error' && (
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                    <circle cx="12" cy="12" r="10"/>
-                    <line x1="12" y1="8" x2="12" y2="12"/>
-                    <line x1="12" y1="16" x2="12.01" y2="16"/>
-                  </svg>
-                )}
-                <span>{formStatus.message}</span>
-              </div>
-            )}
+            <OptionalTurnstile key={turnstileKey} onTokenChange={setCaptchaToken} />
 
             <button type="submit" className="submit-claim-btn" disabled={isSubmitting}>
               {isSubmitting ? 'Sending...' : 'Send'}

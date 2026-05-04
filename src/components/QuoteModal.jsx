@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react'
+import { useToast } from '../context/ToastContext'
 
 const QuoteModal = ({ isOpen, onClose }) => {
+  const { showToast } = useToast()
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -9,7 +11,6 @@ const QuoteModal = ({ isOpen, onClose }) => {
     description: ''
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
-  const [formStatus, setFormStatus] = useState({ type: '', message: '' })
 
   useEffect(() => {
     if (isOpen) {
@@ -32,17 +33,16 @@ const QuoteModal = ({ isOpen, onClose }) => {
   const handleSubmit = async (e) => {
     e.preventDefault()
     setIsSubmitting(true)
-    setFormStatus({ type: '', message: '' })
 
     try {
       // Simulate form submission
       await new Promise(resolve => setTimeout(resolve, 1500))
       
-      setFormStatus({
+      showToast({
         type: 'success',
-        message: 'Thank you for your quote request! We will get back to you within 24 hours.'
+        message: 'Thank you for your quote request! We will get back to you within 24 hours.',
       })
-      
+
       setFormData({
         firstName: '',
         lastName: '',
@@ -51,15 +51,13 @@ const QuoteModal = ({ isOpen, onClose }) => {
         description: ''
       })
 
-      // Close modal after 2 seconds on success
       setTimeout(() => {
         onClose()
-        setFormStatus({ type: '', message: '' })
-      }, 2000)
+      }, 1800)
     } catch (error) {
-      setFormStatus({
+      showToast({
         type: 'error',
-        message: 'Something went wrong. Please try again or contact us directly.'
+        message: 'Something went wrong. Please try again or contact us directly.',
       })
     } finally {
       setIsSubmitting(false)
@@ -173,18 +171,12 @@ const QuoteModal = ({ isOpen, onClose }) => {
               id="description"
               name="description"
               placeholder="Description"
-              rows="4"
+              rows="7"
               value={formData.description}
               onChange={handleChange}
               required
             ></textarea>
           </div>
-
-          {formStatus.message && (
-            <div className={`quote-form-status ${formStatus.type}`}>
-              {formStatus.message}
-            </div>
-          )}
 
           <button type="submit" className="quote-form-submit" disabled={isSubmitting}>
             {isSubmitting ? 'Sending...' : 'Send'}

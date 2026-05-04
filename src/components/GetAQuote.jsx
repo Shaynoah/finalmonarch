@@ -1,6 +1,13 @@
 import React, { useState } from 'react'
+import { useToast } from '../context/ToastContext'
+import OptionalTurnstile from './OptionalTurnstile'
+
+const captchaRequired = Boolean(import.meta.env.VITE_TURNSTILE_SITE_KEY)
 
 const GetAQuote = () => {
+  const { showToast } = useToast()
+  const [captchaToken, setCaptchaToken] = useState(null)
+  const [turnstileKey, setTurnstileKey] = useState(0)
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -56,27 +63,71 @@ const GetAQuote = () => {
     return Object.keys(newErrors).length === 0
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    
-    if (validateForm()) {
-      setIsSubmitting(true)
-      // Here you would typically send the data to your backend
-      console.log('Form submitted:', formData)
-      
-      // Simulate API call
-      setTimeout(() => {
-        setIsSubmitting(false)
-        alert('Thank you! Your quote request has been submitted successfully.')
-        // Reset form
-        setFormData({
-          firstName: '',
-          lastName: '',
-          email: '',
-          typeOfCover: '',
-          description: ''
-        })
-      }, 1000)
+    if (!validateForm()) return
+    if (captchaRequired && !captchaToken) {
+      showToast({
+        type: 'error',
+        message: 'Please complete the security verification below.',
+      })
+      return
+    }
+
+    setIsSubmitting(true)
+
+    const contactUrl = import.meta.env.VITE_CONTACT_API_URL || '/api/contact'
+
+    const coverSelect = document.getElementById('typeOfCover')
+    const coverLabel =
+      coverSelect?.options?.[coverSelect.selectedIndex]?.text?.trim() ||
+      formData.typeOfCover
+
+    const payload = {
+      name: `${formData.firstName.trim()} ${formData.lastName.trim()}`.trim(),
+      email: formData.email.trim(),
+      phone: '',
+      subject: `Quote Request — ${coverLabel}`,
+      message: [`Type of cover: ${coverLabel}`, '', 'Details:', formData.description.trim()].join(
+        '\n'
+      ),
+      ...(captchaToken ? { captchaToken } : {}),
+    }
+
+    try {
+      const res = await fetch(contactUrl, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      })
+      const resPayload = await res.json().catch(() => ({}))
+
+      if (!res.ok) {
+        throw new Error(resPayload.error || `Request failed (${res.status})`)
+      }
+
+      showToast({
+        type: 'success',
+        message: 'Your message has been sent. We will get back to you soon.',
+      })
+      setFormData({
+        firstName: '',
+        lastName: '',
+        email: '',
+        typeOfCover: '',
+        description: '',
+      })
+      setCaptchaToken(null)
+      setTurnstileKey((k) => k + 1)
+    } catch (error) {
+      showToast({
+        type: 'error',
+        message:
+          error?.message ||
+          'Could not send your request. If you are running locally, start the email API server (see README).',
+      })
+    } finally {
+      setIsSubmitting(false)
     }
   }
 
@@ -198,7 +249,7 @@ const GetAQuote = () => {
                   value={formData.description}
                   onChange={handleChange}
                   placeholder="Description"
-                  rows="5"
+                  rows="8"
                   className={errors.description ? 'error' : ''}
                 ></textarea>
                 {errors.description && (
@@ -206,12 +257,10 @@ const GetAQuote = () => {
                 )}
               </div>
 
+              <OptionalTurnstile key={turnstileKey} onTokenChange={setCaptchaToken} />
+
               <div className="form-submit">
-                <button 
-                  type="submit" 
-                  className="submit-button"
-                  disabled={isSubmitting}
-                >
+                <button type="submit" className="submit-button" disabled={isSubmitting}>
                   {isSubmitting ? 'Sending...' : 'Send'}
                 </button>
               </div>

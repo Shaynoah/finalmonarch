@@ -140,7 +140,7 @@ const Hero = () => {
                 <line x1="9" y1="15" x2="15" y2="15"/>
                 <line x1="9" y1="12" x2="15" y2="12"/>
               </svg>
-              <span>Buy Insurance Cover</span>
+              <span>Get Insurance Instantly</span>
             </a>
             <div className="hero-whatsapp-banner">
               <WhatsAppBanner />

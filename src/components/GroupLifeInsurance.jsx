@@ -1,12 +1,19 @@
 import React, { useState } from 'react'
+import { useToast } from '../context/ToastContext'
+import OptionalTurnstile from './OptionalTurnstile'
+
+const captchaRequired = Boolean(import.meta.env.VITE_TURNSTILE_SITE_KEY)
 
 const GroupLifeInsurance = () => {
-  const [selectedPlan, setSelectedPlan] = useState('')
+  const { showToast } = useToast()
+  const [captchaToken, setCaptchaToken] = useState(null)
+  const [turnstileKey, setTurnstileKey] = useState(0)
   const [formData, setFormData] = useState({
     mobile: '',
     email: '',
     plan: ''
   })
+  const [isSubmitting, setIsSubmitting] = useState(false)
 
   const plans = [
     {
@@ -78,12 +85,66 @@ const GroupLifeInsurance = () => {
     'Completed claim form'
   ]
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    // Handle form submission
-    console.log('Form submitted:', formData)
-    alert('Thank you for your inquiry! We will contact you soon.')
-    setFormData({ mobile: '', email: '', plan: '' })
+    if (!formData.plan) return
+    if (captchaRequired && !captchaToken) {
+      showToast({
+        type: 'error',
+        message: 'Please complete the security verification below.',
+      })
+      return
+    }
+
+    setIsSubmitting(true)
+
+    const planLabel =
+      plans.find((p) => p.id === formData.plan)?.name || formData.plan
+    const contactUrl = import.meta.env.VITE_CONTACT_API_URL || '/api/contact'
+    const payload = {
+      name: 'Group Last Expense inquiry',
+      email: formData.email.trim(),
+      phone: formData.mobile.trim(),
+      subject: `Quote Request — Group Last Expense — ${planLabel}`,
+      message: [
+        'Source: Group Last Expense (Family Last Expense Rates page)',
+        '',
+        `Mobile: ${formData.mobile.trim()}`,
+        `Email: ${formData.email.trim()}`,
+        `Selected plan: ${planLabel}`,
+      ].join('\n'),
+      ...(captchaToken ? { captchaToken } : {}),
+    }
+
+    try {
+      const res = await fetch(contactUrl, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      })
+      const resPayload = await res.json().catch(() => ({}))
+
+      if (!res.ok) {
+        throw new Error(resPayload.error || `Request failed (${res.status})`)
+      }
+
+      showToast({
+        type: 'success',
+        message: 'Your inquiry has been sent. We will get back to you soon.',
+      })
+      setFormData({ mobile: '', email: '', plan: '' })
+      setCaptchaToken(null)
+      setTurnstileKey((k) => k + 1)
+    } catch (error) {
+      showToast({
+        type: 'error',
+        message:
+          error?.message ||
+          'Could not send your inquiry. If you are running locally, start the email API server (see README).',
+      })
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   return (
@@ -229,7 +290,7 @@ const GroupLifeInsurance = () => {
           <div className="inquiry-card">
             <h2 className="inquiry-title">Make an Inquiry</h2>
             <p className="inquiry-subtitle">Fill out the form below and we'll get back to you</p>
-            
+
             <form className="inquiry-form" onSubmit={handleSubmit}>
               <div className="form-group">
                 <input
@@ -267,12 +328,16 @@ const GroupLifeInsurance = () => {
                 </select>
               </div>
 
-              <button type="submit" className="submit-btn">
-                <span>Submit Inquiry</span>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <line x1="5" y1="12" x2="19" y2="12"></line>
-                  <polyline points="12 5 19 12 12 19"></polyline>
-                </svg>
+              <OptionalTurnstile key={turnstileKey} onTokenChange={setCaptchaToken} />
+
+              <button type="submit" className="submit-btn" disabled={isSubmitting}>
+                <span>{isSubmitting ? 'Sending…' : 'Submit Inquiry'}</span>
+                {!isSubmitting && (
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                    <polyline points="12 5 19 12 12 19"></polyline>
+                  </svg>
+                )}
               </button>
             </form>
           </div>

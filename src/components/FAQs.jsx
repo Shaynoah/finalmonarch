@@ -9,27 +9,29 @@ const FAQs = () => {
     {
       id: 1,
       question: 'What is General Insurance?',
-      answer: 'General Insurance is essentially Non-Life Insurance. It offers protective coverage for assets other than life. Depending on the kind of asset insured, there are different kinds of General Insurance.'
+      answer: 'General Insurance is non-life insurance: it protects things like your vehicle, home, business stock, or liability—not your life. Motor, fire, marine, and theft cover are common examples; the policy wording sets what is insured and what is excluded.'
     },
     {
       id: 2,
       question: 'Can I buy General Insurance online? And is it safe to do so?',
-      answer: 'The advantages of buying insurance online include quicker and easier application, lower premiums and the ability to read the documentation first-hand.'
+      answer: 'Yes. Use our official Monarch portal only; applications go through the same underwriting principles as other channels. You can review wording, declare risks accurately, and complete your application online.',
+      link: 'https://agent.monarchinsurance.co.ke/',
+      linkLabel: 'Open the online portal'
     },
     {
       id: 3,
-      question: 'What is the eligibility criteria for purchasing General Insurance?',
-      answer: 'The exact eligibility criteria for General Insurance depends on the kind of insurance you are looking for, the terms associated with the policy.'
+      question: 'What are the eligibility criteria for purchasing General Insurance?',
+      answer: 'Eligibility depends on the product: you need a valid insurable interest (a real financial stake in what you insure), truthful answers on the proposal form, and any documents the product requires (e.g. ID, valuation, or registration). Some risks are declined or need special terms; the portal or our team will confirm what applies before you pay.'
     },
     {
       id: 4,
-      question: 'Can I cancel my life insurances at any time?',
-      answer: 'Yes. When you first buy a policy, you have 30 days from the day we tell you your policy will start, or the day you receive your policy documents (whichever is later) to change your mind. If you cancel during this 30 day cooling off period, we\'ll refund any premiums you\'ve already paid. You can still cancel your policy if the cooling-off period has finished, but we won\'t refund any premiums you\'ve already paid.'
+      question: 'Can I cancel my life insurance at any time?',
+      answer: 'Yes—you can cancel your life policy at any time. If you cancel within 30 days of whichever is later—when we confirm your cover has started or when you receive your policy documents—that falls within the cooling-off period and we refund premiums you have already paid. If you cancel after that 30-day period, your cover can end as normal, but we do not refund premiums you have already paid.'
     },
     {
       id: 5,
       question: 'Can I cancel my policy if I am not satisfied with its terms and conditions?',
-      answer: 'Yes. Under life insurance policy this action must be taken within the first thirty days after receiving the policy document. In case you cancel the policy within the thirty days, you will be refunded the whole premium paid less withholding tax. Regarding general insurance business, cancellation of the policy will lead to a prorata refund of the premiums so far paid.'
+      answer: 'Life insurance: cancel within 30 days of receiving your policy document and you receive a full premium refund less withholding tax. General insurance: if you cancel, unused premium is usually refunded on a pro rata basis, as set out in your policy. Always read the schedule and policy wording before you accept cover.'
     }
   ]
 
@@ -96,7 +98,14 @@ const FAQs = () => {
               </div>
               <div className={`faq-answer ${openIndex === index ? 'open' : ''}`}>
                 <div className="faq-answer-content">
-                  <p>{faq.answer}</p>
+                  <p>
+                    {faq.answer}{' '}
+                    {faq.link && (
+                      <a href={faq.link} target="_blank" rel="noopener noreferrer">
+                        {faq.linkLabel}
+                      </a>
+                    )}
+                  </p>
                 </div>
               </div>
             </div>

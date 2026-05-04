@@ -1,27 +1,10 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import { useLocation, Link } from 'react-router-dom'
 import personalAccidentForm from '../forms/Personal-Accident-Proposal-Form.pdf'
 
 const GroupPersonalAccident = () => {
   const location = useLocation()
   const isPersonalAccident = location.pathname === '/personal-accident'
-  const [activeTab, setActiveTab] = useState(isPersonalAccident ? 'personal-accident' : 'group-personal-accident')
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    insuranceType: ''
-  })
-
-  useEffect(() => {
-    setActiveTab(isPersonalAccident ? 'personal-accident' : 'group-personal-accident')
-  }, [isPersonalAccident])
-
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    console.log('Form submitted:', { ...formData, tab: activeTab })
-    alert('Thank you for your inquiry! We will send you a quote soon.')
-    setFormData({ name: '', email: '', insuranceType: '' })
-  }
 
   // Content based on type
   const content = isPersonalAccident ? {
@@ -89,71 +72,6 @@ const GroupPersonalAccident = () => {
                 </svg>
                 <span>CLAIM FORM</span>
               </Link>
-            </div>
-          </div>
-
-          {/* Insurance Quote Form */}
-          <div className="group-personal-accident-form-wrapper">
-            <div className="group-personal-accident-quote-form-card">
-              <div className="group-personal-accident-tabs">
-                <button
-                  className={`group-personal-accident-tab ${activeTab === 'group-personal-accident' ? 'active' : ''}`}
-                  onClick={() => setActiveTab('group-personal-accident')}
-                >
-                  GROUP PERSONAL ACCIDENT
-                </button>
-                <button
-                  className={`group-personal-accident-tab ${activeTab === 'personal-accident' ? 'active' : ''}`}
-                  onClick={() => setActiveTab('personal-accident')}
-                >
-                  PERSONAL ACCIDENT
-                </button>
-              </div>
-
-              <div className="group-personal-accident-form-content">
-                <p className="group-personal-accident-form-intro">
-                  Complete the form below, and we'll send you a quote on the insurance you're interested in. It's that simple.
-                </p>
-
-                <form className="group-personal-accident-quote-form" onSubmit={handleSubmit}>
-                  <div className="form-field">
-                    <input
-                      type="text"
-                      placeholder="YOUR NAME"
-                      value={formData.name}
-                      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                      required
-                    />
-                  </div>
-
-                  <div className="form-field">
-                    <input
-                      type="email"
-                      placeholder="MAIL"
-                      value={formData.email}
-                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      required
-                    />
-                  </div>
-
-                  <div className="form-field">
-                    <select
-                      value={formData.insuranceType}
-                      onChange={(e) => setFormData({ ...formData, insuranceType: e.target.value })}
-                      required
-                      className="insurance-type-select"
-                    >
-                      <option value="">INSURANCE TYPE</option>
-                      <option value="group-personal-accident">GROUP PERSONAL ACCIDENT</option>
-                      <option value="personal-accident">PERSONAL ACCIDENT</option>
-                    </select>
-                  </div>
-
-                  <button type="submit" className="get-cover-btn">
-                    GET COVER
-                  </button>
-                </form>
-              </div>
             </div>
           </div>
         </div>

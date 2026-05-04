@@ -132,14 +132,16 @@ unwavering commitment to service excellence.
               className="mission-card"
               ref={(el) => (sectionRefs.current[0] = el)}
             >
-              <div className="mv-icon-wrapper">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
-                  <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
-                  <line x1="12" y1="22.08" x2="12" y2="12"/>
-                </svg>
+              <div className="mv-header-inline">
+                <div className="mv-icon-wrapper">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+                    <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
+                    <line x1="12" y1="22.08" x2="12" y2="12"/>
+                  </svg>
+                </div>
+                <h2 className="mv-title">Our Mission</h2>
               </div>
-              <h2 className="mv-title">Our Mission</h2>
               <p className="mv-description">
                 A one Stop provider for innovative, unique, and affordable products and services 
                 that exceed our customers' expectations
@@ -150,13 +152,15 @@ unwavering commitment to service excellence.
               className="vision-card"
               ref={(el) => (sectionRefs.current[1] = el)}
             >
-              <div className="mv-icon-wrapper">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
-                  <circle cx="12" cy="12" r="3"/>
-                </svg>
+              <div className="mv-header-inline">
+                <div className="mv-icon-wrapper">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                    <circle cx="12" cy="12" r="3"/>
+                  </svg>
+                </div>
+                <h2 className="mv-title">Our Vision</h2>
               </div>
-              <h2 className="mv-title">Our Vision</h2>
               <p className="mv-description">
                 To be a World Class Insurer of Choice
               </p>
@@ -170,7 +174,6 @@ unwavering commitment to service excellence.
           >
             <div className="values-header">
               <h2 className="values-title">Our Core Values</h2>
-              <p className="values-subtitle">The principles that guide everything we do</p>
             </div>
             
             <div className="values-grid">
@@ -179,10 +182,12 @@ unwavering commitment to service excellence.
                   key={index} 
                   className="value-card"
                 >
-                  <div className="value-icon">
-                    {value.icon}
+                  <div className="value-header-inline">
+                    <div className="value-icon">
+                      {value.icon}
+                    </div>
+                    <h3 className="value-label">{value.label}</h3>
                   </div>
-                  <h3 className="value-label">{value.label}</h3>
                   <p className="value-description">{value.description}</p>
                 </div>
               ))}

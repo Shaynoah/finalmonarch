@@ -62,7 +62,7 @@ const CTA = () => {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <span>BUY INSURANCE NOW</span>
+                <span>GET INSURANCE INSTANTLY</span>
               </a>
               <a
                 href="https://agent.monarchinsurance.co.ke/"

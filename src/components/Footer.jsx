@@ -19,7 +19,7 @@ const Footer = () => {
   const services = [
     { href: '/report-claim', label: 'Report a claim' },
     { href: '/service-providers', label: 'Service Providers / Roadside Assistance' },
-    { href: 'https://intermediary.monarchinsurance.co.ke/login', label: 'Monarch Agent Portal / Register For an account' }
+    { href: 'https://agent.monarchinsurance.co.ke/', label: 'Monarch Agent Portal / Register For an account' }
   ]
 
   const socialLinks = [

@@ -1,7 +1,9 @@
 import React, { useState } from 'react'
 import Footer from '../components/Footer'
+import { useToast } from '../context/ToastContext'
 
 const QuotePage = () => {
+  const { showToast } = useToast()
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -10,7 +12,6 @@ const QuotePage = () => {
     description: ''
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
-  const [formStatus, setFormStatus] = useState({ type: '', message: '' })
 
   const handleChange = (e) => {
     setFormData({
@@ -22,17 +23,16 @@ const QuotePage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault()
     setIsSubmitting(true)
-    setFormStatus({ type: '', message: '' })
 
     try {
       // Simulate form submission
       await new Promise(resolve => setTimeout(resolve, 1500))
       
-      setFormStatus({
+      showToast({
         type: 'success',
-        message: 'Thank you for your quote request! We will get back to you within 24 hours.'
+        message: 'Thank you for your quote request! We will get back to you within 24 hours.',
       })
-      
+
       setFormData({
         firstName: '',
         lastName: '',
@@ -40,15 +40,10 @@ const QuotePage = () => {
         typeOfCover: '',
         description: ''
       })
-
-      // Clear success message after 5 seconds
-      setTimeout(() => {
-        setFormStatus({ type: '', message: '' })
-      }, 5000)
     } catch (error) {
-      setFormStatus({
+      showToast({
         type: 'error',
-        message: 'Something went wrong. Please try again or contact us directly.'
+        message: 'Something went wrong. Please try again or contact us directly.',
       })
     } finally {
       setIsSubmitting(false)
@@ -142,31 +137,12 @@ const QuotePage = () => {
                   id="description"
                   name="description"
                   placeholder="Description"
-                  rows="6"
+                  rows="8"
                   value={formData.description}
                   onChange={handleChange}
                   required
                 ></textarea>
               </div>
-
-              {formStatus.message && (
-                <div className={`quote-form-status ${formStatus.type}`}>
-                  {formStatus.type === 'success' && (
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                      <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
-                      <polyline points="22 4 12 14.01 9 11.01"/>
-                    </svg>
-                  )}
-                  {formStatus.type === 'error' && (
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                      <circle cx="12" cy="12" r="10"/>
-                      <line x1="12" y1="8" x2="12" y2="12"/>
-                      <line x1="12" y1="16" x2="12.01" y2="16"/>
-                    </svg>
-                  )}
-                  <span>{formStatus.message}</span>
-                </div>
-              )}
 
               <button type="submit" className="quote-form-submit" disabled={isSubmitting}>
                 {isSubmitting ? 'Sending...' : 'Send'}

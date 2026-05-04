@@ -12,7 +12,7 @@ const Reviews = () => {
       name: 'Sarah Mwangi',
       role: 'Business Owner',
       rating: 5,
-      text: "Monarch Insurance has been our trusted partner for over 10 years. Excellent service and peace of mind.",
+      text: 'Monarch Insurance handled my claim incredibly fast. Their resolution speed is top-tier, and they truly value their clients\' time. Highly recommend!',
       image: '👩‍💼'
     },
     {
@@ -20,7 +20,7 @@ const Reviews = () => {
       name: 'James Ochieng',
       role: 'Family Man',
       rating: 5,
-      text: "The life insurance policy has been a blessing. Smooth claims process and they truly care about customers.",
+      text: 'Contacting Monarch was a breeze. They were available when I needed them and provided clear, helpful answers to all my questions.',
       image: '👨‍👩‍👧‍👦'
     },
     {
@@ -28,7 +28,7 @@ const Reviews = () => {
       name: 'Mary Wanjiku',
       role: 'Professional',
       rating: 5,
-      text: "Competitive rates and outstanding service. They make insurance simple and stress-free.",
+      text: "The best insurance experience I've had. Monarch combines professional expertise with a personal touch that makes you feel like more than just a policy number. Highly recommended!",
       image: '👩‍💻'
     }
   ]

@@ -1,7 +1,14 @@
 import React, { useState } from 'react'
 import WhatsAppBanner from './WhatsAppBanner'
+import { useToast } from '../context/ToastContext'
+import OptionalTurnstile from './OptionalTurnstile'
+
+const captchaRequired = Boolean(import.meta.env.VITE_TURNSTILE_SITE_KEY)
 
 const Contact = () => {
+  const { showToast } = useToast()
+  const [captchaToken, setCaptchaToken] = useState(null)
+  const [turnstileKey, setTurnstileKey] = useState(0)
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -9,7 +16,6 @@ const Contact = () => {
     subject: '',
     message: ''
   })
-  const [formStatus, setFormStatus] = useState({ type: '', message: '' })
   const [isSubmitting, setIsSubmitting] = useState(false)
 
   const handleChange = (e) => {
@@ -21,35 +27,53 @@ const Contact = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    setIsSubmitting(true)
-    setFormStatus({ type: '', message: '' })
-
-    // Simulate form submission
-    try {
-      // In a real app, you would send this to your backend
-      await new Promise(resolve => setTimeout(resolve, 1500))
-      
-      setFormStatus({
-        type: 'success',
-        message: 'Thank you for your message! We will get back to you within 24 hours.'
+    if (captchaRequired && !captchaToken) {
+      showToast({
+        type: 'error',
+        message: 'Please complete the security verification below.',
       })
-      
+      return
+    }
+
+    setIsSubmitting(true)
+
+    const contactUrl = import.meta.env.VITE_CONTACT_API_URL || '/api/contact'
+
+    try {
+      const res = await fetch(contactUrl, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          ...formData,
+          ...(captchaToken ? { captchaToken } : {}),
+        }),
+      })
+      const payload = await res.json().catch(() => ({}))
+
+      if (!res.ok) {
+        throw new Error(payload.error || `Request failed (${res.status})`)
+      }
+
+      showToast({
+        type: 'success',
+        message: 'Your message has been sent. We will get back to you soon.',
+      })
+
       setFormData({
         name: '',
         email: '',
         phone: '',
         subject: '',
-        message: ''
+        message: '',
       })
-
-      // Clear success message after 5 seconds
-      setTimeout(() => {
-        setFormStatus({ type: '', message: '' })
-      }, 5000)
+      setCaptchaToken(null)
+      setTurnstileKey((k) => k + 1)
     } catch (error) {
-      setFormStatus({
+      showToast({
         type: 'error',
-        message: 'Something went wrong. Please try again or contact us directly.'
+        message:
+          error?.message ||
+          'Something went wrong. If you are running locally, start the email API server (see README).',
       })
     } finally {
       setIsSubmitting(false)
@@ -117,8 +141,8 @@ const Contact = () => {
                     <polyline points="22,6 12,13 2,6"/>
                   </svg>
                 </div>
-                <a href="mailto:info@monarchinsurance.com" className="contact-email">
-                  info@monarchinsurance.com
+                <a href="mailto:info@monarchinsurance.co.ke" className="contact-email">
+                  info@monarchinsurance.co.ke
                 </a>
               </div>
               
@@ -138,26 +162,6 @@ const Contact = () => {
 
           {/* Right Section - Contact Form */}
           <div className="contact-form-new">
-            {formStatus.message && (
-              <div className={`form-status-new ${formStatus.type}`}>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  {formStatus.type === 'success' ? (
-                    <>
-                      <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
-                      <polyline points="22 4 12 14.01 9 11.01"/>
-                    </>
-                  ) : (
-                    <>
-                      <circle cx="12" cy="12" r="10"/>
-                      <line x1="12" y1="8" x2="12" y2="12"/>
-                      <line x1="12" y1="16" x2="12.01" y2="16"/>
-                    </>
-                  )}
-                </svg>
-                <span>{formStatus.message}</span>
-              </div>
-            )}
-
             <form className="contact-form-new-form" onSubmit={handleSubmit}>
               <div className="form-row-new">
                 <input
@@ -208,13 +212,15 @@ const Contact = () => {
                 id="message"
                 name="message"
                 placeholder="Message"
-                rows="6"
+                rows="9"
                 value={formData.message}
                 onChange={handleChange}
                 required
                 className="form-textarea-new"
               ></textarea>
-              
+
+              <OptionalTurnstile key={turnstileKey} onTokenChange={setCaptchaToken} />
+
               <button
                 type="submit"
                 className={`submit-btn-new ${isSubmitting ? 'submitting' : ''}`}
