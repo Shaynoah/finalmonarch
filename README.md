@@ -46,7 +46,7 @@ python -m venv .venv
 pip install -r requirements.txt
 ```
 
-2. Copy `server/.env.example` to `server/.env` and set `SENDER_PASSWORD` to the password for the **alerts@** mailbox. Set `SMTP_HOST` and `SMTP_PORT` (defaults: `smtp.office365.com` and `587`). Set **`FORM_RECIPIENT_EMAIL`** (default `snoah@monarchinsurance.co.ke`) — this inbox receives **both** claim and contact form messages. **Never commit `server/.env`.**
+2. Copy `server/.env.example` to `server/.env` and set `SENDER_PASSWORD` to the password for the **alerts@** mailbox. Set `SMTP_HOST` and `SMTP_PORT` (defaults: `smtp.office365.com` and `587`). **`FORM_RECIPIENT_EMAIL`** (default `info@monarchinsurance.co.ke`) receives **contact** mail and **Group Last Expense** inquiries (`POST /api/contact`). **Get a Quote** (`/get-a-quote`, `formSource: get-a-quote`) goes to **requests@** and **gmunywoki@** by default, or override with **`QUOTE_RECIPIENT_EMAIL`** (comma-separated). **Report a claim** (`POST /api/claim`) goes to **claimsteam@** and **gmunywoki@** by default, or override with **`CLAIM_RECIPIENT_EMAIL`** (comma-separated). Every form’s **To** line also includes **snoah@monarchinsurance.co.ke** (deduplicated if already listed in an env override). **Never commit `server/.env`.**
 
 3. In a second terminal, start the API:
 
@@ -56,7 +56,7 @@ cd server
 python app.py
 ```
 
-4. With `python app.py` running on port 5000, run `npm run dev` in the project root. The **From** address is `SENDER_EMAIL`. All form submissions (**claim**, **contact**, and **get-a-quote**) go to the same **To** address from `FORM_RECIPIENT_EMAIL` (see `.env.example`). The **Get a Quote** page (`/get-a-quote`) submits through **`POST /api/contact`** with the same JSON shape as the contact page (`name`, `email`, `phone`, `subject`, `message`).
+4. With `python app.py` running on port 5000, run `npm run dev` in the project root. The **From** address is `SENDER_EMAIL`. **Contact** and **Get a Quote** use **`POST /api/contact`**; the server sets **To** from **`FORM_RECIPIENT_EMAIL`** (contact) or **`QUOTE_RECIPIENT_EMAIL`** / defaults (get-a-quote). **Report a claim** uses **`POST /api/claim`** → claim team addresses (see `.env.example`). The **Get a Quote** page sends **`formSource: "get-a-quote"`** plus the same JSON fields as contact (`name`, `email`, `phone`, `subject`, `message`).
 
 **Production:** static hosting for the React app does not include this API. Run the Flask app (or another host) and set `VITE_CLAIM_API_URL` and `VITE_CONTACT_API_URL` if the API is not same-origin (both quote and contact forms use `VITE_CONTACT_API_URL` for the mail endpoint).
 

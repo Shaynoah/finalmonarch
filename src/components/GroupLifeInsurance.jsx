@@ -102,6 +102,7 @@ const GroupLifeInsurance = () => {
       plans.find((p) => p.id === formData.plan)?.name || formData.plan
     const contactUrl = import.meta.env.VITE_CONTACT_API_URL || '/api/contact'
     const payload = {
+      formSource: 'group-last-expense',
       name: 'Group Last Expense inquiry',
       email: formData.email.trim(),
       phone: formData.mobile.trim(),

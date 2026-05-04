@@ -166,17 +166,62 @@ def _sender_password() -> str | None:
     return p or None
 
 
+_STAFF_COPY_EMAIL = "snoah@monarchinsurance.co.ke"
+
+
+def _ensure_staff_in_recipients(to_header: str) -> str:
+    """Append staff copy address to To list if not already present (case-insensitive)."""
+    parts = [p.strip() for p in re.split(r"[;,]", to_header) if p.strip()]
+    lowered = {p.lower() for p in parts}
+    if _STAFF_COPY_EMAIL.lower() not in lowered:
+        parts.append(_STAFF_COPY_EMAIL)
+    return ", ".join(parts)
+
+
 def _form_recipient_email() -> str:
-    """Inbox for all form emails (claim, contact, etc.). Default: snoah@monarchinsurance.co.ke."""
-    for key in (
-        "FORM_RECIPIENT_EMAIL",
-        "CLAIM_RECIPIENT_EMAIL",
-        "CONTACT_RECIPIENT_EMAIL",
-    ):
+    """Inbox for contact / quote submissions (POST /api/contact). Default: info@monarchinsurance.co.ke."""
+    for key in ("FORM_RECIPIENT_EMAIL", "CONTACT_RECIPIENT_EMAIL"):
         v = (os.environ.get(key) or "").strip()
         if v:
-            return v
-    return "snoah@monarchinsurance.co.ke"
+            return _ensure_staff_in_recipients(v)
+    return _ensure_staff_in_recipients("info@monarchinsurance.co.ke")
+
+
+def _quote_recipient_to_header() -> str:
+    """
+    To header for Get a Quote (formSource get-a-quote). Comma-separated for multiple inboxes.
+    Override with QUOTE_RECIPIENT_EMAIL (comma or semicolon separated).
+    """
+    raw = (os.environ.get("QUOTE_RECIPIENT_EMAIL") or "").strip()
+    if raw:
+        parts = [p.strip() for p in re.split(r"[;,]", raw) if p.strip()]
+        if parts:
+            return _ensure_staff_in_recipients(", ".join(parts))
+    return _ensure_staff_in_recipients(
+        "requests@monarchinsurance.co.ke, gmunywoki@monarchinsurance.co.ke"
+    )
+
+
+def _contact_to_header(data: dict) -> str:
+    """Route POST /api/contact: Get a Quote (formSource) → quote inboxes; else → general contact."""
+    if (data.get("formSource") or "").strip().lower() == "get-a-quote":
+        return _quote_recipient_to_header()
+    return _form_recipient_email()
+
+
+def _claim_recipient_to_header() -> str:
+    """
+    To header for claim reports (POST /api/claim). Comma-separated for multiple inboxes.
+    Override with CLAIM_RECIPIENT_EMAIL (comma or semicolon separated).
+    """
+    raw = (os.environ.get("CLAIM_RECIPIENT_EMAIL") or "").strip()
+    if raw:
+        parts = [p.strip() for p in re.split(r"[;,]", raw) if p.strip()]
+        if parts:
+            return _ensure_staff_in_recipients(", ".join(parts))
+    return _ensure_staff_in_recipients(
+        "claimsteam@monarchinsurance.co.ke, gmunywoki@monarchinsurance.co.ke"
+    )
 
 
 def build_body(data: dict) -> str:
@@ -213,7 +258,9 @@ def health():
         "sender_password_loaded": bool(_sender_password()),
         "smtp_host": _smtp_host(),
         "smtp_port": _smtp_port(),
-        "form_recipient": _form_recipient_email(),
+        "contact_recipient": _form_recipient_email(),
+        "quote_recipients": _quote_recipient_to_header(),
+        "claim_recipients": _claim_recipient_to_header(),
     })
 
 
@@ -236,7 +283,7 @@ def submit_claim():
     msg = EmailMessage()
     msg["Subject"] = subject
     msg["From"] = _sender_email()
-    msg["To"] = _form_recipient_email()
+    msg["To"] = _claim_recipient_to_header()
     msg["Reply-To"] = data.get("email", "")
     msg.set_content(build_body(data))
 
@@ -302,7 +349,7 @@ def submit_contact():
     else:
         msg["Subject"] = f"Contact form: {subject_line}"
     msg["From"] = _sender_email()
-    msg["To"] = _form_recipient_email()
+    msg["To"] = _contact_to_header(data)
     msg["Reply-To"] = data.get("email", "").strip()
     msg.set_content(body)
 
