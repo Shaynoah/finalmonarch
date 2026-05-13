@@ -13,6 +13,7 @@ import traceback
 import urllib.error
 import urllib.parse
 import urllib.request
+from html import escape
 from email.message import EmailMessage
 from pathlib import Path
 
@@ -238,6 +239,62 @@ def build_body(data: dict) -> str:
     return "\n".join(lines)
 
 
+def _build_contact_html(data: dict, subject_line: str) -> str:
+    name = escape((data.get("name") or "").strip() or "Not provided")
+    email = escape((data.get("email") or "").strip() or "Not provided")
+    phone = escape((data.get("phone") or "").strip() or "Not provided")
+    subject = escape(subject_line or "Not provided")
+    message = escape((data.get("message") or "").strip() or "No message provided").replace(
+        "\n", "<br>"
+    )
+
+    return f"""\
+<!doctype html>
+<html>
+  <body style="margin:0;padding:0;background:#f4f6fb;font-family:Arial,sans-serif;color:#1f2937;">
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#f4f6fb;padding:24px 0;">
+      <tr>
+        <td align="center">
+          <table role="presentation" width="640" cellpadding="0" cellspacing="0" style="width:100%;max-width:640px;background:#ffffff;border:1px solid #e5e7eb;border-radius:10px;overflow:hidden;">
+            <tr>
+              <td style="padding:20px 24px;">
+                <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border-collapse:collapse;">
+                  <tr>
+                    <td style="padding:8px 0;color:#6b7280;width:170px;font-size:14px;">Name</td>
+                    <td style="padding:8px 0;color:#111827;font-size:14px;font-weight:600;">{name}</td>
+                  </tr>
+                  <tr>
+                    <td style="padding:8px 0;color:#6b7280;width:170px;font-size:14px;">Email</td>
+                    <td style="padding:8px 0;color:#111827;font-size:14px;font-weight:600;">{email}</td>
+                  </tr>
+                  <tr>
+                    <td style="padding:8px 0;color:#6b7280;width:170px;font-size:14px;">Phone</td>
+                    <td style="padding:8px 0;color:#111827;font-size:14px;font-weight:600;">{phone}</td>
+                  </tr>
+                  <tr>
+                    <td style="padding:8px 0;color:#6b7280;width:170px;font-size:14px;">Subject</td>
+                    <td style="padding:8px 0;color:#111827;font-size:14px;font-weight:600;">{subject}</td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+            <tr>
+              <td style="padding:0 24px 24px 24px;">
+                <div style="font-size:14px;color:#6b7280;margin-bottom:8px;">Message</div>
+                <div style="background:#f9fafb;border:1px solid #e5e7eb;border-radius:8px;padding:14px;font-size:14px;line-height:1.6;color:#111827;">
+                  {message}
+                </div>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+  </body>
+</html>
+"""
+
+
 def _require_password_and_smtp_send(msg: EmailMessage) -> None:
     """Log in and send. Raises LookupError if SENDER_PASSWORD is missing."""
     sender_password = _sender_password()
@@ -352,6 +409,7 @@ def submit_contact():
     msg["To"] = _contact_to_header(data)
     msg["Reply-To"] = data.get("email", "").strip()
     msg.set_content(body)
+    msg.add_alternative(_build_contact_html(data, subject_line), subtype="html")
 
     try:
         _require_password_and_smtp_send(msg)

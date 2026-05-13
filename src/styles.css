@@ -30,7 +30,11 @@ html {
     display: block;
     visibility: visible;
     width: 100%;
-    height: 100%;
+    max-width: 100%;
+    min-height: 100%;
+    min-height: 100dvh;
+    height: auto;
+    overflow-x: clip;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
@@ -40,14 +44,18 @@ body {
     line-height: 1.6;
     color: var(--text-dark);
     background-color: var(--white);
-    overflow-x: hidden;
+    overflow-x: clip;
     display: block;
     visibility: visible;
     opacity: 1;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
     -webkit-overflow-scrolling: touch;
     overscroll-behavior-y: contain;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    overflow-wrap: break-word;
 }
 
 * {
@@ -139,13 +147,25 @@ img[loading="lazy"] {
     visibility: visible;
     opacity: 1;
     width: 100%;
+    max-width: 100%;
+    min-width: 0;
     min-height: 100vh;
+    min-height: 100dvh;
 }
 
 .container {
-    max-width: 1200px;
+    width: 100%;
+    max-width: min(1200px, 100%);
     margin: 0 auto;
-    padding: 0 20px;
+    padding-left: calc(20px + env(safe-area-inset-left, 0px));
+    padding-right: calc(20px + env(safe-area-inset-right, 0px));
+    box-sizing: border-box;
+}
+
+/* Keep main layout within the visual viewport on all devices */
+section {
+    max-width: 100%;
+    box-sizing: border-box;
 }
 
 /* ============================================
@@ -160,6 +180,7 @@ img[loading="lazy"] {
     backface-visibility: hidden;
     right: 0;
     z-index: 1000;
+    padding-top: env(safe-area-inset-top, 0px);
     background: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(20px) saturate(180%);
     -webkit-backdrop-filter: blur(20px) saturate(180%);
@@ -221,9 +242,9 @@ img[loading="lazy"] {
 }
 
 .nav-container {
-    max-width: 1400px;
+    max-width: min(1400px, 100%);
     margin: 0 auto;
-    padding: 0.75rem 20px;
+    padding: 0.75rem calc(20px + env(safe-area-inset-right, 0px)) 0.75rem calc(20px + env(safe-area-inset-left, 0px));
     display: grid;
     grid-template-columns: auto 1fr auto;
     align-items: center;
@@ -233,6 +254,7 @@ img[loading="lazy"] {
     transition: padding 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     overflow: visible;
     width: 100%;
+    min-width: 0;
     box-sizing: border-box;
 }
 
@@ -405,6 +427,8 @@ img[loading="lazy"] {
     margin: 0;
     padding: 0 0.5rem;
     width: 100%;
+    min-width: 0;
+    max-width: 100%;
     position: relative;
     overflow: visible;
     flex-wrap: nowrap;
@@ -925,6 +949,31 @@ img[loading="lazy"] {
         overflow: visible;
         top: 80px;
     }
+
+    /* After a submenu link is chosen: hide flyouts until pointer leaves <nav> (see Navbar.jsx) */
+    .navbar.suppress-desktop-submenu-hover .nav-item.has-submenu:hover .nav-submenu,
+    .navbar.suppress-desktop-submenu-hover .nav-submenu.open {
+        opacity: 0 !important;
+        visibility: hidden !important;
+        pointer-events: none !important;
+        transform: translateX(-50%) translateY(-10px) !important;
+    }
+
+    .navbar.suppress-desktop-submenu-hover .nav-item.has-submenu:hover .submenu-mega-flyout,
+    .navbar.suppress-desktop-submenu-hover .submenu-mega-flyout.open {
+        opacity: 0 !important;
+        visibility: hidden !important;
+        pointer-events: none !important;
+        transform: translateY(6px) !important;
+    }
+
+    .navbar.suppress-desktop-submenu-hover .nav-item.has-submenu:hover .pages-submenu,
+    .navbar.suppress-desktop-submenu-hover .pages-submenu.open {
+        opacity: 0 !important;
+        visibility: hidden !important;
+        pointer-events: none !important;
+        transform: translateX(-50%) translateY(-10px) !important;
+    }
     
     /* Pages submenu - fit content width and align to menu item */
     .pages-submenu {
@@ -947,6 +996,181 @@ img[loading="lazy"] {
         margin-right: 0 !important;
     }
 
+    /* Insurance: vertical categories, child links in a panel to the right */
+    .nav-item.has-submenu .submenu-mega-flyout {
+        position: absolute !important;
+        top: 100% !important;
+        left: 0 !important;
+        right: auto !important;
+        width: max-content !important;
+        max-width: min(98vw, 980px) !important;
+        margin-top: -6px !important;
+        padding: calc(0.35rem + 6px) 0 0 0 !important;
+        transform: translateY(6px) !important;
+    }
+
+    .nav-item.has-submenu:hover .submenu-mega-flyout,
+    .submenu-mega-flyout.open {
+        transform: translateY(0) !important;
+    }
+
+    .submenu-mega-flyout .submenu-content {
+        min-width: 0 !important;
+        width: max-content !important;
+        max-width: min(98vw, 980px) !important;
+        padding: 0.85rem 1rem !important;
+    }
+
+    .submenu-mega-flyout .insurance-submenu-columns,
+    .submenu-mega-flyout .submenu-columns.insurance-submenu-columns {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 0.45rem !important;
+        grid-template-columns: none !important;
+        grid-template-rows: none !important;
+        width: auto !important;
+    }
+
+    .submenu-mega-flyout .submenu-column {
+        --insurance-label-width: clamp(188px, 34vw, 248px);
+        display: flex !important;
+        flex-direction: row !important;
+        align-items: stretch !important;
+        gap: 0.75rem !important;
+        width: 100% !important;
+        min-width: min(300px, 88vw) !important;
+        position: relative !important;
+        z-index: 0 !important;
+        overflow: visible !important;
+        transform: none !important;
+        box-shadow: none !important;
+    }
+
+    .submenu-mega-flyout .submenu-column:hover {
+        z-index: 8 !important;
+        background: rgba(255, 255, 255, 0.45) !important;
+        border-radius: 10px !important;
+        transform: none !important;
+    }
+
+    .submenu-mega-flyout .submenu-column > .submenu-column-header {
+        flex: 0 0 var(--insurance-label-width) !important;
+        margin-bottom: 0 !important;
+        align-self: center !important;
+        cursor: default !important;
+        font-size: 0.9rem !important;
+    }
+
+    .submenu-mega-flyout .submenu-column > .submenu-column-header .submenu-header-arrow {
+        transform: rotate(-90deg) !important;
+        transition: transform 0.28s cubic-bezier(0.33, 1, 0.68, 1) !important;
+    }
+
+    .submenu-mega-flyout .submenu-column:hover > .submenu-column-header .submenu-header-arrow,
+    .submenu-mega-flyout .submenu-column > .submenu-column-header .submenu-header-arrow.open {
+        transform: rotate(0deg) !important;
+    }
+
+    .submenu-mega-flyout .submenu-column > .submenu-column-header:hover {
+        background: linear-gradient(135deg, rgba(17, 66, 46, 0.1) 0%, rgba(17, 66, 46, 0.05) 100%) !important;
+        transform: translateX(4px) !important;
+        transition: transform 0.28s cubic-bezier(0.33, 1, 0.68, 1), background 0.2s ease !important;
+    }
+
+    /* Flyout panel: absolutely positioned from label so width collapse does not clip */
+    .submenu-mega-flyout .submenu-column > .submenu-column-items {
+        position: absolute !important;
+        top: 0 !important;
+        left: calc(var(--insurance-label-width) + 0.75rem) !important;
+        right: auto !important;
+        z-index: 2 !important;
+        min-width: min(240px, 52vw) !important;
+        max-width: 460px !important;
+        width: max-content !important;
+        box-sizing: border-box !important;
+    }
+
+    .submenu-mega-flyout .submenu-column > .submenu-column-items:not(.open) {
+        opacity: 0 !important;
+        visibility: hidden !important;
+        pointer-events: none !important;
+        transform: translate3d(14px, 0, 0) !important;
+        padding: 0.4rem 0.35rem !important;
+        margin: 0 !important;
+        border: none !important;
+        box-shadow: none !important;
+        background: transparent !important;
+        overflow: hidden !important;
+        transition:
+            opacity 0.22s cubic-bezier(0.4, 0, 0.2, 1),
+            transform 0.32s cubic-bezier(0.33, 1, 0.68, 1),
+            visibility 0s linear 0.28s !important;
+    }
+
+    .submenu-mega-flyout .submenu-column-items.open,
+    .submenu-mega-flyout .submenu-column:hover > .submenu-column-items {
+        opacity: 1 !important;
+        visibility: visible !important;
+        pointer-events: all !important;
+        transform: translate3d(0, 0, 0) !important;
+        max-height: none !important;
+        background: rgba(255, 255, 255, 0.98) !important;
+        border: 1px solid rgba(17, 66, 46, 0.1) !important;
+        border-radius: 10px !important;
+        padding: 0.55rem 0.5rem !important;
+        box-shadow:
+            0 10px 28px rgba(17, 66, 46, 0.08),
+            0 2px 8px rgba(0, 0, 0, 0.04) !important;
+        overflow: visible !important;
+        transition:
+            opacity 0.26s cubic-bezier(0.4, 0, 0.2, 1) 0.03s,
+            transform 0.32s cubic-bezier(0.33, 1, 0.68, 1),
+            visibility 0s linear 0s !important;
+    }
+
+    .submenu-mega-flyout .submenu-nested-items {
+        margin-left: 0 !important;
+        border-left: none !important;
+        padding-left: 0.25rem !important;
+    }
+
+    .submenu-mega-flyout .submenu-nested-items:not(.open) {
+        max-height: 0 !important;
+        min-height: 0 !important;
+        opacity: 0 !important;
+        visibility: hidden !important;
+        pointer-events: none !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        overflow: hidden !important;
+        border: none !important;
+        transition: max-height 0.28s ease, opacity 0.2s ease, visibility 0.2s ease !important;
+    }
+
+    .submenu-mega-flyout .submenu-nested-items.open {
+        max-height: 2000px !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        pointer-events: all !important;
+        overflow: visible !important;
+        margin: 0.1rem 0 0.15rem 0.35rem !important;
+        padding-left: 0.35rem !important;
+        border-left: 2px solid rgba(17, 66, 46, 0.12) !important;
+        transition: max-height 0.32s ease, opacity 0.2s ease, visibility 0.2s ease !important;
+    }
+
+    .submenu-mega-flyout .submenu-nested-header {
+        cursor: pointer !important;
+    }
+
+    .submenu-mega-flyout .submenu-nested-header .submenu-header-arrow {
+        transform: rotate(0deg) !important;
+    }
+
+    .submenu-mega-flyout .submenu-nested-header .submenu-header-arrow.open {
+        transform: rotate(90deg) !important;
+    }
+
     .submenu-content {
         background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
         border-radius: 14px;
@@ -959,8 +1183,8 @@ img[loading="lazy"] {
         position: relative;
         overflow: visible;
         width: calc(100% - 0px);
-        min-width: 1000px;
-        max-width: 1600px;
+        min-width: min(1000px, calc(100vw - 48px));
+        max-width: min(1600px, calc(100vw - 24px));
         margin: 0;
         opacity: 1;
         visibility: visible;
@@ -1035,8 +1259,8 @@ img[loading="lazy"] {
 .submenu-column {
     display: flex;
     flex-direction: column;
-    gap: 0.25rem;
-    padding: 0.4rem;
+    gap: 0.35rem;
+    padding: 0.5rem;
     border-radius: 8px;
     background: rgba(255, 255, 255, 0.5);
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -1069,16 +1293,16 @@ img[loading="lazy"] {
 .submenu-column-header {
     display: flex !important;
     align-items: center !important;
-    gap: 0.4rem !important;
-    margin-bottom: 0.15rem !important;
+    gap: 0.5rem !important;
+    margin-bottom: 0.25rem !important;
     font-weight: 800 !important;
-    font-size: 0.8125rem !important;
+    font-size: 0.97rem !important;
     color: var(--primary-green-dark) !important;
     text-transform: uppercase !important;
-    letter-spacing: 0.6px !important;
+    letter-spacing: 0.5px !important;
     opacity: 1 !important;
     visibility: visible !important;
-    padding: 0.25rem 0.4rem !important;
+    padding: 0.4rem 0.55rem !important;
     border-radius: 5px !important;
     background: linear-gradient(135deg, rgba(17, 66, 46, 0.05) 0%, rgba(17, 66, 46, 0.02) 100%) !important;
     transition: all 0.3s ease !important;
@@ -1093,13 +1317,13 @@ img[loading="lazy"] {
 .submenu-header-arrow {
     color: var(--primary-green) !important;
     font-weight: 900 !important;
-    font-size: 0.8rem !important;
+    font-size: 0.9rem !important;
     display: inline-flex !important;
     align-items: center !important;
     justify-content: center !important;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
-    width: 16px !important;
-    height: 16px !important;
+    width: 20px !important;
+    height: 20px !important;
     flex-shrink: 0 !important;
     background: rgba(17, 66, 46, 0.08) !important;
     border-radius: 3px !important;
@@ -1123,8 +1347,8 @@ img[loading="lazy"] {
 
 @media (max-width: 768px) {
     .submenu-header-arrow {
-        width: 18px !important;
-        height: 18px !important;
+        width: 22px !important;
+        height: 22px !important;
     }
 }
 
@@ -1135,19 +1359,19 @@ img[loading="lazy"] {
 .submenu-column-items {
     display: flex !important;
     flex-direction: column !important;
-    gap: 0.05rem !important;
+    gap: 0.2rem !important;
     padding-top: 0 !important;
 }
 
-/* Desktop: always show submenu items */
+/* Desktop: submenu items visible by default (except insurance flyout panels) */
 @media (min-width: 769px) {
-    .submenu-column-items {
+    .nav-submenu:not(.submenu-mega-flyout) .submenu-column-items {
         max-height: none !important;
         overflow: visible !important;
         padding: 0 !important;
     }
     
-    .submenu-nested-items {
+    .nav-submenu:not(.submenu-mega-flyout) .submenu-nested-items {
         max-height: none !important;
         overflow: visible !important;
         padding-left: 0.3rem !important;
@@ -1191,22 +1415,22 @@ img[loading="lazy"] {
 }
 
 .pages-submenu .submenu-column-item {
-    padding: 0.6rem 1rem !important;
-    padding-left: 1rem !important;
+    padding: 0.7rem 1.15rem !important;
+    padding-left: 1.15rem !important;
     white-space: nowrap !important;
-    font-size: 0.95rem !important;
+    font-size: 1.05rem !important;
 }
 
 .submenu-column-item {
     display: block !important;
-    padding: 0.2rem 0.4rem 0.2rem 1.5rem !important;
+    padding: 0.45rem 0.5rem 0.45rem 1.75rem !important;
     color: var(--text-dark) !important;
     text-decoration: none !important;
-    font-size: 0.875rem !important;
+    font-size: 1.05rem !important;
     font-weight: 500 !important;
     transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1) !important;
     border-radius: 5px !important;
-    line-height: 1.4 !important;
+    line-height: 1.5 !important;
     opacity: 1 !important;
     visibility: visible !important;
     transform: none !important;
@@ -1218,11 +1442,11 @@ img[loading="lazy"] {
 .submenu-column-item::before {
     content: '▸' !important;
     position: absolute !important;
-    left: 0.4rem !important;
+    left: 0.45rem !important;
     top: 50% !important;
     transform: translateY(-50%) !important;
     color: var(--primary-green) !important;
-    font-size: 0.7rem !important;
+    font-size: 0.85rem !important;
     font-weight: 700 !important;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
     opacity: 0.7 !important;
@@ -1230,7 +1454,7 @@ img[loading="lazy"] {
 
 .submenu-column-item:hover {
     color: var(--primary-green-dark) !important;
-    padding-left: 1.75rem !important;
+    padding-left: 2rem !important;
     background: linear-gradient(90deg, rgba(17, 66, 46, 0.05) 0%, transparent 100%) !important;
     transform: translateX(3px) !important;
 }
@@ -1241,10 +1465,28 @@ img[loading="lazy"] {
     color: var(--primary-green-dark) !important;
 }
 
+.submenu-column-item.submenu-column-placeholder {
+    cursor: default !important;
+    color: #64748b !important;
+    font-weight: 400 !important;
+    pointer-events: none !important;
+    padding-left: 1rem !important;
+}
+
+.submenu-column-item.submenu-column-placeholder::before {
+    content: none !important;
+}
+
+.submenu-column-item.submenu-column-placeholder:hover {
+    transform: none !important;
+    padding-left: 1rem !important;
+    background: transparent !important;
+}
+
 .submenu-nested-items {
     display: flex !important;
     flex-direction: column !important;
-    gap: 0.05rem !important;
+    gap: 0.15rem !important;
     margin-left: 0.5rem !important;
     margin-top: 0.1rem !important;
     margin-bottom: 0.15rem !important;
@@ -1253,14 +1495,14 @@ img[loading="lazy"] {
 }
 
 .submenu-nested-item {
-    font-size: 0.8125rem !important;
-    padding-left: 1rem !important;
+    font-size: 0.98rem !important;
+    padding-left: 1.1rem !important;
     color: var(--text-light) !important;
     position: relative !important;
-    font-weight: 400 !important;
-    padding-top: 0.15rem !important;
-    padding-bottom: 0.15rem !important;
-    line-height: 1.35 !important;
+    font-weight: 500 !important;
+    padding-top: 0.35rem !important;
+    padding-bottom: 0.35rem !important;
+    line-height: 1.45 !important;
 }
 
 .submenu-nested-item::before {
@@ -1279,7 +1521,7 @@ img[loading="lazy"] {
 
 .submenu-nested-item:hover {
     color: var(--primary-green-dark) !important;
-    padding-left: 1.3rem !important;
+    padding-left: 1.35rem !important;
 }
 
 .submenu-nested-item:hover::before {
@@ -1302,7 +1544,7 @@ img[loading="lazy"] {
 .submenu-column {
     display: flex !important;
     flex-direction: column !important;
-    gap: 0.25rem !important;
+    gap: 0.35rem !important;
     opacity: 1 !important;
     visibility: visible !important;
 }
@@ -1580,10 +1822,11 @@ img[loading="lazy"] {
 .hero-content {
     position: relative;
     z-index: 3;
-    max-width: 1400px;
+    max-width: min(1400px, 100%);
     margin: 0 auto;
-    padding: 0 40px;
+    padding: 0 calc(40px + env(safe-area-inset-right, 0px)) 0 calc(40px + env(safe-area-inset-left, 0px));
     width: 100%;
+    min-width: 0;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -1962,10 +2205,6 @@ img[loading="lazy"] {
         max-width: none;
         flex-shrink: 0;
     }
-}
-
-.hero-whatsapp-banner {
-    margin: 0;
 }
 
 .btn-get-quote {
@@ -4284,10 +4523,97 @@ img[loading="lazy"] {
 
 .hero-whatsapp-banner {
     margin: 0;
+    width: auto;
     max-width: none;
+    min-width: 0;
     animation: none;
     align-self: auto;
     overflow: visible;
+    box-sizing: border-box;
+}
+
+/* Hero: WhatsApp wraps on small screens; arrow stays after the pill */
+.hero-whatsapp-banner .whatsapp-banner-wrapper {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: flex-start;
+    width: auto;
+    max-width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+    gap: 0.35rem;
+}
+
+.hero-whatsapp-banner .whatsapp-banner {
+    flex: 0 1 auto;
+    min-width: 0 !important;
+    max-width: calc(100% - 3.75rem) !important;
+    width: auto;
+    white-space: normal !important;
+    flex-wrap: wrap;
+    justify-content: center;
+    box-sizing: border-box;
+    padding-left: clamp(0.65rem, 3vw, 1.5rem);
+    padding-right: clamp(0.65rem, 3vw, 1.5rem);
+}
+
+.hero-whatsapp-banner .whatsapp-banner-text {
+    white-space: normal !important;
+    overflow-wrap: break-word;
+    word-break: break-word;
+    text-align: center;
+    max-width: 100%;
+    line-height: 1.35;
+}
+
+.hero-whatsapp-banner .whatsapp-arrow-outside {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-whatsapp-banner .whatsapp-arrow-outside svg {
+    width: clamp(26px, 7vw, 52px);
+    height: auto;
+    max-height: 28px;
+}
+
+@media (min-width: 769px) {
+    .hero-whatsapp-banner .whatsapp-banner-wrapper {
+        justify-content: flex-start;
+        width: auto;
+        max-width: none;
+    }
+
+    .hero-whatsapp-banner .whatsapp-banner {
+        flex: 0 0 auto;
+        max-width: none !important;
+        white-space: nowrap !important;
+    }
+
+    .hero-whatsapp-banner .whatsapp-banner-text {
+        white-space: nowrap !important;
+        text-align: left;
+    }
+
+    .hero-whatsapp-banner .whatsapp-arrow-outside svg {
+        width: 64px;
+        height: 34px;
+        max-height: none;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-whatsapp-banner .whatsapp-banner {
+        max-width: calc(100% - 2.75rem) !important;
+    }
+
+    .hero-whatsapp-banner .whatsapp-arrow-outside svg {
+        width: clamp(22px, 6.5vw, 32px);
+        max-height: 22px;
+    }
 }
 
 .insurance-whatsapp-banner {
@@ -5421,13 +5747,15 @@ img[loading="lazy"] {
         padding: 0.875rem 1.5rem;
         font-size: 0.875rem;
         margin-bottom: 0;
-        flex-wrap: nowrap;
+        flex-wrap: wrap;
         gap: 0.75rem;
         width: 100%;
         max-width: 100%;
         justify-content: center;
         text-align: center;
         min-width: 0;
+        white-space: normal;
+        box-sizing: border-box;
     }
 
     .whatsapp-icon-wrapper {
@@ -5445,12 +5773,13 @@ img[loading="lazy"] {
         font-size: 0.875rem;
         flex: 1;
         min-width: 0;
-        white-space: nowrap;
+        white-space: normal;
+        overflow-wrap: break-word;
+        word-break: break-word;
         overflow: visible;
-        text-overflow: clip;
         text-align: center;
-        line-height: 1.2;
-        letter-spacing: 0.5px;
+        line-height: 1.35;
+        letter-spacing: 0.35px;
     }
 
     .whatsapp-arrow {
@@ -5550,28 +5879,32 @@ img[loading="lazy"] {
     }
 
     .whatsapp-banner {
-        padding: 0.75rem 1.25rem;
+        padding: 0.75rem clamp(0.65rem, 3vw, 1.1rem);
         font-size: 0.8125rem;
         width: 100%;
         max-width: 100%;
         gap: 0.625rem;
-        flex-wrap: nowrap;
+        flex-wrap: wrap;
         justify-content: center;
         overflow: visible;
         min-width: 0;
         display: inline-flex;
         align-items: center;
+        white-space: normal;
+        box-sizing: border-box;
     }
     
     .whatsapp-banner-text {
         font-size: 0.8125rem;
-        white-space: nowrap;
+        white-space: normal;
+        overflow-wrap: break-word;
+        word-break: break-word;
         overflow: visible;
-        text-overflow: clip;
         flex: 1;
         min-width: 0;
-        line-height: 1.2;
-        letter-spacing: 0.4px;
+        line-height: 1.35;
+        letter-spacing: 0.3px;
+        text-align: center;
     }
 
     .whatsapp-icon-wrapper {
@@ -8639,6 +8972,9 @@ img[loading="lazy"] {
         display: flex !important;
         flex-direction: column !important;
         width: 100% !important;
+        max-width: 100% !important;
+        min-width: 0 !important;
+        align-self: stretch !important;
         gap: 0.75rem !important;
         margin-top: 1rem !important;
         margin-bottom: 1rem !important;
@@ -8646,6 +8982,39 @@ img[loading="lazy"] {
         padding-bottom: 1rem !important;
         box-sizing: border-box !important;
         overflow: visible !important;
+    }
+
+    .navbar.menu-open .nav-claim-button,
+    .navbar.menu-open .nav-quote-button,
+    .navbar.menu-open .nav-intermediary-button {
+        max-width: 100% !important;
+        min-width: 0 !important;
+        width: 100% !important;
+        flex-shrink: 1 !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        box-sizing: border-box !important;
+        white-space: normal !important;
+        overflow: visible !important;
+        overflow-wrap: break-word !important;
+        word-break: break-word !important;
+        hyphens: auto !important;
+        flex-wrap: wrap !important;
+        justify-content: center !important;
+        align-items: center !important;
+        padding: 0.875rem clamp(0.65rem, 3.5vw, 1.1rem) !important;
+        letter-spacing: 0.04em !important;
+    }
+
+    .navbar.menu-open .nav-claim-button span,
+    .navbar.menu-open .nav-quote-button span,
+    .navbar.menu-open .nav-intermediary-button span {
+        white-space: normal !important;
+        overflow-wrap: break-word !important;
+        word-break: break-word !important;
+        max-width: 100% !important;
+        text-align: center !important;
+        line-height: 1.35 !important;
     }
 
     .navbar.menu-open .nav-submenu {
@@ -8664,7 +9033,7 @@ img[loading="lazy"] {
     }
 
     .navbar.menu-open .nav-submenu.open {
-        max-height: 800px !important;
+        max-height: 1400px !important;
         margin-top: 0.5rem !important;
         padding-top: 0.5rem !important;
         padding-bottom: 0.5rem !important;
@@ -8688,7 +9057,7 @@ img[loading="lazy"] {
         background: rgba(17, 66, 46, 0.03) !important;
         border: 1px solid rgba(17, 66, 46, 0.1) !important;
         border-radius: 12px !important;
-        padding: 0.75rem !important;
+        padding: 0.95rem 1rem !important;
         box-shadow: none !important;
     }
     
@@ -8702,17 +9071,38 @@ img[loading="lazy"] {
         width: 100% !important;
         margin-bottom: 0.5rem !important;
     }
+
+    .navbar.menu-open .submenu-mega-flyout .submenu-column {
+        flex-direction: column !important;
+        align-items: stretch !important;
+        gap: 0.35rem !important;
+    }
+
+    .navbar.menu-open .submenu-mega-flyout .submenu-column > .submenu-column-header .submenu-header-arrow {
+        transform: rotate(0deg) !important;
+    }
+
+    .navbar.menu-open .submenu-mega-flyout .submenu-column > .submenu-column-header {
+        font-size: 0.95rem !important;
+    }
+
+    .navbar.menu-open .submenu-mega-flyout .submenu-column-items {
+        max-width: none !important;
+        box-shadow: none !important;
+        border: 1px solid rgba(17, 66, 46, 0.08) !important;
+    }
     
     .navbar.menu-open .submenu-column-header {
-        padding: 0.75rem !important;
+        padding: 0.9rem 0.85rem !important;
         background: rgba(17, 66, 46, 0.05) !important;
         border-radius: 8px !important;
         margin-bottom: 0.5rem !important;
         cursor: pointer !important;
         display: flex !important;
         align-items: center !important;
-        gap: 0.5rem !important;
-        font-weight: 600 !important;
+        gap: 0.55rem !important;
+        font-weight: 700 !important;
+        font-size: 1.05rem !important;
         transition: background 0.2s ease !important;
     }
     
@@ -8738,9 +9128,9 @@ img[loading="lazy"] {
     }
     
     .navbar.menu-open .pages-submenu .submenu-column-item {
-        padding: 0.6rem 1rem !important;
-        padding-left: 1rem !important;
-        font-size: 0.95rem !important;
+        padding: 0.75rem 1.1rem !important;
+        padding-left: 1.1rem !important;
+        font-size: 1.05rem !important;
     }
     
     .navbar.menu-open .submenu-column-items {
@@ -8762,10 +9152,12 @@ img[loading="lazy"] {
     }
     
     .navbar.menu-open .submenu-column-item {
-        padding: 0.75rem !important;
+        padding: 0.9rem 1rem !important;
         border-radius: 6px !important;
         transition: background 0.2s ease !important;
         display: block !important;
+        font-size: 1.05rem !important;
+        line-height: 1.45 !important;
     }
     
     .navbar.menu-open .submenu-column-item:active {
@@ -8776,11 +9168,12 @@ img[loading="lazy"] {
         cursor: pointer !important;
         display: flex !important;
         align-items: center !important;
-        gap: 0.5rem !important;
-        padding: 0.75rem !important;
+        gap: 0.55rem !important;
+        padding: 0.85rem 1rem !important;
         border-radius: 6px !important;
         transition: background 0.2s ease !important;
-        font-weight: 600 !important;
+        font-weight: 700 !important;
+        font-size: 1.02rem !important;
     }
     
     .navbar.menu-open .submenu-nested-header:active {
@@ -8808,9 +9201,10 @@ img[loading="lazy"] {
     }
     
     .navbar.menu-open .submenu-nested-item {
-        padding: 0.625rem 0.75rem !important;
-        font-size: 0.875rem !important;
+        padding: 0.8rem 0.95rem !important;
+        font-size: 1rem !important;
         color: rgba(17, 66, 46, 0.8) !important;
+        line-height: 1.45 !important;
     }
 
     .navbar.menu-open .submenu-item {
@@ -8855,7 +9249,7 @@ img[loading="lazy"] {
         width: 100% !important;
         justify-content: center !important;
         margin-top: 0 !important;
-        padding: 0.875rem 1.25rem !important;
+        padding: 0.875rem clamp(0.65rem, 3.5vw, 1.1rem) !important;
         font-size: 0.875rem !important;
         font-weight: 600 !important;
         box-sizing: border-box !important;
@@ -8878,7 +9272,7 @@ img[loading="lazy"] {
         width: 100% !important;
         justify-content: center !important;
         margin-top: 0 !important;
-        padding: 0.875rem 1.25rem !important;
+        padding: 0.875rem clamp(0.65rem, 3.5vw, 1.1rem) !important;
         font-size: 0.875rem !important;
         font-weight: 600 !important;
         box-sizing: border-box !important;
@@ -8901,7 +9295,7 @@ img[loading="lazy"] {
         width: 100% !important;
         justify-content: center !important;
         margin-top: 0 !important;
-        padding: 0.875rem 1.25rem !important;
+        padding: 0.875rem clamp(0.65rem, 3.5vw, 1.1rem) !important;
         font-size: 0.875rem !important;
         font-weight: 600 !important;
         box-sizing: border-box !important;
@@ -11234,13 +11628,15 @@ img[loading="lazy"] {
 /* Floating Chat Button */
 .floating-chat-container {
     position: fixed;
-    bottom: 30px;
-    right: 30px;
+    bottom: calc(30px + env(safe-area-inset-bottom, 0px));
+    right: calc(30px + env(safe-area-inset-right, 0px));
     z-index: 9999;
     display: flex;
     flex-direction: column;
     align-items: flex-end;
     gap: 1rem;
+    max-width: calc(100% - 24px);
+    box-sizing: border-box;
 }
 
 .floating-chat-menu {
@@ -11248,7 +11644,8 @@ img[loading="lazy"] {
     border-radius: 20px;
     box-shadow: 0 12px 48px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(0, 0, 0, 0.05);
     padding: 1.5rem 0;
-    min-width: 280px;
+    min-width: min(280px, calc(100vw - 32px));
+    max-width: calc(100vw - 32px);
     animation: slideUpFade 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
     border: 1px solid rgba(0, 0, 0, 0.05);
     backdrop-filter: blur(10px);
@@ -11590,8 +11987,8 @@ img[loading="lazy"] {
 /* Responsive Design for Floating Chat */
 @media (max-width: 768px) {
     .floating-chat-container {
-        bottom: 20px;
-        right: 20px;
+        bottom: calc(20px + env(safe-area-inset-bottom, 0px));
+        right: calc(20px + env(safe-area-inset-right, 0px));
     }
 
     .floating-chat-button {
@@ -11630,12 +12027,13 @@ img[loading="lazy"] {
 
 @media (max-width: 480px) {
     .floating-chat-container {
-        bottom: 15px;
-        right: 15px;
+        bottom: calc(15px + env(safe-area-inset-bottom, 0px));
+        right: calc(15px + env(safe-area-inset-right, 0px));
     }
 
     .floating-chat-menu {
-        min-width: 240px;
+        min-width: min(240px, calc(100vw - 28px));
+        max-width: calc(100vw - 28px);
     }
 
     .chat-menu-item {
@@ -12879,7 +13277,9 @@ img[loading="lazy"] {
     overflow: hidden !important;
     visibility: visible !important;
     height: 100vh !important;
-    width: 100vw !important;
+    height: 100dvh !important;
+    width: 100% !important;
+    max-width: 100% !important;
 }
 
 .team-modal-overlay::-webkit-scrollbar {

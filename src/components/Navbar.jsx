@@ -10,9 +10,11 @@ const Navbar = () => {
   const [openSubmenu, setOpenSubmenu] = useState(null)
   const [openNestedSubmenu, setOpenNestedSubmenu] = useState(null)
   const [openSubmenuColumns, setOpenSubmenuColumns] = useState({})
+  const [suppressDesktopSubmenuHover, setSuppressDesktopSubmenuHover] = useState(false)
   const navRef = useRef(null)
   const menuRef = useRef(null)
   const submenuTimeoutRef = useRef(null)
+  const submenuOpenDelayRef = useRef(null)
   const nestedSubmenuTimeoutRef = useRef(null)
   const location = useLocation()
   const navigate = useNavigate()
@@ -24,8 +26,8 @@ const Navbar = () => {
       label: 'Insurance',
       hasSubmenu: true,
       submenuItems: [
-        { 
-          id: 'life-insurance', 
+        {
+          id: 'life-insurance',
           label: 'Life Insurance',
           icon: (
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -99,458 +101,418 @@ const Navbar = () => {
             }
           ]
         },
-        { 
-          id: 'general-insurance', 
-          label: 'General Insurance',
+        {
+          id: 'personal-solutions',
+          label: 'Personal Solutions',
           icon: (
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-              <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
-              <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
-              <line x1="12" y1="22.08" x2="12" y2="12"/>
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+              <circle cx="12" cy="7" r="4"/>
             </svg>
           ),
           hasNestedSubmenu: true,
           nestedSubmenuItems: [
             {
-              id: 'accident-cover',
-              label: 'Accident cover',
-              icon: (
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <path d="M9 11l3 3L22 4"/>
-                  <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/>
-                </svg>
-              ),
-              hasNestedSubmenu: true,
-              nestedSubmenuItems: [
-                {
-                  id: 'group-personal-accident',
-                  label: 'Group personal accident',
-                  icon: (
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                      <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
-                      <circle cx="9" cy="7" r="4"/>
-                      <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/>
-                    </svg>
-                  )
-                },
-                {
-                  id: 'personal-accident',
-                  label: 'Personal accident',
-                  icon: (
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                      <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
-                      <circle cx="12" cy="7" r="4"/>
-                    </svg>
-                  )
-                }
-              ]
-            },
-            {
-              id: 'bond-cover',
-              label: 'Bond Cover',
-              icon: (
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <rect x="3" y="8" width="18" height="4" rx="1"/>
-                  <path d="M12 8v13"/>
-                  <path d="M19 12v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-7"/>
-                  <path d="M7.5 8a2.5 2.5 0 0 1 0-5A4.8 8 0 0 1 12 8a4.8 8 0 0 1 4.5-5 2.5 2.5 0 0 1 0 5"/>
-                </svg>
-              ),
-              hasNestedSubmenu: true,
-              nestedSubmenuItems: [
-                {
-                  id: 'customs',
-                  label: 'Customs',
-                  icon: (
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                      <rect x="3" y="8" width="18" height="4" rx="1"/>
-                      <path d="M12 8v13"/>
-                    </svg>
-                  )
-                },
-                {
-                  id: 'immigration-security',
-                  label: 'Immigration Security',
-                  icon: (
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                      <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-                      <path d="M9 12l2 2 4-4"/>
-                    </svg>
-                  )
-                },
-                {
-                  id: 'performance',
-                  label: 'Performance',
-                  icon: (
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                      <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
-                    </svg>
-                  )
-                },
-                {
-                  id: 'surety-undertaking',
-                  label: 'Surety Undertaking',
-                  icon: (
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                      <path d="M9 11l3 3L22 4"/>
-                      <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/>
-                    </svg>
-                  )
-                },
-                {
-                  id: 'tender',
-                  label: 'Tender',
-                  icon: (
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                      <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
-                      <line x1="9" y1="9" x2="15" y2="15"/>
-                      <line x1="15" y1="9" x2="9" y2="15"/>
-                    </svg>
-                  )
-                },
-                {
-                  id: 'comesa-yellow-card',
-                  label: 'comesa yellow card insurance',
-                  icon: (
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                      <rect x="3" y="8" width="18" height="4" rx="1"/>
-                      <path d="M12 8v13"/>
-                    </svg>
-                  )
-                }
-              ]
-            },
-            {
-              id: 'domestic-cover',
-              label: 'Domestic Cover',
+              id: 'domestic-package',
+              label: 'Domestic Package',
               icon: (
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                   <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
                   <polyline points="9 22 9 12 15 12 15 22"/>
                 </svg>
-              ),
-              hasNestedSubmenu: true,
-              nestedSubmenuItems: [
-                {
-                  id: 'domestic-package',
-                  label: 'Domestic package',
-                  icon: (
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                      <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
-                      <polyline points="9 22 9 12 15 12 15 22"/>
-                    </svg>
-                  )
-                }
-              ]
+              )
             },
             {
-              id: 'engineering-cover',
-              label: 'Engineering Cover',
+              id: 'personal-accident',
+              label: 'Personal Accident',
               icon: (
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <rect x="2" y="7" width="20" height="14" rx="2" ry="2"/>
-                  <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
+                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                  <circle cx="12" cy="7" r="4"/>
                 </svg>
-              ),
-              hasNestedSubmenu: true,
-              nestedSubmenuItems: [
-                {
-                  id: 'contractors-all-risks',
-                  label: 'Contractors All Risks',
-                  icon: (
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                      <rect x="2" y="7" width="20" height="14" rx="2" ry="2"/>
-                      <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
-                    </svg>
-                  )
-                },
-                {
-                  id: 'contractors-plant-machinery',
-                  label: 'Contractors Plant & Machinery',
-                  icon: (
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                      <rect x="2" y="7" width="20" height="14" rx="2" ry="2"/>
-                      <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
-                    </svg>
-                  )
-                },
-                {
-                  id: 'electronic-equipment',
-                  label: 'Electronic Equipment',
-                  icon: (
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                      <rect x="2" y="7" width="20" height="14" rx="2" ry="2"/>
-                      <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
-                    </svg>
-                  )
-                },
-                {
-                  id: 'machinery-breakdown',
-                  label: 'Machinery Breakdown',
-                  icon: (
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                      <rect x="2" y="7" width="20" height="14" rx="2" ry="2"/>
-                      <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
-                    </svg>
-                  )
-                },
-                {
-                  id: 'golfers-insurance',
-                  label: 'Golfers Insurance',
-                  icon: (
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                      <circle cx="12" cy="12" r="10"/>
-                      <path d="M12 6v6l4 2"/>
-                    </svg>
-                  )
-                }
-              ]
+              )
             },
             {
-              id: 'fire-perils-cover',
-              label: 'Fire & Perils Cover',
+              id: 'group-personal-accident',
+              label: 'Group Personal Accident',
               icon: (
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1.5-2.5S8 8.38 8 7.5c0 .5.5 1 1 1.5s1 1 1 1.5c0 .5-.5 1-1 1.5s-1.5 1-1.5 2.5"/>
-                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/>
+                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                  <circle cx="9" cy="7" r="4"/>
+                  <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/>
                 </svg>
-              ),
-              hasNestedSubmenu: true,
-              nestedSubmenuItems: [
-                {
-                  id: 'consequential-loss',
-                  label: 'Consequential Loss',
-                  icon: (
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                      <path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1.5-2.5S8 8.38 8 7.5c0 .5.5 1 1 1.5s1 1 1 1.5c0 .5-.5 1-1 1.5s-1.5 1-1.5 2.5"/>
-                      <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/>
-                    </svg>
-                  )
-                },
-                {
-                  id: 'fire-and-perils',
-                  label: 'Fire and Perils',
-                  icon: (
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                      <path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1.5-2.5S8 8.38 8 7.5c0 .5.5 1 1 1.5s1 1 1 1.5c0 .5-.5 1-1 1.5s-1.5 1-1.5 2.5"/>
-                      <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/>
-                    </svg>
-                  )
-                },
-                {
-                  id: 'industrial',
-                  label: 'Industrial',
-                  icon: (
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                      <rect x="2" y="7" width="20" height="14" rx="2" ry="2"/>
-                      <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
-                    </svg>
-                  )
-                }
-              ]
+              )
+            }
+          ]
+        },
+        {
+          id: 'corporate-solutions',
+          label: 'Corporate Solutions',
+          icon: (
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <rect x="4" y="2" width="16" height="20" rx="2" ry="2"/>
+              <path d="M9 22v-4h6v4"/>
+              <path d="M8 6h.01M16 6h.01M12 6h.01M12 10h.01M8 10h.01M16 10h.01"/>
+            </svg>
+          ),
+          hasNestedSubmenu: true,
+          nestedSubmenuItems: [
+            {
+              id: 'fire-and-perils',
+              label: 'Fire and Perils',
+              icon: (
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <path d="M12 3c-2 5-6 6-6 11a6 6 0 0 0 12 0c0-4-3-8-6-11z"/>
+                </svg>
+              )
             },
             {
-              id: 'liability-cover',
-              label: 'Liability Cover',
+              id: 'consequential-loss',
+              label: 'Consequential Loss',
+              icon: (
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/>
+                  <polyline points="17 6 23 6 23 12"/>
+                </svg>
+              )
+            },
+            {
+              id: 'industrial',
+              label: 'Industrial All Risks',
+              icon: (
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+                  <path d="M3 9h18M9 21V9"/>
+                </svg>
+              )
+            },
+            {
+              id: 'marine-hull',
+              label: 'Marine Hull',
+              icon: (
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <path d="M2 21c.6.5 1.2 1 2.5 1 2.5 0 3.5-2 5-2s2.5 2 5 2 2.5-2 5-2 1.9.5 2.5 1"/>
+                  <path d="M7 3v11M17 3v11M3.5 9h17M5 21V9M19 21V9"/>
+                </svg>
+              )
+            },
+            {
+              id: 'marine-cargo',
+              label: 'Marine Cargo',
+              icon: (
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+                  <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
+                  <line x1="12" y1="22.08" x2="12" y2="12"/>
+                </svg>
+              )
+            },
+            {
+              id: 'goods-in-transit',
+              label: 'Goods in Transit',
+              icon: (
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <rect x="1" y="3" width="15" height="13"/>
+                  <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/>
+                  <circle cx="5.5" cy="18.5" r="2.5"/>
+                  <circle cx="18.5" cy="18.5" r="2.5"/>
+                </svg>
+              )
+            },
+            {
+              id: 'burglary',
+              label: 'Theft & Burglary',
+              icon: (
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                </svg>
+              )
+            },
+            {
+              id: 'agricultural-forestry',
+              label: 'Agricultural & Forestry',
+              icon: (
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <path d="M12 22v-7"/>
+                  <path d="M9 22h6"/>
+                  <path d="M12 15c-3-3-3-8 0-11 3 3 3 8 0 11z"/>
+                </svg>
+              )
+            }
+          ]
+        },
+        {
+          id: 'corporate-liability',
+          label: 'Corporate Liability',
+          icon: (
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+              <path d="M9 12l2 2 4-4"/>
+            </svg>
+          ),
+          hasNestedSubmenu: true,
+          nestedSubmenuItems: [
+            {
+              id: 'carriers',
+              label: 'Carriers',
+              icon: (
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <path d="M3 18h18M3 18l2-10h14l2 10M3 18l-1 3h20l-1-3M9 12h6"/>
+                </svg>
+              )
+            },
+            {
+              id: 'professional-indemnity',
+              label: 'Professional Indemnity',
               icon: (
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                   <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
                   <path d="M9 12l2 2 4-4"/>
                 </svg>
-              ),
-              hasNestedSubmenu: true,
-              nestedSubmenuItems: [
-                {
-                  id: 'carriers',
-                  label: 'Carriers',
-                  icon: (
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                      <path d="M3 18h18M3 18l2-10h14l2 10M3 18l-1 3h20l-1-3M9 12h6"/>
-                    </svg>
-                  )
-                },
-                {
-                  id: 'professional-indemnity',
-                  label: 'Professional Indemnity',
-                  icon: (
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                      <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-                      <path d="M9 12l2 2 4-4"/>
-                    </svg>
-                  )
-                },
-                {
-                  id: 'public-liability',
-                  label: 'Public Liability',
-                  icon: (
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                      <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
-                      <circle cx="9" cy="7" r="4"/>
-                      <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/>
-                    </svg>
-                  )
-                },
-                {
-                  id: 'work-injury',
-                  label: 'Work Injury',
-                  icon: (
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                      <path d="M9 11l3 3L22 4"/>
-                      <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/>
-                    </svg>
-                  )
-                }
-              ]
+              )
             },
             {
-              id: 'marine-cover',
-              label: 'Marine Cover',
+              id: 'public-liability',
+              label: 'Public Liability',
               icon: (
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <path d="M3 18h18M3 18l2-10h14l2 10M3 18l-1 3h20l-1-3M9 12h6"/>
+                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                  <circle cx="9" cy="7" r="4"/>
+                  <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/>
                 </svg>
-              ),
-              hasNestedSubmenu: true,
-              nestedSubmenuItems: [
-                {
-                  id: 'goods-in-transit',
-                  label: 'Goods in Transit',
-                  icon: (
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                      <path d="M3 18h18M3 18l2-10h14l2 10M3 18l-1 3h20l-1-3M9 12h6"/>
-                    </svg>
-                  )
-                },
-                {
-                  id: 'marine-hull',
-                  label: 'Marine Hull',
-                  icon: (
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                      <path d="M3 18h18M3 18l2-10h14l2 10M3 18l-1 3h20l-1-3M9 12h6"/>
-                    </svg>
-                  )
-                },
-                {
-                  id: 'marine-cargo',
-                  label: 'Marine Cargo',
-                  icon: (
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                      <path d="M3 18h18M3 18l2-10h14l2 10M3 18l-1 3h20l-1-3M9 12h6"/>
-                    </svg>
-                  )
-                }
-              ]
+              )
             },
             {
-              id: 'motor-commercial',
-              label: 'Motor Commercial',
+              id: 'work-injury',
+              label: 'Work Injury',
               icon: (
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <path d="M5 17H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-1"/>
-                  <path d="M12 15l-3-3 3-3 3 3z"/>
-                  <path d="M12 12h7"/>
+                  <path d="M9 11l3 3L22 4"/>
+                  <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/>
                 </svg>
-              ),
-              hasNestedSubmenu: true,
-              nestedSubmenuItems: [
-                {
-                  id: 'agricultural-forestry',
-                  label: 'Agricultural and Forestry',
-                  icon: (
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                      <path d="M5 17H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-1"/>
-                      <path d="M12 15l-3-3 3-3 3 3z"/>
-                    </svg>
-                  )
-                },
-                {
-                  id: 'institutional-fleet',
-                  label: 'Institutional fleet',
-                  icon: (
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                      <path d="M5 17H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-1"/>
-                      <path d="M12 15l-3-3 3-3 3 3z"/>
-                    </svg>
-                  )
-                },
-                {
-                  id: 'chauffeur-driven-psv',
-                  label: 'CHAUFFEUR-DRIVEN (PSV)',
-                  icon: (
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                      <path d="M5 17H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-1"/>
-                      <path d="M12 15l-3-3 3-3 3 3z"/>
-                    </svg>
-                  )
-                },
-                {
-                  id: 'general-cartage',
-                  label: 'General Cartage',
-                  icon: (
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                      <path d="M5 17H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-1"/>
-                      <path d="M12 15l-3-3 3-3 3 3z"/>
-                    </svg>
-                  )
-                }
-              ]
+              )
+            }
+          ]
+        },
+        {
+          id: 'construction-engineering',
+          label: 'Construction & Engineering',
+          icon: (
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <rect x="2" y="7" width="20" height="14" rx="2" ry="2"/>
+              <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
+            </svg>
+          ),
+          hasNestedSubmenu: true,
+          nestedSubmenuItems: [
+            {
+              id: 'contractors-all-risks',
+              label: 'Contractors All Risks',
+              icon: (
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <rect x="2" y="7" width="20" height="14" rx="2" ry="2"/>
+                  <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
+                </svg>
+              )
             },
             {
-              id: 'motor-private',
-              label: 'Motor Private',
+              id: 'contractors-plant-machinery',
+              label: 'Contractors Plant & Machinery',
               icon: (
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <path d="M5 17H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-1"/>
-                  <path d="M12 15l-3-3 3-3 3 3z"/>
+                  <rect x="2" y="7" width="20" height="14" rx="2" ry="2"/>
+                  <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
                 </svg>
-              ),
-              hasNestedSubmenu: true,
-              nestedSubmenuItems: [
-                {
-                  id: 'motor-vehicle',
-                  label: 'Motor Vehicle',
-                  icon: (
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                      <path d="M5 17H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-1"/>
-                      <path d="M12 15l-3-3 3-3 3 3z"/>
-                    </svg>
-                  )
-                },
-                {
-                  id: 'motor-cycle',
-                  label: 'Motor Cycle',
-                  icon: (
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                      <circle cx="5" cy="17" r="3"/>
-                      <circle cx="19" cy="17" r="3"/>
-                      <path d="M12 19h4.5a3.5 3.5 0 0 0 0-7h-5c-1.5 0-3 1.5-3 3v2"/>
-                    </svg>
-                  )
-                }
-              ]
+              )
             },
             {
-              id: 'theft-cover',
-              label: 'Theft Cover',
+              id: 'electronic-equipment',
+              label: 'Electronic Equipment',
               icon: (
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
-                  <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+                  <rect x="2" y="7" width="20" height="14" rx="2" ry="2"/>
+                  <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
                 </svg>
-              ),
-              hasNestedSubmenu: true,
-              nestedSubmenuItems: [
-                {
-                  id: 'burglary',
-                  label: 'Burglary',
-                  icon: (
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                      <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
-                      <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
-                    </svg>
-                  )
-                }
-              ]
+              )
+            },
+            {
+              id: 'machinery-breakdown',
+              label: 'Machinery Breakdown',
+              icon: (
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <rect x="2" y="7" width="20" height="14" rx="2" ry="2"/>
+                  <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
+                </svg>
+              )
+            },
+            {
+              id: 'golfers-insurance',
+              label: 'Golfers Insurance',
+              icon: (
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <circle cx="12" cy="12" r="10"/>
+                  <path d="M12 6v6l4 2"/>
+                </svg>
+              )
+            }
+          ]
+        },
+        {
+          id: 'bonds',
+          label: 'Bonds',
+          icon: (
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <rect x="3" y="8" width="18" height="4" rx="1"/>
+              <path d="M12 8v13"/>
+              <path d="M19 12v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-7"/>
+              <path d="M7.5 8a2.5 2.5 0 0 1 0-5A4.8 8 0 0 1 12 8a4.8 8 0 0 1 4.5-5 2.5 2.5 0 0 1 0 5"/>
+            </svg>
+          ),
+          hasNestedSubmenu: true,
+          nestedSubmenuItems: [
+            {
+              id: 'customs',
+              label: 'Customs',
+              icon: (
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <rect x="3" y="8" width="18" height="4" rx="1"/>
+                  <path d="M12 8v13"/>
+                </svg>
+              )
+            },
+            {
+              id: 'immigration-security',
+              label: 'Immigration Security',
+              icon: (
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                  <path d="M9 12l2 2 4-4"/>
+                </svg>
+              )
+            },
+            {
+              id: 'performance',
+              label: 'Performance',
+              icon: (
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+                </svg>
+              )
+            },
+            {
+              id: 'surety-undertaking',
+              label: 'Surety Undertaking',
+              icon: (
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <path d="M9 11l3 3L22 4"/>
+                  <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/>
+                </svg>
+              )
+            },
+            {
+              id: 'tender',
+              label: 'Tender',
+              icon: (
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+                  <line x1="9" y1="9" x2="15" y2="15"/>
+                  <line x1="15" y1="9" x2="9" y2="15"/>
+                </svg>
+              )
+            },
+            {
+              id: 'comesa-yellow-card',
+              label: 'comesa yellow card insurance',
+              icon: (
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <rect x="3" y="8" width="18" height="4" rx="1"/>
+                  <path d="M12 8v13"/>
+                </svg>
+              )
+            }
+          ]
+        },
+        {
+          id: 'motor-insurance',
+          label: 'Motor Insurance',
+          icon: (
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.5-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2"/>
+              <circle cx="7" cy="17" r="2"/>
+              <path d="M9 17h6"/>
+              <circle cx="17" cy="17" r="2"/>
+            </svg>
+          ),
+          hasNestedSubmenu: true,
+          nestedSubmenuItems: [
+            {
+              id: 'motor-vehicle',
+              label: 'Private Motor Insurance',
+              icon: (
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.5-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2"/>
+                  <circle cx="7" cy="17" r="2"/>
+                  <path d="M9 17h6"/>
+                  <circle cx="17" cy="17" r="2"/>
+                </svg>
+              )
+            },
+            {
+              id: 'motor-cycle',
+              label: 'Motor Cycle',
+              icon: (
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <circle cx="5.5" cy="17.5" r="3.5"/>
+                  <circle cx="18.5" cy="17.5" r="3.5"/>
+                  <path d="M15 6a1 1 0 1 0 0-5 1 1 0 0 0 0 5z"/>
+                  <path d="M12 17.5V14l-3-3 4-3 2 3h3"/>
+                </svg>
+              )
+            },
+            {
+              id: 'institutional-fleet',
+              label: 'Institutional Fleet',
+              icon: (
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <path d="M3 18h18M5 18V8h14v10"/>
+                  <path d="M7 12h10M7 15h6"/>
+                </svg>
+              )
+            },
+            {
+              id: 'chauffeur-driven-psv',
+              label: 'Chauffeur Driven PSV',
+              icon: (
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <path d="M5 17h14v-5H5v5zM5 12V7h14v5"/>
+                  <circle cx="7.5" cy="17.5" r="1.5"/>
+                  <circle cx="16.5" cy="17.5" r="1.5"/>
+                </svg>
+              )
+            },
+            {
+              id: 'general-cartage',
+              label: 'General Cartage',
+              icon: (
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <rect x="1" y="6" width="14" height="10" rx="1"/>
+                  <path d="M15 10h3l4 4v2h-7"/>
+                  <circle cx="6" cy="18" r="2"/>
+                  <circle cx="18" cy="18" r="2"/>
+                </svg>
+              )
+            },
+            {
+              id: 'goods-in-transit',
+              label: 'Goods in Transit',
+              icon: (
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <rect x="1" y="3" width="15" height="13"/>
+                  <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/>
+                  <circle cx="5.5" cy="18.5" r="2.5"/>
+                  <circle cx="18.5" cy="18.5" r="2.5"/>
+                </svg>
+              )
             }
           ]
         }
@@ -671,6 +633,7 @@ const Navbar = () => {
         setIsMobileMenuOpen(false)
         setOpenSubmenu(null)
         setOpenNestedSubmenu(null)
+        setSuppressDesktopSubmenuHover(false)
       }
     }
 
@@ -689,8 +652,18 @@ const Navbar = () => {
       
       // Close desktop submenus when clicking outside
       if (window.innerWidth > 768 && navRef.current && !navRef.current.contains(event.target)) {
+        if (submenuOpenDelayRef.current) {
+          clearTimeout(submenuOpenDelayRef.current)
+          submenuOpenDelayRef.current = null
+        }
+        if (submenuTimeoutRef.current) {
+          clearTimeout(submenuTimeoutRef.current)
+          submenuTimeoutRef.current = null
+        }
         setOpenSubmenu(null)
         setOpenNestedSubmenu(null)
+        setOpenSubmenuColumns({})
+        setSuppressDesktopSubmenuHover(false)
       }
     }
 
@@ -705,17 +678,58 @@ const Navbar = () => {
     }
   }, [isMobileMenuOpen, openSubmenu])
 
+  useEffect(() => {
+    setSuppressDesktopSubmenuHover(false)
+  }, [location.pathname, location.hash])
+
+  // Reset column states when switching between mobile and desktop
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth > 768) {
+        setOpenSubmenuColumns({})
+      }
+    }
+    window.addEventListener('resize', handleResize)
+    return () => window.removeEventListener('resize', handleResize)
+  }, [])
+
+  const closeMobileMenu = () => {
+    setIsMobileMenuOpen(false)
+    setOpenSubmenu(null)
+    setOpenNestedSubmenu(null)
+    setOpenSubmenuColumns({})
+    if (submenuOpenDelayRef.current) {
+      clearTimeout(submenuOpenDelayRef.current)
+      submenuOpenDelayRef.current = null
+    }
+    if (submenuTimeoutRef.current) {
+      clearTimeout(submenuTimeoutRef.current)
+      submenuTimeoutRef.current = null
+    }
+    if (nestedSubmenuTimeoutRef.current) {
+      clearTimeout(nestedSubmenuTimeoutRef.current)
+      nestedSubmenuTimeoutRef.current = null
+    }
+  }
+
+  /** Close mobile + submenu state; on desktop, hide hover flyouts until pointer leaves the nav bar. */
+  const resetMenusAfterSubmenuChoice = () => {
+    closeMobileMenu()
+    if (typeof window !== 'undefined' && window.innerWidth > 768) {
+      setSuppressDesktopSubmenuHover(true)
+    }
+  }
 
   const handleNavClick = (e, sectionId) => {
     e.preventDefault()
-    
+    resetMenusAfterSubmenuChoice()
+
     // Scroll to top immediately
     window.scrollTo({ top: 0, behavior: 'instant' })
     
     // Handle routing for contact, branches, careers, and about pages
     if (sectionId === 'contact') {
       navigate('/contact')
-      closeMobileMenu()
       return
     }
     
@@ -1083,9 +1097,18 @@ const Navbar = () => {
         setActiveSection(sectionId)
       }
     }
-    
-    closeMobileMenu()
   }
+
+  /** Insurance mega menu: column headers that should accordion (only one open on mobile). */
+  const insuranceTopLevelColumnIds = new Set([
+    'life-insurance',
+    'personal-solutions',
+    'corporate-solutions',
+    'corporate-liability',
+    'construction-engineering',
+    'bonds',
+    'motor-insurance',
+  ])
 
   const handleSubmenuToggle = (itemId, e) => {
     if (window.innerWidth <= 768) {
@@ -1094,6 +1117,7 @@ const Navbar = () => {
       // Close other submenus when opening a new one
       if (openSubmenu !== itemId) {
         setOpenNestedSubmenu(null)
+        setOpenSubmenuColumns({})
       }
       setOpenSubmenu(openSubmenu === itemId ? null : itemId)
     }
@@ -1105,6 +1129,7 @@ const Navbar = () => {
     if (!isMobileMenuOpen) {
       setOpenSubmenu(null)
       setOpenNestedSubmenu(null)
+      setOpenSubmenuColumns({})
     }
   }
 
@@ -1112,17 +1137,34 @@ const Navbar = () => {
     if (window.innerWidth > 768) {
       if (submenuTimeoutRef.current) {
         clearTimeout(submenuTimeoutRef.current)
+        submenuTimeoutRef.current = null
       }
-      setOpenSubmenu(itemId)
+      if (submenuOpenDelayRef.current) {
+        clearTimeout(submenuOpenDelayRef.current)
+        submenuOpenDelayRef.current = null
+      }
+      submenuOpenDelayRef.current = setTimeout(() => {
+        submenuOpenDelayRef.current = null
+        setOpenSubmenu(itemId)
+      }, 140)
     }
   }
 
   const handleMouseLeaveSubmenu = () => {
     if (window.innerWidth > 768) {
+      if (submenuOpenDelayRef.current) {
+        clearTimeout(submenuOpenDelayRef.current)
+        submenuOpenDelayRef.current = null
+      }
+      if (submenuTimeoutRef.current) {
+        clearTimeout(submenuTimeoutRef.current)
+      }
       submenuTimeoutRef.current = setTimeout(() => {
         setOpenSubmenu(null)
         setOpenNestedSubmenu(null)
-      }, 200)
+        setOpenSubmenuColumns({})
+        submenuTimeoutRef.current = null
+      }, 520)
     }
   }
 
@@ -1134,36 +1176,47 @@ const Navbar = () => {
     }
   }
   
-  const closeMobileMenu = () => {
-    setIsMobileMenuOpen(false)
-    setOpenSubmenu(null)
-    setOpenNestedSubmenu(null)
-    setOpenSubmenuColumns({})
-  }
+  const toggleSubmenuColumn = (columnId, e, rootNavId) => {
+    if (typeof window === 'undefined' || window.innerWidth > 768) {
+      return
+    }
+    e.preventDefault()
+    e.stopPropagation()
 
-  
-  const toggleSubmenuColumn = (columnId, e) => {
-    // Only toggle on mobile
-    if (window.innerWidth <= 768) {
-      e.preventDefault()
-      e.stopPropagation()
-      setOpenSubmenuColumns(prev => ({
+    if (rootNavId !== 'insurance') {
+      setOpenSubmenuColumns((prev) => ({
         ...prev,
-        [columnId]: !prev[columnId]
+        [columnId]: !prev[columnId],
       }))
+      return
     }
-  }
-  
-  // Reset column states when switching between mobile and desktop
-  useEffect(() => {
-    const handleResize = () => {
-      if (window.innerWidth > 768) {
-        setOpenSubmenuColumns({})
+
+    setOpenSubmenuColumns((prev) => {
+      const wasOpen = !!prev[columnId]
+
+      if (wasOpen) {
+        const next = { ...prev }
+        delete next[columnId]
+        if (insuranceTopLevelColumnIds.has(columnId)) {
+          for (const k of Object.keys(next)) {
+            if (!insuranceTopLevelColumnIds.has(k)) delete next[k]
+          }
+        }
+        return next
       }
-    }
-    window.addEventListener('resize', handleResize)
-    return () => window.removeEventListener('resize', handleResize)
-  }, [])
+
+      if (insuranceTopLevelColumnIds.has(columnId)) {
+        return { [columnId]: true }
+      }
+
+      const next = { ...prev }
+      for (const k of Object.keys(next)) {
+        if (!insuranceTopLevelColumnIds.has(k)) delete next[k]
+      }
+      next[columnId] = true
+      return next
+    })
+  }
 
   const handleMouseEnterNestedSubmenu = (itemId) => {
     if (window.innerWidth > 768) {
@@ -1194,7 +1247,8 @@ const Navbar = () => {
       )}
       <nav 
         ref={navRef}
-        className={`navbar ${isScrolled ? 'scrolled' : ''} ${isMobileMenuOpen ? 'menu-open' : ''}`}
+        className={`navbar ${isScrolled ? 'scrolled' : ''} ${isMobileMenuOpen ? 'menu-open' : ''} ${suppressDesktopSubmenuHover ? 'suppress-desktop-submenu-hover' : ''}`}
+        onMouseLeave={() => setSuppressDesktopSubmenuHover(false)}
       >
       <div className="nav-container">
         {/* Logo */}
@@ -1222,7 +1276,9 @@ const Navbar = () => {
 
         {/* Desktop Menu - Centered */}
         <ul className="nav-menu" ref={menuRef}>
-            {navItems.map((item, index) => (
+            {navItems.map((item, index) => {
+            const useMegaFlyoutLayout = item.id === 'insurance'
+            return (
             <li 
               key={item.id} 
               className={`nav-item ${item.hasSubmenu ? 'has-submenu' : ''}`}
@@ -1235,7 +1291,7 @@ const Navbar = () => {
                   className={`nav-link ${location.pathname === '/contact' ? 'active' : ''}`}
                   onClick={() => {
                     window.scrollTo({ top: 0, behavior: 'instant' })
-                    closeMobileMenu()
+                    resetMenusAfterSubmenuChoice()
                   }}
                 >
                   <span className="nav-link-text">{item.label}</span>
@@ -1247,7 +1303,7 @@ const Navbar = () => {
                   className={`nav-link ${location.pathname === '/branches' ? 'active' : ''}`}
                   onClick={() => {
                     window.scrollTo({ top: 0, behavior: 'instant' })
-                    closeMobileMenu()
+                    resetMenusAfterSubmenuChoice()
                   }}
                 >
                   <span className="nav-link-text">{item.label}</span>
@@ -1280,87 +1336,21 @@ const Navbar = () => {
               {/* Submenu */}
               {item.hasSubmenu && (
                 <div 
-                  className={`nav-submenu ${openSubmenu === item.id ? 'open' : ''} ${item.id === 'pages' ? 'pages-submenu' : ''}`}
-                  onMouseEnter={() => handleMouseEnterSubmenu(item.id)}
-                  onMouseLeave={handleMouseLeaveSubmenu}
+                  className={`nav-submenu ${openSubmenu === item.id ? 'open' : ''} ${item.id === 'pages' ? 'pages-submenu' : ''} ${item.id === 'insurance' ? 'insurance-submenu' : ''} ${useMegaFlyoutLayout ? 'submenu-mega-flyout' : ''}`}
                 >
-                  <div className={`submenu-content ${item.id === 'pages' ? 'pages-submenu-content' : ''}`}>
-                    <div className="submenu-columns">
+                  <div className={`submenu-content ${item.id === 'pages' ? 'pages-submenu-content' : ''} ${item.id === 'insurance' ? 'insurance-submenu-content' : ''}`}>
+                    <div className={`submenu-columns ${useMegaFlyoutLayout ? 'insurance-submenu-columns' : ''}`}>
                       {item.submenuItems.map((subItem, subIndex) => {
-                        // For General Insurance, create a column for each nested item
-                        if (subItem.id === 'general-insurance' && subItem.hasNestedSubmenu && subItem.nestedSubmenuItems) {
-                          return (
-                            <React.Fragment key={subItem.id}>
-                              {subItem.nestedSubmenuItems.map((nestedItem, nestedIndex) => {
-                                const hasItems = nestedItem.hasNestedSubmenu && nestedItem.nestedSubmenuItems
-                                const isColumnOpen = openSubmenuColumns[nestedItem.id]
-                                
-                                return (
-                                  <div key={nestedItem.id} className="submenu-column">
-                                    {hasItems ? (
-                                      <>
-                                        <div 
-                                          className="submenu-column-header"
-                                          onClick={(e) => toggleSubmenuColumn(nestedItem.id, e)}
-                                        >
-                                          <span className={`submenu-header-arrow ${isColumnOpen ? 'open' : ''}`}>
-                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                                              <polyline points="6 9 12 15 18 9"></polyline>
-                                            </svg>
-                                          </span>
-                                          <span className="submenu-header-title">{nestedItem.label}</span>
-                                        </div>
-                                        <div className={`submenu-column-items ${isColumnOpen ? 'open' : ''}`}>
-                                          {nestedItem.nestedSubmenuItems.map((deepNestedItem, deepIndex) => (
-                                            <a
-                                              key={deepNestedItem.id}
-                                              href={`#${deepNestedItem.id}`}
-                                              className="submenu-column-item"
-                                              onClick={(e) => {
-                                                e.preventDefault()
-                                                handleNavClick(e, deepNestedItem.id)
-                                              }}
-                                            >
-                                              {deepNestedItem.label}
-                                            </a>
-                                          ))}
-                                        </div>
-                                      </>
-                                    ) : (
-                                      <>
-                                        <div className="submenu-column-header">
-                                          <span className="submenu-header-arrow"></span>
-                                          <span className="submenu-header-title">{nestedItem.label}</span>
-                                        </div>
-                                        <a
-                                          href={`#${nestedItem.id}`}
-                                          className="submenu-column-item"
-                                          onClick={(e) => {
-                                            e.preventDefault()
-                                            handleNavClick(e, nestedItem.id)
-                                          }}
-                                        >
-                                          {nestedItem.label}
-                                        </a>
-                                      </>
-                                    )}
-                                  </div>
-                                )
-                              })}
-                            </React.Fragment>
-                          )
-                        }
-                        // For other items (like Life Insurance), use the original structure
-                        const hasItems = subItem.hasNestedSubmenu && subItem.nestedSubmenuItems
+                        const hasNestedChildren = !!(subItem.hasNestedSubmenu && subItem.nestedSubmenuItems?.length)
                         const isColumnOpen = openSubmenuColumns[subItem.id]
                         
                         return (
                           <div key={subItem.id} className="submenu-column">
-                            {hasItems ? (
+                            {hasNestedChildren ? (
                               <>
                                 <div 
                                   className="submenu-column-header"
-                                  onClick={(e) => toggleSubmenuColumn(subItem.id, e)}
+                                  onClick={(e) => toggleSubmenuColumn(subItem.id, e, item.id)}
                                 >
                                   <span className={`submenu-header-arrow ${isColumnOpen ? 'open' : ''}`}>
                                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -1371,7 +1361,7 @@ const Navbar = () => {
                                 </div>
                                 <div className={`submenu-column-items ${isColumnOpen ? 'open' : ''}`}>
                                   {subItem.nestedSubmenuItems.map((nestedItem, nestedIndex) => {
-                                    const hasNestedItems = nestedItem.hasNestedSubmenu && nestedItem.nestedSubmenuItems
+                                    const hasNestedItems = !!(nestedItem.hasNestedSubmenu && nestedItem.nestedSubmenuItems?.length)
                                     const isNestedOpen = openSubmenuColumns[nestedItem.id]
                                     
                                     return (
@@ -1384,7 +1374,7 @@ const Navbar = () => {
                                                 if (window.innerWidth <= 768) {
                                                   e.preventDefault()
                                                   e.stopPropagation()
-                                                  toggleSubmenuColumn(nestedItem.id, e)
+                                                  toggleSubmenuColumn(nestedItem.id, e, item.id)
                                                 }
                                               }}
                                             >
@@ -1428,6 +1418,25 @@ const Navbar = () => {
                                   })}
                                 </div>
                               </>
+                            ) : subItem.hasNestedSubmenu && (!subItem.nestedSubmenuItems || subItem.nestedSubmenuItems.length === 0) ? (
+                              <>
+                                <div
+                                  className="submenu-column-header"
+                                  onClick={(e) => toggleSubmenuColumn(subItem.id, e, item.id)}
+                                >
+                                  <span className={`submenu-header-arrow ${isColumnOpen ? 'open' : ''}`}>
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                                      <polyline points="6 9 12 15 18 9"></polyline>
+                                    </svg>
+                                  </span>
+                                  <span className="submenu-header-title">{subItem.label}</span>
+                                </div>
+                                <div className={`submenu-column-items ${isColumnOpen ? 'open' : ''}`}>
+                                  <span className="submenu-column-item submenu-column-placeholder" role="note">
+                                    Products coming soon
+                                  </span>
+                                </div>
+                              </>
                             ) : (
                               <>
                                 <div className="submenu-column-header">
@@ -1454,7 +1463,7 @@ const Navbar = () => {
                 </div>
               )}
             </li>
-          ))}
+          )})}
         </ul>
 
         {/* Action Buttons - Far Right */}
