@@ -246,7 +246,8 @@ section {
     margin: 0 auto;
     padding: 0.75rem calc(20px + env(safe-area-inset-right, 0px)) 0.75rem calc(20px + env(safe-area-inset-left, 0px));
     display: grid;
-    grid-template-columns: auto 1fr auto;
+    /* minmax(0, 1fr) lets the center track shrink so links can wrap instead of painting over .nav-actions */
+    grid-template-columns: auto minmax(0, 1fr) auto;
     align-items: center;
     gap: 2rem 2rem;
     position: relative;
@@ -293,7 +294,8 @@ section {
     opacity: 1 !important;
     grid-column: 1;
     width: auto;
-    min-width: 200px;
+    min-width: 0;
+    max-width: 100%;
 }
 
 .logo-wrapper {
@@ -305,8 +307,9 @@ section {
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     height: 100%;
     max-height: 100%;
-    min-width: 200px;
+    min-width: 0;
     width: auto;
+    max-width: 100%;
     visibility: visible !important;
     opacity: 1 !important;
 }
@@ -315,8 +318,8 @@ section {
     height: 90px;
     max-height: 100%;
     width: auto;
-    min-width: 160px;
-    max-width: 280px;
+    min-width: 0;
+    max-width: min(280px, 100%);
     object-fit: contain;
     position: relative;
     z-index: 2;
@@ -423,6 +426,7 @@ section {
     list-style: none;
     gap: 0.5rem;
     align-items: center;
+    align-content: center;
     justify-content: center;
     margin: 0;
     padding: 0 0.5rem;
@@ -431,7 +435,8 @@ section {
     max-width: 100%;
     position: relative;
     overflow: visible;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
+    row-gap: 0.35rem;
     grid-column: 2;
     isolation: isolate;
 }
@@ -497,8 +502,6 @@ section {
     text-decoration: none;
     white-space: nowrap;
     flex-shrink: 0;
-    margin-left: auto;
-    justify-self: end;
 }
 
 .nav-quote-button::before {
@@ -568,6 +571,47 @@ section {
 .nav-intermediary-button span {
     position: relative;
     z-index: 1;
+}
+
+/* Mid-width desktops: keep links and CTAs on separate rows/lanes instead of overlapping */
+@media (min-width: 769px) and (max-width: 1280px) {
+    .nav-container {
+        gap: 1rem 1rem;
+    }
+
+    .nav-menu {
+        gap: 0.35rem;
+        padding: 0 0.25rem;
+    }
+
+    .nav-link {
+        padding: 0.65rem 0.55rem;
+        font-size: 0.9rem;
+    }
+
+    .nav-claim-button,
+    .nav-quote-button,
+    .nav-intermediary-button {
+        padding: 0.45rem 0.7rem;
+        font-size: 0.72rem;
+    }
+}
+
+@media (min-width: 769px) and (max-width: 1100px) {
+    .nav-actions {
+        flex-wrap: wrap;
+        justify-content: flex-end;
+        max-width: 100%;
+        row-gap: 0.35rem;
+    }
+
+    .logo-image {
+        height: 76px;
+    }
+
+    .navbar.scrolled .logo-image {
+        height: 68px;
+    }
 }
 
 .nav-item {
@@ -1058,7 +1102,19 @@ section {
         margin-bottom: 0 !important;
         align-self: center !important;
         cursor: default !important;
-        font-size: 0.9rem !important;
+        font-size: 0.8rem !important;
+        font-weight: 600 !important;
+        letter-spacing: 0.35px !important;
+    }
+
+    .submenu-mega-flyout .submenu-column-item:not(.submenu-nested-item) {
+        font-size: 0.88rem !important;
+        font-weight: 500 !important;
+    }
+
+    .submenu-mega-flyout .submenu-column-item.submenu-nested-item {
+        font-size: 0.84rem !important;
+        font-weight: 500 !important;
     }
 
     .submenu-mega-flyout .submenu-column > .submenu-column-header .submenu-header-arrow {
@@ -9082,10 +9138,6 @@ section {
         transform: rotate(0deg) !important;
     }
 
-    .navbar.menu-open .submenu-mega-flyout .submenu-column > .submenu-column-header {
-        font-size: 0.95rem !important;
-    }
-
     .navbar.menu-open .submenu-mega-flyout .submenu-column-items {
         max-width: none !important;
         box-shadow: none !important;
@@ -9205,6 +9257,33 @@ section {
         font-size: 1rem !important;
         color: rgba(17, 66, 46, 0.8) !important;
         line-height: 1.45 !important;
+    }
+
+    /* Insurance mega menu: match desktop typography (override mobile defaults) */
+    .navbar.menu-open .submenu-mega-flyout .submenu-column > .submenu-column-header {
+        font-size: 0.8rem !important;
+        font-weight: 600 !important;
+        letter-spacing: 0.35px !important;
+        padding: 0.65rem 0.75rem !important;
+    }
+
+    .navbar.menu-open .submenu-mega-flyout .submenu-column-item {
+        font-size: 0.88rem !important;
+        font-weight: 500 !important;
+        padding: 0.55rem 0.75rem !important;
+        line-height: 1.4 !important;
+    }
+
+    .navbar.menu-open .submenu-mega-flyout .submenu-nested-header {
+        font-size: 0.88rem !important;
+        font-weight: 600 !important;
+        padding: 0.55rem 0.75rem !important;
+    }
+
+    .navbar.menu-open .submenu-mega-flyout .submenu-column-item.submenu-nested-item {
+        font-size: 0.84rem !important;
+        font-weight: 500 !important;
+        padding: 0.5rem 0.7rem !important;
     }
 
     .navbar.menu-open .submenu-item {
