@@ -7,6 +7,7 @@
     "dev": "vite",
     "generate:sitemap": "node scripts/generate-sitemap.mjs",
     "build": "npm run generate:sitemap && vite build && react-snap",
+    "build:netlify": "npm run generate:sitemap && vite build",
     "preview": "vite preview"
   },
   "dependencies": {
