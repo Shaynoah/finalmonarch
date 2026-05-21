@@ -18,6 +18,103 @@
     --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.16);
 }
 
+/* Final alignment override: keep Protect badge and heading on same left edge */
+.protect-content {
+    text-align: left !important;
+}
+
+.protect-content .protect-icon-wrapper {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+}
+
+.protect-content .protect-title {
+    text-align: left !important;
+}
+
+@media (max-width: 968px) {
+    .protect-content,
+    .protect-content .protect-title {
+        text-align: left !important;
+    }
+
+    .protect-content .protect-icon-wrapper {
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+    }
+}
+
+.protect-heading-row {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.2rem;
+}
+
+.protect-heading-row .protect-icon-wrapper {
+    width: 56px !important;
+    height: 56px !important;
+    border-radius: 14px !important;
+    margin: 0 !important;
+    flex-shrink: 0;
+}
+
+.protect-heading-row .protect-icon-wrapper svg {
+    width: 30px !important;
+    height: 30px !important;
+}
+
+.protect-heading-row .protect-title {
+    margin: 0 !important;
+}
+
+@media (max-width: 968px) {
+    .protect-heading-row {
+        display: flex;
+        align-items: center;
+        gap: 0.85rem;
+        margin-bottom: 1rem;
+    }
+
+    .protect-heading-row .protect-icon-wrapper {
+        width: 50px !important;
+        height: 50px !important;
+        border-radius: 12px !important;
+    }
+
+    .protect-heading-row .protect-icon-wrapper svg {
+        width: 26px !important;
+        height: 26px !important;
+    }
+}
+
+/* Keep hero CTAs anchored lower on desktop/tablet landscape */
+@media (min-width: 769px) {
+    .hero-left-content {
+        min-height: clamp(420px, 62vh, 620px) !important;
+        justify-content: flex-start !important;
+    }
+
+    .hero-left-content .hero-buttons {
+        margin-top: auto !important;
+        padding-top: clamp(1.5rem, 8vh, 4.5rem) !important;
+    }
+}
+
+/* Keep Protect badge + heading aligned to same left edge on all devices */
+.protect-content {
+    text-align: left !important;
+}
+
+.protect-content .protect-icon-wrapper {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+}
+
+.protect-content .protect-title {
+    text-align: left !important;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -166,6 +263,61 @@ img[loading="lazy"] {
 section {
     max-width: 100%;
     box-sizing: border-box;
+}
+
+/* Prevent media/content overflow on narrow screens */
+iframe,
+video,
+canvas {
+    max-width: 100%;
+}
+
+/* Service Providers responsive hardening */
+@media (max-width: 768px) {
+    .service-providers-section {
+        padding-top: 100px !important;
+    }
+
+    .service-providers-title {
+        font-size: clamp(1.5rem, 6vw, 2rem) !important;
+        line-height: 1.25 !important;
+    }
+
+    .service-providers-subtitle {
+        font-size: 0.95rem !important;
+        max-width: 100% !important;
+        padding-inline: 0.25rem;
+    }
+
+    .service-providers-section .category-header {
+        padding: 1rem !important;
+        align-items: flex-start !important;
+        gap: 0.75rem !important;
+    }
+
+    .service-providers-section .category-title {
+        font-size: 1.1rem !important;
+        letter-spacing: 0.02em !important;
+        line-height: 1.3 !important;
+        overflow-wrap: anywhere;
+    }
+
+    .service-providers-section .service-providers-grid,
+    .service-providers-section .dealership-grid {
+        grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr)) !important;
+        gap: 0.875rem !important;
+    }
+
+    .service-providers-section .service-provider-card,
+    .service-providers-section .dealership-item {
+        min-width: 0 !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .service-providers-section .service-provider-detail-item {
+        padding: 0.625rem !important;
+    }
 }
 
 /* ============================================
@@ -870,7 +1022,7 @@ section {
 }
 
 /* Better touch feedback for mobile */
-@media (max-width: 768px) {
+@media (max-width: 1100px) {
     .nav-toggle {
         -webkit-tap-highlight-color: transparent;
         touch-action: manipulation;
@@ -919,7 +1071,7 @@ section {
     }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1100px) {
     .navbar {
         z-index: 1000;
     }
@@ -947,9 +1099,9 @@ section {
 }
 
 /* ============================================
-   Desktop Submenu Styles (min-width: 769px)
+   Desktop Submenu Styles (min-width: 1101px)
    ============================================ */
-@media (min-width: 769px) {
+@media (min-width: 1101px) {
     .nav-submenu {
         position: fixed;
         top: 80px;
@@ -1297,7 +1449,7 @@ section {
     transition: opacity 0.4s ease;
 }
 
-@media (min-width: 769px) {
+@media (min-width: 1101px) {
     .nav-submenu.open .submenu-backdrop {
         opacity: 1;
     }
@@ -1401,7 +1553,7 @@ section {
     transform: rotate(90deg) !important;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1100px) {
     .submenu-header-arrow {
         width: 22px !important;
         height: 22px !important;
@@ -1420,7 +1572,7 @@ section {
 }
 
 /* Desktop: submenu items visible by default (except insurance flyout panels) */
-@media (min-width: 769px) {
+@media (min-width: 1101px) {
     .nav-submenu:not(.submenu-mega-flyout) .submenu-column-items {
         max-height: none !important;
         overflow: visible !important;
@@ -2254,7 +2406,8 @@ section {
     .hero-buttons {
         flex-direction: row;
         flex-wrap: nowrap;
-      align-items: flex-end;
+        align-items: flex-end;
+        margin-top: clamp(2.5rem, 16vh, 9rem);
     }
 
     .hero-buttons .btn-get-quote {
@@ -8572,7 +8725,7 @@ section {
 /* ============================================
    Responsive Design
    ============================================ */
-@media (max-width: 768px) {
+@media (max-width: 1100px) {
     /* Old mobile menu styles removed - using new menu-open approach */
 
     /* Mobile Logo */
@@ -13271,7 +13424,7 @@ section {
 
 .team-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
     gap: 1.5rem;
     margin-top: 1.5rem;
 }
@@ -13776,7 +13929,11 @@ section {
 /* Responsive Design for Team Section */
 @media (max-width: 968px) {
     .team-section {
-        padding: 2.5rem 0;
+        padding: 7rem 0 2.5rem 0;
+    }
+
+    .team-section .container {
+        padding-top: 1rem;
     }
 
     .team-header {
@@ -14349,7 +14506,7 @@ section {
 
 .plans-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
     gap: 1.5rem;
     max-width: 1400px;
     margin: 0 auto;
@@ -14585,6 +14742,53 @@ section {
     margin: 0 auto;
 }
 
+/* Keep Scope of Cover visually compact on Last Expense page */
+.scope-info-card {
+    max-width: 860px;
+    padding: 1.5rem 1.5rem 1.25rem;
+}
+
+.scope-info-card .info-card-title {
+    font-size: 1.6rem;
+    margin-bottom: 0.75rem;
+}
+
+.scope-info-card .info-item {
+    padding: 0.5rem 0;
+}
+
+.scope-info-card .info-item span {
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+/* Compact style for the two cards under Scope of Cover */
+.requirements-info-card {
+    padding: 1.5rem 1.25rem;
+    border-radius: 14px;
+    box-shadow: 0 3px 14px rgba(0, 0, 0, 0.07);
+}
+
+.requirements-info-card .info-card-title {
+    font-size: 1.45rem;
+    margin-bottom: 0.65rem;
+}
+
+.requirements-info-card .info-card-subtitle {
+    font-size: 0.98rem;
+    margin-bottom: 1rem;
+}
+
+.requirements-info-card .info-item {
+    gap: 0.75rem;
+    padding: 0.45rem 0;
+}
+
+.requirements-info-card .info-item span {
+    font-size: 0.93rem;
+    line-height: 1.45;
+}
+
 .info-card-title {
     font-size: 2rem;
     font-weight: 700;
@@ -14640,7 +14844,7 @@ section {
 
 .requirements-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
     gap: 1.5rem;
     max-width: 1200px;
     margin: 0 auto;
@@ -14825,6 +15029,27 @@ section {
         padding: 2rem 1.5rem;
     }
 
+    .scope-info-card {
+        max-width: 100%;
+        padding: 1.25rem 1.15rem 1rem;
+    }
+
+    .scope-info-card .info-card-title {
+        font-size: 1.35rem;
+    }
+
+    .requirements-info-card {
+        padding: 1.25rem 1rem;
+    }
+
+    .requirements-info-card .info-card-title {
+        font-size: 1.25rem;
+    }
+
+    .requirements-info-card .info-card-subtitle {
+        font-size: 0.92rem;
+    }
+
     .requirements-grid {
         grid-template-columns: 1fr;
     }
@@ -14916,6 +15141,34 @@ section {
 
     .premium-table td {
         padding: 0.625rem 0.4rem;
+    }
+
+    .scope-info-card {
+        padding: 1rem 0.9rem 0.85rem;
+    }
+
+    .scope-info-card .info-card-title {
+        font-size: 1.2rem;
+    }
+
+    .scope-info-card .info-item span {
+        font-size: 0.9rem;
+    }
+
+    .requirements-info-card {
+        padding: 1rem 0.85rem;
+    }
+
+    .requirements-info-card .info-card-title {
+        font-size: 1.1rem;
+    }
+
+    .requirements-info-card .info-card-subtitle {
+        font-size: 0.88rem;
+    }
+
+    .requirements-info-card .info-item span {
+        font-size: 0.88rem;
     }
 }
 
@@ -20300,6 +20553,7 @@ section {
     background-position: right 1rem center;
     padding-right: 2.5rem;
     min-height: 44px; /* Minimum touch target size for mobile */
+    text-overflow: ellipsis;
 }
 
 /* Quote Form Group Select Styles (for QuotePage and QuoteModal) */
@@ -20483,7 +20737,7 @@ section {
     .quote-form .form-group select,
     .quote-form .form-group textarea {
         padding: 0.75rem 0.875rem;
-        font-size: 0.9375rem;
+        font-size: 1rem; /* Prevent iOS zoom on focus */
     }
 }
 
@@ -20523,7 +20777,7 @@ section {
     .quote-form .form-group select,
     .quote-form .form-group textarea {
         padding: 0.6875rem 0.75rem;
-        font-size: 0.875rem;
+        font-size: 1rem; /* Keep tap targets readable on small phones */
     }
 
     .quote-form .form-group select {
@@ -20630,7 +20884,7 @@ section {
 /* Forms Grid */
 .forms-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 260px), 1fr));
     gap: 1.5rem;
     margin-top: 2rem;
 }
@@ -20833,6 +21087,65 @@ section {
     }
 
     .form-card-description {
+        font-size: 0.875rem;
+    }
+}
+
+@media (max-width: 420px) {
+    .logo-image {
+        height: 68px;
+    }
+
+    .navbar.scrolled .logo-image {
+        height: 62px;
+    }
+
+    .navbar.menu-open .nav-toggle {
+        top: 1rem !important;
+        right: 1rem !important;
+    }
+
+    .navbar.menu-open .nav-logo {
+        top: 1rem !important;
+        left: 1rem !important;
+    }
+
+    .navbar.menu-open .nav-container {
+        padding: 3.5rem 1rem 1.5rem 1rem !important;
+    }
+
+    .navbar.menu-open .nav-menu {
+        margin-top: 4.5rem !important;
+    }
+}
+
+@media (max-width: 360px) {
+    .quote-form-wrapper {
+        padding: 1.25rem 1rem;
+    }
+
+    .quote-form .form-group label {
+        font-size: 0.84rem;
+    }
+
+    .forms-badge span {
+        letter-spacing: 0.6px;
+    }
+
+    .form-card-header {
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        align-items: flex-start;
+    }
+
+    .form-category {
+        font-size: 0.68rem;
+        max-width: 100%;
+        overflow-wrap: anywhere;
+    }
+
+    .form-download-button {
+        padding: 0.75rem 1rem;
         font-size: 0.875rem;
     }
 }

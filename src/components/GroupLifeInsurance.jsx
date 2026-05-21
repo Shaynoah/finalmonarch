@@ -1,56 +1,32 @@
-import React, { useState } from 'react'
-import { useToast } from '../context/ToastContext'
-import OptionalTurnstile from './OptionalTurnstile'
-
-const captchaRequired = Boolean(import.meta.env.VITE_TURNSTILE_SITE_KEY)
+import React from 'react'
 
 const GroupLifeInsurance = () => {
-  const { showToast } = useToast()
-  const [captchaToken, setCaptchaToken] = useState(null)
-  const [turnstileKey, setTurnstileKey] = useState(0)
-  const [formData, setFormData] = useState({
-    mobile: '',
-    email: '',
-    plan: ''
-  })
-  const [isSubmitting, setIsSubmitting] = useState(false)
 
   const plans = [
     {
-      id: 'plan1',
-      name: 'Plan 1',
-      description: 'Basic coverage for principal and spouse',
+      id: 'last-expense-plan',
+      name: 'Family Last Expense Plan',
+      description: 'Updated premium rate plan',
       options: [
-        { member: 'Principal', values: ['KES 50,000', 'KES 100,000', 'KES 200,000', 'KES 300,000', 'KES 400,000', 'KES 500,000'] },
-        { member: 'Spouse', values: ['KES 50,000', 'KES 100,000', 'KES 200,000', 'KES 300,000', 'KES 400,000', 'KES 500,000'] }
+        {
+          member: 'PRINCIPAL',
+          values: ['KES 50,000', 'KES 100,000', 'KES 200,000', 'KES 300,000', 'KES 400,000', 'KES 500,000'],
+        },
+        {
+          member: 'SPOUSE',
+          values: ['KES 50,000', 'KES 100,000', 'KES 200,000', 'KES 300,000', 'KES 400,000', 'KES 500,000'],
+        },
+        {
+          member: 'PARENT & PARENT (MAX 4 PER MEMBER)',
+          values: ['KES 25,000', 'KES 50,000', 'KES 100,000', 'KES 150,000', 'KES 200,000', 'KES 200,000'],
+        },
+        {
+          member: 'CHILDREN (MAX 4 PER MEMBER)',
+          values: ['KES 25,000', 'KES 50,000', 'KES 100,000', 'KES 100,000', 'KES 100,000', 'KES 100,000'],
+        },
       ],
-      premiums: ['KES 400', 'KES 800', 'KES 2,200', 'KES 3,300', 'KES 4,400', 'KES 5,500']
+      premiums: ['KES 2,250.00', 'KES 4,500.00', 'KES 9,000.00', 'KES 12,750.00', 'KES 16,500.00', 'KES 19,500.00'],
     },
-    {
-      id: 'plan2',
-      name: 'Plan 2',
-      description: 'Coverage including children (max 4)',
-      options: [
-        { member: 'Principal', values: ['KES 50,000', 'KES 100,000', 'KES 200,000', 'KES 300,000', 'KES 400,000', 'KES 500,000'] },
-        { member: 'Spouse', values: ['KES 50,000', 'KES 100,000', 'KES 200,000', 'KES 300,000', 'KES 400,000', 'KES 500,000'] },
-        { member: 'Children (Max 4)', values: ['KES 25,000', 'KES 50,000', 'KES 100,000', 'KES 150,000', 'KES 200,000', 'KES 250,000'] }
-      ],
-      premiums: ['KES 800', 'KES 1,600', 'KES 4,600', 'KES 6,900', 'KES 9,200', 'KES 11,500']
-    },
-    {
-      id: 'plan3',
-      name: 'Plan 3',
-      description: 'Comprehensive coverage including extended family',
-      options: [
-        { member: 'Principal', values: ['KES 50,000', 'KES 100,000', 'KES 200,000', 'KES 300,000', 'KES 400,000', 'KES 500,000'] },
-        { member: 'Spouse', values: ['KES 50,000', 'KES 100,000', 'KES 200,000', 'KES 300,000', 'KES 400,000', 'KES 500,000'] },
-        { member: 'Children (Max 4)', values: ['KES 50,000', 'KES 100,000', 'KES 200,000', 'KES 300,000', 'KES 400,000', 'KES 500,000'] },
-        { member: "Principal's Parents (2)", values: ['KES 50,000', 'KES 100,000', 'KES 100,000', 'KES 100,000', 'KES 100,000', 'KES 100,000'] },
-        { member: "Spouse's Parents (2)", values: ['KES 50,000', 'KES 100,000', 'KES 100,000', 'KES 100,000', 'KES 100,000', 'KES 100,000'] }
-      ],
-      premiums: ['KES 1,200', 'KES 2,400', 'KES 4,600', 'KES 6,800', 'KES 8,400', 'KES 12,000'],
-      additionalChildPremium: ['KES 100', 'KES 200', 'KES 400', 'KES 600', 'KES 800', 'KES 1,000']
-    }
   ]
 
   const scopeOfCover = [
@@ -84,69 +60,6 @@ const GroupLifeInsurance = () => {
     'Copy of ID of registered beneficiary',
     'Completed claim form'
   ]
-
-  const handleSubmit = async (e) => {
-    e.preventDefault()
-    if (!formData.plan) return
-    if (captchaRequired && !captchaToken) {
-      showToast({
-        type: 'error',
-        message: 'Please complete the security verification below.',
-      })
-      return
-    }
-
-    setIsSubmitting(true)
-
-    const planLabel =
-      plans.find((p) => p.id === formData.plan)?.name || formData.plan
-    const contactUrl = import.meta.env.VITE_CONTACT_API_URL || '/api/contact'
-    const payload = {
-      formSource: 'group-last-expense',
-      name: 'Group Last Expense inquiry',
-      email: formData.email.trim(),
-      phone: formData.mobile.trim(),
-      subject: `Quote Request — Group Last Expense — ${planLabel}`,
-      message: [
-        'Source: Group Last Expense (Family Last Expense Rates page)',
-        '',
-        `Mobile: ${formData.mobile.trim()}`,
-        `Email: ${formData.email.trim()}`,
-        `Selected plan: ${planLabel}`,
-      ].join('\n'),
-      ...(captchaToken ? { captchaToken } : {}),
-    }
-
-    try {
-      const res = await fetch(contactUrl, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload),
-      })
-      const resPayload = await res.json().catch(() => ({}))
-
-      if (!res.ok) {
-        throw new Error(resPayload.error || `Request failed (${res.status})`)
-      }
-
-      showToast({
-        type: 'success',
-        message: 'Your inquiry has been sent. We will get back to you soon.',
-      })
-      setFormData({ mobile: '', email: '', plan: '' })
-      setCaptchaToken(null)
-      setTurnstileKey((k) => k + 1)
-    } catch (error) {
-      showToast({
-        type: 'error',
-        message:
-          error?.message ||
-          'Could not send your inquiry. If you are running locally, start the email API server (see README).',
-      })
-    } finally {
-      setIsSubmitting(false)
-    }
-  }
 
   return (
     <div className="group-life-insurance-page">
@@ -202,19 +115,11 @@ const GroupLifeInsurance = () => {
                         </tr>
                       ))}
                       <tr className="premium-row">
-                        <td className="premium-label">ANNUAL PREMIUM PER FAMILY</td>
+                        <td className="premium-label">PREMIUM (Kshs)</td>
                         {plan.premiums.map((premium, idx) => (
                           <td key={idx} className="premium-value">{premium}</td>
                         ))}
                       </tr>
-                      {plan.additionalChildPremium && (
-                        <tr className="additional-premium-row">
-                          <td className="premium-label">ADDITIONAL CHILD PREMIUM</td>
-                          {plan.additionalChildPremium.map((premium, idx) => (
-                            <td key={idx} className="premium-value">{premium}</td>
-                          ))}
-                        </tr>
-                      )}
                     </tbody>
                   </table>
                 </div>
@@ -227,7 +132,7 @@ const GroupLifeInsurance = () => {
       {/* Scope of Cover Section */}
       <section className="scope-section">
         <div className="container">
-          <div className="info-card">
+          <div className="info-card scope-info-card">
             <h2 className="info-card-title">Scope of Cover</h2>
             <ul className="info-list">
               {scopeOfCover.map((item, index) => (
@@ -247,7 +152,7 @@ const GroupLifeInsurance = () => {
       <section className="requirements-section">
         <div className="container">
           <div className="requirements-grid">
-            <div className="info-card">
+            <div className="info-card requirements-info-card">
               <h2 className="info-card-title">Requirements</h2>
               <p className="info-card-subtitle">We will require the following information to enable implementation of the scheme:</p>
               <ul className="info-list">
@@ -263,7 +168,7 @@ const GroupLifeInsurance = () => {
               </ul>
             </div>
 
-            <div className="info-card">
+            <div className="info-card requirements-info-card">
               <h2 className="info-card-title">Claim Documents Required</h2>
               <p className="info-card-subtitle">For benefit payment, please provide:</p>
               <ul className="info-list">
@@ -285,65 +190,6 @@ const GroupLifeInsurance = () => {
         </div>
       </section>
 
-      {/* Contact Form Section */}
-      <section className="inquiry-section">
-        <div className="container">
-          <div className="inquiry-card">
-            <h2 className="inquiry-title">Make an Inquiry</h2>
-            <p className="inquiry-subtitle">Fill out the form below and we'll get back to you</p>
-
-            <form className="inquiry-form" onSubmit={handleSubmit}>
-              <div className="form-group">
-                <input
-                  type="tel"
-                  id="mobile"
-                  value={formData.mobile}
-                  onChange={(e) => setFormData({ ...formData, mobile: e.target.value })}
-                  placeholder="Mobile Number"
-                  required
-                />
-              </div>
-
-              <div className="form-group">
-                <input
-                  type="email"
-                  id="email"
-                  value={formData.email}
-                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  placeholder="Email"
-                  required
-                />
-              </div>
-
-              <div className="form-group">
-                <select
-                  id="plan"
-                  value={formData.plan}
-                  onChange={(e) => setFormData({ ...formData, plan: e.target.value })}
-                  required
-                >
-                  <option value="">Select Plan</option>
-                  {plans.map(plan => (
-                    <option key={plan.id} value={plan.id}>{plan.name}</option>
-                  ))}
-                </select>
-              </div>
-
-              <OptionalTurnstile key={turnstileKey} onTokenChange={setCaptchaToken} />
-
-              <button type="submit" className="submit-btn" disabled={isSubmitting}>
-                <span>{isSubmitting ? 'Sending…' : 'Submit Inquiry'}</span>
-                {!isSubmitting && (
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                    <line x1="5" y1="12" x2="19" y2="12"></line>
-                    <polyline points="12 5 19 12 12 19"></polyline>
-                  </svg>
-                )}
-              </button>
-            </form>
-          </div>
-        </div>
-      </section>
     </div>
   )
 }

@@ -35,7 +35,7 @@ const GolfersInsurance = () => {
           {/* Golf Image Section */}
           <div className="insurance-form-wrapper" style={{ marginTop: '3rem' }}>
             <div className="insurance-form-image">
-              <img loading="eager" src={golfImage} alt="Golfers Insurance" />
+              <img loading="lazy" src={golfImage} alt="Golfer on course covered by golfers insurance in Kenya" />
             </div>
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
               <div style={{ padding: '2rem' }}>

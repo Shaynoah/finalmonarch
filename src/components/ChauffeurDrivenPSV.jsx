@@ -38,7 +38,7 @@ const ChauffeurDrivenPSV = () => {
           {/* Vehicle Image Section */}
           <div className="insurance-form-wrapper" style={{ marginTop: '3rem' }}>
             <div className="insurance-form-image">
-              <img loading="eager" src={psvImage} alt="Chauffeur-Driven PSV Insurance" />
+              <img loading="lazy" src={psvImage} alt="Chauffeur-driven passenger vehicle insured for PSV operations in Kenya" />
             </div>
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
               <div style={{ padding: '2rem' }}>

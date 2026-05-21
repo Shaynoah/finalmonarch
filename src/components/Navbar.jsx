@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 
 const logoImage = 'https://res.cloudinary.com/diozv0xm2/image/upload/q_auto/f_auto/v1776416275/logo_brgjho.jpg'
+const MOBILE_NAV_BREAKPOINT = 1100
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false)
@@ -65,25 +66,6 @@ const Navbar = () => {
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                   <circle cx="12" cy="12" r="10"/>
                   <path d="M12 6v6l4 2"/>
-                </svg>
-              )
-            },
-            {
-              id: 'group-mortgage-protection',
-              label: 'Group Mortgage Protection',
-              icon: (
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
-                  <polyline points="9 22 9 12 15 12 15 22"/>
-                </svg>
-              )
-            },
-            {
-              id: 'endowment-assurance',
-              label: 'Endowment Assurance policy(with Profits)',
-              icon: (
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
                 </svg>
               )
             },
@@ -228,17 +210,6 @@ const Navbar = () => {
                 </svg>
               )
             },
-            {
-              id: 'agricultural-forestry',
-              label: 'Agricultural & Forestry',
-              icon: (
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <path d="M12 22v-7"/>
-                  <path d="M9 22h6"/>
-                  <path d="M12 15c-3-3-3-8 0-11 3 3 3 8 0 11z"/>
-                </svg>
-              )
-            }
           ]
         },
         {
@@ -651,7 +622,7 @@ const Navbar = () => {
       }
       
       // Close desktop submenus when clicking outside
-      if (window.innerWidth > 768 && navRef.current && !navRef.current.contains(event.target)) {
+      if (window.innerWidth > MOBILE_NAV_BREAKPOINT && navRef.current && !navRef.current.contains(event.target)) {
         if (submenuOpenDelayRef.current) {
           clearTimeout(submenuOpenDelayRef.current)
           submenuOpenDelayRef.current = null
@@ -685,7 +656,7 @@ const Navbar = () => {
   // Reset column states when switching between mobile and desktop
   useEffect(() => {
     const handleResize = () => {
-      if (window.innerWidth > 768) {
+      if (window.innerWidth > MOBILE_NAV_BREAKPOINT) {
         setOpenSubmenuColumns({})
       }
     }
@@ -715,7 +686,7 @@ const Navbar = () => {
   /** Close mobile + submenu state; on desktop, hide hover flyouts until pointer leaves the nav bar. */
   const resetMenusAfterSubmenuChoice = () => {
     closeMobileMenu()
-    if (typeof window !== 'undefined' && window.innerWidth > 768) {
+    if (typeof window !== 'undefined' && window.innerWidth > MOBILE_NAV_BREAKPOINT) {
       setSuppressDesktopSubmenuHover(true)
     }
   }
@@ -791,22 +762,6 @@ const Navbar = () => {
     
     if (sectionId === 'group-retirement-benefit-schemes') {
       navigate('/group-retirement-benefit-schemes')
-      setIsMobileMenuOpen(false)
-      setOpenSubmenu(null)
-      setOpenNestedSubmenu(null)
-      return
-    }
-    
-    if (sectionId === 'group-mortgage-protection') {
-      navigate('/group-mortgage-protection')
-      setIsMobileMenuOpen(false)
-      setOpenSubmenu(null)
-      setOpenNestedSubmenu(null)
-      return
-    }
-    
-    if (sectionId === 'endowment-assurance') {
-      navigate('/endowment-assurance')
       setIsMobileMenuOpen(false)
       setOpenSubmenu(null)
       setOpenNestedSubmenu(null)
@@ -1013,14 +968,6 @@ const Navbar = () => {
       return
     }
     
-    if (sectionId === 'agricultural-forestry') {
-      navigate('/agricultural-forestry')
-      setIsMobileMenuOpen(false)
-      setOpenSubmenu(null)
-      setOpenNestedSubmenu(null)
-      return
-    }
-    
     if (sectionId === 'institutional-fleet') {
       navigate('/institutional-fleet')
       setIsMobileMenuOpen(false)
@@ -1111,7 +1058,7 @@ const Navbar = () => {
   ])
 
   const handleSubmenuToggle = (itemId, e) => {
-    if (window.innerWidth <= 768) {
+    if (window.innerWidth <= MOBILE_NAV_BREAKPOINT) {
       e.preventDefault()
       e.stopPropagation()
       // Close other submenus when opening a new one
@@ -1134,7 +1081,7 @@ const Navbar = () => {
   }
 
   const handleMouseEnterSubmenu = (itemId) => {
-    if (window.innerWidth > 768) {
+    if (window.innerWidth > MOBILE_NAV_BREAKPOINT) {
       if (submenuTimeoutRef.current) {
         clearTimeout(submenuTimeoutRef.current)
         submenuTimeoutRef.current = null
@@ -1151,7 +1098,7 @@ const Navbar = () => {
   }
 
   const handleMouseLeaveSubmenu = () => {
-    if (window.innerWidth > 768) {
+    if (window.innerWidth > MOBILE_NAV_BREAKPOINT) {
       if (submenuOpenDelayRef.current) {
         clearTimeout(submenuOpenDelayRef.current)
         submenuOpenDelayRef.current = null
@@ -1169,7 +1116,7 @@ const Navbar = () => {
   }
 
   const handleNestedSubmenuToggle = (itemId, e) => {
-    if (window.innerWidth <= 768) {
+    if (window.innerWidth <= MOBILE_NAV_BREAKPOINT) {
       e.preventDefault()
       e.stopPropagation()
       setOpenNestedSubmenu(openNestedSubmenu === itemId ? null : itemId)
@@ -1177,7 +1124,7 @@ const Navbar = () => {
   }
   
   const toggleSubmenuColumn = (columnId, e, rootNavId) => {
-    if (typeof window === 'undefined' || window.innerWidth > 768) {
+    if (typeof window === 'undefined' || window.innerWidth > MOBILE_NAV_BREAKPOINT) {
       return
     }
     e.preventDefault()
@@ -1219,7 +1166,7 @@ const Navbar = () => {
   }
 
   const handleMouseEnterNestedSubmenu = (itemId) => {
-    if (window.innerWidth > 768) {
+    if (window.innerWidth > MOBILE_NAV_BREAKPOINT) {
       if (nestedSubmenuTimeoutRef.current) {
         clearTimeout(nestedSubmenuTimeoutRef.current)
       }
@@ -1228,7 +1175,7 @@ const Navbar = () => {
   }
 
   const handleMouseLeaveNestedSubmenu = () => {
-    if (window.innerWidth > 768) {
+    if (window.innerWidth > MOBILE_NAV_BREAKPOINT) {
       nestedSubmenuTimeoutRef.current = setTimeout(() => {
         setOpenNestedSubmenu(null)
       }, 200)
@@ -1371,7 +1318,7 @@ const Navbar = () => {
                                             <div 
                                               className="submenu-column-item submenu-nested-header"
                                               onClick={(e) => {
-                                                if (window.innerWidth <= 768) {
+                                                if (window.innerWidth <= MOBILE_NAV_BREAKPOINT) {
                                                   e.preventDefault()
                                                   e.stopPropagation()
                                                   toggleSubmenuColumn(nestedItem.id, e, item.id)
@@ -1471,6 +1418,7 @@ const Navbar = () => {
           <a
             href="http://41.191.226.217:8444/"
             className="nav-claim-button"
+            rel="noopener noreferrer"
             onClick={closeMobileMenu}
           >
             <span>Submit a Claim</span>
@@ -1479,6 +1427,7 @@ const Navbar = () => {
           <a
             href="http://41.191.226.217:8443/landing"
             className="nav-quote-button"
+            rel="noopener noreferrer"
             onClick={() => {
               setIsMobileMenuOpen(false)
               setOpenSubmenu(null)

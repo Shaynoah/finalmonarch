@@ -41,7 +41,7 @@ const PublicLiability = () => {
           {/* Public Liability Image Section */}
           <div className="insurance-form-wrapper" style={{ marginTop: '3rem' }}>
             <div className="insurance-form-image">
-              <img loading="eager" src={publicLiabilityImage} alt="Public Liability Insurance" />
+              <img loading="lazy" src={publicLiabilityImage} alt="Business premises protected with public liability insurance in Kenya" />
             </div>
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
               <div style={{ padding: '2rem' }}>

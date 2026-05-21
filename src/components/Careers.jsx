@@ -79,7 +79,12 @@ const Careers = () => {
                 ref={(el) => (cardRefs.current[index] = el)}
               >
                 <div className="position-card-image">
-                  <img src={position.image} alt={position.title} />
+                  <img
+                    src={position.image}
+                    alt={`${position.title} career opportunity at Monarch Insurance Kenya`}
+                    loading="lazy"
+                    decoding="async"
+                  />
                 </div>
               </div>
             ))}

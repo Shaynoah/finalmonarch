@@ -372,6 +372,10 @@ const Team = () => {
           </button>
         </div>
 
+        <h2 className="team-section-heading">
+          {activeTab === 'board-of-directors' ? 'Board of Directors' : 'Senior Management'}
+        </h2>
+
         <div className="team-grid">
           {teamMembers
             .filter(member => member.category === activeTab)

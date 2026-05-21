@@ -35,7 +35,7 @@ const Tender = () => {
           {/* Tender Image Section */}
           <div className="insurance-form-wrapper" style={{ marginTop: '3rem' }}>
             <div className="insurance-form-image">
-              <img loading="eager" src={tenderImage} alt="Tender Insurance" />
+              <img loading="lazy" src={tenderImage} alt="Tender documents supported by tender bond insurance in Kenya" />
             </div>
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
               <div style={{ padding: '2rem' }}>

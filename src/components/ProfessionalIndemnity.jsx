@@ -45,7 +45,7 @@ const ProfessionalIndemnity = () => {
           {/* Indemnity Image Section */}
           <div className="insurance-form-wrapper" style={{ marginTop: '3rem' }}>
             <div className="insurance-form-image">
-              <img loading="eager" src={indemnityImage} alt="Professional Indemnity Insurance" />
+              <img loading="lazy" src={indemnityImage} alt="Professionals discussing liability protection under professional indemnity insurance" />
             </div>
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
               <div style={{ padding: '2rem' }}>

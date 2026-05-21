@@ -64,12 +64,14 @@ const ProtectSection = () => {
       <div className="container">
         <div className={`protect-layout ${isVisible ? 'visible' : ''}`}>
           <div className="protect-content">
-            <div className="protect-icon-wrapper">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-              </svg>
+            <div className="protect-heading-row">
+              <div className="protect-icon-wrapper">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                </svg>
+              </div>
+              <h2 className="protect-title">Protect what you love</h2>
             </div>
-            <h2 className="protect-title">Protect what you love</h2>
             <p className="protect-description">
               <span className="company-name-highlight">The Monarch Insurance Company Ltd</span> is an all-Kenyan insurance company registered in the republic of Kenya. 
               For over 45 years, it has curved its market niche as a composite insurer with excellent services in 

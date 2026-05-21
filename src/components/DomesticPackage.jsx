@@ -32,7 +32,7 @@ const DomesticPackage = () => {
           {/* Domestic Package Image Section */}
           <div className="insurance-form-wrapper" style={{ marginTop: '3rem' }}>
             <div className="insurance-form-image">
-              <img loading="eager" src={domeImage} alt="Domestic Package Insurance" />
+              <img loading="lazy" src={domeImage} alt="Residential home protected by domestic package insurance in Kenya" />
             </div>
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
               <div style={{ padding: '2rem' }}>

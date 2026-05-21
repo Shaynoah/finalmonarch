@@ -35,7 +35,7 @@ const Customs = () => {
           {/* Customs Image Section */}
           <div className="insurance-form-wrapper" style={{ marginTop: '3rem' }}>
             <div className="insurance-form-image">
-              <img loading="eager" src={custImage} alt="Customs Insurance" />
+              <img loading="lazy" src={custImage} alt="Imported goods cleared under customs bond insurance in Kenya" />
             </div>
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
               <div style={{ padding: '2rem' }}>

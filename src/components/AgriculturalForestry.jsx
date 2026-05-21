@@ -32,7 +32,7 @@ const AgriculturalForestry = () => {
           {/* Agricultural Image Section */}
           <div className="insurance-form-wrapper" style={{ marginTop: '3rem' }}>
             <div className="insurance-form-image">
-              <img loading="eager" src="https://res.cloudinary.com/diozv0xm2/image/upload/q_auto/f_auto/v1776343476/agri-copy-1_jhkawf.png" alt="Agricultural and Forestry Insurance" />
+              <img loading="lazy" src="https://res.cloudinary.com/diozv0xm2/image/upload/q_auto/f_auto/v1776343476/agri-copy-1_jhkawf.png" alt="Agricultural operations protected by forestry and farm insurance cover in Kenya" />
             </div>
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
               <div style={{ padding: '2rem' }}>

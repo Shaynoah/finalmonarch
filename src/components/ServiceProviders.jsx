@@ -654,7 +654,7 @@ const ServiceProviders = () => {
               className="service-providers-grid"
               style={{
                 display: 'grid',
-                gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))',
+                gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 320px), 1fr))',
                 gap: '1.25rem',
                 width: '100%',
                 animation: 'fadeIn 0.3s ease'
@@ -751,7 +751,7 @@ const ServiceProviders = () => {
               className="service-providers-grid"
               style={{
                 display: 'grid',
-                gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))',
+                gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 320px), 1fr))',
                 gap: '1.25rem',
                 width: '100%',
                 animation: 'fadeIn 0.3s ease'
@@ -848,7 +848,7 @@ const ServiceProviders = () => {
               className="service-providers-grid"
               style={{
                 display: 'grid',
-                gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))',
+                gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 320px), 1fr))',
                 gap: '1.25rem',
                 width: '100%',
                 animation: 'fadeIn 0.3s ease'
@@ -943,7 +943,7 @@ const ServiceProviders = () => {
               className="service-providers-grid"
               style={{
                 display: 'grid',
-                gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))',
+                gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 320px), 1fr))',
                 gap: '1.25rem',
                 width: '100%',
                 animation: 'fadeIn 0.3s ease'
@@ -1039,7 +1039,7 @@ const ServiceProviders = () => {
               className="service-providers-grid"
               style={{
                 display: 'grid',
-                gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))',
+                gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 320px), 1fr))',
                 gap: '1.25rem',
                 width: '100%',
                 animation: 'fadeIn 0.3s ease'

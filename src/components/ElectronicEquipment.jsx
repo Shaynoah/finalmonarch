@@ -35,7 +35,7 @@ const ElectronicEquipment = () => {
           {/* Electronic Image Section */}
           <div className="insurance-form-wrapper" style={{ marginTop: '3rem' }}>
             <div className="insurance-form-image">
-              <img loading="eager" src={electronicImage} alt="Electronic Equipment Insurance" />
+              <img loading="lazy" src={electronicImage} alt="Business electronic equipment protected by insurance coverage in Kenya" />
             </div>
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
               <div style={{ padding: '2rem' }}>

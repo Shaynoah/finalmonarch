@@ -35,7 +35,7 @@ const ContractorsPlantMachinery = () => {
           {/* Machinery Image Section */}
           <div className="insurance-form-wrapper" style={{ marginTop: '3rem' }}>
             <div className="insurance-form-image">
-              <img loading="eager" src={contractsImage} alt="Contractors Plant & Machinery Insurance" />
+              <img loading="lazy" src={contractsImage} alt="Construction machinery covered by contractors plant and machinery insurance in Kenya" />
             </div>
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
               <div style={{ padding: '2rem' }}>
