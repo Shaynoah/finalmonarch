@@ -14617,7 +14617,8 @@ canvas {
 }
 
 .premium-table {
-    width: 100%;
+    width: max-content;
+    min-width: 100%;
     border-collapse: separate;
     border-spacing: 0;
     font-size: 0.875rem;
@@ -14639,6 +14640,17 @@ canvas {
     text-transform: uppercase;
     letter-spacing: 0.5px;
     border-right: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.premium-table th:first-child,
+.premium-table td:first-child {
+    min-width: 210px;
+}
+
+.premium-table th:not(:first-child),
+.premium-table td:not(:first-child) {
+    min-width: 105px;
+    white-space: nowrap;
 }
 
 .premium-table th:last-child {
@@ -14677,6 +14689,7 @@ canvas {
     padding-left: 1.25rem !important;
     font-size: 0.875rem;
     position: relative;
+    white-space: normal !important;
 }
 
 .member-cell::before {
@@ -14700,6 +14713,7 @@ canvas {
     font-size: 0.8125rem;
     text-transform: uppercase;
     letter-spacing: 0.5px;
+    white-space: normal !important;
 }
 
 .premium-value {
@@ -15066,6 +15080,16 @@ canvas {
     .premium-table td {
         padding: 0.75rem 0.5rem;
     }
+
+    .premium-table th:first-child,
+    .premium-table td:first-child {
+        min-width: 180px;
+    }
+
+    .premium-table th:not(:first-child),
+    .premium-table td:not(:first-child) {
+        min-width: 92px;
+    }
 }
 
 @media (max-width: 480px) {
@@ -15141,6 +15165,16 @@ canvas {
 
     .premium-table td {
         padding: 0.625rem 0.4rem;
+    }
+
+    .premium-table th:first-child,
+    .premium-table td:first-child {
+        min-width: 165px;
+    }
+
+    .premium-table th:not(:first-child),
+    .premium-table td:not(:first-child) {
+        min-width: 86px;
     }
 
     .scope-info-card {
