@@ -250,7 +250,7 @@ const Footer = () => {
                   <div className="reach-phone-list">
                     <a href="tel:0738669931">0738669931</a>
                     <a href="tel:0705426931">0705426931</a>
-                    <a href="tel:0724514254">0724514254</a>
+                    <a href="tel:0102981480">0102981480</a>
                   </div>
                 </div>
               </div>

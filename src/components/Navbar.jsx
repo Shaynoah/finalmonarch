@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 
 const logoImage = 'https://res.cloudinary.com/diozv0xm2/image/upload/q_auto/f_auto/v1776416275/logo_brgjho.jpg'
-const MOBILE_NAV_BREAKPOINT = 1100
+const MOBILE_NAV_BREAKPOINT = 1280
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false)

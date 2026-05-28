@@ -1319,7 +1319,7 @@ canvas {
     }
 }
 
-@media (min-width: 769px) and (max-width: 1100px) {
+@media (min-width: 769px) and (max-width: 1280px) {
     .nav-actions {
         flex-wrap: wrap;
         justify-content: flex-end;
@@ -1446,7 +1446,7 @@ canvas {
 }
 
 /* Desktop fit pass: keep all navbar items on one row and push CTAs right */
-@media (min-width: 1101px) {
+@media (min-width: 1281px) {
     .nav-container {
         gap: 0.65rem 0.65rem;
     }
@@ -1629,7 +1629,7 @@ canvas {
 }
 
 /* Better touch feedback for mobile */
-@media (max-width: 1100px) {
+@media (max-width: 1280px) {
     .nav-toggle {
         -webkit-tap-highlight-color: transparent;
         touch-action: manipulation;
@@ -1678,7 +1678,7 @@ canvas {
     }
 }
 
-@media (max-width: 1100px) {
+@media (max-width: 1280px) {
     .navbar {
         z-index: 1000;
     }
@@ -1706,9 +1706,9 @@ canvas {
 }
 
 /* ============================================
-   Desktop Submenu Styles (min-width: 1101px)
+   Desktop Submenu Styles (min-width: 1281px)
    ============================================ */
-@media (min-width: 1101px) {
+@media (min-width: 1281px) {
     .nav-submenu {
         position: fixed;
         top: 80px;
@@ -2058,7 +2058,7 @@ canvas {
     transition: opacity 0.4s ease;
 }
 
-@media (min-width: 1101px) {
+@media (min-width: 1281px) {
     .nav-submenu.open .submenu-backdrop {
         opacity: 1;
     }
@@ -2162,7 +2162,7 @@ canvas {
     transform: rotate(90deg) !important;
 }
 
-@media (max-width: 1100px) {
+@media (max-width: 1280px) {
     .submenu-header-arrow {
         width: 22px !important;
         height: 22px !important;
@@ -2181,7 +2181,7 @@ canvas {
 }
 
 /* Desktop: submenu items visible by default (except insurance flyout panels) */
-@media (min-width: 1101px) {
+@media (min-width: 1281px) {
     .nav-submenu:not(.submenu-mega-flyout) .submenu-column-items {
         max-height: none !important;
         overflow: visible !important;
@@ -9392,7 +9392,7 @@ canvas {
 /* ============================================
    Responsive Design
    ============================================ */
-@media (max-width: 1100px) {
+@media (max-width: 1280px) {
     /* Old mobile menu styles removed - using new menu-open approach */
 
     /* Mobile Logo */

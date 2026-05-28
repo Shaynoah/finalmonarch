@@ -3,6 +3,7 @@ import { Helmet } from 'react-helmet-async'
 
 const SITE_NAME = 'Monarch Insurance Kenya'
 const SITE_URL = 'https://www.monarchinsurance.co.ke'
+const TWITTER_HANDLE = '@MonarchIns'
 const DEFAULT_TITLE = 'Monarch Insurance Kenya | Trusted Cover'
 const DEFAULT_DESCRIPTION =
   'Protect your life, health, business, and assets with trusted insurance solutions in Kenya backed by expert support and responsive claims service.'
@@ -46,6 +47,40 @@ const SEO = ({
     typeof window !== 'undefined'
       ? `${SITE_URL}${window.location.pathname}`
       : SITE_URL
+  const organizationSchema = {
+    '@context': 'https://schema.org',
+    '@type': ['Organization', 'InsuranceAgency'],
+    name: SITE_NAME,
+    url: SITE_URL,
+    logo: DEFAULT_OG_IMAGE,
+    telephone: '+254738669931',
+    email: 'info@monarchinsurance.co.ke',
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: 'Chester House 1st Floor, Koinange Street',
+      addressLocality: 'Nairobi',
+      addressCountry: 'KE',
+    },
+    sameAs: [
+      'https://www.facebook.com/share/1C4rt2eRH6/',
+      'https://x.com/MonarchIns',
+      'https://www.linkedin.com/company/the-monarch-insuranc/',
+      'https://www.instagram.com/themonarchinsurancecompany',
+    ],
+  }
+  const websiteSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: SITE_NAME,
+    url: SITE_URL,
+  }
+  const pageSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    name: title,
+    description,
+    url: canonicalUrl,
+  }
 
   return (
     <Helmet>
@@ -65,6 +100,22 @@ const SEO = ({
       <meta property="og:type" content={ogType} />
       <meta property="og:url" content={canonicalUrl} />
       <meta property="og:site_name" content={SITE_NAME} />
+
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:title" content={ogTitle || title} />
+      <meta name="twitter:description" content={ogDescription || description} />
+      <meta name="twitter:image" content={ogImage || DEFAULT_OG_IMAGE} />
+      <meta name="twitter:site" content={TWITTER_HANDLE} />
+
+      <script type="application/ld+json">
+        {JSON.stringify(organizationSchema)}
+      </script>
+      <script type="application/ld+json">
+        {JSON.stringify(websiteSchema)}
+      </script>
+      <script type="application/ld+json">
+        {JSON.stringify(pageSchema)}
+      </script>
     </Helmet>
   )
 }
