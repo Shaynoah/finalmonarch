@@ -9685,8 +9685,10 @@ canvas {
         right: 0 !important;
         bottom: 0 !important;
         height: 100vh !important;
+        height: 100dvh !important;
         max-height: none !important;
         min-height: 100vh !important;
+        min-height: 100dvh !important;
         overflow-y: auto !important;
         overflow-x: hidden !important;
         -webkit-overflow-scrolling: touch !important;
@@ -9706,9 +9708,12 @@ canvas {
         position: relative;
         z-index: 1001;
         min-height: 100% !important;
-        padding: 4rem 1.5rem 2rem 1.5rem !important;
+        min-height: 100dvh !important;
+        padding: 4rem 1.5rem calc(2.5rem + env(safe-area-inset-bottom, 0px)) 1.5rem !important;
         box-sizing: border-box !important;
-        overflow: visible !important;
+        overflow-y: auto !important;
+        overflow-x: visible !important;
+        -webkit-overflow-scrolling: touch !important;
     }
 
     .navbar.menu-open .nav-logo {
@@ -9853,7 +9858,7 @@ canvas {
         margin-top: 1rem !important;
         margin-bottom: 1rem !important;
         padding: 0 !important;
-        padding-bottom: 1rem !important;
+        padding-bottom: calc(5rem + env(safe-area-inset-bottom, 0px)) !important;
         box-sizing: border-box !important;
         overflow: visible !important;
     }
@@ -22243,6 +22248,33 @@ canvas {
 @media (max-width: 480px) {
     .general-insurance-overview-page {
         padding-top: 110px !important;
+    }
+}
+
+/* Final mobile tightening for life insurance product pages */
+@media (max-width: 768px) {
+    .life-insurance-overview-page {
+        padding-top: 96px !important;
+    }
+
+    .group-life-insurance-page,
+    .group-life-page,
+    .group-mortgage-protection-page,
+    .group-credit-life-page {
+        padding-top: 74px !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .life-insurance-overview-page {
+        padding-top: 90px !important;
+    }
+
+    .group-life-insurance-page,
+    .group-life-page,
+    .group-mortgage-protection-page,
+    .group-credit-life-page {
+        padding-top: 68px !important;
     }
 }
 
