@@ -18,6 +18,425 @@
     --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.16);
 }
 
+.life-insurance-overview-page {
+    padding: 8rem 1.5rem 5rem;
+    background: linear-gradient(180deg, #f6f8fc 0%, #ffffff 100%);
+    min-height: calc(100vh - 120px);
+}
+
+.life-insurance-overview-container {
+    max-width: 1120px;
+    margin: 0 auto;
+}
+
+.life-insurance-overview-hero {
+    max-width: 760px;
+    margin-bottom: 2.2rem;
+}
+
+.life-insurance-overview-hero h1 {
+    margin: 0 0 0.65rem;
+    font-size: clamp(1.8rem, 3.4vw, 2.6rem);
+    color: #0f2240;
+}
+
+.life-insurance-overview-hero p {
+    margin: 0;
+    font-size: 1rem;
+    line-height: 1.7;
+    color: #4c5a73;
+}
+
+.life-insurance-products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.25rem;
+}
+
+.life-insurance-product-card {
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+    padding: 1.3rem;
+    border: 1px solid #d9e5f5;
+    border-radius: 18px;
+    background: linear-gradient(180deg, #ffffff 0%, #f8fbff 100%);
+    box-shadow: 0 10px 24px rgba(15, 34, 64, 0.08);
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.life-insurance-product-card::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, #0f5f43 0%, #1f8b64 100%);
+}
+
+.life-insurance-product-card::after {
+    content: "";
+    position: absolute;
+    right: -42px;
+    top: -42px;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(15, 95, 67, 0.14) 0%, rgba(15, 95, 67, 0) 70%);
+    pointer-events: none;
+}
+
+.life-insurance-product-card:hover {
+    transform: translateY(-5px);
+    border-color: #bcd7ee;
+    box-shadow: 0 16px 30px rgba(15, 34, 64, 0.14);
+}
+
+.life-insurance-product-card h2 {
+    margin: 0;
+    font-size: 1.08rem;
+    font-weight: 700;
+    line-height: 1.35;
+    color: #0f2240;
+}
+
+.life-insurance-product-title {
+    margin: 0;
+}
+
+.life-insurance-product-pill {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.48rem 0.82rem;
+    border-radius: 999px;
+    border: 1px solid #bfd9ce;
+    background: #eef8f3;
+    color: #0e5b3f;
+    font-size: 0.92rem;
+    font-weight: 700;
+    letter-spacing: 0.01em;
+    line-height: 1.2;
+    user-select: none;
+    pointer-events: none;
+}
+
+.life-insurance-product-card p {
+    margin: 0;
+    color: #4f5f78;
+    font-size: 0.96rem;
+    line-height: 1.62;
+    flex-grow: 1;
+}
+
+.life-insurance-product-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: fit-content;
+    gap: 0.45rem;
+    padding: 0.62rem 1.05rem;
+    border-radius: 999px;
+    border: 1px solid #0f5f43;
+    font-size: 0.92rem;
+    font-weight: 700;
+    letter-spacing: 0.01em;
+    text-decoration: none;
+    color: #ffffff;
+    background: linear-gradient(135deg, #0f5f43 0%, #137654 100%);
+    box-shadow: 0 8px 18px rgba(15, 95, 67, 0.25);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.life-insurance-product-link::after {
+    content: "→";
+    font-size: 0.95rem;
+    transition: transform 0.2s ease;
+}
+
+.life-insurance-product-link:hover {
+    background: linear-gradient(135deg, #0d523a 0%, #105f45 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 24px rgba(15, 95, 67, 0.32);
+}
+
+.life-insurance-product-link:hover::after {
+    transform: translateX(2px);
+}
+
+.life-insurance-product-link:focus-visible {
+    outline: 3px solid rgba(19, 118, 84, 0.28);
+    outline-offset: 2px;
+}
+
+.life-products-back-nav {
+    padding: 1.2rem 1.5rem 1.1rem;
+    background: transparent;
+}
+
+.life-products-back-inner {
+    max-width: 1120px;
+    margin: 0 auto;
+}
+
+.life-products-back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    text-decoration: none;
+    font-weight: 700;
+    color: #0f5f43;
+    border: 1px solid #b9dcca;
+    background: #eaf6ef;
+    padding: 0.45rem 0.85rem;
+    border-radius: 999px;
+    transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+}
+
+.life-products-back-link::before {
+    content: "←";
+    font-size: 0.95rem;
+}
+
+.life-products-back-link:hover {
+    transform: translateY(-1px);
+    background: #def1e7;
+    border-color: #93ccaf;
+}
+
+.life-products-back-link:focus-visible {
+    outline: 3px solid rgba(19, 118, 84, 0.25);
+    outline-offset: 2px;
+}
+
+.general-insurance-overview-page {
+    padding: 8rem 1.5rem 5rem;
+    background: linear-gradient(180deg, #f6f8fc 0%, #ffffff 100%);
+    min-height: calc(100vh - 120px);
+}
+
+.general-insurance-overview-container {
+    max-width: 1120px;
+    margin: 0 auto;
+}
+
+.general-insurance-overview-hero {
+    max-width: 780px;
+    margin-bottom: 2.2rem;
+}
+
+.general-insurance-overview-hero h1 {
+    margin: 0 0 0.65rem;
+    font-size: clamp(1.8rem, 3.4vw, 2.6rem);
+    color: #0f2240;
+}
+
+.general-insurance-overview-hero p {
+    margin: 0;
+    font-size: 1rem;
+    line-height: 1.7;
+    color: #4c5a73;
+}
+
+.general-insurance-categories-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.05rem;
+}
+
+.general-insurance-category-card {
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    gap: 0.72rem;
+    padding: 1.12rem;
+    border: 1px solid #d9e5f5;
+    border-radius: 18px;
+    background: linear-gradient(180deg, #ffffff 0%, #f8fbff 100%);
+    box-shadow: 0 10px 24px rgba(15, 34, 64, 0.08);
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.general-insurance-category-card::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, #0f5f43 0%, #1f8b64 100%);
+}
+
+.general-insurance-category-card:hover {
+    transform: translateY(-5px);
+    border-color: #bcd7ee;
+    box-shadow: 0 16px 30px rgba(15, 34, 64, 0.14);
+}
+
+.general-insurance-category-card h2 {
+    margin: 0;
+    font-size: 1.04rem;
+    line-height: 1.35;
+    color: #0f2240;
+}
+
+.general-insurance-category-title {
+    margin: 0;
+}
+
+.general-insurance-category-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.48rem 0.8rem;
+    border-radius: 999px;
+    border: 1px solid #bfd9ce;
+    background: #eef8f3;
+    color: #0e5b3f;
+    font-size: 0.92rem;
+    font-weight: 700;
+    letter-spacing: 0.01em;
+    line-height: 1.2;
+    user-select: none;
+    pointer-events: none;
+}
+
+.general-insurance-category-icon {
+    width: 1.15rem;
+    height: 1.15rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.general-insurance-category-icon svg {
+    width: 100%;
+    height: 100%;
+}
+
+.general-insurance-submenu-list-compact {
+    display: grid;
+    gap: 0.4rem;
+}
+
+.general-insurance-submenu-row {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    text-decoration: none;
+    color: #24486f;
+    font-size: 0.83rem;
+    font-weight: 600;
+    line-height: 1.45;
+    transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.general-insurance-submenu-row::before {
+    content: "•";
+    color: #0f5f43;
+    font-size: 0.95rem;
+    line-height: 1;
+}
+
+.general-insurance-submenu-row:hover {
+    color: #0f5f43;
+    transform: translateY(-1px);
+}
+
+.general-products-prefooter-nav {
+    padding: 1rem 0 1.1rem;
+}
+
+.general-products-prefooter-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    text-decoration: none;
+    font-weight: 700;
+    color: #0f5f43;
+    border: 1px solid #b9dcca;
+    background: #eaf6ef;
+    padding: 0.45rem 0.85rem;
+    border-radius: 999px;
+    transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+}
+
+.general-products-prefooter-link::before {
+    content: "←";
+    font-size: 0.95rem;
+}
+
+.general-products-prefooter-link:hover {
+    transform: translateY(-1px);
+    background: #def1e7;
+    border-color: #93ccaf;
+}
+
+.general-products-prefooter-link:focus-visible {
+    outline: 3px solid rgba(19, 118, 84, 0.25);
+    outline-offset: 2px;
+}
+
+@media (max-width: 768px) {
+    .life-insurance-overview-page {
+        padding: 7rem 1rem 4rem;
+    }
+
+    .life-insurance-overview-hero {
+        margin-bottom: 1.5rem;
+    }
+
+    .life-insurance-products-grid {
+        gap: 1rem;
+    }
+
+    .life-insurance-product-card {
+        border-radius: 15px;
+        padding: 1.1rem;
+    }
+
+    .life-insurance-product-pill {
+        font-size: 0.86rem;
+        padding: 0.44rem 0.72rem;
+    }
+
+    .life-products-back-nav {
+        padding: 1rem 1rem 0.9rem;
+    }
+
+    .general-insurance-overview-page {
+        padding: 7rem 1rem 4rem;
+    }
+
+    .general-insurance-overview-hero {
+        margin-bottom: 1.5rem;
+    }
+
+    .general-insurance-categories-grid {
+        gap: 1rem;
+        grid-template-columns: 1fr;
+    }
+
+    .general-insurance-category-card {
+        border-radius: 15px;
+        padding: 1rem;
+    }
+
+    .general-insurance-category-pill {
+        font-size: 0.86rem;
+        padding: 0.44rem 0.72rem;
+    }
+
+    .general-products-prefooter-nav {
+        padding: 0.85rem 0 1rem;
+    }
+
+}
+
 /* Final alignment override: keep Protect badge and heading on same left edge */
 .protect-content {
     text-align: left !important;
@@ -98,6 +517,157 @@
     .hero-left-content .hero-buttons {
         margin-top: auto !important;
         padding-top: clamp(1.5rem, 8vh, 4.5rem) !important;
+    }
+}
+
+/* ============================================
+   GENERAL INSURANCE HERO CLEANUP
+   Remove badges + tighten hero whitespace
+   ============================================ */
+:is(
+    .contractors-all-risks-page,
+    .contractors-plant-machinery-page,
+    .machinery-breakdown-page,
+    .electronic-equipment-page,
+    .consequential-loss-page,
+    .fire-and-perils-page,
+    .group-personal-accident-page,
+    .domestic-package-page,
+    .golfers-insurance-page,
+    .burglary-page,
+    .goods-in-transit-page,
+    .surety-undertaking-page,
+    .motor-vehicle-page,
+    .institutional-fleet-page,
+    .motor-cycle-page,
+    .work-injury-page,
+    .marine-cargo-page,
+    .marine-hull-page,
+    .public-liability-page,
+    .professional-indemnity-page,
+    .carriers-page,
+    .tender-page,
+    .immigration-security-page,
+    .performance-page,
+    .customs-page,
+    .chauffeur-driven-psv-page,
+    .driving-schools-page,
+    .general-cartage-page,
+    .agricultural-forestry-page,
+    .comesa-yellow-card-page
+) [class$="-badge"] {
+    display: none !important;
+}
+
+:is(
+    .contractors-all-risks-page,
+    .contractors-plant-machinery-page,
+    .machinery-breakdown-page,
+    .electronic-equipment-page,
+    .consequential-loss-page,
+    .fire-and-perils-page,
+    .group-personal-accident-page,
+    .domestic-package-page,
+    .golfers-insurance-page,
+    .burglary-page,
+    .goods-in-transit-page,
+    .surety-undertaking-page,
+    .motor-vehicle-page,
+    .institutional-fleet-page,
+    .motor-cycle-page,
+    .work-injury-page,
+    .marine-cargo-page,
+    .marine-hull-page,
+    .public-liability-page,
+    .professional-indemnity-page,
+    .carriers-page,
+    .tender-page,
+    .immigration-security-page,
+    .performance-page,
+    .customs-page,
+    .chauffeur-driven-psv-page,
+    .driving-schools-page,
+    .general-cartage-page,
+    .agricultural-forestry-page,
+    .comesa-yellow-card-page
+) [class$="-hero"] {
+    min-height: 232px !important;
+    padding: 24px 20px 18px !important;
+}
+
+@media (max-width: 768px) {
+    :is(
+        .contractors-all-risks-page,
+        .contractors-plant-machinery-page,
+        .machinery-breakdown-page,
+        .electronic-equipment-page,
+        .consequential-loss-page,
+        .fire-and-perils-page,
+        .group-personal-accident-page,
+        .domestic-package-page,
+        .golfers-insurance-page,
+        .burglary-page,
+        .goods-in-transit-page,
+        .surety-undertaking-page,
+        .motor-vehicle-page,
+        .institutional-fleet-page,
+        .motor-cycle-page,
+        .work-injury-page,
+        .marine-cargo-page,
+        .marine-hull-page,
+        .public-liability-page,
+        .professional-indemnity-page,
+        .carriers-page,
+        .tender-page,
+        .immigration-security-page,
+        .performance-page,
+        .customs-page,
+        .chauffeur-driven-psv-page,
+        .driving-schools-page,
+        .general-cartage-page,
+        .agricultural-forestry-page,
+        .comesa-yellow-card-page
+    ) [class$="-hero"] {
+        min-height: 210px !important;
+        padding: 20px 15px 16px !important;
+    }
+}
+
+@media (max-width: 480px) {
+    :is(
+        .contractors-all-risks-page,
+        .contractors-plant-machinery-page,
+        .machinery-breakdown-page,
+        .electronic-equipment-page,
+        .consequential-loss-page,
+        .fire-and-perils-page,
+        .group-personal-accident-page,
+        .domestic-package-page,
+        .golfers-insurance-page,
+        .burglary-page,
+        .goods-in-transit-page,
+        .surety-undertaking-page,
+        .motor-vehicle-page,
+        .institutional-fleet-page,
+        .motor-cycle-page,
+        .work-injury-page,
+        .marine-cargo-page,
+        .marine-hull-page,
+        .public-liability-page,
+        .professional-indemnity-page,
+        .carriers-page,
+        .tender-page,
+        .immigration-security-page,
+        .performance-page,
+        .customs-page,
+        .chauffeur-driven-psv-page,
+        .driving-schools-page,
+        .general-cartage-page,
+        .agricultural-forestry-page,
+        .comesa-yellow-card-page
+    ) [class$="-hero"] {
+        min-height: 194px !important;
+        padding: 16px 10px 12px !important;
     }
 }
 
@@ -875,6 +1445,43 @@ canvas {
     animation: activeDot 2s ease-in-out infinite;
 }
 
+/* Desktop fit pass: keep all navbar items on one row and push CTAs right */
+@media (min-width: 1101px) {
+    .nav-container {
+        gap: 0.65rem 0.65rem;
+    }
+
+    .nav-menu {
+        flex-wrap: nowrap !important;
+        justify-content: flex-end;
+        gap: 0.52rem;
+        padding: 0 0.15rem 0 0;
+        row-gap: 0;
+    }
+
+    .nav-item {
+        flex: 0 0 auto;
+    }
+
+    .nav-link {
+        padding: 0.62rem 0.62rem;
+        font-size: 0.98rem;
+    }
+
+    .nav-actions {
+        justify-content: flex-end;
+        margin-left: 0.45rem;
+        gap: 0.4rem;
+    }
+
+    .nav-claim-button,
+    .nav-quote-button,
+    .nav-intermediary-button {
+        padding: 0.46rem 0.78rem;
+        font-size: 0.72rem;
+    }
+}
+
 /* Prevent ALL highlighting effects on items with submenus (hover, active, focus, etc.) */
 .nav-item.has-submenu .nav-link:hover .nav-link-text,
 .nav-item.has-submenu .nav-link:hover .nav-link-underline,
@@ -1168,28 +1775,30 @@ canvas {
         opacity: 0 !important;
         visibility: hidden !important;
         pointer-events: none !important;
-        transform: translateX(-50%) translateY(-10px) !important;
+        transform: translateY(-10px) !important;
     }
     
-    /* Pages submenu - fit content width and align to menu item */
+    /* Pages submenu - open from nav item and fly out to right */
     .pages-submenu {
-        width: 100% !important;
-        max-width: 1600px !important;
-        left: 50% !important;
-        transform: translateX(-50%) translateY(-10px) !important;
-        padding: 0 20px !important;
-        display: flex !important;
-        justify-content: flex-end !important;
+        position: absolute !important;
+        top: 100% !important;
+        left: 0 !important;
+        right: auto !important;
+        width: max-content !important;
+        max-width: min(98vw, 980px) !important;
+        margin-top: -6px !important;
+        padding: calc(0.35rem + 6px) 0 0 0 !important;
+        transform: translateY(6px) !important;
+        display: block !important;
     }
     
     .pages-submenu.open,
     .nav-item.has-submenu:hover .pages-submenu {
-        transform: translateX(-50%) translateY(0) !important;
+        transform: translateY(0) !important;
     }
     
     .pages-submenu .submenu-content {
-        margin-left: auto !important;
-        margin-right: 0 !important;
+        margin: 0 !important;
     }
 
     /* Insurance: vertical categories, child links in a panel to the right */
@@ -1260,7 +1869,7 @@ canvas {
     }
 
     .submenu-mega-flyout .submenu-column-item:not(.submenu-nested-item) {
-        font-size: 0.88rem !important;
+        font-size: 1.05rem !important;
         font-weight: 500 !important;
     }
 
@@ -3572,53 +4181,42 @@ canvas {
     width: 56px;
     height: 56px;
     border-radius: 50%;
-    background: linear-gradient(135deg, var(--primary-green), var(--primary-green-light));
+    background: #ffffff;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
     box-shadow: 
-        0 6px 20px rgba(17, 66, 46, 0.25),
-        0 3px 10px rgba(17, 66, 46, 0.15);
+        0 6px 18px rgba(15, 23, 42, 0.12),
+        0 2px 8px rgba(15, 23, 42, 0.08);
     position: relative;
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    border: 2px solid rgba(255, 255, 255, 0.3);
-}
-
-.review-avatar::before {
-    content: '';
-    position: absolute;
-    inset: -3px;
-    border-radius: 50%;
-    padding: 3px;
-    background: linear-gradient(135deg, var(--primary-green), var(--primary-green-light));
-    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    -webkit-mask-composite: xor;
-    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    mask-composite: exclude;
-    opacity: 0;
-    transition: opacity 0.4s ease;
+    border: 1.5px solid #d1d9e6;
 }
 
 .review-card:hover .review-avatar {
-    transform: scale(1.1) rotate(5deg);
+    transform: scale(1.05);
     box-shadow: 
-        0 12px 32px rgba(17, 66, 46, 0.3),
-        0 6px 16px rgba(17, 66, 46, 0.2);
-}
-
-.review-card:hover .review-avatar::before {
-    opacity: 1;
-    animation: rotate 3s linear infinite;
+        0 10px 24px rgba(15, 23, 42, 0.15),
+        0 4px 10px rgba(15, 23, 42, 0.1);
+    border-color: #bfcadb;
 }
 
 .avatar-icon {
-    font-size: 1.875rem;
-    line-height: 1;
+    width: 26px;
+    height: 26px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: #6b7280;
     position: relative;
     z-index: 1;
-    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
     transition: transform 0.4s ease;
+}
+
+.avatar-icon svg {
+    width: 100%;
+    height: 100%;
 }
 
 .review-card:hover .avatar-icon {
@@ -3914,7 +4512,7 @@ canvas {
    CTA Section
    ============================================ */
 .cta-section {
-    padding: 40px 0;
+    padding: 28px 0;
     background: radial-gradient(circle at top left, rgba(255, 255, 255, 0.08), transparent 55%),
                 radial-gradient(circle at bottom right, rgba(12, 83, 53, 0.9), var(--primary-green-dark));
     position: relative;
@@ -3969,7 +4567,7 @@ canvas {
 .cta-text-content {
     position: relative;
     z-index: 2;
-    padding: 2rem 2.25rem;
+    padding: 1.25rem 1.75rem;
     border-radius: 0;
     background: transparent;
     box-shadow: none;
@@ -3981,7 +4579,7 @@ canvas {
     font-size: clamp(2.2rem, 4.5vw, 3rem);
     font-weight: 800;
     color: var(--white);
-    margin: 0 0 1rem 0;
+    margin: 0 0 0.7rem 0;
     line-height: 1.2;
     text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
 }
@@ -3989,12 +4587,12 @@ canvas {
 .cta-description {
     font-size: 1.05rem;
     color: rgba(255, 255, 255, 0.9);
-    line-height: 1.7;
-    margin: 0 0 1.5rem 0;
+    line-height: 1.55;
+    margin: 0 0 0.95rem 0;
 }
 
 .cta-description + .cta-description {
-    margin-top: -0.5rem;
+    margin-top: -0.15rem;
     font-size: 0.98rem;
     color: rgba(255, 255, 255, 0.85);
 }
@@ -4002,8 +4600,8 @@ canvas {
 .cta-benefits {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 0.85rem 1.75rem;
-    margin: 0 0 1.5rem 0;
+    gap: 0.6rem 1.2rem;
+    margin: 0 0 0.95rem 0;
     text-align: left;
 }
 
@@ -4033,7 +4631,7 @@ canvas {
 
 .cta-buttons {
     display: flex;
-    gap: 1.25rem;
+    gap: 0.8rem;
     justify-content: center;
     flex-wrap: wrap;
 }
@@ -4055,8 +4653,8 @@ canvas {
 
 .cta-primary-button,
 .cta-secondary-button {
-    padding: 1rem 2.25rem;
-    font-size: 1.05rem;
+    padding: 0.82rem 1.7rem;
+    font-size: 0.95rem;
     font-weight: 600;
     border-radius: 50px;
     display: inline-flex;
@@ -5515,7 +6113,7 @@ canvas {
     }
 
     .cta-section {
-        padding: 50px 0;
+        padding: 34px 0;
     }
 
     .cta-title {
@@ -5896,7 +6494,7 @@ canvas {
     }
 
     .cta-section {
-        padding: 60px 0;
+        padding: 30px 0;
     }
 
     .cta-title {
@@ -7691,7 +8289,7 @@ canvas {
 /* Hero Section */
 .careers-hero {
     background: linear-gradient(135deg, var(--primary-green-dark) 0%, var(--primary-green) 100%);
-    padding: 60px 0 30px;
+    padding: 38px 0 22px;
     position: relative;
     overflow: hidden;
 }
@@ -7735,7 +8333,7 @@ canvas {
     font-size: clamp(2rem, 5vw, 3rem);
     font-weight: 900;
     color: var(--white);
-    margin: 0 0 1rem;
+    margin: 0 0 0.7rem;
     line-height: 1.2;
     text-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
 }
@@ -8154,7 +8752,7 @@ canvas {
 }
 
 .footer-section ul li {
-    margin-bottom: 0.875rem;
+    margin-bottom: 0.5rem;
     position: relative;
     padding-left: 0;
     transition: padding-left 0.3s ease;
@@ -8183,6 +8781,7 @@ canvas {
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     display: inline-block;
     font-size: 0.9375rem;
+    line-height: 1.3;
     position: relative;
 }
 
@@ -8435,6 +9034,62 @@ canvas {
     letter-spacing: 0.5px;
 }
 
+/* Plain footer look: remove decorative/animated effects */
+.footer {
+    background: #0f2b1d !important;
+}
+
+.footer::before,
+.footer::after,
+.footer-bottom::before,
+.footer-logo-wrapper::before,
+.footer-company-links a::after,
+.footer-section h4::after,
+.footer-section ul li::before,
+.social-link::before {
+    display: none !important;
+    content: none !important;
+}
+
+.footer-logo-image {
+    filter: none !important;
+    transform: none !important;
+}
+
+.footer-logo:hover .footer-logo-image {
+    transform: none !important;
+    filter: none !important;
+}
+
+.footer-company-links a,
+.footer-section ul li,
+.footer-section ul li a,
+.social-link,
+.footer-forms-button {
+    transition: color 0.2s ease, background-color 0.2s ease, border-color 0.2s ease !important;
+}
+
+.footer-company-links a:hover,
+.footer-section ul li a:hover,
+.social-link:hover {
+    transform: none !important;
+    padding-left: 0 !important;
+}
+
+.footer-company-links a:hover svg,
+.social-link:hover .social-icon {
+    transform: none !important;
+}
+
+.footer-section ul li a:hover::after {
+    width: 0 !important;
+}
+
+.footer-forms-button:hover {
+    transform: none !important;
+    box-shadow: none !important;
+}
+
 /* Footer Mobile Responsive Styles */
 @media (max-width: 968px) {
     .footer {
@@ -8474,7 +9129,7 @@ canvas {
     }
 
     .footer-section ul li {
-        margin-bottom: 0.75rem;
+        margin-bottom: 0.45rem;
     }
 
     .footer-section ul li a {
@@ -9457,7 +10112,7 @@ canvas {
     }
 
     .navbar.menu-open .submenu-mega-flyout .submenu-column-item:not(.submenu-nested-header) {
-        font-size: 0.88rem !important;
+        font-size: 0.875rem !important;
         font-weight: 500 !important;
         padding: 0.55rem 0.75rem 0.55rem 1.35rem !important;
         line-height: 1.4 !important;
@@ -9856,7 +10511,7 @@ canvas {
     }
 
     .careers-hero {
-        padding: 40px 0 30px;
+        padding: 30px 0 20px;
     }
 
     .careers-hero-content {
@@ -9871,7 +10526,7 @@ canvas {
 
     .careers-hero-title {
         font-size: clamp(1.75rem, 6vw, 2.5rem);
-        margin-bottom: 0.75rem;
+        margin-bottom: 0.6rem;
     }
 
     .careers-hero-description {
@@ -9942,7 +10597,7 @@ canvas {
     }
 
     .careers-hero {
-        padding: 30px 0 20px;
+        padding: 24px 0 16px;
     }
 
     .careers-hero-content {
@@ -9957,7 +10612,7 @@ canvas {
 
     .careers-hero-title {
         font-size: clamp(1.5rem, 7vw, 2rem);
-        margin-bottom: 0.5rem;
+        margin-bottom: 0.4rem;
     }
 
     .careers-hero-description {
@@ -9994,7 +10649,7 @@ canvas {
     }
 
     .careers-hero {
-        padding: 30px 0 20px;
+        padding: 24px 0 16px;
     }
 
     .careers-hero-content {
@@ -10009,7 +10664,7 @@ canvas {
 
     .careers-hero-title {
         font-size: clamp(1.5rem, 7vw, 1.75rem);
-        margin-bottom: 0.5rem;
+        margin-bottom: 0.4rem;
     }
 
     .careers-hero-description {
@@ -12458,13 +13113,19 @@ canvas {
    BRANCHES PAGE STYLES
    ============================================ */
 .branches-section {
-    padding: 180px 0 40px;
+    padding: 96px 0 40px;
     background: #ffffff;
     min-height: auto;
 }
 
+/* Ensure Branches hero heading never clips under fixed navbar */
+.route-main.inner-route .branches-section {
+    padding-top: 140px !important;
+}
+
 .branches-header {
     text-align: center;
+    padding-top: 28px;
     margin-bottom: 2.5rem;
 }
 
@@ -12679,20 +13340,30 @@ canvas {
     }
 
     .branches-section {
-        padding: 150px 0 40px;
+        padding: 88px 0 40px;
+    }
+
+    .route-main.inner-route .branches-section {
+        padding-top: 124px !important;
     }
 
     .branches-header {
+        padding-top: 22px;
         margin-bottom: 2rem;
     }
 }
 
 @media (max-width: 768px) {
     .branches-section {
-        padding: 150px 0 60px;
+        padding: 82px 0 60px;
+    }
+
+    .route-main.inner-route .branches-section {
+        padding-top: 112px !important;
     }
 
     .branches-header {
+        padding-top: 18px;
         margin-bottom: 3rem;
     }
 
@@ -12744,7 +13415,11 @@ canvas {
 
 @media (max-width: 480px) {
     .branches-section {
-        padding: 150px 0 50px;
+        padding: 78px 0 50px;
+    }
+
+    .route-main.inner-route .branches-section {
+        padding-top: 104px !important;
     }
 
     .branches-title {
@@ -15887,12 +16562,13 @@ canvas {
 }
 
 .group-personal-accident-content-section .container {
-    max-width: 1200px;
+    max-width: 900px;
     margin: 0 auto;
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
     gap: 2rem;
     align-items: start;
+    justify-items: center;
 }
 
 /* Group Personal Accident Info Card */
@@ -15904,6 +16580,7 @@ canvas {
     border: 1px solid #e9ecef;
     position: relative;
     overflow: hidden;
+    width: 100%;
 }
 
 .group-personal-accident-info-card::before {
@@ -15936,6 +16613,7 @@ canvas {
     grid-template-columns: 1fr 1fr;
     gap: 1rem;
     margin-bottom: 1.5rem;
+    width: 100%;
 }
 
 .form-button {
@@ -15982,6 +16660,7 @@ canvas {
 .group-personal-accident-form-wrapper {
     grid-column: 1 / -1;
     margin-top: 0;
+    width: 100%;
 }
 
 .group-personal-accident-quote-form-card {
@@ -16284,6 +16963,30 @@ canvas {
     pointer-events: none;
 }
 
+/* Trim excess whitespace for Group Life Insurance hero band */
+.group-life-insurance-page .group-life-hero {
+    min-height: 240px;
+    padding: 26px 20px 20px;
+}
+
+/* Trim excess whitespace for Group Life (Assurance) hero band */
+.group-life-page .group-life-hero {
+    min-height: 235px;
+    padding: 24px 20px 18px;
+}
+
+/* Trim excess whitespace for Group Mortgage Protection hero band */
+.group-mortgage-protection-page .group-mortgage-protection-hero {
+    min-height: 232px;
+    padding: 24px 20px 18px;
+}
+
+/* Trim excess whitespace for Group Credit Life hero band */
+.group-credit-life-page .group-credit-life-hero {
+    min-height: 232px;
+    padding: 24px 20px 18px;
+}
+
 .group-retirement-benefit-schemes-hero-content,
 .group-mortgage-protection-hero-content,
 .endowment-assurance-hero-content,
@@ -16470,6 +17173,26 @@ canvas {
         padding: 35px 15px 25px;
     }
 
+    .group-life-insurance-page .group-life-hero {
+        min-height: 220px;
+        padding: 22px 15px 18px;
+    }
+
+    .group-life-page .group-life-hero {
+        min-height: 215px;
+        padding: 20px 15px 16px;
+    }
+
+    .group-mortgage-protection-page .group-mortgage-protection-hero {
+        min-height: 210px;
+        padding: 20px 15px 16px;
+    }
+
+    .group-credit-life-page .group-credit-life-hero {
+        min-height: 210px;
+        padding: 20px 15px 16px;
+    }
+
     .group-retirement-benefit-schemes-hero-content,
     .group-mortgage-protection-hero-content,
     .endowment-assurance-hero-content,
@@ -16556,6 +17279,26 @@ canvas {
     .group-life-hero {
         min-height: 250px;
         padding: 30px 10px 20px;
+    }
+
+    .group-life-insurance-page .group-life-hero {
+        min-height: 205px;
+        padding: 18px 10px 14px;
+    }
+
+    .group-life-page .group-life-hero {
+        min-height: 198px;
+        padding: 16px 10px 12px;
+    }
+
+    .group-mortgage-protection-page .group-mortgage-protection-hero {
+        min-height: 194px;
+        padding: 16px 10px 12px;
+    }
+
+    .group-credit-life-page .group-credit-life-hero {
+        min-height: 194px;
+        padding: 16px 10px 12px;
     }
 
     .group-retirement-benefit-schemes-badge,
@@ -17296,6 +18039,30 @@ canvas {
     pointer-events: none;
 }
 
+/* Trim excess whitespace for Contractors Plant & Machinery hero band */
+.contractors-plant-machinery-page .contractors-plant-machinery-hero {
+    min-height: 232px;
+    padding: 24px 20px 18px;
+}
+
+/* Trim excess whitespace for Machinery Breakdown hero band */
+.machinery-breakdown-page .machinery-breakdown-hero {
+    min-height: 232px;
+    padding: 24px 20px 18px;
+}
+
+/* Trim excess whitespace for Electronic Equipment hero band */
+.electronic-equipment-page .electronic-equipment-hero {
+    min-height: 232px;
+    padding: 24px 20px 18px;
+}
+
+/* Trim excess whitespace for Contractors All Risks hero band */
+.contractors-all-risks-page .contractors-all-risks-hero {
+    min-height: 232px;
+    padding: 24px 20px 18px;
+}
+
 .contractors-all-risks-hero-content,
 .contractors-plant-machinery-hero-content,
 .electronic-equipment-hero-content,
@@ -17482,6 +18249,26 @@ canvas {
         padding: 35px 15px 25px;
     }
 
+    .contractors-plant-machinery-page .contractors-plant-machinery-hero {
+        min-height: 210px;
+        padding: 20px 15px 16px;
+    }
+
+    .machinery-breakdown-page .machinery-breakdown-hero {
+        min-height: 210px;
+        padding: 20px 15px 16px;
+    }
+
+    .electronic-equipment-page .electronic-equipment-hero {
+        min-height: 210px;
+        padding: 20px 15px 16px;
+    }
+
+    .contractors-all-risks-page .contractors-all-risks-hero {
+        min-height: 210px;
+        padding: 20px 15px 16px;
+    }
+
     .contractors-all-risks-hero-content,
     .contractors-plant-machinery-hero-content,
     .electronic-equipment-hero-content,
@@ -17568,6 +18355,26 @@ canvas {
     .golfers-insurance-hero {
         min-height: 250px;
         padding: 30px 10px 20px;
+    }
+
+    .contractors-plant-machinery-page .contractors-plant-machinery-hero {
+        min-height: 194px;
+        padding: 16px 10px 12px;
+    }
+
+    .machinery-breakdown-page .machinery-breakdown-hero {
+        min-height: 194px;
+        padding: 16px 10px 12px;
+    }
+
+    .electronic-equipment-page .electronic-equipment-hero {
+        min-height: 194px;
+        padding: 16px 10px 12px;
+    }
+
+    .contractors-all-risks-page .contractors-all-risks-hero {
+        min-height: 194px;
+        padding: 16px 10px 12px;
     }
 
     .contractors-all-risks-badge,
@@ -17669,6 +18476,18 @@ canvas {
     height: 100%;
     background: linear-gradient(135deg, transparent 0%, rgba(255, 255, 255, 0.1) 100%);
     pointer-events: none;
+}
+
+/* Compact variant: Machinery Breakdown (Loss of Profit) */
+.machinery-breakdown-loss-page .consequential-loss-hero {
+    min-height: 232px;
+    padding: 24px 20px 18px;
+}
+
+/* Trim excess whitespace for Industrial hero band */
+.industrial-page .industrial-hero {
+    min-height: 232px;
+    padding: 24px 20px 18px;
 }
 
 .consequential-loss-hero-content,
@@ -17824,6 +18643,16 @@ canvas {
         padding: 35px 15px 25px;
     }
 
+    .machinery-breakdown-loss-page .consequential-loss-hero {
+        min-height: 210px;
+        padding: 20px 15px 16px;
+    }
+
+    .industrial-page .industrial-hero {
+        min-height: 210px;
+        padding: 20px 15px 16px;
+    }
+
     .consequential-loss-hero-content,
     .fire-and-perils-hero-content,
     .industrial-hero-content {
@@ -17890,6 +18719,16 @@ canvas {
     .industrial-hero {
         min-height: 250px;
         padding: 30px 10px 20px;
+    }
+
+    .machinery-breakdown-loss-page .consequential-loss-hero {
+        min-height: 194px;
+        padding: 16px 10px 12px;
+    }
+
+    .industrial-page .industrial-hero {
+        min-height: 194px;
+        padding: 16px 10px 12px;
     }
 
     .consequential-loss-badge,
@@ -21238,6 +22077,172 @@ canvas {
     .service-providers-page,
     .careers-page-section {
         padding-top: 120px !important;
+    }
+}
+
+/* Careers mobile-specific navbar spacing */
+@media (max-width: 768px) {
+    .careers-page-section {
+        padding-top: 92px !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .careers-page-section {
+        padding-top: 84px !important;
+    }
+}
+
+/* Life insurance product pages: tighter navbar spacing */
+.group-life-insurance-page,
+.group-life-page,
+.group-mortgage-protection-page,
+.group-credit-life-page {
+    padding-top: 88px !important;
+}
+
+@media (max-width: 768px) {
+    .group-life-insurance-page,
+    .group-life-page,
+    .group-mortgage-protection-page,
+    .group-credit-life-page {
+        padding-top: 82px !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .group-life-insurance-page,
+    .group-life-page,
+    .group-mortgage-protection-page,
+    .group-credit-life-page {
+        padding-top: 76px !important;
+    }
+}
+
+/* General insurance pages: tighter navbar spacing */
+.general-insurance-overview-page,
+.contractors-all-risks-page,
+.contractors-plant-machinery-page,
+.machinery-breakdown-page,
+.electronic-equipment-page,
+.consequential-loss-page,
+.fire-and-perils-page,
+.industrial-page,
+.group-personal-accident-page,
+.domestic-package-page,
+.golfers-insurance-page,
+.burglary-page,
+.goods-in-transit-page,
+.surety-undertaking-page,
+.motor-vehicle-page,
+.institutional-fleet-page,
+.motor-cycle-page,
+.work-injury-page,
+.marine-cargo-page,
+.marine-hull-page,
+.public-liability-page,
+.professional-indemnity-page,
+.carriers-page,
+.tender-page,
+.immigration-security-page,
+.performance-page,
+.customs-page,
+.chauffeur-driven-psv-page,
+.driving-schools-page,
+.general-cartage-page,
+.agricultural-forestry-page,
+.comesa-yellow-card-page {
+    padding-top: 88px !important;
+}
+
+@media (max-width: 768px) {
+    .general-insurance-overview-page,
+    .contractors-all-risks-page,
+    .contractors-plant-machinery-page,
+    .machinery-breakdown-page,
+    .electronic-equipment-page,
+    .consequential-loss-page,
+    .fire-and-perils-page,
+    .industrial-page,
+    .group-personal-accident-page,
+    .domestic-package-page,
+    .golfers-insurance-page,
+    .burglary-page,
+    .goods-in-transit-page,
+    .surety-undertaking-page,
+    .motor-vehicle-page,
+    .institutional-fleet-page,
+    .motor-cycle-page,
+    .work-injury-page,
+    .marine-cargo-page,
+    .marine-hull-page,
+    .public-liability-page,
+    .professional-indemnity-page,
+    .carriers-page,
+    .tender-page,
+    .immigration-security-page,
+    .performance-page,
+    .customs-page,
+    .chauffeur-driven-psv-page,
+    .driving-schools-page,
+    .general-cartage-page,
+    .agricultural-forestry-page,
+    .comesa-yellow-card-page {
+        padding-top: 82px !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .general-insurance-overview-page,
+    .contractors-all-risks-page,
+    .contractors-plant-machinery-page,
+    .machinery-breakdown-page,
+    .electronic-equipment-page,
+    .consequential-loss-page,
+    .fire-and-perils-page,
+    .industrial-page,
+    .group-personal-accident-page,
+    .domestic-package-page,
+    .golfers-insurance-page,
+    .burglary-page,
+    .goods-in-transit-page,
+    .surety-undertaking-page,
+    .motor-vehicle-page,
+    .institutional-fleet-page,
+    .motor-cycle-page,
+    .work-injury-page,
+    .marine-cargo-page,
+    .marine-hull-page,
+    .public-liability-page,
+    .professional-indemnity-page,
+    .carriers-page,
+    .tender-page,
+    .immigration-security-page,
+    .performance-page,
+    .customs-page,
+    .chauffeur-driven-psv-page,
+    .driving-schools-page,
+    .general-cartage-page,
+    .agricultural-forestry-page,
+    .comesa-yellow-card-page {
+        padding-top: 76px !important;
+    }
+}
+
+/* General insurance landing page needs extra top clearance */
+.general-insurance-overview-page {
+    padding-top: 104px !important;
+}
+
+@media (max-width: 768px) {
+    .general-insurance-overview-page {
+        padding-top: 118px !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .general-insurance-overview-page {
+        padding-top: 110px !important;
     }
 }
 

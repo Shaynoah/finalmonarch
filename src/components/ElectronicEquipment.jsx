@@ -9,9 +9,6 @@ const ElectronicEquipment = () => {
       {/* Hero Section */}
       <section className="electronic-equipment-hero">
         <div className="electronic-equipment-hero-content">
-          <div className="electronic-equipment-badge">
-            <span>Electronic Equipment</span>
-          </div>
           <h1 className="electronic-equipment-title">
             All-Risk Resilience for Your Electronics
           </h1>

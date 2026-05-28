@@ -9,9 +9,6 @@ const GroupLife = () => {
       {/* Hero Section */}
       <section className="group-life-hero">
         <div className="group-life-hero-content">
-          <div className="group-life-badge">
-            <span>Group Life</span>
-          </div>
           <h1 className="group-life-title">
             Comprehensive Employee Protection
           </h1>

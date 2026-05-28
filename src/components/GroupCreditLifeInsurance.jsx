@@ -6,9 +6,6 @@ const GroupCreditLifeInsurance = () => {
       {/* Hero Section */}
       <section className="group-credit-life-hero">
         <div className="group-credit-life-hero-content">
-          <div className="group-credit-life-badge">
-            <span>Group Credit Life Insurance</span>
-          </div>
           <h1 className="group-credit-life-title">
             Protecting Lenders and Borrowers
           </h1>

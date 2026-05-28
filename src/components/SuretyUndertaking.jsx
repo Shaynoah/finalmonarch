@@ -8,10 +8,10 @@ const SuretyUndertaking = () => {
       <section className="surety-undertaking-hero">
         <div className="surety-undertaking-hero-content">
           <div className="surety-undertaking-badge">
-            <span>Surety Undertaking</span>
+            <span>Fidelity Guarantee</span>
           </div>
           <h1 className="surety-undertaking-title">
-            Building Trust, Securing Commitments
+            Fidelity Guarantee
           </h1>
         </div>
       </section>
@@ -22,17 +22,20 @@ const SuretyUndertaking = () => {
           <div className="surety-undertaking-info-card">
             <div className="surety-undertaking-info-content">
               <p className="surety-undertaking-info-description">
-                This is an undertaking by an independent third party, the Surety, to the owner that the contractor will perform in accordance with the terms and conditions of the contract, hence a Surety Bond is a three-party contract. The contractor requests the Surety to issue the Bond in favor of the principal. The contractor pays the premium for the Surety Bond but is not the beneficiary of the Bond.
+                Cover the employer against loss of money, loss of stock or property which might result from acts of dishonesty by an employee in the course of employment.
               </p>
-              <p className="surety-undertaking-info-description" style={{ marginTop: '1.5rem' }}>
-                A Surety Bond is irrevocable and non-cancellable by the Surety. The Surety is committed to pay should default occur by the contractor.
-              </p>
-              <p className="surety-undertaking-info-description" style={{ marginTop: '1.5rem' }}>
-                Surety Bonds provide protection for the principal of a contract against the default of the contractor.
-              </p>
-              <p className="surety-undertaking-info-description" style={{ marginTop: '1.5rem' }}>
-                For answers to your questions and information on solutions our network of offices aim to be convenient and local. Visit us in person at one of our offices.
-              </p>
+              <div style={{ marginTop: '1.5rem' }}>
+                <h3 style={{ marginBottom: '0.75rem' }}>Benefits</h3>
+                <p className="surety-undertaking-info-description" style={{ marginBottom: '0.75rem' }}>
+                  Reimbursement for loss arising out of the following:
+                </p>
+                <ul style={{ margin: 0, paddingLeft: '1.1rem', lineHeight: 1.8 }}>
+                  <li>Dishonesty.</li>
+                  <li>Fraud.</li>
+                  <li>Loss of property.</li>
+                  <li>Loss from loans or trading.</li>
+                </ul>
+              </div>
             </div>
           </div>
 

@@ -11,8 +11,10 @@ import AboutPage from './pages/AboutPage'
 import BranchesPage from './pages/BranchesPage'
 import FAQsPage from './pages/FAQsPage'
 import TeamPage from './pages/TeamPage'
+import LifeInsurancePage from './pages/LifeInsurancePage'
+import GeneralInsurancePage from './pages/GeneralInsurancePage'
 import GroupLifeInsurancePage from './pages/GroupLifeInsurancePage'
-import GroupRetirementBenefitSchemesPage from './pages/GroupRetirementBenefitSchemesPage'
+import GroupMortgageProtectionPage from './pages/GroupMortgageProtectionPage'
 import GroupCreditLifeInsurancePage from './pages/GroupCreditLifeInsurancePage'
 import GroupLifePage from './pages/GroupLifePage'
 import GroupPersonalAccidentPage from './pages/GroupPersonalAccidentPage'
@@ -91,17 +93,32 @@ const seoByPath = {
       'Meet the Monarch Insurance team driving quality service, risk expertise, and customer-focused insurance solutions in Kenya.',
     keywords: 'Monarch Insurance team, insurance leadership Kenya, insurance experts',
   },
+  '/life-insurance': {
+    title: 'Life Insurance Products Kenya',
+    description:
+      'Browse Monarch life insurance products in Kenya including group life, group credit life, retirement benefits, and last expense cover.',
+    keywords:
+      'life insurance Kenya, group life insurance Kenya, group credit life Kenya, retirement benefit schemes Kenya',
+  },
+  '/general-insurance': {
+    title: 'General Insurance Products Kenya',
+    description:
+      'Explore Monarch general insurance categories in Kenya including motor, fire, engineering, liability, marine, bonds, and more.',
+    keywords:
+      'general insurance Kenya, motor insurance Kenya, fire insurance Kenya, liability insurance Kenya, marine insurance Kenya',
+  },
   '/group-life-insurance': {
     title: 'Group Last Expense Cover Kenya',
     description:
       'Secure your team with Group Last Expense cover in Kenya, designed to support families and employers during difficult times.',
     keywords: 'group last expense Kenya, employee life cover, corporate life insurance',
   },
-  '/group-retirement-benefit-schemes': {
-    title: 'Group Retirement Benefits Kenya',
+  '/group-mortgage-protection': {
+    title: 'Group Mortgage Protection Insurance Kenya',
     description:
-      'Offer dependable group retirement benefit schemes in Kenya to help employees build long-term financial security.',
-    keywords: 'group retirement benefits Kenya, pension schemes Kenya, employee benefits',
+      'Protect mortgage borrowers and lenders in Kenya with Group Mortgage Protection cover for outstanding loan balances.',
+    keywords:
+      'group mortgage protection Kenya, mortgage insurance Kenya, loan protection cover',
   },
   '/group-credit-life': {
     title: 'Group Credit Life Insurance Kenya',
@@ -341,8 +358,10 @@ function App() {
         <Route path="/branches" element={withSEO('/branches', <BranchesPage />)} />
         <Route path="/faqs" element={withSEO('/faqs', <FAQsPage />)} />
         <Route path="/team" element={withSEO('/team', <TeamPage />)} />
+        <Route path="/life-insurance" element={withSEO('/life-insurance', <LifeInsurancePage />)} />
+        <Route path="/general-insurance" element={withSEO('/general-insurance', <GeneralInsurancePage />)} />
         <Route path="/group-life-insurance" element={withSEO('/group-life-insurance', <GroupLifeInsurancePage />)} />
-        <Route path="/group-retirement-benefit-schemes" element={withSEO('/group-retirement-benefit-schemes', <GroupRetirementBenefitSchemesPage />)} />
+        <Route path="/group-mortgage-protection" element={withSEO('/group-mortgage-protection', <GroupMortgageProtectionPage />)} />
         <Route path="/group-credit-life" element={withSEO('/group-credit-life', <GroupCreditLifeInsurancePage />)} />
         <Route path="/group-life" element={withSEO('/group-life', <GroupLifePage />)} />
         <Route path="/group-personal-accident" element={withSEO('/group-personal-accident', <GroupPersonalAccidentPage />)} />

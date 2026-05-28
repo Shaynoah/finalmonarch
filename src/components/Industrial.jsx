@@ -9,9 +9,6 @@ const Industrial = () => {
       {/* Hero Section */}
       <section className="industrial-hero">
         <div className="industrial-hero-content">
-          <div className="industrial-badge">
-            <span>Industrial</span>
-          </div>
           <h1 className="industrial-title">
             A Comprehensive Haven for Corporate Security
           </h1>

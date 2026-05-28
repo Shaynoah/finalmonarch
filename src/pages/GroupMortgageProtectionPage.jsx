@@ -1,16 +1,16 @@
 import React from 'react'
-import GroupCreditLifeInsurance from '../components/GroupCreditLifeInsurance'
+import GroupMortgageProtection from '../components/GroupMortgageProtection'
 import LifeProductsBackLink from '../components/LifeProductsBackLink'
 import Footer from '../components/Footer'
 
-const GroupCreditLifeInsurancePage = () => {
+const GroupMortgageProtectionPage = () => {
   return (
     <>
-      <GroupCreditLifeInsurance />
+      <GroupMortgageProtection />
       <LifeProductsBackLink />
       <Footer />
     </>
   )
 }
 
-export default GroupCreditLifeInsurancePage
+export default GroupMortgageProtectionPage

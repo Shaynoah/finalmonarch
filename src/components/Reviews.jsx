@@ -106,7 +106,12 @@ const Reviews = () => {
                 >
                   <div className="review-footer">
                     <div className="review-avatar">
-                      <span className="avatar-icon">{review.image}</span>
+                      <span className="avatar-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round">
+                          <circle cx="12" cy="8" r="4" />
+                          <path d="M4 20a8 8 0 0 1 16 0" />
+                        </svg>
+                      </span>
                     </div>
                     <div className="review-info">
                       <h3 className="review-name">{review.name}</h3>

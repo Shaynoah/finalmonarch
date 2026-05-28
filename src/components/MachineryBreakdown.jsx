@@ -10,9 +10,6 @@ const MachineryBreakdown = () => {
       {/* Hero Section */}
       <section className="machinery-breakdown-hero">
         <div className="machinery-breakdown-hero-content">
-          <div className="machinery-breakdown-badge">
-            <span>Machinery Breakdown</span>
-          </div>
           <h1 className="machinery-breakdown-title">
             Your go-to accident insurance for machinery
           </h1>

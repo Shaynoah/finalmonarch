@@ -1,19 +1,21 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 
 const logoImage = 'https://res.cloudinary.com/diozv0xm2/image/upload/q_auto/f_auto/v1776416275/logo_brgjho.jpg'
 
 const Footer = () => {
   const currentYear = new Date().getFullYear()
+  const location = useLocation()
 
   const insuranceTypes = [
+    { href: '/life-insurance', label: 'Life Insurance Products' },
+    { href: '/general-insurance', label: 'General Insurance Products' },
     { href: '/motor-vehicle', label: 'Private Motor Insurance' },
     { href: '/group-life-insurance', label: 'Group Life Insurance' },
-    { href: '/goods-in-transit', label: 'Marine Insurance' },
-    { href: '/consequential-loss', label: 'Consequential Fire Loss' },
+    { href: '/marine-cargo', label: 'Marine Insurance' },
+    { href: '/consequential-loss', label: 'Fire Loss of Profit' },
     { href: '/electronic-equipment', label: 'Electronic Insurance' },
-    { href: '/motor-cycle', label: 'Motor Cycle Insurance' },
-    { href: '/burglary', label: 'Theft & Burglary' }
+    { href: '/motor-cycle', label: 'Motor Cycle Insurance' }
   ]
 
   const services = [
@@ -75,9 +77,54 @@ const Footer = () => {
     }
   }
 
+  const generalInsurancePaths = new Set([
+    '/contractors-plant-machinery',
+    '/machinery-breakdown',
+    '/electronic-equipment',
+    '/consequential-loss',
+    '/contractors-all-risks',
+    '/industrial',
+    '/group-personal-accident',
+    '/fire-and-perils',
+    '/domestic-package',
+    '/golfers-insurance',
+    '/goods-in-transit',
+    '/surety-undertaking',
+    '/burglary',
+    '/institutional-fleet',
+    '/motor-vehicle',
+    '/motor-cycle',
+    '/work-injury',
+    '/marine-cargo',
+    '/marine-hull',
+    '/public-liability',
+    '/professional-indemnity',
+    '/carriers',
+    '/tender',
+    '/immigration-security',
+    '/performance',
+    '/customs',
+  ])
+
+  const showGeneralInsuranceBackLink = generalInsurancePaths.has(location.pathname)
+
   return (
-    <footer className="footer">
-      <div className="container">
+    <>
+      {showGeneralInsuranceBackLink && (
+        <div className="general-products-prefooter-nav">
+          <div className="container">
+            <Link
+              to="/general-insurance"
+              className="general-products-prefooter-link"
+              onClick={() => window.scrollTo({ top: 0, behavior: 'instant' })}
+            >
+              Back to General Insurance Products
+            </Link>
+          </div>
+        </div>
+      )}
+      <footer className="footer">
+        <div className="container">
         <div className="footer-content">
           <div className="footer-section">
             <div className="footer-logo">
@@ -229,8 +276,9 @@ const Footer = () => {
         <div className="footer-bottom">
           <p>&copy; {currentYear} Monarch Insurance. All rights reserved.</p>
         </div>
-      </div>
-    </footer>
+        </div>
+      </footer>
+    </>
   )
 }
 

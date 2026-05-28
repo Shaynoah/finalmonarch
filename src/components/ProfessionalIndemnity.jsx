@@ -1,22 +1,44 @@
 import React from 'react'
+import { useLocation } from 'react-router-dom'
 import professionalIndemnityForm from '../forms/PROFESSIONAL-INDEMNITY-PROPOSAL-FORM-.pdf'
 
 const indemnityImage = 'https://res.cloudinary.com/diozv0xm2/image/upload/q_auto/f_auto/v1776416271/indemnity_w25cpu.png'
 
 const ProfessionalIndemnity = () => {
+  const location = useLocation()
+  const isDirectorsOfficersVariant =
+    new URLSearchParams(location.search).get('variant') === 'directors-officers-liability'
+
+  const content = isDirectorsOfficersVariant
+    ? {
+        badge: 'Directors and Officers (D&O) Liability Insurance',
+        title: 'Directors and Officers Liability Cover',
+        subtitle: 'Protection for directors and officers against wrongful act claims.',
+        description:
+          'Protects the insured from claims made against them during the period of insurance for any wrongful act committed by directors or officers.',
+      }
+    : {
+        badge: 'Professional Indemnity',
+        title: 'Safeguarding Professional Legacies with Precision',
+        subtitle:
+          "Whether you're a lawyer, trustee, or medical professional, secure your legacy with precision and confidence",
+        description:
+          "This policy protects professionals from legal liability that may arise due to acts of negligence, error or omission in the rendering of or failure to render professional services for others in the insured's capacity as a professional.",
+      }
+
   return (
     <div className="professional-indemnity-page">
       {/* Hero Section */}
       <section className="professional-indemnity-hero">
         <div className="professional-indemnity-hero-content">
           <div className="professional-indemnity-badge">
-            <span>Professional Indemnity</span>
+            <span>{content.badge}</span>
           </div>
           <h1 className="professional-indemnity-title">
-            Safeguarding Professional Legacies with Precision
+            {content.title}
           </h1>
           <p className="professional-indemnity-subtitle">
-            Whether you're a lawyer, trustee, or medical professional, secure your legacy with precision and confidence
+            {content.subtitle}
           </p>
         </div>
       </section>
@@ -27,37 +49,41 @@ const ProfessionalIndemnity = () => {
           <div className="professional-indemnity-info-card">
             <div className="professional-indemnity-info-content">
               <p className="professional-indemnity-info-description">
-                This policy protects professionals from legal liability that may arise due to acts of negligence, error or omission in the rendering of or failure to render professional services for others in the insured's capacity as a professional.
+                {content.description}
               </p>
-              
-              <p className="professional-indemnity-info-description" style={{ marginTop: '1.5rem', fontWeight: '600' }}>
-                Cover is available for, among others:
-              </p>
-              
-              <ul className="professional-indemnity-list" style={{ marginTop: '1rem', marginLeft: '1.5rem' }}>
-                <li>Lawyers</li>
-                <li>Trustees (Liability)</li>
-                <li>Medical (general practitioners, nurses, dentists, physiotherapists)</li>
-              </ul>
+              {!isDirectorsOfficersVariant && (
+                <>
+                  <p className="professional-indemnity-info-description" style={{ marginTop: '1.5rem', fontWeight: '600' }}>
+                    Cover is available for, among others:
+                  </p>
+                  
+                  <ul className="professional-indemnity-list" style={{ marginTop: '1rem', marginLeft: '1.5rem' }}>
+                    <li>Lawyers</li>
+                    <li>Trustees (Liability)</li>
+                    <li>Medical (general practitioners, nurses, dentists, physiotherapists)</li>
+                  </ul>
+                </>
+              )}
             </div>
           </div>
 
-          {/* Indemnity Image Section */}
-          <div className="insurance-form-wrapper" style={{ marginTop: '3rem' }}>
-            <div className="insurance-form-image">
-              <img loading="lazy" src={indemnityImage} alt="Professionals discussing liability protection under professional indemnity insurance" />
-            </div>
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-              <div style={{ padding: '2rem' }}>
-                <h3 style={{ fontSize: '1.75rem', fontWeight: '700', color: 'var(--black)', marginBottom: '1rem' }}>
-                  Protect Your Professional Practice
-                </h3>
-                <p style={{ fontSize: '1.125rem', lineHeight: '1.8', color: 'var(--text-dark)', marginBottom: '1.5rem' }}>
-                  Secure your professional reputation and financial security with comprehensive indemnity insurance. Our coverage protects you from legal liability arising from negligence, errors, or omissions in your professional services.
-                </p>
+          {!isDirectorsOfficersVariant && (
+            <div className="insurance-form-wrapper" style={{ marginTop: '3rem' }}>
+              <div className="insurance-form-image">
+                <img loading="lazy" src={indemnityImage} alt="Professionals discussing liability protection under professional indemnity insurance" />
+              </div>
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <div style={{ padding: '2rem' }}>
+                  <h3 style={{ fontSize: '1.75rem', fontWeight: '700', color: 'var(--black)', marginBottom: '1rem' }}>
+                    Protect Your Professional Practice
+                  </h3>
+                  <p style={{ fontSize: '1.125rem', lineHeight: '1.8', color: 'var(--text-dark)', marginBottom: '1.5rem' }}>
+                    Secure your professional reputation and financial security with comprehensive indemnity insurance. Our coverage protects you from legal liability arising from negligence, errors, or omissions in your professional services.
+                  </p>
+                </div>
               </div>
             </div>
-          </div>
+          )}
 
           {/* Application Form Button */}
           <div className="professional-indemnity-form-button-section">

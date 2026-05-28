@@ -1,22 +1,53 @@
 import React from 'react'
+import { useLocation } from 'react-router-dom'
 import goodsInTransitForm from '../forms/Goods-In-Transit-Proposal-Form.pdf'
 
 const transit2Image = 'https://res.cloudinary.com/diozv0xm2/image/upload/q_auto/f_auto/v1776416294/transit2-C-pWFbBF_iadlrq.png'
 
 const GoodsInTransit = () => {
+  const location = useLocation()
+  const isCashInTransitVariant =
+    new URLSearchParams(location.search).get('variant') === 'cash-in-transit-money'
+
+  const content = isCashInTransitVariant
+    ? {
+        badge: 'Cash In Transit (Money)',
+        title: 'Protect Cash Movements and Safe Custody',
+        subtitle:
+          'Cover against loss of money in transit, in safe custody, and while handled by authorized employees.',
+        description:
+          'Cover against loss of money while in the insured premises locked in a safe, in transit en route to a final destination and while in custody of and authorized employee.',
+        benefits: [
+          'In transit from your premises to the bank and vice versa',
+          'In your premises during business hours',
+          'In your premises in locked safes/strong rooms outside business hours',
+          'Loss of money in the custody of an authorized employee',
+          'Loss of, or damage to safes or strong rooms insured in the process of a theft or threat',
+        ],
+      }
+    : {
+        badge: 'Goods in Transit',
+        title: 'Secure Your Shipments, Every Mile of the Journey',
+        subtitle:
+          'Comprehensive protection for your goods while in transit, ensuring peace of mind from origin to destination.',
+        description:
+          'Goods in Transit insurance provides coverage for loss or damage to goods while they are being transported from one location to another. This policy protects against various risks including accidents, theft, fire, and natural disasters during transit by road, rail, air, or sea.',
+        benefits: [],
+      }
+
   return (
     <div className="goods-in-transit-page">
       {/* Hero Section */}
       <section className="goods-in-transit-hero">
         <div className="goods-in-transit-hero-content">
           <div className="goods-in-transit-badge">
-            <span>Goods in Transit</span>
+            <span>{content.badge}</span>
           </div>
           <h1 className="goods-in-transit-title">
-            Secure Your Shipments, Every Mile of the Journey
+            {content.title}
           </h1>
           <p className="goods-in-transit-subtitle">
-            Comprehensive protection for your goods while in transit, ensuring peace of mind from origin to destination.
+            {content.subtitle}
           </p>
         </div>
       </section>
@@ -27,30 +58,47 @@ const GoodsInTransit = () => {
           <div className="goods-in-transit-info-card">
             <div className="goods-in-transit-info-content">
               <p className="goods-in-transit-info-description">
-                Goods in Transit insurance provides coverage for loss or damage to goods while they are being transported from one location to another. This policy protects against various risks including accidents, theft, fire, and natural disasters during transit by road, rail, air, or sea.
+                {content.description}
               </p>
-              <p className="goods-in-transit-info-description" style={{ marginTop: '1.5rem' }}>
-                For answers to your questions and information on solutions our network of offices aim to be convenient and local. Visit us in person at one of our offices.
-              </p>
+              {isCashInTransitVariant ? (
+                <>
+                  <p className="goods-in-transit-info-description" style={{ marginTop: '1.5rem', fontWeight: '600' }}>
+                    Benefits
+                  </p>
+                  <p className="goods-in-transit-info-description" style={{ marginTop: '1rem' }}>
+                    Covers loss or damage to money by robbery or theft while:
+                  </p>
+                  <ul className="goods-in-transit-benefits-list" style={{ marginTop: '1rem', marginLeft: '1.5rem' }}>
+                    {content.benefits.map((benefit) => (
+                      <li key={benefit}>{benefit}</li>
+                    ))}
+                  </ul>
+                </>
+              ) : (
+                <p className="goods-in-transit-info-description" style={{ marginTop: '1.5rem' }}>
+                  For answers to your questions and information on solutions our network of offices aim to be convenient and local. Visit us in person at one of our offices.
+                </p>
+              )}
             </div>
           </div>
 
-          {/* Transit Image Section */}
-          <div className="insurance-form-wrapper" style={{ marginTop: '3rem' }}>
-            <div className="insurance-form-image">
-              <img loading="lazy" src={transit2Image} alt="Delivery truck transporting goods covered by transit insurance in Kenya" />
-            </div>
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-              <div style={{ padding: '2rem' }}>
-                <h3 style={{ fontSize: '1.75rem', fontWeight: '700', color: 'var(--black)', marginBottom: '1rem' }}>
-                  Protect Your Shipments
-                </h3>
-                <p style={{ fontSize: '1.125rem', lineHeight: '1.8', color: 'var(--text-dark)', marginBottom: '1.5rem' }}>
-                  Ensure your goods are protected throughout their journey with comprehensive transit insurance. Whether by road, rail, air, or sea, we provide coverage against accidents, theft, fire, and natural disasters.
-                </p>
+          {!isCashInTransitVariant && (
+            <div className="insurance-form-wrapper" style={{ marginTop: '3rem' }}>
+              <div className="insurance-form-image">
+                <img loading="lazy" src={transit2Image} alt="Delivery truck transporting goods covered by transit insurance in Kenya" />
+              </div>
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <div style={{ padding: '2rem' }}>
+                  <h3 style={{ fontSize: '1.75rem', fontWeight: '700', color: 'var(--black)', marginBottom: '1rem' }}>
+                    Protect Your Shipments
+                  </h3>
+                  <p style={{ fontSize: '1.125rem', lineHeight: '1.8', color: 'var(--text-dark)', marginBottom: '1.5rem' }}>
+                    Ensure your goods are protected throughout their journey with comprehensive transit insurance. Whether by road, rail, air, or sea, we provide coverage against accidents, theft, fire, and natural disasters.
+                  </p>
+                </div>
               </div>
             </div>
-          </div>
+          )}
 
           {/* Application Form Button */}
           <div className="goods-in-transit-form-button-section">

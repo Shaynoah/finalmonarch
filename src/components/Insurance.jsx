@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 import InsuranceCard from './InsuranceCard'
 
 const generalInsuranceImage = 'https://res.cloudinary.com/diozv0xm2/image/upload/q_auto/f_auto/v1776416261/general-DMzr5gom_hmqfzl.png'
@@ -7,6 +8,7 @@ const lifeInsuranceImage =
   'https://res.cloudinary.com/diozv0xm2/image/upload/q_auto/f_auto/v1776404840/Gemini_Generated_Image_mxelhimxelhimxel_av64l3.png'
 
 const Insurance = () => {
+  const navigate = useNavigate()
 
   const insuranceTypes = [
     {
@@ -44,16 +46,8 @@ const Insurance = () => {
   }, [])
 
   const handleCardClick = (link) => {
-    // You can navigate to a specific page or scroll to a section
-    // For now, we'll just scroll to contact section
-    const target = document.getElementById('contact')
-    if (target) {
-      const offsetTop = target.offsetTop - 80
-      window.scrollTo({
-        top: offsetTop,
-        behavior: 'smooth'
-      })
-    }
+    navigate(link)
+    window.scrollTo({ top: 0, behavior: 'instant' })
   }
 
   return (

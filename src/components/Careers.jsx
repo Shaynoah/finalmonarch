@@ -57,7 +57,6 @@ const Careers = () => {
       <div className="careers-hero">
         <div className="container">
           <div className="careers-hero-content">
-            <span className="careers-badge">Join Our Team</span>
             <h1 className="careers-hero-title">Build Your Career With Us</h1>
             <p className="careers-hero-description">
               We're always looking for talented individuals to join our growing team. 

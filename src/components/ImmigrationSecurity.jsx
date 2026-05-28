@@ -1,23 +1,44 @@
 import React from 'react'
+import { useLocation } from 'react-router-dom'
 import bondForm from '../forms/BOND-APPLICATION-FORM.pdf'
 
 const immImage =
   'https://res.cloudinary.com/diozv0xm2/image/upload/q_auto/f_auto/v1776404831/ChatGPT_Image_Mar_10_2026_03_28_33_PM_isytsm.png'
 
 const ImmigrationSecurity = () => {
+  const location = useLocation()
+  const isNeaBondsVariant = new URLSearchParams(location.search).get('variant') === 'nea-bonds'
+
+  const content = isNeaBondsVariant
+    ? {
+        badge: 'National Employment Authority (NEA) Bonds',
+        title: 'National Employment Authority (NEA) Bonds',
+        subtitle: 'Financial guarantee for compliant recruitment agency operations.',
+        description:
+          'It acts as an financial guarantee that private recruitment agencies must execute to legally operate—specifically those deploying Kenyan citizens to foreign labor markets (such as the Gulf region, Europe, or North America).'
+      }
+    : {
+        badge: 'Immigration Security',
+        title: 'Your Partner in Responsible Immigration',
+        subtitle:
+          'From seamless travel to local solutions, our worldwide network of offices brings convenience and trust to your doorstep.',
+        description:
+          'Immigration or security bonds are issued to non-Kenyans whose conduct the insurer guarantees. In case the insured displays poor conduct, the insurance company is obligated to pay the costs of deportation or the consequences of her or his bad conduct. Kenyans living in foreign countries are also required to secure such bonds upon travel.'
+      }
+
   return (
     <div className="immigration-security-page">
       {/* Hero Section */}
       <section className="immigration-security-hero">
         <div className="immigration-security-hero-content">
           <div className="immigration-security-badge">
-            <span>Immigration Security</span>
+            <span>{content.badge}</span>
           </div>
           <h1 className="immigration-security-title">
-            Your Partner in Responsible Immigration
+            {content.title}
           </h1>
           <p className="immigration-security-subtitle">
-            From seamless travel to local solutions, our worldwide network of offices brings convenience and trust to your doorstep.
+            {content.subtitle}
           </p>
         </div>
       </section>
@@ -28,30 +49,33 @@ const ImmigrationSecurity = () => {
           <div className="immigration-security-info-card">
             <div className="immigration-security-info-content">
               <p className="immigration-security-info-description">
-                Immigration or security bonds are issued to non-Kenyans whose conduct the insurer guarantees. In case the insured displays poor conduct, the insurance company is obligated to pay the costs of deportation or the consequences of her or his bad conduct. Kenyans living in foreign countries are also required to secure such bonds upon travel.
+                {content.description}
               </p>
-              <p className="immigration-security-info-description" style={{ marginTop: '1.5rem' }}>
-                For answers to your questions and information on solutions our network of offices aim to be convenient and local. Visit us in person at one of our offices.
-              </p>
+              {!isNeaBondsVariant && (
+                <p className="immigration-security-info-description" style={{ marginTop: '1.5rem' }}>
+                  For answers to your questions and information on solutions our network of offices aim to be convenient and local. Visit us in person at one of our offices.
+                </p>
+              )}
             </div>
           </div>
 
-          {/* Immigration Security Image Section */}
-          <div className="insurance-form-wrapper" style={{ marginTop: '3rem' }}>
-            <div className="insurance-form-image">
-              <img loading="lazy" src={immImage} alt="Immigration documentation protected by immigration security bond insurance in Kenya" />
-            </div>
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-              <div style={{ padding: '2rem' }}>
-                <h3 style={{ fontSize: '1.75rem', fontWeight: '700', color: 'var(--black)', marginBottom: '1rem' }}>
-                  Secure Your Immigration Journey
-                </h3>
-                <p style={{ fontSize: '1.125rem', lineHeight: '1.8', color: 'var(--text-dark)', marginBottom: '1.5rem' }}>
-                  Our immigration and security bonds provide essential protection for travelers and non-residents. We guarantee conduct and cover deportation costs or consequences of poor conduct, ensuring peace of mind for both travelers and host countries.
-                </p>
+          {!isNeaBondsVariant && (
+            <div className="insurance-form-wrapper" style={{ marginTop: '3rem' }}>
+              <div className="insurance-form-image">
+                <img loading="lazy" src={immImage} alt="Immigration documentation protected by immigration security bond insurance in Kenya" />
+              </div>
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <div style={{ padding: '2rem' }}>
+                  <h3 style={{ fontSize: '1.75rem', fontWeight: '700', color: 'var(--black)', marginBottom: '1rem' }}>
+                    Secure Your Immigration Journey
+                  </h3>
+                  <p style={{ fontSize: '1.125rem', lineHeight: '1.8', color: 'var(--text-dark)', marginBottom: '1.5rem' }}>
+                    Our immigration and security bonds provide essential protection for travelers and non-residents. We guarantee conduct and cover deportation costs or consequences of poor conduct, ensuring peace of mind for both travelers and host countries.
+                  </p>
+                </div>
               </div>
             </div>
-          </div>
+          )}
 
           {/* Application Form Button */}
           <div className="immigration-security-form-button-section">

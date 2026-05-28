@@ -67,9 +67,6 @@ const GroupLifeInsurance = () => {
       <section className="group-life-hero">
         <div className="group-life-hero-overlay"></div>
         <div className="group-life-hero-content">
-          <div className="group-life-badge">
-            <span>Group Life Insurance</span>
-          </div>
           <h1 className="group-life-title">
             Family Last Expense Rates
           </h1>

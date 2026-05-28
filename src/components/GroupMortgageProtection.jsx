@@ -6,9 +6,6 @@ const GroupMortgageProtection = () => {
       {/* Hero Section */}
       <section className="group-mortgage-protection-hero">
         <div className="group-mortgage-protection-hero-content">
-          <div className="group-mortgage-protection-badge">
-            <span>Group Mortgage Protection</span>
-          </div>
           <h1 className="group-mortgage-protection-title">
             Securing Mortgage Loans, Protecting Families
           </h1>
@@ -25,6 +22,9 @@ const GroupMortgageProtection = () => {
             <div className="group-mortgage-protection-info-content">
               <p className="group-mortgage-protection-info-description">
                 This policy is structured to secure mortgage loans by providing cover for the outstanding balance in the event of the borrower's death or total permanent disability during the term of the loan. Group Mortgage Protection provides peace of mind to both borrowers and lenders by ensuring that the property remains with the family without additional financial burden. It is a key product for mortgage lenders, housing cooperatives, and property developers seeking to reduce credit risk and offer value-added protection to clients.
+              </p>
+              <p className="group-mortgage-protection-info-description" style={{ marginTop: '1.5rem' }}>
+                Provides protection to mortgage lenders for long-term property loans, renewable annually for ages 18-75. Offers high premium values due to substantial loan amounts with annual premium adjustment opportunities.
               </p>
             </div>
           </div>

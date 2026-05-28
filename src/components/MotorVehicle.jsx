@@ -36,7 +36,6 @@ const MotorVehicle = () => {
               </p>
               <ol className="motor-vehicle-list" style={{ marginTop: '1rem', marginLeft: '1.5rem' }}>
                 <li><strong>Third Party Only</strong> – covers liability to third parties only.</li>
-                <li><strong>Third Party, Fire and Theft</strong> – covers liability to third parties as well as cover to the motor vehicle in case of fire and or theft.</li>
                 <li><strong>Comprehensive</strong> – covers liability to third parties as well as cover to the motor vehicle in case of fire, theft and or accidental damage</li>
               </ol>
             </div>

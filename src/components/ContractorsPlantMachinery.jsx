@@ -9,9 +9,6 @@ const ContractorsPlantMachinery = () => {
       {/* Hero Section */}
       <section className="contractors-plant-machinery-hero">
         <div className="contractors-plant-machinery-hero-content">
-          <div className="contractors-plant-machinery-badge">
-            <span>Contractors Plant & Machinery</span>
-          </div>
           <h1 className="contractors-plant-machinery-title">
             Elevate your construction journey
           </h1>

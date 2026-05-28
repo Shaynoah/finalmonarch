@@ -42,8 +42,13 @@ const WhyChooseUs = () => {
     {
       id: 3,
       icon: (
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-          <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round">
+          <line x1="5" y1="6" x2="19" y2="6"/>
+          <line x1="5" y1="12" x2="19" y2="12"/>
+          <line x1="5" y1="18" x2="19" y2="18"/>
+          <circle cx="9" cy="6" r="1.8"/>
+          <circle cx="15" cy="12" r="1.8"/>
+          <circle cx="11" cy="18" r="1.8"/>
         </svg>
       ),
       title: 'Tailored Solutions',
@@ -52,9 +57,9 @@ const WhyChooseUs = () => {
     {
       id: 4,
       icon: (
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-          <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
-          <circle cx="12" cy="7" r="4"/>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M12 3l7 3v5c0 4.6-2.9 8.5-7 10-4.1-1.5-7-5.4-7-10V6l7-3z"/>
+          <path d="m9.2 12.2 2 2.1 3.7-3.7"/>
         </svg>
       ),
       title: 'Expert Advisors',

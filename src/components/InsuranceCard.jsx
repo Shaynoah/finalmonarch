@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 
 const InsuranceCard = ({ image, title, description, onClick, buttons }) => {
   const cardRef = useRef(null)
+  const isCardClickable = typeof onClick === 'function'
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -30,12 +31,12 @@ const InsuranceCard = ({ image, title, description, onClick, buttons }) => {
 
   return (
     <div 
-      className={`insurance-card ${!buttons ? 'clickable' : ''}`}
+      className={`insurance-card ${isCardClickable ? 'clickable' : ''}`}
       ref={cardRef}
-      onClick={!buttons ? onClick : undefined}
-      role={!buttons ? 'button' : undefined}
-      tabIndex={!buttons ? 0 : undefined}
-      onKeyDown={!buttons ? (e) => {
+      onClick={isCardClickable ? onClick : undefined}
+      role={isCardClickable ? 'button' : undefined}
+      tabIndex={isCardClickable ? 0 : undefined}
+      onKeyDown={isCardClickable ? (e) => {
         if (e.key === 'Enter' || e.key === ' ') {
           e.preventDefault()
           onClick?.()

@@ -1,18 +1,12 @@
 import React from 'react'
 import contractorsAllRisksForm from '../forms/CONTRACTORS-ALL-RISKS-INSURANCE-PROPOSAL-FORM.pdf'
 
-const siteImage =
-  'https://res.cloudinary.com/diozv0xm2/image/upload/q_auto/f_auto/v1776404826/ChatGPT_Image_Mar_9_2026_12_54_40_PM_op32xj.png'
-
 const ContractorsAllRisks = () => {
   return (
     <div className="contractors-all-risks-page">
       {/* Hero Section */}
       <section className="contractors-all-risks-hero">
         <div className="contractors-all-risks-hero-content">
-          <div className="contractors-all-risks-badge">
-            <span>Contractors All Risks</span>
-          </div>
           <h1 className="contractors-all-risks-title">
             Elevate your construction journey
           </h1>
@@ -28,25 +22,8 @@ const ContractorsAllRisks = () => {
           <div className="contractors-all-risks-info-card">
             <div className="contractors-all-risks-info-content">
               <p className="contractors-all-risks-info-description">
-                This insurance provides comprehensive and adequate protection against unforeseen loss or damage in respect to the contract works, construction plant and equipment and or construction machinery as well as against third party liability in respect to property damage or bodily injury arising in connection with the execution of the contract.
+                Provides cover against loss arising out of the erection and installation of machinery plant and steel structures, including physical damage to the contract works, equipment and machinery, and liability for third party bodily injury or property damage arising out of these operations.
               </p>
-            </div>
-          </div>
-
-          {/* Construction Image Section */}
-          <div className="insurance-form-wrapper" style={{ marginTop: '3rem' }}>
-            <div className="insurance-form-image">
-              <img loading="lazy" src={siteImage} alt="Active construction site protected by contractors all risks insurance in Kenya" />
-            </div>
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-              <div style={{ padding: '2rem' }}>
-                <h3 style={{ fontSize: '1.75rem', fontWeight: '700', color: 'var(--black)', marginBottom: '1rem' }}>
-                  Comprehensive Construction Protection
-                </h3>
-                <p style={{ fontSize: '1.125rem', lineHeight: '1.8', color: 'var(--text-dark)', marginBottom: '1.5rem' }}>
-                  Shield your construction projects with comprehensive all-risks coverage. Our insurance protects contract works, construction plant, equipment, and machinery, while also covering third-party liability for property damage or bodily injury.
-                </p>
-              </div>
             </div>
           </div>
 
