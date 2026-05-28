@@ -22,7 +22,7 @@ const bridgitImage =
 const zipporahImage =
   'https://res.cloudinary.com/diozv0xm2/image/upload/q_auto/f_auto/v1776406602/Zipporah3_vjvvdq.jpg'
 const rosemaryImage =
-  'https://res.cloudinary.com/diozv0xm2/image/upload/q_auto/f_auto/v1776406623/Rosemary3_cvn5w5.jpg'
+  'https://res.cloudinary.com/diozv0xm2/image/upload/q_auto/f_auto/v1779963798/IMG_4910_1_au5qgu.jpg'
 const jackieImage =
   'https://res.cloudinary.com/diozv0xm2/image/upload/q_auto/f_auto/v1776406620/Jackie5_uhitcd.jpg'
 const robiaImage =

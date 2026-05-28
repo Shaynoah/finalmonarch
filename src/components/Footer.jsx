@@ -178,6 +178,13 @@ const Footer = () => {
                 </svg>
                 <span>FAQs</span>
               </Link>
+              <Link to="/data-privacy" onClick={() => window.scrollTo({ top: 0, behavior: 'instant' })}>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <path d="M12 3l7 4v5c0 5-3.5 8.5-7 9-3.5-.5-7-4-7-9V7l7-4z"/>
+                  <path d="M9 12l2 2 4-4"/>
+                </svg>
+                <span>Data Privacy</span>
+              </Link>
             </div>
           </div>
           <div className="footer-section">
@@ -276,7 +283,7 @@ const Footer = () => {
           </div>
         </div>
         <div className="footer-bottom">
-          <p>&copy; {currentYear} Monarch Insurance. All rights reserved.</p>
+          <p>&copy; {currentYear} The Monarch Insurance Company. All rights reserved.</p>
         </div>
         </div>
       </footer>

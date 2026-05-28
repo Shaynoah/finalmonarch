@@ -51,6 +51,7 @@ import FormsPage from './pages/FormsPage'
 import ReportClaimPage from './pages/ReportClaimPage'
 import ServiceProvidersPage from './pages/ServiceProvidersPage'
 import CareersPage from './pages/CareersPage'
+import DataPrivacyPage from './pages/DataPrivacyPage'
 import NotFoundPage from './pages/NotFoundPage'
 
 const seoByPath = {
@@ -336,6 +337,13 @@ const seoByPath = {
       'Explore insurance career opportunities at Monarch Insurance Kenya and join a team focused on growth and service excellence.',
     keywords: 'insurance jobs Kenya, Monarch careers, underwriting jobs Kenya',
   },
+  '/data-privacy': {
+    title: 'Data Protection & Privacy Policy | Monarch Kenya',
+    description:
+      'Read Monarch Insurance Data Protection and Privacy Policy on personal data collection, processing, security, and customer rights.',
+    keywords:
+      'data privacy policy Kenya, insurance data protection, Monarch privacy policy',
+  },
 }
 
 const withSEO = (path, element) => (
@@ -399,6 +407,7 @@ function App() {
         <Route path="/report-claim" element={withSEO('/report-claim', <ReportClaimPage />)} />
         <Route path="/service-providers" element={withSEO('/service-providers', <ServiceProvidersPage />)} />
         <Route path="/careers" element={withSEO('/careers', <CareersPage />)} />
+        <Route path="/data-privacy" element={withSEO('/data-privacy', <DataPrivacyPage />)} />
         <Route
           path="*"
           element={
