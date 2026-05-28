@@ -203,7 +203,7 @@ const ServiceProviders = () => {
       name: 'Roadside Assistance Service',
       contactPerson: 'Emergency Contact',
       phone: '0738669931 / 0705426931',
-      email: 'info@monarchinsurance.com',
+      email: 'info@monarchinsurance.co.ke',
       description: '24/7 roadside assistance for breakdowns, flat tires, battery jump-starts, fuel delivery, and towing services.',
       region: 'Nationwide'
     }

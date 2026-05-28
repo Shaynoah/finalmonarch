@@ -9,6 +9,7 @@ import json as json_std
 import os
 import re
 import smtplib
+import threading
 import traceback
 import urllib.error
 import urllib.parse
@@ -239,15 +240,13 @@ def build_body(data: dict) -> str:
     return "\n".join(lines)
 
 
-def _build_contact_html(data: dict, subject_line: str) -> str:
-    name = escape((data.get("name") or "").strip() or "Not provided")
-    email = escape((data.get("email") or "").strip() or "Not provided")
-    phone = escape((data.get("phone") or "").strip() or "Not provided")
-    subject = escape(subject_line or "Not provided")
-    message = escape((data.get("message") or "").strip() or "No message provided").replace(
-        "\n", "<br>"
-    )
-
+def _build_email_shell(
+    title: str,
+    intro: str,
+    details_html: str,
+    message_title: str,
+    message_html: str,
+) -> str:
     return f"""\
 <!doctype html>
 <html>
@@ -255,35 +254,32 @@ def _build_contact_html(data: dict, subject_line: str) -> str:
     <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#f4f6fb;padding:24px 0;">
       <tr>
         <td align="center">
-          <table role="presentation" width="640" cellpadding="0" cellspacing="0" style="width:100%;max-width:640px;background:#ffffff;border:1px solid #e5e7eb;border-radius:10px;overflow:hidden;">
+          <table role="presentation" width="680" cellpadding="0" cellspacing="0" style="width:100%;max-width:680px;background:#ffffff;border:1px solid #e5e7eb;border-radius:12px;overflow:hidden;">
             <tr>
-              <td style="padding:20px 24px;">
+              <td style="padding:16px 24px;background:linear-gradient(135deg,#11422e 0%,#0f5f43 100%);color:#ffffff;">
+                <div style="font-size:13px;opacity:0.9;letter-spacing:0.4px;">The Monarch Insurance Company Ltd</div>
+                <div style="font-size:20px;font-weight:700;margin-top:4px;">{title}</div>
+                <div style="font-size:13px;opacity:0.92;margin-top:6px;">{intro}</div>
+              </td>
+            </tr>
+            <tr>
+              <td style="padding:18px 24px;">
                 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border-collapse:collapse;">
-                  <tr>
-                    <td style="padding:8px 0;color:#6b7280;width:170px;font-size:14px;">Name</td>
-                    <td style="padding:8px 0;color:#111827;font-size:14px;font-weight:600;">{name}</td>
-                  </tr>
-                  <tr>
-                    <td style="padding:8px 0;color:#6b7280;width:170px;font-size:14px;">Email</td>
-                    <td style="padding:8px 0;color:#111827;font-size:14px;font-weight:600;">{email}</td>
-                  </tr>
-                  <tr>
-                    <td style="padding:8px 0;color:#6b7280;width:170px;font-size:14px;">Phone</td>
-                    <td style="padding:8px 0;color:#111827;font-size:14px;font-weight:600;">{phone}</td>
-                  </tr>
-                  <tr>
-                    <td style="padding:8px 0;color:#6b7280;width:170px;font-size:14px;">Subject</td>
-                    <td style="padding:8px 0;color:#111827;font-size:14px;font-weight:600;">{subject}</td>
-                  </tr>
+                  {details_html}
                 </table>
               </td>
             </tr>
             <tr>
-              <td style="padding:0 24px 24px 24px;">
-                <div style="font-size:14px;color:#6b7280;margin-bottom:8px;">Message</div>
-                <div style="background:#f9fafb;border:1px solid #e5e7eb;border-radius:8px;padding:14px;font-size:14px;line-height:1.6;color:#111827;">
-                  {message}
+              <td style="padding:0 24px 20px 24px;">
+                <div style="font-size:14px;color:#6b7280;margin-bottom:8px;">{message_title}</div>
+                <div style="background:#f9fafb;border:1px solid #e5e7eb;border-radius:8px;padding:14px;font-size:14px;line-height:1.65;color:#111827;">
+                  {message_html}
                 </div>
+              </td>
+            </tr>
+            <tr>
+              <td style="padding:0 24px 18px 24px;font-size:12px;color:#6b7280;">
+                Sent from Monarch Insurance website forms.
               </td>
             </tr>
           </table>
@@ -295,6 +291,92 @@ def _build_contact_html(data: dict, subject_line: str) -> str:
 """
 
 
+def _build_contact_html(data: dict, subject_line: str, include_phone: bool = True) -> str:
+    name = escape((data.get("name") or "").strip() or "Not provided")
+    email = escape((data.get("email") or "").strip() or "Not provided")
+    phone = escape((data.get("phone") or "").strip() or "Not provided")
+    subject = escape(subject_line or "Not provided")
+    message = escape((data.get("message") or "").strip() or "No message provided").replace("\n", "<br>")
+    form_kind = "Quote Request" if re.match(r"^quote\s+request\b", subject_line or "", re.I) else "Contact Form"
+
+    phone_row = (
+        f"""
+                  <tr>
+                    <td style="padding:7px 0;color:#6b7280;width:180px;font-size:14px;">Phone</td>
+                    <td style="padding:7px 0;color:#111827;font-size:14px;font-weight:600;">{phone}</td>
+                  </tr>
+"""
+        if include_phone
+        else ""
+    )
+
+    details_rows = f"""
+                  <tr>
+                    <td style="padding:7px 0;color:#6b7280;width:180px;font-size:14px;">Name</td>
+                    <td style="padding:7px 0;color:#111827;font-size:14px;font-weight:600;">{name}</td>
+                  </tr>
+                  <tr>
+                    <td style="padding:7px 0;color:#6b7280;width:180px;font-size:14px;">Email</td>
+                    <td style="padding:7px 0;color:#111827;font-size:14px;font-weight:600;">{email}</td>
+                  </tr>
+                  {phone_row}
+                  <tr>
+                    <td style="padding:7px 0;color:#6b7280;width:180px;font-size:14px;">Subject</td>
+                    <td style="padding:7px 0;color:#111827;font-size:14px;font-weight:600;">{subject}</td>
+                  </tr>
+"""
+
+    return _build_email_shell(
+        title="Contact Submission",
+        intro=f"New {form_kind.lower()} received from monarchinsurance.co.ke.",
+        details_html=details_rows,
+        message_title="Message",
+        message_html=message,
+    )
+
+
+def _build_claim_html(data: dict) -> str:
+    first_name = escape((data.get("firstName") or "").strip() or "Not provided")
+    last_name = escape((data.get("lastName") or "").strip() or "Not provided")
+    email = escape((data.get("email") or "").strip() or "Not provided")
+    type_of_cover = escape((data.get("typeOfCover") or "").strip() or "Not provided")
+    policy_number = escape((data.get("policyNumber") or "").strip() or "Not provided")
+    description = escape((data.get("claimDescription") or "").strip() or "No description provided").replace(
+        "\n", "<br>"
+    )
+
+    details_rows = f"""
+                  <tr>
+                    <td style="padding:7px 0;color:#6b7280;width:180px;font-size:14px;">First Name</td>
+                    <td style="padding:7px 0;color:#111827;font-size:14px;font-weight:600;">{first_name}</td>
+                  </tr>
+                  <tr>
+                    <td style="padding:7px 0;color:#6b7280;width:180px;font-size:14px;">Last Name</td>
+                    <td style="padding:7px 0;color:#111827;font-size:14px;font-weight:600;">{last_name}</td>
+                  </tr>
+                  <tr>
+                    <td style="padding:7px 0;color:#6b7280;width:180px;font-size:14px;">Submitter Email</td>
+                    <td style="padding:7px 0;color:#111827;font-size:14px;font-weight:600;">{email}</td>
+                  </tr>
+                  <tr>
+                    <td style="padding:7px 0;color:#6b7280;width:180px;font-size:14px;">Type of Cover</td>
+                    <td style="padding:7px 0;color:#111827;font-size:14px;font-weight:600;">{type_of_cover}</td>
+                  </tr>
+                  <tr>
+                    <td style="padding:7px 0;color:#6b7280;width:180px;font-size:14px;">Policy/Registration Number</td>
+                    <td style="padding:7px 0;color:#111827;font-size:14px;font-weight:600;">{policy_number}</td>
+                  </tr>
+"""
+
+    return _build_email_shell(
+        title="Claim Submission",
+        intro="A new claim report has been submitted through the website.",
+        details_html=details_rows,
+        message_title="Claim Description",
+        message_html=description,
+    )
+
+
 def _require_password_and_smtp_send(msg: EmailMessage) -> None:
     """Log in and send. Raises LookupError if SENDER_PASSWORD is missing."""
     sender_password = _sender_password()
@@ -304,6 +386,17 @@ def _require_password_and_smtp_send(msg: EmailMessage) -> None:
         server.starttls()
         server.login(_sender_email(), sender_password)
         server.send_message(msg)
+
+
+def _send_email_async(msg: EmailMessage) -> None:
+    """Send email in a daemon thread so request can return quickly."""
+    def _worker() -> None:
+        try:
+            _require_password_and_smtp_send(msg)
+        except Exception:
+            app.logger.error("Async mail send failed:\n%s", traceback.format_exc())
+
+    threading.Thread(target=_worker, daemon=True).start()
 
 
 @app.route("/api/health", methods=["GET"])
@@ -343,10 +436,10 @@ def submit_claim():
     msg["To"] = _claim_recipient_to_header()
     msg["Reply-To"] = data.get("email", "")
     msg.set_content(build_body(data))
+    msg.add_alternative(_build_claim_html(data), subtype="html")
 
-    try:
-        _require_password_and_smtp_send(msg)
-    except LookupError:
+    # Keep config validation synchronous so users get immediate actionable feedback.
+    if not _sender_password():
         return (
             jsonify({
                 "ok": False,
@@ -358,11 +451,9 @@ def submit_claim():
             }),
             503,
         )
-    except Exception:
-        app.logger.error(traceback.format_exc())
-        return jsonify({"ok": False, "error": "Could not send email. Check server logs."}), 502
 
-    return jsonify({"ok": True})
+    _send_email_async(msg)
+    return jsonify({"ok": True, "queued": True})
 
 
 @app.route("/api/contact", methods=["POST"])
@@ -381,10 +472,11 @@ def submit_contact():
 
     subject_line = (data.get("subject") or "").strip() or "Website Contact Form Inquiry"
     phone = (data.get("phone") or "").strip()
+    is_quote_submission = (data.get("formSource") or "").strip().lower() == "get-a-quote"
     body_lines = [
         f"Name: {data.get('name', '').strip()}",
         f"Email: {data.get('email', '').strip()}",
-        f"Phone: {phone if phone else 'Not provided'}",
+        *([] if is_quote_submission else [f"Phone: {phone if phone else 'Not provided'}"]),
         "",
         "Message:",
         (data.get("message") or "").strip(),
@@ -409,11 +501,13 @@ def submit_contact():
     msg["To"] = _contact_to_header(data)
     msg["Reply-To"] = data.get("email", "").strip()
     msg.set_content(body)
-    msg.add_alternative(_build_contact_html(data, subject_line), subtype="html")
+    msg.add_alternative(
+        _build_contact_html(data, subject_line, include_phone=not is_quote_submission),
+        subtype="html",
+    )
 
-    try:
-        _require_password_and_smtp_send(msg)
-    except LookupError:
+    # Keep config validation synchronous so users get immediate actionable feedback.
+    if not _sender_password():
         return (
             jsonify({
                 "ok": False,
@@ -425,11 +519,9 @@ def submit_contact():
             }),
             503,
         )
-    except Exception:
-        app.logger.error(traceback.format_exc())
-        return jsonify({"ok": False, "error": "Could not send email. Check server logs."}), 502
 
-    return jsonify({"ok": True})
+    _send_email_async(msg)
+    return jsonify({"ok": True, "queued": True})
 
 
 if __name__ == "__main__":
