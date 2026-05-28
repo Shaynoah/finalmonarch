@@ -23087,3 +23087,84 @@ canvas {
         max-width: 100%;
     }
 }
+
+/* Final override: remove extra mobile gap under fixed navbar on life/general product pages */
+@media (max-width: 768px) {
+    .life-insurance-overview-page,
+    .general-insurance-overview-page {
+        padding-top: 102px !important;
+    }
+
+    .group-life-insurance-page,
+    .group-life-page,
+    .group-mortgage-protection-page,
+    .group-credit-life-page,
+    .contractors-all-risks-page,
+    .contractors-plant-machinery-page,
+    .machinery-breakdown-page,
+    .electronic-equipment-page,
+    .consequential-loss-page,
+    .fire-and-perils-page,
+    .industrial-page,
+    .group-personal-accident-page,
+    .domestic-package-page,
+    .golfers-insurance-page,
+    .burglary-page,
+    .goods-in-transit-page,
+    .surety-undertaking-page,
+    .motor-vehicle-page,
+    .institutional-fleet-page,
+    .motor-cycle-page,
+    .work-injury-page,
+    .marine-cargo-page,
+    .marine-hull-page,
+    .public-liability-page,
+    .professional-indemnity-page,
+    .carriers-page,
+    .tender-page,
+    .immigration-security-page,
+    .performance-page,
+    .customs-page {
+        padding-top: 84px !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .life-insurance-overview-page,
+    .general-insurance-overview-page {
+        padding-top: 96px !important;
+    }
+
+    .group-life-insurance-page,
+    .group-life-page,
+    .group-mortgage-protection-page,
+    .group-credit-life-page,
+    .contractors-all-risks-page,
+    .contractors-plant-machinery-page,
+    .machinery-breakdown-page,
+    .electronic-equipment-page,
+    .consequential-loss-page,
+    .fire-and-perils-page,
+    .industrial-page,
+    .group-personal-accident-page,
+    .domestic-package-page,
+    .golfers-insurance-page,
+    .burglary-page,
+    .goods-in-transit-page,
+    .surety-undertaking-page,
+    .motor-vehicle-page,
+    .institutional-fleet-page,
+    .motor-cycle-page,
+    .work-injury-page,
+    .marine-cargo-page,
+    .marine-hull-page,
+    .public-liability-page,
+    .professional-indemnity-page,
+    .carriers-page,
+    .tender-page,
+    .immigration-security-page,
+    .performance-page,
+    .customs-page {
+        padding-top: 76px !important;
+    }
+}
