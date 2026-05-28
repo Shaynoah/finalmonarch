@@ -131,6 +131,8 @@ const Contact = () => {
                   <a href="tel:0738669931" className="phone-number">0738669931</a>
                   <span className="phone-separator"> / </span>
                   <a href="tel:0705426931" className="phone-number">0705426931</a>
+                  <span className="phone-separator"> / </span>
+                  <a href="tel:0724514254" className="phone-number">0724 514254</a>
                 </div>
               </div>
               

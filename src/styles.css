@@ -8995,6 +8995,18 @@ canvas {
     transition: color 0.3s ease;
 }
 
+.reach-phone-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+}
+
+.reach-phone-list a {
+    white-space: nowrap;
+    word-break: normal;
+    overflow-wrap: normal;
+}
+
 .reach-content a:hover {
     color: var(--primary-green-light);
     text-decoration: underline;
@@ -23091,7 +23103,8 @@ canvas {
 /* Final override: remove extra mobile gap under fixed navbar on life/general product pages */
 @media (max-width: 768px) {
     .life-insurance-overview-page,
-    .general-insurance-overview-page {
+    .general-insurance-overview-page,
+    .careers-page-section {
         padding-top: 102px !important;
     }
 
@@ -23124,14 +23137,16 @@ canvas {
     .tender-page,
     .immigration-security-page,
     .performance-page,
-    .customs-page {
+    .customs-page,
+    .get-a-quote-page {
         padding-top: 84px !important;
     }
 }
 
 @media (max-width: 480px) {
     .life-insurance-overview-page,
-    .general-insurance-overview-page {
+    .general-insurance-overview-page,
+    .careers-page-section {
         padding-top: 96px !important;
     }
 
@@ -23164,7 +23179,8 @@ canvas {
     .tender-page,
     .immigration-security-page,
     .performance-page,
-    .customs-page {
+    .customs-page,
+    .get-a-quote-page {
         padding-top: 76px !important;
     }
 }
