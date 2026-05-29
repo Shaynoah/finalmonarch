@@ -11,10 +11,10 @@ const Branches = () => {
         'Nairobi, Kenya'
       ],
       phones: [
-        '+254 (0) 20 4292 000',
-        '+254 (0) 20 2338132/ 37',
-        '+254 (0) 705 426 931',
-        '+254 (0) 20 4292 100'
+        '0724635700',
+        '0705426931',
+        '0738669931',
+        '0102981480'
       ],
       email: 'info@monarchinsurance.co.ke',
       hours: 'Monday-Friday: 7am to 6pm, Saturdays: 9.00am to 1pm'
@@ -28,8 +28,7 @@ const Branches = () => {
         'Mombasa, Kenya'
       ],
       phones: [
-        '+254 (0) 41 2318348',
-        '+254 (0) 41 2318347'
+        '0 785 320626'
       ],
       email: 'mombasa@monarchinsurance.co.ke',
       hours: 'Monday-Friday: 7am to 6pm, Saturdays: 9.00am to 1pm'
