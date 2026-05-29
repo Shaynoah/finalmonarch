@@ -28,7 +28,7 @@ const Branches = () => {
         'Mombasa, Kenya'
       ],
       phones: [
-        '0 785 320626'
+        '0785320626'
       ],
       email: 'mombasa@monarchinsurance.co.ke',
       hours: 'Monday-Friday: 7am to 6pm, Saturdays: 9.00am to 1pm'
