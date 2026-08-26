@@ -216,7 +216,7 @@ const Team = () => {
       category: 'senior-management',
       image: rosemaryImage,
       bio: 'Head of Legal',
-      experience: 'Rosemary is a dedicated, detail-oriented and highly skilled professional lawyer with over ten (10) years\' experience in a wide variety of legal areas.',
+      experience: 'Rosemary is a dedicated, detail-oriented and highly skilled professional lawyer with over fifteen (15) years\' experience in a wide variety of legal areas.',
       education: 'She holds a Bachelor of Laws Degree (LL.B) Hons and Master of Laws (LL.M) in International and Commercial Law (World Trade Specialist), both from the University of Buckingham and a Diploma in Law from the Kenya School of Law.',
       professionalQualifications: 'She is an advocate of the High Court of Kenya.',
       furtherTraining: 'She also holds Certificates in Introduction to; Corporate Finance, Financial Accounting, Marketing and Operations Management from Wharton – University of Pennsylvania.',
